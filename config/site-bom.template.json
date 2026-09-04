@@ -1,0 +1,1639 @@
+{
+  "settings": {
+    "templateName": "Neovi Site BOM - MASTER TEMPLATE",
+    "templateVersion": "0.4.0",
+    "statuses": [
+      "Needs Review",
+      "Ready",
+      "Not Required",
+      "Kitted",
+      "Delivered"
+    ],
+    "owners": [
+      "Unassigned",
+      "Dan",
+      "Structural",
+      "Electrical",
+      "Plumbing",
+      "Mechanical",
+      "Field",
+      "Purchasing"
+    ],
+    "procurementMethods": [
+      "TBD",
+      "Order",
+      "Inventory",
+      "Factory Supplied",
+      "Rental",
+      "Other"
+    ],
+    "ruleStatuses": [
+      "NEEDS_REVIEW",
+      "READY_FOR_TEST",
+      "APPROVED"
+    ]
+  },
+  "defaults": {
+    "scope": "SITE",
+    "specification": "TBD - approve exact specification",
+    "specificationApproved": false,
+    "unit": "EA",
+    "owner": "Unassigned",
+    "procurementMethod": "TBD",
+    "packSize": 1,
+    "minimumOrderQty": 0,
+    "targetStockQty": 0,
+    "unitCost": null,
+    "rule": {
+      "sourceMode": "MANUAL",
+      "multiplier": 1,
+      "fixedQty": 0,
+      "sparePercent": 0,
+      "quantityIncrement": 1,
+      "minimumKitQty": 0,
+      "status": "NEEDS_REVIEW"
+    }
+  },
+  "phases": [
+    {
+      "name": "Foundation",
+      "code": "FND",
+      "color": "#1F4E78",
+      "stages": [
+        {
+          "name": "Site Setup and Support",
+          "kitId": "FND-SUPPORT",
+          "categories": [
+            {
+              "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-001",
+                  "description": "Mud mats",
+                  "unit": "EA",
+                  "procurementMethod": "Rental"
+                }
+              ],
+              "system": "Site Access",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-002",
+                  "description": "Define foundation site supplies",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "General Site Supplies",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-003",
+                  "description": "Define foundation consumables",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Site Consumables",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-004",
+                  "description": "Define foundation fixtures",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Site Fixtures",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-005",
+                  "description": "Define useful site additions",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Site Additions",
+              "deliveryStage": "1"
+            }
+          ]
+        },
+        {
+          "name": "Helical Piles",
+          "kitId": "FND-PILE",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-006",
+                  "description": "Helical piles",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "foundation_helical_pile_count",
+                    "status": "READY_FOR_TEST"
+                  }
+                },
+                {
+                  "id": "FND-007",
+                  "description": "Pile extensions",
+                  "owner": "Structural"
+                }
+              ],
+              "system": "Piles",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-008",
+                  "description": "Pile caps",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "foundation_pile_cap_count"
+                  }
+                },
+                {
+                  "id": "FND-009",
+                  "description": "Pile pins",
+                  "owner": "Structural"
+                },
+                {
+                  "id": "FND-010",
+                  "description": "Pile brackets",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "foundation_pile_bracket_count"
+                  }
+                }
+              ],
+              "system": "Pile Connections",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-011",
+                  "description": "Helical pile installation machine rental",
+                  "unit": "DAY",
+                  "procurementMethod": "Rental"
+                }
+              ],
+              "system": "Installation Equipment",
+              "deliveryStage": "1"
+            }
+          ]
+        },
+        {
+          "name": "Steel Bedframe",
+          "kitId": "FND-BEDFRAME",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-012",
+                  "description": "HSS beams",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "steel_bedframe_hss_beam_count"
+                  }
+                }
+              ],
+              "system": "Primary Steel",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-013",
+                  "description": "Welding consumables",
+                  "owner": "Structural"
+                }
+              ],
+              "system": "Welding",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-014",
+                  "description": "Steel bedframe nuts",
+                  "owner": "Structural",
+                  "packSize": 25,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "steel_bedframe_bolt_count",
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "FND-015",
+                  "description": "Steel bedframe bolts",
+                  "owner": "Structural",
+                  "packSize": 25,
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "steel_bedframe_bolt_count",
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "FND-016",
+                  "description": "Steel bedframe threaded rod",
+                  "owner": "Structural",
+                  "unit": "FT"
+                }
+              ],
+              "system": "Fasteners",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-017",
+                  "description": "Gap material / spacers",
+                  "notes": "Confirm what 'gaps' means in the supplied list."
+                },
+                {
+                  "id": "FND-018",
+                  "description": "Steel shims"
+                }
+              ],
+              "system": "Shims & Spacers",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-019",
+                  "description": "Plastic protection / isolation material",
+                  "unit": "SQFT",
+                  "notes": "Measure coverage in square feet. Confirm exact use, material specification, and roll size."
+                }
+              ],
+              "system": "Isolation",
+              "deliveryStage": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Panels",
+      "code": "PAN",
+      "color": "#0F766E",
+      "stages": [
+        {
+          "name": "Floors",
+          "kitId": "PAN-FLOOR",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-001",
+                  "description": "Four-point lifting straps",
+                  "rule": {
+                    "sourceMode": "FIXED",
+                    "fixedQty": 4
+                  },
+                  "procurementMethod": "Inventory"
+                }
+              ],
+              "system": "Rigging",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-002",
+                  "description": "4 x 3 floor connection plates",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "floor_to_floor_connection_count",
+                    "minimumKitQty": 250,
+                    "notes": "Confirm whether minimum kit quantity is 100 or 250."
+                  }
+                },
+                {
+                  "id": "PAN-003",
+                  "description": "Floor threaded connecting rod",
+                  "owner": "Structural",
+                  "unit": "EA",
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "floor_to_hss_connection_count",
+                    "sparePercent": 0.25,
+                    "status": "READY_FOR_TEST"
+                  }
+                },
+                {
+                  "id": "PAN-004",
+                  "description": "Floor connection washers",
+                  "owner": "Structural",
+                  "packSize": 25,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "floor_to_hss_connection_count",
+                    "multiplier": 2,
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "PAN-005",
+                  "description": "Floor connection nuts",
+                  "owner": "Structural",
+                  "packSize": 25,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "floor_to_hss_connection_count",
+                    "multiplier": 2,
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Floor Connections",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-006",
+                  "description": "Floor connection screws",
+                  "owner": "Structural",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "floor_connection_count",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Fasteners",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-007",
+                  "description": "Floor installation foam",
+                  "unit": "CUFT",
+                  "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification."
+                }
+              ],
+              "system": "Sealants & Foam",
+              "deliveryStage": "2"
+            }
+          ]
+        },
+        {
+          "name": "Walls",
+          "kitId": "PAN-WALL",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-008",
+                  "description": "Two-point lift with custom hooks",
+                  "unit": "EA",
+                  "rule": {
+                    "sourceMode": "FIXED",
+                    "fixedQty": 1
+                  },
+                  "procurementMethod": "Inventory"
+                }
+              ],
+              "system": "Rigging",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-009",
+                  "description": "Long self-drilling screws",
+                  "owner": "Structural",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "wall_connection_count",
+                    "multiplier": 4,
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "PAN-010",
+                  "description": "Long wood-to-metal screws",
+                  "owner": "Structural",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "wall_wood_to_metal_connection_count",
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "PAN-011",
+                  "description": "Nuts for wall angles",
+                  "owner": "Structural",
+                  "packSize": 25,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "wall_angle_connection_count",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Wall Connections",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-012",
+                  "description": "2 x 4 temporary wall bracing",
+                  "unit": "EA"
+                }
+              ],
+              "system": "Temporary Bracing",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-013",
+                  "description": "Washers and nuts for Simpson hold-downs",
+                  "owner": "Structural",
+                  "unit": "EA",
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "wall_hold_down_count",
+                    "sparePercent": 0.1
+                  },
+                  "notes": "EA means one complete washer-and-nut hardware assembly per hold-down."
+                }
+              ],
+              "system": "Hold-Downs",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-014",
+                  "description": "Wall-to-wall plates",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "wall_to_wall_connection_count"
+                  },
+                  "notes": "Confirm plate design and quantity rule."
+                }
+              ],
+              "system": "Wall-to-Wall Connections",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-015",
+                  "description": "Froth Pak foam for wall corners",
+                  "unit": "CUFT",
+                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification."
+                }
+              ],
+              "system": "Sealants & Foam",
+              "deliveryStage": "2"
+            }
+          ]
+        },
+        {
+          "name": "Trusses",
+          "kitId": "PAN-TRUSS",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-016",
+                  "description": "Truss screws",
+                  "owner": "Structural",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "truss_connection_count",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Fasteners",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-017",
+                  "description": "Truss angles",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "truss_angle_count",
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "PAN-018",
+                  "description": "Truss stitch pieces",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "truss_stitch_piece_count"
+                  }
+                }
+              ],
+              "system": "Connections",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "PAN-019",
+                  "description": "Site purlins",
+                  "owner": "Structural",
+                  "unit": "FT",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "roof_purlin_total_length",
+                    "sparePercent": 0.05
+                  }
+                }
+              ],
+              "system": "Purlins",
+              "deliveryStage": "2"
+            }
+          ]
+        },
+        {
+          "name": "Roof Panels",
+          "kitId": "PAN-ROOF",
+          "categories": [
+            {
+              "name": "Building Envelope",
+              "items": [
+                {
+                  "id": "PAN-020",
+                  "description": "Floor-cassette slope material",
+                  "unit": "SQFT",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "roof_slope_material_area",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Slope Build-Up",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Building Envelope",
+              "items": [
+                {
+                  "id": "PAN-021",
+                  "description": "Roof-panel screws on purlins",
+                  "owner": "Structural",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "roof_panel_connection_count",
+                    "sparePercent": 0.1
+                  }
+                },
+                {
+                  "id": "PAN-022",
+                  "description": "Roof-panel rivets",
+                  "packSize": 100,
+                  "rule": {
+                    "sourceMode": "CALCULATED",
+                    "inputKey": "roof_rivet_count",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Panel Fasteners",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Building Envelope",
+              "items": [
+                {
+                  "id": "PAN-023",
+                  "description": "Roof-panel butyl tape",
+                  "unit": "FT",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "roof_joint_length",
+                    "sparePercent": 0.1
+                  },
+                  "notes": "Measure tape in linear feet; roll length belongs in pack size/specification."
+                }
+              ],
+              "system": "Joint Sealing",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Building Envelope",
+              "items": [
+                {
+                  "id": "PAN-024",
+                  "description": "Seam roller",
+                  "rule": {
+                    "sourceMode": "FIXED",
+                    "fixedQty": 1
+                  },
+                  "procurementMethod": "Inventory"
+                }
+              ],
+              "system": "Installation Tools",
+              "deliveryStage": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finishing",
+      "code": "FIN",
+      "color": "#B45309",
+      "stages": [
+        {
+          "name": "Rough MEP",
+          "categories": [
+            {
+              "name": "Electrical",
+              "kitId": "FIN-RMEP-ELEC",
+              "owner": "Electrical",
+              "items": [
+                {
+                  "id": "FIN-001",
+                  "description": "12/2 MC cable",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-002",
+                  "description": "3/8-inch MC fittings"
+                },
+                {
+                  "id": "FIN-003",
+                  "description": "10/3 MC cable",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-004",
+                  "description": "1/2-inch fittings"
+                },
+                {
+                  "id": "FIN-005",
+                  "description": "8/3 MC cable",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-006",
+                  "description": "3/4-inch fittings"
+                },
+                {
+                  "id": "FIN-007",
+                  "description": "Breaker panel"
+                },
+                {
+                  "id": "FIN-008",
+                  "description": "12/2 MC fire-bell wire",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-009",
+                  "description": "Main-feed wire",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-010",
+                  "description": "Main-feed conduit",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-011",
+                  "description": "Main-feed fittings"
+                },
+                {
+                  "id": "FIN-012",
+                  "description": "Meter combo panel"
+                },
+                {
+                  "id": "FIN-013",
+                  "description": "Wire to Tesla battery",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-014",
+                  "description": "Electrical conduit",
+                  "unit": "FT"
+                }
+              ],
+              "system": "Electrical Distribution",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Fire Protection",
+              "kitId": "FIN-RMEP-FIRE",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-015",
+                  "description": "Fire PEX pipe",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-016",
+                  "description": "Fire PEX fittings"
+                },
+                {
+                  "id": "FIN-017",
+                  "description": "Fire PEX rings"
+                },
+                {
+                  "id": "FIN-018",
+                  "description": "Sprinkler heads"
+                },
+                {
+                  "id": "FIN-019",
+                  "description": "Fire riser"
+                },
+                {
+                  "id": "FIN-020",
+                  "description": "Fire-riser assembly",
+                  "unit": "EA"
+                },
+                {
+                  "id": "FIN-021",
+                  "description": "Fire alarm"
+                },
+                {
+                  "id": "FIN-022",
+                  "description": "Fire bell"
+                }
+              ],
+              "system": "Fire Sprinkler",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-RMEP-HOT",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-023",
+                  "description": "Hot-water PEX pipe",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-024",
+                  "description": "Hot-water PEX fittings"
+                },
+                {
+                  "id": "FIN-025",
+                  "description": "Hot-water PEX rings"
+                },
+                {
+                  "id": "FIN-026",
+                  "description": "Recirculation pump"
+                },
+                {
+                  "id": "FIN-027",
+                  "description": "One-way valves"
+                },
+                {
+                  "id": "FIN-028",
+                  "description": "Water heater"
+                },
+                {
+                  "id": "FIN-029",
+                  "description": "Water-heater flex connectors"
+                },
+                {
+                  "id": "FIN-030",
+                  "description": "Water-heater pan"
+                },
+                {
+                  "id": "FIN-031",
+                  "description": "Water-heater drain",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-032",
+                  "description": "Water-heater shutoff valves"
+                },
+                {
+                  "id": "FIN-033",
+                  "description": "Hot-water push-on valves"
+                }
+              ],
+              "system": "Hot Water",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-RMEP-COLD",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-034",
+                  "description": "Cold-water PEX pipe",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-035",
+                  "description": "Cold-water PEX fittings"
+                },
+                {
+                  "id": "FIN-036",
+                  "description": "Cold-water PEX rings"
+                },
+                {
+                  "id": "FIN-037",
+                  "description": "House main water line",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-038",
+                  "description": "Underground main water line",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-039",
+                  "description": "Backflow valve"
+                },
+                {
+                  "id": "FIN-040",
+                  "description": "Water meter"
+                },
+                {
+                  "id": "FIN-041",
+                  "description": "Meter box"
+                },
+                {
+                  "id": "FIN-042",
+                  "description": "Cold-water push-on valves"
+                }
+              ],
+              "system": "Cold Water",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-RMEP-SEWER",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-043",
+                  "description": "Sewer test caps"
+                },
+                {
+                  "id": "FIN-044",
+                  "description": "Toilet 90 fittings"
+                },
+                {
+                  "id": "FIN-045",
+                  "description": "Toilet bottoms and trim",
+                  "notes": "Confirm original wording and exact product."
+                },
+                {
+                  "id": "FIN-046",
+                  "description": "Toilet bolts and hardware",
+                  "unit": "EA",
+                  "notes": "EA means one complete toilet hardware assembly."
+                },
+                {
+                  "id": "FIN-047",
+                  "description": "3-inch rubber couplings for sink / toilet"
+                },
+                {
+                  "id": "FIN-048",
+                  "description": "2-inch rubber couplings for laundry / small drain"
+                },
+                {
+                  "id": "FIN-049",
+                  "description": "Sewer test balloons"
+                }
+              ],
+              "system": "Sanitary Waste",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-RMEP-VENT",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-050",
+                  "description": "2-inch PVC vent pipe",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-051",
+                  "description": "2-inch PVC vent fittings"
+                }
+              ],
+              "system": "Plumbing Vent",
+              "deliveryStage": "2"
+            },
+            {
+              "name": "Mechanical",
+              "kitId": "FIN-RMEP-MECH",
+              "owner": "Mechanical",
+              "items": [
+                {
+                  "id": "FIN-052",
+                  "description": "Indoor AC-unit mounting hardware",
+                  "unit": "EA",
+                  "notes": "EA means one complete mounting-hardware assembly per indoor unit."
+                },
+                {
+                  "id": "FIN-053",
+                  "description": "Condensate drains and routing",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-054",
+                  "description": "Branch box"
+                },
+                {
+                  "id": "FIN-055",
+                  "description": "Refrigerant lines",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-056",
+                  "description": "Power from outdoor unit to branch box",
+                  "unit": "FT"
+                }
+              ],
+              "system": "HVAC",
+              "deliveryStage": "2"
+            }
+          ]
+        },
+        {
+          "name": "Finish MEP",
+          "categories": [
+            {
+              "name": "Electrical",
+              "kitId": "FIN-FMEP-ELEC",
+              "owner": "Electrical",
+              "items": [
+                {
+                  "id": "FIN-057",
+                  "description": "Electrical panel covers"
+                },
+                {
+                  "id": "FIN-058",
+                  "description": "Outlet covers"
+                },
+                {
+                  "id": "FIN-059",
+                  "description": "High-amperage outlets and covers",
+                  "unit": "EA",
+                  "notes": "EA means one complete outlet-and-cover assembly."
+                },
+                {
+                  "id": "FIN-060",
+                  "description": "Exterior outlet covers"
+                },
+                {
+                  "id": "FIN-061",
+                  "description": "Breakers"
+                }
+              ],
+              "system": "Electrical Finish",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Electrical",
+              "kitId": "FIN-FMEP-SOLAR",
+              "owner": "Electrical",
+              "items": [
+                {
+                  "id": "FIN-062",
+                  "description": "IronRidge rails",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-063",
+                  "description": "IronRidge clips"
+                },
+                {
+                  "id": "FIN-064",
+                  "description": "Solar panels"
+                },
+                {
+                  "id": "FIN-065",
+                  "description": "Solar connectors"
+                },
+                {
+                  "id": "FIN-066",
+                  "description": "Roof solar conduit",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-067",
+                  "description": "Solar roof penetration",
+                  "unit": "EA",
+                  "notes": "EA means one complete roof-penetration assembly."
+                },
+                {
+                  "id": "FIN-068",
+                  "description": "Roof junction box"
+                }
+              ],
+              "system": "Solar",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Fire Protection",
+              "kitId": "FIN-FMEP-FIRE",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-069",
+                  "description": "Sprinkler covers"
+                }
+              ],
+              "system": "Fire Sprinkler",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-FMEP-HOT",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-070",
+                  "description": "Hot-water flex hoses"
+                },
+                {
+                  "id": "FIN-071",
+                  "description": "Hot-water escutcheons"
+                }
+              ],
+              "system": "Hot Water",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-FMEP-COLD",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-072",
+                  "description": "Cold-water flex hoses"
+                },
+                {
+                  "id": "FIN-073",
+                  "description": "Cold-water escutcheons"
+                },
+                {
+                  "id": "FIN-074",
+                  "description": "Sink faucet"
+                }
+              ],
+              "system": "Cold Water",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-FMEP-SEWER",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-075",
+                  "description": "1-1/2-inch PVC-to-slip-joint adapter"
+                },
+                {
+                  "id": "FIN-076",
+                  "description": "Slip-joint P-traps"
+                },
+                {
+                  "id": "FIN-077",
+                  "description": "Slip-joint bends"
+                },
+                {
+                  "id": "FIN-078",
+                  "description": "Cleanout cover"
+                },
+                {
+                  "id": "FIN-079",
+                  "description": "Sink-bowl drain"
+                },
+                {
+                  "id": "FIN-080",
+                  "description": "Slip-joint adapters"
+                }
+              ],
+              "system": "Sanitary Waste",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Plumbing",
+              "kitId": "FIN-FMEP-VENT",
+              "owner": "Plumbing",
+              "items": [
+                {
+                  "id": "FIN-081",
+                  "description": "Wall or roof vent cap"
+                }
+              ],
+              "system": "Plumbing Vent",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Windows and Doors",
+          "categories": [
+            {
+              "name": "Doors & Windows",
+              "kitId": "FIN-DOOR-EXT",
+              "items": [
+                {
+                  "id": "FIN-082",
+                  "description": "Exterior door sill pans"
+                },
+                {
+                  "id": "FIN-083",
+                  "description": "Exterior door flashing",
+                  "unit": "FT",
+                  "notes": "Measure flashing in linear feet; roll width and length belong in the specification."
+                },
+                {
+                  "id": "FIN-084",
+                  "description": "Door-frame screws",
+                  "packSize": 100
+                },
+                {
+                  "id": "FIN-085",
+                  "description": "Door gap foam",
+                  "unit": "CUFT",
+                  "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification."
+                }
+              ],
+              "system": "Exterior Doors",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Doors & Windows",
+              "kitId": "FIN-DOOR-INT",
+              "items": [
+                {
+                  "id": "FIN-086",
+                  "description": "Define interior door installation materials",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Interior Doors",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Doors & Windows",
+              "kitId": "FIN-WINDOW",
+              "items": [
+                {
+                  "id": "FIN-087",
+                  "description": "Window trim",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-088",
+                  "description": "Window screws"
+                },
+                {
+                  "id": "FIN-089",
+                  "description": "Window silicone",
+                  "unit": "OZ",
+                  "notes": "Measure sealant by fluid ounces; cartridge size belongs in the purchasing specification."
+                },
+                {
+                  "id": "FIN-090",
+                  "description": "Window gap filler",
+                  "unit": "CUFT",
+                  "notes": "Measure installed filler volume; package size and yield belong in the purchasing specification."
+                }
+              ],
+              "system": "Windows",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Cabinets",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CAB-BATH",
+              "items": [
+                {
+                  "id": "FIN-091",
+                  "description": "Bathroom vanity"
+                },
+                {
+                  "id": "FIN-092",
+                  "description": "Vanity clips"
+                }
+              ],
+              "system": "Bathroom Cabinetry",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CAB-KITCHEN",
+              "items": [
+                {
+                  "id": "FIN-093",
+                  "description": "Kitchen island"
+                }
+              ],
+              "system": "Kitchen Cabinetry",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CAB-CLOSET",
+              "items": [
+                {
+                  "id": "FIN-094",
+                  "description": "Define closet installation materials",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Closets",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Low Voltage",
+          "kitId": "FIN-LOW-VOLTAGE",
+          "categories": [
+            {
+              "name": "Electrical",
+              "owner": "Electrical",
+              "items": [
+                {
+                  "id": "FIN-095",
+                  "description": "Smart-home wire",
+                  "unit": "FT",
+                  "deliveryStage": "2"
+                },
+                {
+                  "id": "FIN-096",
+                  "description": "Low-voltage power wires",
+                  "unit": "FT",
+                  "deliveryStage": "2"
+                },
+                {
+                  "id": "FIN-097",
+                  "description": "Wire-routing materials",
+                  "unit": "FT",
+                  "deliveryStage": "2"
+                },
+                {
+                  "id": "FIN-098",
+                  "description": "Low-voltage connectors"
+                }
+              ],
+              "system": "Low Voltage",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "General",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-GENERAL-DRYWALL",
+              "items": [
+                {
+                  "id": "FIN-099",
+                  "description": "Garage-ceiling drywall",
+                  "unit": "SQFT",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "garage_ceiling_area",
+                    "sparePercent": 0.1
+                  }
+                }
+              ],
+              "system": "Drywall",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Doors & Windows",
+              "kitId": "FIN-GENERAL-GARAGE",
+              "items": [
+                {
+                  "id": "FIN-100",
+                  "description": "Define garage-door installation materials",
+                  "notes": "Placeholder from the supplied list; replace with exact items."
+                }
+              ],
+              "system": "Garage Doors",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Flooring",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-FLOOR-PREP",
+              "items": [
+                {
+                  "id": "FIN-101",
+                  "description": "Sand and leveling material",
+                  "unit": "LB",
+                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification."
+                },
+                {
+                  "id": "FIN-102",
+                  "description": "Self-leveling compound",
+                  "unit": "LB",
+                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification."
+                },
+                {
+                  "id": "FIN-103",
+                  "description": "Screws for floor creaks"
+                }
+              ],
+              "system": "Floor Preparation",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-FLOOR-UNDERLAY",
+              "items": [
+                {
+                  "id": "FIN-104",
+                  "description": "Rubber underlayment",
+                  "unit": "SQFT"
+                }
+              ],
+              "system": "Underlayment",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-FLOOR-FINISH",
+              "items": [
+                {
+                  "id": "FIN-105",
+                  "description": "Floorboards",
+                  "unit": "SQFT"
+                }
+              ],
+              "system": "Finish Flooring",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Truss Area Finish",
+          "kitId": "FIN-TRUSS-AREA",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "items": [
+                {
+                  "id": "FIN-106",
+                  "description": "Simpson angle clips"
+                }
+              ],
+              "system": "Connection Hardware",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "items": [
+                {
+                  "id": "FIN-107",
+                  "description": "Concrete board",
+                  "unit": "SQFT",
+                  "notes": "Measure board coverage in square feet; sheet dimensions belong in the specification."
+                }
+              ],
+              "system": "Board Finish",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "items": [
+                {
+                  "id": "FIN-108",
+                  "description": "Truss-area finish screws"
+                },
+                {
+                  "id": "FIN-109",
+                  "description": "Truss-area Froth Pak foam",
+                  "unit": "CUFT",
+                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification."
+                }
+              ],
+              "system": "Sealants & Fasteners",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Gutter / Fascia",
+          "categories": [
+            {
+              "name": "Building Envelope",
+              "kitId": "FIN-GUTTER-ROOF",
+              "items": [
+                {
+                  "id": "FIN-110",
+                  "description": "Roof-panel trim",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-111",
+                  "description": "Gutter / fascia rivets"
+                },
+                {
+                  "id": "FIN-112",
+                  "description": "S-5 roof-panel clamps"
+                },
+                {
+                  "id": "FIN-113",
+                  "description": "Gutter / fascia angle clips"
+                },
+                {
+                  "id": "FIN-114",
+                  "description": "Gutter / fascia screws"
+                }
+              ],
+              "system": "Roof Trim",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Building Envelope",
+              "kitId": "FIN-GUTTER",
+              "items": [
+                {
+                  "id": "FIN-115",
+                  "description": "Gutter material",
+                  "unit": "FT"
+                }
+              ],
+              "system": "Gutters",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Building Envelope",
+              "kitId": "FIN-FASCIA",
+              "items": [
+                {
+                  "id": "FIN-116",
+                  "description": "Fascia material",
+                  "unit": "FT"
+                }
+              ],
+              "system": "Fascia",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Building Envelope",
+              "kitId": "FIN-SOFFIT",
+              "items": [
+                {
+                  "id": "FIN-117",
+                  "description": "Soffit clips"
+                },
+                {
+                  "id": "FIN-118",
+                  "description": "Soffit panels",
+                  "unit": "SQFT",
+                  "notes": "Measure panel coverage in square feet; sheet dimensions belong in the specification."
+                }
+              ],
+              "system": "Soffits",
+              "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Ceiling",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CEILING-PROFILE",
+              "items": [
+                {
+                  "id": "FIN-119",
+                  "description": "Stretch-ceiling profiles",
+                  "unit": "FT"
+                },
+                {
+                  "id": "FIN-120",
+                  "description": "LED profiles",
+                  "unit": "FT"
+                }
+              ],
+              "system": "Profiles",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CEILING-CUTOUT",
+              "items": [
+                {
+                  "id": "FIN-121",
+                  "description": "Can-light circles"
+                },
+                {
+                  "id": "FIN-122",
+                  "description": "Fire-sprinkler circles"
+                }
+              ],
+              "system": "Cutouts",
+              "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "kitId": "FIN-CEILING-TOOLS",
+              "items": [
+                {
+                  "id": "FIN-123",
+                  "description": "Super glue",
+                  "unit": "OZ",
+                  "notes": "Measure adhesive in fluid ounces; bottle size belongs in the purchasing specification."
+                },
+                {
+                  "id": "FIN-124",
+                  "description": "Heat gun",
+                  "rule": {
+                    "sourceMode": "FIXED",
+                    "fixedQty": 1
+                  },
+                  "procurementMethod": "Inventory"
+                },
+                {
+                  "id": "FIN-125",
+                  "description": "Propane",
+                  "unit": "LB",
+                  "notes": "Measure propane by weight; cylinder size belongs in the purchasing specification."
+                }
+              ],
+              "system": "Installation Tools",
+              "deliveryStage": "3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    "https://chatgpt.com/share/6a95fbf8-94b0-83e8-a906-4362b999ebcf",
+    "https://help.autodesk.com/cloudhelp/2025/ENU/Revit-DocumentPresent/files/GUID-B2CCAC4F-1D38-4D5D-B4D1-95619D1B7EBE.htm",
+    "https://support.google.com/docs/answer/9331167?hl=en"
+  ],
+  "contractRef": "site-bom.contract.json"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "neovi-site-bom",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Configurable native Google Sheets Site BOM generated from Revit CSV inputs.",
+  "scripts": {
+    "validate": "node scripts/validate-template.mjs",
+    "validate:csv": "node scripts/validate-project-input-csv.mjs",
+    "validate:google-sheet": "node scripts/validate-google-sheet-builder.mjs",
+    "test:unit": "node --test",
+    "test": "node scripts/build-google-sheet-script.mjs && node scripts/build-no-quantity-inputs.mjs && node --test",
+    "check": "npm run validate && npm run validate:csv && npm test",
+    "build:template": "node scripts/build-google-sheet-script.mjs",
+    "build:no-quantity-inputs": "node scripts/build-no-quantity-inputs.mjs",
+    "readiness": "node scripts/validate-release-readiness.mjs",
+    "sync:revit": "node scripts/sync-revit-site-bom.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

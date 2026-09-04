@@ -1,0 +1,57 @@
+{
+  "contractVersion": "1.1.0",
+  "catalogVersion": "0.4.0",
+  "schemas": {
+    "projectInputs": {
+      "id": "neovi.site-bom.project-inputs",
+      "version": "2.0"
+    },
+    "catalog": {
+      "id": "neovi.site-bom.catalog",
+      "version": "2.0"
+    }
+  },
+  "catalog": {
+    "expectedRowCount": 168
+  },
+  "phases": ["Foundation", "Panels", "Finishing"],
+  "siteStages": ["1", "2", "3"],
+  "categories": [
+    { "code": "SITE", "name": "Sitework", "siteTeam": "Site Logistics", "teamScope": "Access, temporary site support, consumables, fixtures, and rentals." },
+    { "code": "STR", "name": "Structural", "siteTeam": "Structural / Erection", "teamScope": "Foundations, steel, panels, trusses, rigging, and structural connections." },
+    { "code": "ENV", "name": "Building Envelope", "siteTeam": "Envelope", "teamScope": "Weatherproofing, sealants, roof edges, gutters, soffits, and exterior enclosure." },
+    { "code": "OPEN", "name": "Doors & Windows", "siteTeam": "Openings", "teamScope": "Doors, windows, garage doors, hardware, adjustment, and perimeter sealing." },
+    { "code": "FIN", "name": "Interior Finishes", "siteTeam": "Interiors", "teamScope": "Drywall, flooring, cabinetry, closets, trim, and finish preparation." },
+    { "code": "PLB", "name": "Plumbing", "siteTeam": "Plumbing", "teamScope": "Sanitary, vent, water, fixtures, and solar-hot-water piping." },
+    { "code": "FIRE", "name": "Fire Protection", "siteTeam": "Fire Protection", "teamScope": "Fire-sprinkler piping, fittings, hangers, and devices." },
+    { "code": "MECH", "name": "Mechanical", "siteTeam": "HVAC / Mechanical", "teamScope": "HVAC equipment, distribution, connections, controls, and commissioning materials." },
+    { "code": "ELEC", "name": "Electrical", "siteTeam": "Electrical / Low Voltage", "teamScope": "Power distribution, devices, lighting, controls, and low-voltage systems." }
+  ],
+  "units": ["EA", "IN", "FT", "SQFT", "CUFT", "OZ", "QT", "GAL", "LB", "PCF", "DAY"],
+  "sourceTypes": ["REVIT", "STRUCTURAL", "PURLINMAKER", "CALCULATED", "FIXED", "MANUAL"],
+  "recordTypes": ["FACT", "DIRECT_ITEM"],
+  "projectInputs": [
+    { "deliveryStage": "1", "recordType": "DIRECT_ITEM", "inputKey": "foundation_helical_pile_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Foundation plan", "location": "Foundation", "notes": "Enter quantity" },
+    { "deliveryStage": "1", "recordType": "DIRECT_ITEM", "inputKey": "foundation_pile_cap_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Foundation plan", "location": "Foundation", "notes": "Enter quantity" },
+    { "deliveryStage": "1", "recordType": "DIRECT_ITEM", "inputKey": "foundation_pile_bracket_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Foundation plan", "location": "Foundation", "notes": "Enter quantity" },
+    { "deliveryStage": "1", "recordType": "DIRECT_ITEM", "inputKey": "steel_bedframe_hss_beam_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Steel schedule", "location": "Substructure", "notes": "Enter quantity" },
+    { "deliveryStage": "1", "recordType": "FACT", "inputKey": "steel_bedframe_bolt_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Connection schedule", "location": "Substructure", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "floor_to_hss_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Floor connections", "location": "Floors", "notes": "Drives rods, washers, and nuts" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "floor_to_floor_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Floor connections", "location": "Floors", "notes": "Minimum plate quantity still requires approval" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "floor_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Floor connections", "location": "Floors", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "wall_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Wall connections", "location": "Walls", "notes": "Drives four screws per connection" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "wall_wood_to_metal_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Wall connections", "location": "Walls", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "wall_angle_connection_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Wall angle schedule", "location": "Walls", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "DIRECT_ITEM", "inputKey": "wall_hold_down_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Hold-down schedule", "location": "Walls", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "wall_to_wall_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Wall connections", "location": "Walls", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "truss_connection_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Truss schedule", "location": "Trusses", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "DIRECT_ITEM", "inputKey": "truss_angle_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Truss schedule", "location": "Trusses", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "DIRECT_ITEM", "inputKey": "truss_stitch_piece_count", "unit": "EA", "source": "STRUCTURAL", "sourceReference": "Truss schedule", "location": "Trusses", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "DIRECT_ITEM", "inputKey": "roof_purlin_total_length", "unit": "FT", "source": "PURLINMAKER", "sourceReference": "PurlinMaker", "location": "Roof", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "DIRECT_ITEM", "inputKey": "roof_slope_material_area", "unit": "SQFT", "source": "REVIT", "sourceReference": "Roof schedule", "location": "Roof", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "roof_panel_connection_count", "unit": "EA", "source": "REVIT", "sourceReference": "Roof connections", "location": "Roof", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "roof_rivet_count", "unit": "EA", "source": "CALCULATED", "sourceReference": "Roof rule", "location": "Roof", "notes": "Enter quantity" },
+    { "deliveryStage": "2", "recordType": "FACT", "inputKey": "roof_joint_length", "unit": "FT", "source": "REVIT", "sourceReference": "Roof seams", "location": "Roof", "notes": "Enter quantity" },
+    { "deliveryStage": "3", "recordType": "DIRECT_ITEM", "inputKey": "garage_ceiling_area", "unit": "SQFT", "source": "REVIT", "sourceReference": "Ceiling schedule", "location": "Garage", "notes": "Enter quantity" }
+  ]
+}
