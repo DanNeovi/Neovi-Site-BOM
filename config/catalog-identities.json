@@ -1,0 +1,2608 @@
+{
+  "schemaVersion": 1,
+  "next": {
+    "EQUIP": "6",
+    "SUP": "5",
+    "TOOL": "71",
+    "MAT": "161",
+    "FIX": "4",
+    "FAST": "30",
+    "RIG": "5"
+  },
+  "entries": {
+    "FND-001": {
+      "catalogId": "EQUIP-1",
+      "status": "active",
+      "description": "Mud mats",
+      "categoryPath": [
+        "Equipment",
+        "Rentals",
+        "Site Setup and Support"
+      ]
+    },
+    "FND-049": {
+      "catalogId": "SUP-1",
+      "status": "active",
+      "description": "Paint markers",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Marking Supplies"
+      ]
+    },
+    "FND-050": {
+      "catalogId": "TOOL-1",
+      "status": "active",
+      "description": "Scribes",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Layout Tools"
+      ]
+    },
+    "FND-051": {
+      "catalogId": "TOOL-2",
+      "status": "active",
+      "description": "Chalk line / centerline marking tool",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Layout Tools"
+      ]
+    },
+    "FND-052": {
+      "catalogId": "SUP-2",
+      "status": "active",
+      "description": "Marking paint",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Marking Supplies"
+      ]
+    },
+    "FND-053": {
+      "catalogId": "SUP-3",
+      "status": "active",
+      "description": "Chalk-line refill",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Marking Supplies"
+      ]
+    },
+    "FND-054": {
+      "catalogId": "TOOL-3",
+      "status": "active",
+      "description": "Leveling string line",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Layout Tools"
+      ]
+    },
+    "FND-003": {
+      "catalogId": "MAT-1",
+      "status": "active",
+      "description": "Define foundation consumables",
+      "categoryPath": [
+        "Sitework",
+        "Site Consumables"
+      ]
+    },
+    "FND-055": {
+      "catalogId": "FIX-1",
+      "status": "active",
+      "description": "Side-drill pedestal / magnetic-drill fixture",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Fixtures"
+      ]
+    },
+    "FND-056": {
+      "catalogId": "FIX-2",
+      "status": "active",
+      "description": "HSS drill pedestal",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Fixtures"
+      ]
+    },
+    "FND-057": {
+      "catalogId": "FIX-3",
+      "status": "active",
+      "description": "Pile-cap pedestal for magnetic drill",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Fixtures"
+      ]
+    },
+    "FND-005": {
+      "catalogId": "MAT-2",
+      "status": "active",
+      "description": "Define useful site additions",
+      "categoryPath": [
+        "Sitework",
+        "Site Additions"
+      ]
+    },
+    "FND-020": {
+      "catalogId": "TOOL-4",
+      "status": "active",
+      "description": "Laser level",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Levels and Surveying"
+      ]
+    },
+    "FND-021": {
+      "catalogId": "TOOL-5",
+      "status": "active",
+      "description": "Laser total station",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Levels and Surveying"
+      ]
+    },
+    "FND-022": {
+      "catalogId": "TOOL-6",
+      "status": "active",
+      "description": "Laser-level pipe attachment",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Levels and Surveying"
+      ]
+    },
+    "FND-023": {
+      "catalogId": "TOOL-7",
+      "status": "active",
+      "description": "Cordless drill",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Power Tools"
+      ]
+    },
+    "FND-024": {
+      "catalogId": "TOOL-8",
+      "status": "active",
+      "description": "Milwaukee spare tool batteries",
+      "categoryPath": [
+        "Tools",
+        "Power Tools",
+        "Milwaukee Batteries and Charging"
+      ]
+    },
+    "FND-025": {
+      "catalogId": "TOOL-9",
+      "status": "active",
+      "description": "1/2-inch heavy-duty impact wrench",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Power Tools"
+      ]
+    },
+    "FND-026": {
+      "catalogId": "TOOL-10",
+      "status": "active",
+      "description": "Hex-drive impact driver",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Power Tools"
+      ]
+    },
+    "FND-027": {
+      "catalogId": "TOOL-11",
+      "status": "active",
+      "description": "Milwaukee battery charger",
+      "categoryPath": [
+        "Tools",
+        "Power Tools",
+        "Milwaukee Batteries and Charging"
+      ]
+    },
+    "FND-028": {
+      "catalogId": "TOOL-12",
+      "status": "active",
+      "description": "Drill-bit set",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-029": {
+      "catalogId": "TOOL-13",
+      "status": "active",
+      "description": "Impact socket set",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-030": {
+      "catalogId": "TOOL-14",
+      "status": "active",
+      "description": "Driver-bit set",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-031": {
+      "catalogId": "TOOL-15",
+      "status": "active",
+      "description": "Prybar",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-032": {
+      "catalogId": "TOOL-16",
+      "status": "active",
+      "description": "Hammer",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-033": {
+      "catalogId": "TOOL-17",
+      "status": "active",
+      "description": "Tongue-and-groove pliers",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-034": {
+      "catalogId": "TOOL-18",
+      "status": "active",
+      "description": "Adjustable wrench",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Shared Hand Tools & Bits"
+      ]
+    },
+    "FND-035": {
+      "catalogId": "TOOL-19",
+      "status": "active",
+      "description": "Sump pump for flooded trenches",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Temporary Power & Water"
+      ]
+    },
+    "FND-036": {
+      "catalogId": "TOOL-20",
+      "status": "active",
+      "description": "Extension cord",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Temporary Power & Water"
+      ]
+    },
+    "FND-037": {
+      "catalogId": "TOOL-21",
+      "status": "active",
+      "description": "Site water hose",
+      "categoryPath": [
+        "Tools",
+        "Shared Site Tools",
+        "Temporary Power & Water"
+      ]
+    },
+    "FND-006": {
+      "catalogId": "MAT-3",
+      "status": "active",
+      "description": "Helical piles",
+      "categoryPath": [
+        "Structural",
+        "Piles"
+      ]
+    },
+    "FND-007": {
+      "catalogId": "MAT-4",
+      "status": "active",
+      "description": "Pile extensions",
+      "categoryPath": [
+        "Structural",
+        "Piles"
+      ]
+    },
+    "FND-009": {
+      "catalogId": "FAST-1",
+      "status": "active",
+      "description": "Pile pins - complete sets",
+      "categoryPath": [
+        "Fasteners",
+        "Helical Piles",
+        "Pin Sets"
+      ]
+    },
+    "FND-010": {
+      "catalogId": "MAT-5",
+      "status": "active",
+      "description": "Pile brackets",
+      "categoryPath": [
+        "Structural",
+        "Pile Connections"
+      ]
+    },
+    "FND-011": {
+      "catalogId": "EQUIP-2",
+      "status": "active",
+      "description": "Helical pile installation machine rental - John Deere 50P / 50G",
+      "categoryPath": [
+        "Equipment",
+        "Rentals",
+        "Helical Piles"
+      ]
+    },
+    "FND-040": {
+      "catalogId": "RIG-1",
+      "status": "active",
+      "description": "Machine lifting chains",
+      "categoryPath": [
+        "Rigging",
+        "Lifting Chains",
+        "Machine Chains"
+      ]
+    },
+    "FND-041": {
+      "catalogId": "RIG-2",
+      "status": "active",
+      "description": "Lifting straps",
+      "categoryPath": [
+        "Rigging",
+        "Lifting Straps"
+      ]
+    },
+    "FND-043": {
+      "catalogId": "EQUIP-3",
+      "status": "active",
+      "description": "Large digger",
+      "categoryPath": [
+        "Equipment",
+        "Owned",
+        "Helical Piles"
+      ]
+    },
+    "FND-045": {
+      "catalogId": "TOOL-22",
+      "status": "active",
+      "description": "Pipe level",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Levels and Surveying"
+      ]
+    },
+    "FND-012": {
+      "catalogId": "MAT-6",
+      "status": "active",
+      "description": "HSS beams",
+      "categoryPath": [
+        "Structural",
+        "Primary Steel"
+      ]
+    },
+    "FND-014": {
+      "catalogId": "FAST-2",
+      "status": "active",
+      "description": "Steel bedframe nuts",
+      "categoryPath": [
+        "Fasteners",
+        "Steel Bedframe",
+        "Bolts Nuts Washers and Rod"
+      ]
+    },
+    "FND-015": {
+      "catalogId": "FAST-3",
+      "status": "active",
+      "description": "Steel bedframe bolts",
+      "categoryPath": [
+        "Fasteners",
+        "Steel Bedframe",
+        "Bolts Nuts Washers and Rod"
+      ]
+    },
+    "FND-016": {
+      "catalogId": "FAST-4",
+      "status": "active",
+      "description": "Steel bedframe threaded rod",
+      "categoryPath": [
+        "Fasteners",
+        "Steel Bedframe",
+        "Bolts Nuts Washers and Rod"
+      ]
+    },
+    "FND-058": {
+      "catalogId": "FAST-5",
+      "status": "active",
+      "description": "Steel bedframe washers",
+      "categoryPath": [
+        "Fasteners",
+        "Steel Bedframe",
+        "Bolts Nuts Washers and Rod"
+      ]
+    },
+    "FND-017": {
+      "catalogId": "MAT-7",
+      "status": "active",
+      "description": "1/2-inch HSS gap spacers",
+      "categoryPath": [
+        "Materials",
+        "Steel Bedframe",
+        "Gap Spacers and Shims"
+      ]
+    },
+    "FND-018": {
+      "catalogId": "MAT-8",
+      "status": "active",
+      "description": "Steel shims - roll-former die cutouts",
+      "categoryPath": [
+        "Materials",
+        "Steel Bedframe",
+        "Gap Spacers and Shims"
+      ]
+    },
+    "FND-019": {
+      "catalogId": "MAT-9",
+      "status": "active",
+      "description": "Crawl-space moisture vapor barrier",
+      "categoryPath": [
+        "Materials",
+        "Crawl Space",
+        "Moisture Vapor Barrier"
+      ]
+    },
+    "FND-046": {
+      "catalogId": "TOOL-23",
+      "status": "active",
+      "description": "Magnetic drill",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Drill"
+      ]
+    },
+    "FND-047": {
+      "catalogId": "TOOL-24",
+      "status": "active",
+      "description": "Magnetic-drill bits - annular cutters",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Bits"
+      ]
+    },
+    "FND-048": {
+      "catalogId": "SUP-4",
+      "status": "active",
+      "description": "Magnetic-drill cutting fluid",
+      "categoryPath": [
+        "Tools",
+        "Magnetic Drill",
+        "Cutting Fluid"
+      ]
+    },
+    "PAN-001": {
+      "catalogId": "RIG-3",
+      "status": "active",
+      "description": "Four-point lifting strap set",
+      "categoryPath": [
+        "Rigging",
+        "Lifting Straps",
+        "Four-Point Sets"
+      ]
+    },
+    "PAN-002": {
+      "catalogId": "MAT-10",
+      "status": "active",
+      "description": "4 x 3 floor connection plates",
+      "categoryPath": [
+        "Structural",
+        "Floor Connections"
+      ]
+    },
+    "PAN-003": {
+      "catalogId": "FAST-6",
+      "status": "active",
+      "description": "Floor threaded connecting rod",
+      "categoryPath": [
+        "Fasteners",
+        "Floor Connections",
+        "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+      ]
+    },
+    "PAN-004": {
+      "catalogId": "FAST-7",
+      "status": "active",
+      "description": "Floor connection washers",
+      "categoryPath": [
+        "Fasteners",
+        "Floor Connections",
+        "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+      ]
+    },
+    "PAN-005": {
+      "catalogId": "FAST-8",
+      "status": "active",
+      "description": "Floor connection nuts",
+      "categoryPath": [
+        "Fasteners",
+        "Floor Connections",
+        "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+      ]
+    },
+    "PAN-006": {
+      "catalogId": "FAST-9",
+      "status": "active",
+      "description": "Floor connection screws",
+      "categoryPath": [
+        "Fasteners",
+        "Floor Connections",
+        "Screws"
+      ]
+    },
+    "PAN-007": {
+      "catalogId": "MAT-11",
+      "status": "active",
+      "description": "Froth-Pak - floor cassette gaps",
+      "categoryPath": [
+        "Materials",
+        "Floor Panels",
+        "Froth-Pak Joint Foam"
+      ]
+    },
+    "PAN-025": {
+      "catalogId": "EQUIP-4",
+      "status": "active",
+      "description": "Crane rental - main and auxiliary hooks included",
+      "categoryPath": [
+        "Equipment",
+        "Rentals",
+        "Floors"
+      ]
+    },
+    "PAN-028": {
+      "catalogId": "TOOL-25",
+      "status": "active",
+      "description": "1/2-inch right-angle impact wrench",
+      "categoryPath": [
+        "Tools",
+        "Structural Installation",
+        "Installation Tools"
+      ]
+    },
+    "PAN-008": {
+      "catalogId": "RIG-4",
+      "status": "active",
+      "description": "Two-point lift with custom hooks",
+      "categoryPath": [
+        "Rigging",
+        "Lifting Straps",
+        "Two-Point Sets"
+      ]
+    },
+    "PAN-009": {
+      "catalogId": "FAST-10",
+      "status": "active",
+      "description": "Metal-to-metal self-drilling screws - #10 x 2-3/4-inch hex head",
+      "categoryPath": [
+        "Fasteners",
+        "Walls",
+        "Wall Connections"
+      ]
+    },
+    "PAN-010": {
+      "catalogId": "FAST-11",
+      "status": "active",
+      "description": "4-inch screws for temporary bracing",
+      "categoryPath": [
+        "Fasteners",
+        "Wall Connections",
+        "Temporary Bracing Screws"
+      ]
+    },
+    "PAN-011": {
+      "catalogId": "FAST-12",
+      "status": "active",
+      "description": "Nuts for 4 x 4 wall angles",
+      "categoryPath": [
+        "Fasteners",
+        "Floor Connections",
+        "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+      ]
+    },
+    "PAN-030": {
+      "catalogId": "FAST-13",
+      "status": "active",
+      "description": "Number 10 wall-bottom-track-to-floor screws",
+      "categoryPath": [
+        "Fasteners",
+        "Walls",
+        "Wall Connections"
+      ]
+    },
+    "PAN-012": {
+      "catalogId": "MAT-12",
+      "status": "active",
+      "description": "2 x 4 x 16 ft temporary wall bracing",
+      "categoryPath": [
+        "Structural",
+        "Temporary Bracing"
+      ]
+    },
+    "PAN-013": {
+      "catalogId": "FAST-14",
+      "status": "active",
+      "description": "Washers and nuts for Simpson hold-downs",
+      "categoryPath": [
+        "Fasteners",
+        "Walls",
+        "Hold-Downs"
+      ]
+    },
+    "PAN-029": {
+      "catalogId": "FAST-15",
+      "status": "active",
+      "description": "Hold-down bolts",
+      "categoryPath": [
+        "Fasteners",
+        "Walls",
+        "Hold-Downs"
+      ]
+    },
+    "PAN-014": {
+      "catalogId": "MAT-13",
+      "status": "active",
+      "description": "Wall-to-wall plates",
+      "categoryPath": [
+        "Structural",
+        "Wall-to-Wall Connections"
+      ]
+    },
+    "PAN-015": {
+      "catalogId": "MAT-14",
+      "status": "active",
+      "description": "Froth Pak foam for wall corners",
+      "categoryPath": [
+        "Materials",
+        "Wall Panels",
+        "Froth-Pak Corner Foam"
+      ]
+    },
+    "PAN-034": {
+      "catalogId": "TOOL-26",
+      "status": "active",
+      "description": "Spare Froth-Pak spray nozzle",
+      "categoryPath": [
+        "Tools",
+        "Structural Installation",
+        "Sealants & Foam"
+      ]
+    },
+    "PAN-035": {
+      "catalogId": "MAT-15",
+      "status": "active",
+      "description": "Foam-gun cleaner / compatible solvent",
+      "categoryPath": [
+        "Structural",
+        "Sealants & Foam"
+      ]
+    },
+    "PAN-031": {
+      "catalogId": "TOOL-27",
+      "status": "active",
+      "description": "Long levels for wall leveling",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Levels and Surveying"
+      ]
+    },
+    "PAN-032": {
+      "catalogId": "TOOL-28",
+      "status": "active",
+      "description": "Right-angle driver-bit attachment",
+      "categoryPath": [
+        "Tools",
+        "Structural Installation",
+        "Installation Tools"
+      ]
+    },
+    "PAN-037": {
+      "catalogId": "TOOL-29",
+      "status": "active",
+      "description": "Squeeze clamps - optional shared tools",
+      "categoryPath": [
+        "Tools",
+        "Wall Installation",
+        "Clamps and Holding Magnets"
+      ]
+    },
+    "PAN-038": {
+      "catalogId": "TOOL-30",
+      "status": "active",
+      "description": "Heavy-duty threaded wall clamps",
+      "categoryPath": [
+        "Tools",
+        "Wall Installation",
+        "Clamps and Holding Magnets"
+      ]
+    },
+    "PAN-039": {
+      "catalogId": "TOOL-31",
+      "status": "active",
+      "description": "Sheet-metal holding magnet",
+      "categoryPath": [
+        "Tools",
+        "Wall Installation",
+        "Clamps and Holding Magnets"
+      ]
+    },
+    "PAN-036": {
+      "catalogId": "MAT-16",
+      "status": "active",
+      "description": "Site cement board (CB)",
+      "categoryPath": [
+        "Structural",
+        "Site Board Installation"
+      ]
+    },
+    "PAN-016": {
+      "catalogId": "FAST-16",
+      "status": "active",
+      "description": "Truss screws",
+      "categoryPath": [
+        "Fasteners",
+        "Trusses",
+        "Fasteners"
+      ]
+    },
+    "PAN-017": {
+      "catalogId": "MAT-17",
+      "status": "active",
+      "description": "Truss angles",
+      "categoryPath": [
+        "Structural",
+        "Connections"
+      ]
+    },
+    "PAN-018": {
+      "catalogId": "MAT-18",
+      "status": "active",
+      "description": "Truss stitch pieces",
+      "categoryPath": [
+        "Structural",
+        "Connections"
+      ]
+    },
+    "PAN-019": {
+      "catalogId": "MAT-19",
+      "status": "active",
+      "description": "Site purlins",
+      "categoryPath": [
+        "Structural",
+        "Purlins"
+      ]
+    },
+    "PAN-040": {
+      "catalogId": "FAST-17",
+      "status": "active",
+      "description": "Cement-board-to-metal screws",
+      "categoryPath": [
+        "Fasteners",
+        "Trusses",
+        "Board Fasteners"
+      ]
+    },
+    "PAN-020": {
+      "catalogId": "MAT-20",
+      "status": "active",
+      "description": "Floor-cassette slope material",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Slope Build-Up"
+      ]
+    },
+    "PAN-021": {
+      "catalogId": "FAST-18",
+      "status": "active",
+      "description": "Roof-panel screws on purlins",
+      "categoryPath": [
+        "Fasteners",
+        "Roof Panels",
+        "Panel Fasteners"
+      ]
+    },
+    "PAN-022": {
+      "catalogId": "FAST-19",
+      "status": "active",
+      "description": "Roof-panel rivets",
+      "categoryPath": [
+        "Fasteners",
+        "Roof Panels",
+        "Panel Fasteners"
+      ]
+    },
+    "PAN-023": {
+      "catalogId": "MAT-21",
+      "status": "active",
+      "description": "Roof-panel butyl tape",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Joint Sealing"
+      ]
+    },
+    "PAN-024": {
+      "catalogId": "TOOL-32",
+      "status": "active",
+      "description": "Seam roller",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Installation Tools"
+      ]
+    },
+    "PAN-041": {
+      "catalogId": "TOOL-33",
+      "status": "active",
+      "description": "Large panel-cutting saw",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Cutting & Fastening Tools"
+      ]
+    },
+    "PAN-042": {
+      "catalogId": "TOOL-34",
+      "status": "active",
+      "description": "Angle grinder",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Cutting & Fastening Tools"
+      ]
+    },
+    "PAN-043": {
+      "catalogId": "TOOL-35",
+      "status": "active",
+      "description": "Aviation snips",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Cutting & Fastening Tools"
+      ]
+    },
+    "PAN-044": {
+      "catalogId": "TOOL-36",
+      "status": "active",
+      "description": "Rivet gun",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Cutting & Fastening Tools"
+      ]
+    },
+    "FIN-001": {
+      "catalogId": "MAT-22",
+      "status": "active",
+      "description": "12/2 MC cable",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-002": {
+      "catalogId": "MAT-23",
+      "status": "active",
+      "description": "3/8-inch MC fittings",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-003": {
+      "catalogId": "MAT-24",
+      "status": "active",
+      "description": "10/3 MC cable",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-004": {
+      "catalogId": "MAT-25",
+      "status": "active",
+      "description": "1/2-inch fittings",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-005": {
+      "catalogId": "MAT-26",
+      "status": "active",
+      "description": "8/3 MC cable",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-006": {
+      "catalogId": "MAT-27",
+      "status": "active",
+      "description": "3/4-inch fittings",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-007": {
+      "catalogId": "MAT-28",
+      "status": "active",
+      "description": "Breaker panel",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-008": {
+      "catalogId": "MAT-29",
+      "status": "active",
+      "description": "12/2 MC fire-bell wire",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-009": {
+      "catalogId": "MAT-30",
+      "status": "active",
+      "description": "Main-feed wire",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-010": {
+      "catalogId": "MAT-31",
+      "status": "active",
+      "description": "Main-feed conduit",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-011": {
+      "catalogId": "MAT-32",
+      "status": "active",
+      "description": "Main-feed fittings",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-012": {
+      "catalogId": "MAT-33",
+      "status": "active",
+      "description": "Meter combo panel",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-013": {
+      "catalogId": "MAT-34",
+      "status": "active",
+      "description": "Wire to Tesla battery",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-014": {
+      "catalogId": "MAT-35",
+      "status": "active",
+      "description": "Electrical conduit",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Distribution"
+      ]
+    },
+    "FIN-015": {
+      "catalogId": "MAT-36",
+      "status": "active",
+      "description": "Fire PEX pipe",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-016": {
+      "catalogId": "MAT-37",
+      "status": "active",
+      "description": "Fire PEX fittings",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-017": {
+      "catalogId": "MAT-38",
+      "status": "active",
+      "description": "Fire PEX rings",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-018": {
+      "catalogId": "MAT-39",
+      "status": "active",
+      "description": "Sprinkler heads",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-019": {
+      "catalogId": "MAT-40",
+      "status": "active",
+      "description": "Fire riser",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-020": {
+      "catalogId": "MAT-41",
+      "status": "active",
+      "description": "Fire-riser assembly",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-021": {
+      "catalogId": "MAT-42",
+      "status": "active",
+      "description": "Fire alarm",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-022": {
+      "catalogId": "MAT-43",
+      "status": "active",
+      "description": "Fire bell",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-023": {
+      "catalogId": "MAT-44",
+      "status": "active",
+      "description": "Hot-water PEX pipe",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-024": {
+      "catalogId": "MAT-45",
+      "status": "active",
+      "description": "Hot-water PEX fittings",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-025": {
+      "catalogId": "MAT-46",
+      "status": "active",
+      "description": "Hot-water PEX rings",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-026": {
+      "catalogId": "MAT-47",
+      "status": "active",
+      "description": "Recirculation pump",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-027": {
+      "catalogId": "MAT-48",
+      "status": "active",
+      "description": "One-way valves",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-028": {
+      "catalogId": "MAT-49",
+      "status": "active",
+      "description": "Water heater",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-029": {
+      "catalogId": "MAT-50",
+      "status": "active",
+      "description": "Water-heater flex connectors",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-030": {
+      "catalogId": "MAT-51",
+      "status": "active",
+      "description": "Water-heater pan",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-031": {
+      "catalogId": "MAT-52",
+      "status": "active",
+      "description": "Water-heater drain",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-032": {
+      "catalogId": "MAT-53",
+      "status": "active",
+      "description": "Water-heater shutoff valves",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-033": {
+      "catalogId": "MAT-54",
+      "status": "active",
+      "description": "Hot-water push-on valves",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-034": {
+      "catalogId": "MAT-55",
+      "status": "active",
+      "description": "Cold-water PEX pipe",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-035": {
+      "catalogId": "MAT-56",
+      "status": "active",
+      "description": "Cold-water PEX fittings",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-036": {
+      "catalogId": "MAT-57",
+      "status": "active",
+      "description": "Cold-water PEX rings",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-037": {
+      "catalogId": "MAT-58",
+      "status": "active",
+      "description": "House main water line",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-038": {
+      "catalogId": "MAT-59",
+      "status": "active",
+      "description": "Underground main water line",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-039": {
+      "catalogId": "MAT-60",
+      "status": "active",
+      "description": "Backflow valve",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-040": {
+      "catalogId": "MAT-61",
+      "status": "active",
+      "description": "Water meter",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-041": {
+      "catalogId": "MAT-62",
+      "status": "active",
+      "description": "Meter box",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-042": {
+      "catalogId": "MAT-63",
+      "status": "active",
+      "description": "Cold-water push-on valves",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-043": {
+      "catalogId": "MAT-64",
+      "status": "active",
+      "description": "Sewer test caps",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-044": {
+      "catalogId": "MAT-65",
+      "status": "active",
+      "description": "Toilet 90 fittings",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-046": {
+      "catalogId": "FAST-20",
+      "status": "active",
+      "description": "Toilet bolts and hardware",
+      "categoryPath": [
+        "Fasteners",
+        "Rough MEP",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-047": {
+      "catalogId": "MAT-66",
+      "status": "active",
+      "description": "3-inch rubber couplings for sink / toilet",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-048": {
+      "catalogId": "MAT-67",
+      "status": "active",
+      "description": "2-inch rubber couplings for laundry / small drain",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-049": {
+      "catalogId": "MAT-68",
+      "status": "active",
+      "description": "Sewer test balloons",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-050": {
+      "catalogId": "MAT-69",
+      "status": "active",
+      "description": "2-inch PVC vent pipe",
+      "categoryPath": [
+        "Plumbing",
+        "Plumbing Vent"
+      ]
+    },
+    "FIN-051": {
+      "catalogId": "MAT-70",
+      "status": "active",
+      "description": "2-inch PVC vent fittings",
+      "categoryPath": [
+        "Plumbing",
+        "Plumbing Vent"
+      ]
+    },
+    "FIN-052": {
+      "catalogId": "MAT-71",
+      "status": "active",
+      "description": "Indoor AC-unit mounting hardware",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC"
+      ]
+    },
+    "FIN-053": {
+      "catalogId": "MAT-72",
+      "status": "active",
+      "description": "Condensate drains and routing",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC"
+      ]
+    },
+    "FIN-054": {
+      "catalogId": "MAT-73",
+      "status": "active",
+      "description": "Branch box",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC"
+      ]
+    },
+    "FIN-055": {
+      "catalogId": "MAT-74",
+      "status": "active",
+      "description": "Refrigerant lines",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC"
+      ]
+    },
+    "FIN-056": {
+      "catalogId": "MAT-75",
+      "status": "active",
+      "description": "Power from outdoor unit to branch box",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC"
+      ]
+    },
+    "FIN-126": {
+      "catalogId": "TOOL-37",
+      "status": "active",
+      "description": "Diagonal cutters",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-127": {
+      "catalogId": "TOOL-38",
+      "status": "active",
+      "description": "Striking flathead screwdriver",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-128": {
+      "catalogId": "TOOL-39",
+      "status": "active",
+      "description": "Phillips screwdriver",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-129": {
+      "catalogId": "TOOL-40",
+      "status": "active",
+      "description": "Pin hammer",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-130": {
+      "catalogId": "TOOL-41",
+      "status": "active",
+      "description": "Small torque wrench",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-131": {
+      "catalogId": "TOOL-42",
+      "status": "active",
+      "description": "Hex-key socket set",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-132": {
+      "catalogId": "TOOL-43",
+      "status": "active",
+      "description": "Fish tape",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-133": {
+      "catalogId": "TOOL-44",
+      "status": "active",
+      "description": "Large wire cutters",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-134": {
+      "catalogId": "TOOL-45",
+      "status": "active",
+      "description": "MC cable cutter",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-135": {
+      "catalogId": "TOOL-46",
+      "status": "active",
+      "description": "Automatic wire stripper",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-136": {
+      "catalogId": "TOOL-47",
+      "status": "active",
+      "description": "Electrical hole-saw set",
+      "categoryPath": [
+        "Tools",
+        "Electrical",
+        "Electrical Installation Tools"
+      ]
+    },
+    "FIN-137": {
+      "catalogId": "MAT-76",
+      "status": "active",
+      "description": "WAGO connector for 12 AWG wire",
+      "categoryPath": [
+        "Electrical",
+        "Wire Connectors"
+      ]
+    },
+    "FIN-138": {
+      "catalogId": "MAT-77",
+      "status": "active",
+      "description": "WAGO connector for 10 AWG wire",
+      "categoryPath": [
+        "Electrical",
+        "Wire Connectors"
+      ]
+    },
+    "FIN-139": {
+      "catalogId": "MAT-78",
+      "status": "active",
+      "description": "Polaris-type insulated lug",
+      "categoryPath": [
+        "Electrical",
+        "Wire Connectors"
+      ]
+    },
+    "FIN-140": {
+      "catalogId": "TOOL-48",
+      "status": "active",
+      "description": "Tube cutter (Lennox, standard)",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Pipe Installation Tools"
+      ]
+    },
+    "FIN-141": {
+      "catalogId": "TOOL-49",
+      "status": "active",
+      "description": "Large tube cutter (Lennox)",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Pipe Installation Tools"
+      ]
+    },
+    "FIN-142": {
+      "catalogId": "TOOL-50",
+      "status": "active",
+      "description": "Electric tube cutter",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Pipe Installation Tools"
+      ]
+    },
+    "FIN-143": {
+      "catalogId": "MAT-79",
+      "status": "active",
+      "description": "Thread sealant (Loctite 565)",
+      "categoryPath": [
+        "Fire Protection",
+        "Pipe Joint Consumables"
+      ]
+    },
+    "FIN-144": {
+      "catalogId": "MAT-80",
+      "status": "active",
+      "description": "CPVC cement (Tyco red glue)",
+      "categoryPath": [
+        "Fire Protection",
+        "Pipe Joint Consumables"
+      ]
+    },
+    "FIN-148": {
+      "catalogId": "TOOL-51",
+      "status": "active",
+      "description": "Water pressure tester set",
+      "categoryPath": [
+        "Tools",
+        "Plumbing",
+        "Water Testing Tools & Fittings"
+      ]
+    },
+    "FIN-149": {
+      "catalogId": "TOOL-52",
+      "status": "active",
+      "description": "Hot/cold water test tie-together slip tee",
+      "categoryPath": [
+        "Tools",
+        "Plumbing",
+        "Water Testing Tools & Fittings"
+      ]
+    },
+    "FIN-150": {
+      "catalogId": "TOOL-53",
+      "status": "active",
+      "description": "Red plumbing tool (identify exact tool)",
+      "categoryPath": [
+        "Tools",
+        "Plumbing",
+        "Water Testing Tools & Fittings"
+      ]
+    },
+    "FIN-151": {
+      "catalogId": "MAT-81",
+      "status": "active",
+      "description": "PVC primer",
+      "categoryPath": [
+        "Plumbing",
+        "PVC Joint Consumables"
+      ]
+    },
+    "FIN-152": {
+      "catalogId": "MAT-82",
+      "status": "active",
+      "description": "PVC cement",
+      "categoryPath": [
+        "Plumbing",
+        "PVC Joint Consumables"
+      ]
+    },
+    "FIN-157": {
+      "catalogId": "MAT-83",
+      "status": "active",
+      "description": "AC rough-in box",
+      "categoryPath": [
+        "Mechanical",
+        "HVAC Rough-In"
+      ]
+    },
+    "FIN-057": {
+      "catalogId": "MAT-84",
+      "status": "active",
+      "description": "Electrical panel covers",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Finish"
+      ]
+    },
+    "FIN-058": {
+      "catalogId": "MAT-85",
+      "status": "active",
+      "description": "Outlet covers",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Finish"
+      ]
+    },
+    "FIN-059": {
+      "catalogId": "MAT-86",
+      "status": "active",
+      "description": "High-amperage outlets and covers",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Finish"
+      ]
+    },
+    "FIN-060": {
+      "catalogId": "MAT-87",
+      "status": "active",
+      "description": "Exterior outlet covers",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Finish"
+      ]
+    },
+    "FIN-061": {
+      "catalogId": "MAT-88",
+      "status": "active",
+      "description": "Breakers",
+      "categoryPath": [
+        "Electrical",
+        "Electrical Finish"
+      ]
+    },
+    "FIN-062": {
+      "catalogId": "MAT-89",
+      "status": "active",
+      "description": "IronRidge rails",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-063": {
+      "catalogId": "MAT-90",
+      "status": "active",
+      "description": "IronRidge clips",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-064": {
+      "catalogId": "MAT-91",
+      "status": "active",
+      "description": "Solar panels",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-065": {
+      "catalogId": "MAT-92",
+      "status": "active",
+      "description": "Solar connectors",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-066": {
+      "catalogId": "MAT-93",
+      "status": "active",
+      "description": "Roof solar conduit",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-067": {
+      "catalogId": "MAT-94",
+      "status": "active",
+      "description": "Solar roof penetration",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-068": {
+      "catalogId": "MAT-95",
+      "status": "active",
+      "description": "Roof junction box",
+      "categoryPath": [
+        "Electrical",
+        "Solar"
+      ]
+    },
+    "FIN-069": {
+      "catalogId": "MAT-96",
+      "status": "active",
+      "description": "Sprinkler covers",
+      "categoryPath": [
+        "Fire Protection",
+        "Fire Sprinkler"
+      ]
+    },
+    "FIN-070": {
+      "catalogId": "MAT-97",
+      "status": "active",
+      "description": "Hot-water flex hoses",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-071": {
+      "catalogId": "MAT-98",
+      "status": "active",
+      "description": "Hot-water escutcheons",
+      "categoryPath": [
+        "Plumbing",
+        "Hot Water"
+      ]
+    },
+    "FIN-072": {
+      "catalogId": "MAT-99",
+      "status": "active",
+      "description": "Cold-water flex hoses",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-073": {
+      "catalogId": "MAT-100",
+      "status": "active",
+      "description": "Cold-water escutcheons",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-074": {
+      "catalogId": "MAT-101",
+      "status": "active",
+      "description": "Sink faucet",
+      "categoryPath": [
+        "Plumbing",
+        "Cold Water"
+      ]
+    },
+    "FIN-075": {
+      "catalogId": "MAT-102",
+      "status": "active",
+      "description": "1-1/2-inch PVC-to-slip-joint adapter",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-076": {
+      "catalogId": "MAT-103",
+      "status": "active",
+      "description": "Slip-joint P-traps",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-077": {
+      "catalogId": "MAT-104",
+      "status": "active",
+      "description": "Slip-joint bends",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-078": {
+      "catalogId": "MAT-105",
+      "status": "active",
+      "description": "Cleanout cover",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-079": {
+      "catalogId": "MAT-106",
+      "status": "active",
+      "description": "Sink-bowl drain",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-080": {
+      "catalogId": "MAT-107",
+      "status": "active",
+      "description": "Slip-joint adapters",
+      "categoryPath": [
+        "Plumbing",
+        "Sanitary Waste"
+      ]
+    },
+    "FIN-081": {
+      "catalogId": "MAT-108",
+      "status": "active",
+      "description": "Wall or roof vent cap",
+      "categoryPath": [
+        "Plumbing",
+        "Plumbing Vent"
+      ]
+    },
+    "FIN-145": {
+      "catalogId": "TOOL-54",
+      "status": "active",
+      "description": "Line-pressure test equipment",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Hydrostatic Testing"
+      ]
+    },
+    "FIN-146": {
+      "catalogId": "TOOL-55",
+      "status": "active",
+      "description": "Hydrotest water hose",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Hydrostatic Testing"
+      ]
+    },
+    "FIN-147": {
+      "catalogId": "TOOL-56",
+      "status": "active",
+      "description": "Hydrotest pump-connection fittings",
+      "categoryPath": [
+        "Tools",
+        "Fire Protection",
+        "Hydrostatic Testing"
+      ]
+    },
+    "FIN-153": {
+      "catalogId": "TOOL-57",
+      "status": "active",
+      "description": "Slip-joint / PE tube cutter",
+      "categoryPath": [
+        "Tools",
+        "Plumbing",
+        "Plumbing Installation Tools"
+      ]
+    },
+    "FIN-045": {
+      "catalogId": "MAT-109",
+      "status": "active",
+      "description": "Toilet flush buttons and trim",
+      "categoryPath": [
+        "Plumbing",
+        "Toilet Finish"
+      ]
+    },
+    "FIN-154": {
+      "catalogId": "MAT-110",
+      "status": "active",
+      "description": "Toilet bowl",
+      "categoryPath": [
+        "Plumbing",
+        "Toilet Finish"
+      ]
+    },
+    "FIN-155": {
+      "catalogId": "MAT-111",
+      "status": "active",
+      "description": "Toilet mounting rods",
+      "categoryPath": [
+        "Plumbing",
+        "Toilet Finish"
+      ]
+    },
+    "FIN-156": {
+      "catalogId": "MAT-112",
+      "status": "active",
+      "description": "Toilet connection fittings",
+      "categoryPath": [
+        "Plumbing",
+        "Toilet Finish"
+      ]
+    },
+    "FIN-158": {
+      "catalogId": "MAT-113",
+      "status": "active",
+      "description": "Fan cover",
+      "categoryPath": [
+        "Mechanical",
+        "Ventilation Finish"
+      ]
+    },
+    "FIN-082": {
+      "catalogId": "MAT-114",
+      "status": "active",
+      "description": "Exterior door sill pans",
+      "categoryPath": [
+        "Doors and Windows",
+        "Exterior Doors"
+      ]
+    },
+    "FIN-083": {
+      "catalogId": "MAT-115",
+      "status": "active",
+      "description": "Exterior door flashing",
+      "categoryPath": [
+        "Doors and Windows",
+        "Exterior Doors"
+      ]
+    },
+    "FIN-084": {
+      "catalogId": "FAST-21",
+      "status": "active",
+      "description": "Door-frame screws",
+      "categoryPath": [
+        "Fasteners",
+        "Windows and Doors",
+        "Exterior Doors"
+      ]
+    },
+    "FIN-085": {
+      "catalogId": "MAT-116",
+      "status": "active",
+      "description": "Door gap foam",
+      "categoryPath": [
+        "Doors and Windows",
+        "Exterior Doors"
+      ]
+    },
+    "FIN-086": {
+      "catalogId": "MAT-117",
+      "status": "active",
+      "description": "Define interior door installation materials",
+      "categoryPath": [
+        "Doors and Windows",
+        "Interior Doors"
+      ]
+    },
+    "FIN-087": {
+      "catalogId": "MAT-118",
+      "status": "active",
+      "description": "Window trim",
+      "categoryPath": [
+        "Doors and Windows",
+        "Windows"
+      ]
+    },
+    "FIN-088": {
+      "catalogId": "FAST-22",
+      "status": "active",
+      "description": "Window screws",
+      "categoryPath": [
+        "Fasteners",
+        "Windows and Doors",
+        "Windows"
+      ]
+    },
+    "FIN-089": {
+      "catalogId": "MAT-119",
+      "status": "active",
+      "description": "Window silicone",
+      "categoryPath": [
+        "Doors and Windows",
+        "Windows"
+      ]
+    },
+    "FIN-090": {
+      "catalogId": "MAT-120",
+      "status": "active",
+      "description": "Window gap filler",
+      "categoryPath": [
+        "Doors and Windows",
+        "Windows"
+      ]
+    },
+    "FIN-159": {
+      "catalogId": "MAT-121",
+      "status": "active",
+      "description": "Window screen",
+      "categoryPath": [
+        "Doors and Windows",
+        "Window Accessories"
+      ]
+    },
+    "FIN-160": {
+      "catalogId": "MAT-122",
+      "status": "active",
+      "description": "Window hardware and handle set",
+      "categoryPath": [
+        "Doors and Windows",
+        "Window Accessories"
+      ]
+    },
+    "FIN-161": {
+      "catalogId": "MAT-123",
+      "status": "active",
+      "description": "Window-trim attachment hardware",
+      "categoryPath": [
+        "Doors and Windows",
+        "Window Accessories"
+      ]
+    },
+    "FIN-162": {
+      "catalogId": "MAT-124",
+      "status": "active",
+      "description": "Window shade",
+      "categoryPath": [
+        "Doors and Windows",
+        "Window Accessories"
+      ]
+    },
+    "FIN-091": {
+      "catalogId": "MAT-125",
+      "status": "active",
+      "description": "Bathroom vanity",
+      "categoryPath": [
+        "Interior Finishes",
+        "Bathroom Cabinetry"
+      ]
+    },
+    "FIN-092": {
+      "catalogId": "MAT-126",
+      "status": "active",
+      "description": "Vanity clips",
+      "categoryPath": [
+        "Interior Finishes",
+        "Bathroom Cabinetry"
+      ]
+    },
+    "FIN-093": {
+      "catalogId": "MAT-127",
+      "status": "active",
+      "description": "Kitchen island",
+      "categoryPath": [
+        "Interior Finishes",
+        "Kitchen Cabinetry"
+      ]
+    },
+    "FIN-094": {
+      "catalogId": "MAT-128",
+      "status": "active",
+      "description": "Define closet installation materials",
+      "categoryPath": [
+        "Interior Finishes",
+        "Closets"
+      ]
+    },
+    "FIN-163": {
+      "catalogId": "TOOL-58",
+      "status": "active",
+      "description": "Cabinet lifter",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Cabinet Installation Tools"
+      ]
+    },
+    "FIN-095": {
+      "catalogId": "MAT-129",
+      "status": "active",
+      "description": "Smart-home wire",
+      "categoryPath": [
+        "Electrical",
+        "Low Voltage"
+      ]
+    },
+    "FIN-096": {
+      "catalogId": "MAT-130",
+      "status": "active",
+      "description": "Low-voltage power wires",
+      "categoryPath": [
+        "Electrical",
+        "Low Voltage"
+      ]
+    },
+    "FIN-097": {
+      "catalogId": "MAT-131",
+      "status": "active",
+      "description": "Wire-routing materials",
+      "categoryPath": [
+        "Electrical",
+        "Low Voltage"
+      ]
+    },
+    "FIN-098": {
+      "catalogId": "MAT-132",
+      "status": "active",
+      "description": "Low-voltage connectors",
+      "categoryPath": [
+        "Electrical",
+        "Low Voltage"
+      ]
+    },
+    "FIN-164": {
+      "catalogId": "MAT-133",
+      "status": "active",
+      "description": "Cable tie",
+      "categoryPath": [
+        "Electrical",
+        "Cable Management"
+      ]
+    },
+    "FIN-165": {
+      "catalogId": "MAT-134",
+      "status": "active",
+      "description": "Wire-routing magnet",
+      "categoryPath": [
+        "Electrical",
+        "Cable Management"
+      ]
+    },
+    "FIN-099": {
+      "catalogId": "MAT-135",
+      "status": "active",
+      "description": "Garage-ceiling drywall",
+      "categoryPath": [
+        "Interior Finishes",
+        "Drywall"
+      ]
+    },
+    "FIN-100": {
+      "catalogId": "MAT-136",
+      "status": "active",
+      "description": "Define garage-door installation materials",
+      "categoryPath": [
+        "Doors and Windows",
+        "Garage Doors"
+      ]
+    },
+    "FIN-166": {
+      "catalogId": "FAST-23",
+      "status": "active",
+      "description": "Drywall screws",
+      "categoryPath": [
+        "Fasteners",
+        "General",
+        "Drywall Fasteners"
+      ]
+    },
+    "FIN-167": {
+      "catalogId": "EQUIP-5",
+      "status": "active",
+      "description": "Forklift rental for garage-door handling",
+      "categoryPath": [
+        "Equipment",
+        "Rentals",
+        "General"
+      ]
+    },
+    "FIN-101": {
+      "catalogId": "MAT-137",
+      "status": "active",
+      "description": "Sand and leveling material",
+      "categoryPath": [
+        "Interior Finishes",
+        "Floor Preparation"
+      ]
+    },
+    "FIN-102": {
+      "catalogId": "MAT-138",
+      "status": "active",
+      "description": "Self-leveling compound",
+      "categoryPath": [
+        "Interior Finishes",
+        "Floor Preparation"
+      ]
+    },
+    "FIN-103": {
+      "catalogId": "FAST-24",
+      "status": "active",
+      "description": "Screws for floor creaks",
+      "categoryPath": [
+        "Fasteners",
+        "Flooring",
+        "Floor Preparation"
+      ]
+    },
+    "FIN-104": {
+      "catalogId": "MAT-139",
+      "status": "active",
+      "description": "Rubber underlayment",
+      "categoryPath": [
+        "Interior Finishes",
+        "Underlayment"
+      ]
+    },
+    "FIN-105": {
+      "catalogId": "MAT-140",
+      "status": "active",
+      "description": "Floorboards",
+      "categoryPath": [
+        "Interior Finishes",
+        "Finish Flooring"
+      ]
+    },
+    "FIN-168": {
+      "catalogId": "TOOL-59",
+      "status": "active",
+      "description": "Large floor sander",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Floor Installation Tools & Abrasives"
+      ]
+    },
+    "FIN-169": {
+      "catalogId": "TOOL-60",
+      "status": "active",
+      "description": "Large floor grinder",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Floor Installation Tools & Abrasives"
+      ]
+    },
+    "FIN-170": {
+      "catalogId": "MAT-141",
+      "status": "active",
+      "description": "Concrete grinding disc",
+      "categoryPath": [
+        "Interior Finishes",
+        "Floor Installation Tools & Abrasives"
+      ]
+    },
+    "FIN-171": {
+      "catalogId": "TOOL-61",
+      "status": "active",
+      "description": "Heavy-duty scissors",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Floor Installation Tools & Abrasives"
+      ]
+    },
+    "FIN-172": {
+      "catalogId": "TOOL-62",
+      "status": "active",
+      "description": "Floorboard / sheet cutter",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Floor Installation Tools & Abrasives"
+      ]
+    },
+    "FIN-106": {
+      "catalogId": "FAST-25",
+      "status": "active",
+      "description": "Simpson angle clips",
+      "categoryPath": [
+        "Fasteners",
+        "Truss Area Finish",
+        "Connection Hardware"
+      ]
+    },
+    "FIN-107": {
+      "catalogId": "MAT-142",
+      "status": "active",
+      "description": "Concrete board",
+      "categoryPath": [
+        "Interior Finishes",
+        "Board Finish"
+      ]
+    },
+    "FIN-108": {
+      "catalogId": "FAST-26",
+      "status": "active",
+      "description": "Truss-area finish screws",
+      "categoryPath": [
+        "Fasteners",
+        "Truss Area Finish",
+        "Sealants & Fasteners"
+      ]
+    },
+    "FIN-109": {
+      "catalogId": "MAT-143",
+      "status": "active",
+      "description": "Truss-area Froth Pak foam",
+      "categoryPath": [
+        "Interior Finishes",
+        "Sealants & Fasteners"
+      ]
+    },
+    "FIN-110": {
+      "catalogId": "MAT-144",
+      "status": "active",
+      "description": "Roof-panel trim",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Roof Trim"
+      ]
+    },
+    "FIN-111": {
+      "catalogId": "FAST-27",
+      "status": "active",
+      "description": "Gutter / fascia rivets",
+      "categoryPath": [
+        "Fasteners",
+        "Gutter / Fascia",
+        "Roof Trim"
+      ]
+    },
+    "FIN-112": {
+      "catalogId": "MAT-145",
+      "status": "active",
+      "description": "S-5 roof-panel clamps",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Roof Trim"
+      ]
+    },
+    "FIN-113": {
+      "catalogId": "FAST-28",
+      "status": "active",
+      "description": "Gutter / fascia angle clips",
+      "categoryPath": [
+        "Fasteners",
+        "Gutter / Fascia",
+        "Roof Trim"
+      ]
+    },
+    "FIN-114": {
+      "catalogId": "FAST-29",
+      "status": "active",
+      "description": "Gutter / fascia screws",
+      "categoryPath": [
+        "Fasteners",
+        "Gutter / Fascia",
+        "Roof Trim"
+      ]
+    },
+    "FIN-115": {
+      "catalogId": "MAT-146",
+      "status": "active",
+      "description": "Gutter material",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Gutters"
+      ]
+    },
+    "FIN-116": {
+      "catalogId": "MAT-147",
+      "status": "active",
+      "description": "Fascia material",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Fascia"
+      ]
+    },
+    "FIN-117": {
+      "catalogId": "MAT-148",
+      "status": "active",
+      "description": "Soffit clips",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Soffits"
+      ]
+    },
+    "FIN-118": {
+      "catalogId": "MAT-149",
+      "status": "active",
+      "description": "Soffit panels",
+      "categoryPath": [
+        "Roof and Envelope",
+        "Soffits"
+      ]
+    },
+    "FIN-173": {
+      "catalogId": "TOOL-63",
+      "status": "active",
+      "description": "Chop saw",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Trim Cutting Tools"
+      ]
+    },
+    "FIN-174": {
+      "catalogId": "TOOL-64",
+      "status": "active",
+      "description": "Circular saw",
+      "categoryPath": [
+        "Tools",
+        "Building Envelope",
+        "Trim Cutting Tools"
+      ]
+    },
+    "FIN-119": {
+      "catalogId": "MAT-150",
+      "status": "active",
+      "description": "Stretch-ceiling profiles",
+      "categoryPath": [
+        "Interior Finishes",
+        "Profiles"
+      ]
+    },
+    "FIN-120": {
+      "catalogId": "MAT-151",
+      "status": "active",
+      "description": "LED profiles",
+      "categoryPath": [
+        "Interior Finishes",
+        "Profiles"
+      ]
+    },
+    "FIN-121": {
+      "catalogId": "MAT-152",
+      "status": "active",
+      "description": "Can-light circles",
+      "categoryPath": [
+        "Interior Finishes",
+        "Cutouts"
+      ]
+    },
+    "FIN-122": {
+      "catalogId": "MAT-153",
+      "status": "active",
+      "description": "Fire-sprinkler circles",
+      "categoryPath": [
+        "Interior Finishes",
+        "Cutouts"
+      ]
+    },
+    "FIN-123": {
+      "catalogId": "MAT-154",
+      "status": "active",
+      "description": "Super glue",
+      "categoryPath": [
+        "Interior Finishes",
+        "Installation Tools"
+      ]
+    },
+    "FIN-124": {
+      "catalogId": "TOOL-65",
+      "status": "active",
+      "description": "Heat gun",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Installation Tools"
+      ]
+    },
+    "FIN-125": {
+      "catalogId": "MAT-155",
+      "status": "active",
+      "description": "Propane",
+      "categoryPath": [
+        "Interior Finishes",
+        "Installation Tools"
+      ]
+    },
+    "FIN-175": {
+      "catalogId": "TOOL-66",
+      "status": "active",
+      "description": "Solid-surface touch-up kit",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-176": {
+      "catalogId": "MAT-156",
+      "status": "active",
+      "description": "Solid-surface adhesive",
+      "categoryPath": [
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-177": {
+      "catalogId": "MAT-157",
+      "status": "active",
+      "description": "60-grit sanding paper",
+      "categoryPath": [
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-178": {
+      "catalogId": "MAT-158",
+      "status": "active",
+      "description": "120-grit sanding paper",
+      "categoryPath": [
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-179": {
+      "catalogId": "MAT-159",
+      "status": "active",
+      "description": "220-grit sanding paper",
+      "categoryPath": [
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-180": {
+      "catalogId": "MAT-160",
+      "status": "active",
+      "description": "Hot-glue sticks",
+      "categoryPath": [
+        "Interior Finishes",
+        "Surface Repair Consumables"
+      ]
+    },
+    "FIN-181": {
+      "catalogId": "TOOL-67",
+      "status": "active",
+      "description": "Solid-surface sander",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Surface Installation Tools"
+      ]
+    },
+    "FIN-182": {
+      "catalogId": "TOOL-68",
+      "status": "active",
+      "description": "Hot-glue gun",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Surface Installation Tools"
+      ]
+    },
+    "FIN-183": {
+      "catalogId": "TOOL-69",
+      "status": "active",
+      "description": "Manual suction cup lifter",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Surface Installation Tools"
+      ]
+    },
+    "FIN-184": {
+      "catalogId": "TOOL-70",
+      "status": "active",
+      "description": "Electric suction cup lifter",
+      "categoryPath": [
+        "Tools",
+        "Interior Finishes",
+        "Surface Installation Tools"
+      ]
+    }
+  }
+}

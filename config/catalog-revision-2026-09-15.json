@@ -1,0 +1,704 @@
+{
+  "source": "Downloads/Neovi-All-Related-Items-Side-by-Side_annotated.pdf and user instructions, 2026-09-15",
+  "retired": {
+    "FND-002": {
+      "description": "Define foundation site supplies",
+      "reason": "Replaced generic supplies with named layout supplies.",
+      "replacements": [
+        "FND-049",
+        "FND-050",
+        "FND-051",
+        "FND-052",
+        "FND-053"
+      ]
+    },
+    "FND-004": {
+      "description": "Define foundation fixtures",
+      "reason": "Replaced generic fixtures with three drill pedestals.",
+      "replacements": [
+        "FND-055",
+        "FND-056",
+        "FND-057"
+      ]
+    },
+    "FND-008": {
+      "description": "Pile caps",
+      "reason": "Pile caps removed by user.",
+      "replacements": []
+    },
+    "FND-038": {
+      "description": "Auxiliary hydraulic power unit",
+      "reason": "Auxiliary hydraulics is an excavator equipment requirement, included under rental.",
+      "replacements": [
+        "FND-011"
+      ]
+    },
+    "FND-039": {
+      "description": "Excavator bucket",
+      "reason": "Excavator bucket removed by user.",
+      "replacements": []
+    },
+    "FND-042": {
+      "description": "Machine tracks",
+      "reason": "Tracks included with excavator; separate item removed.",
+      "replacements": [
+        "FND-011"
+      ]
+    },
+    "FND-044": {
+      "description": "Backup machine / attachment pins",
+      "reason": "Backup attachment pins removed; retain three sets of pile pins.",
+      "replacements": [
+        "FND-009"
+      ]
+    },
+    "PAN-026": {
+      "description": "Crane main hook",
+      "reason": "Main hook included with crane rental.",
+      "replacements": [
+        "PAN-025"
+      ]
+    },
+    "PAN-027": {
+      "description": "Crane auxiliary hook",
+      "reason": "Auxiliary hook included with crane rental.",
+      "replacements": [
+        "PAN-025"
+      ]
+    },
+    "PAN-033": {
+      "description": "Torque wrench",
+      "reason": "Hold-down torque wrench removed by user.",
+      "replacements": []
+    }
+  },
+  "changes": [
+    {
+      "lineId": "FND-009",
+      "before": {
+        "id": "FND-009",
+        "description": "Pile pins",
+        "owner": "Structural"
+      },
+      "after": {
+        "id": "FND-009",
+        "description": "Pile pins - complete sets",
+        "owner": "Structural",
+        "rule": {
+          "sourceMode": "FIXED",
+          "fixedQty": 3,
+          "sparePercent": 0
+        },
+        "notes": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins."
+      }
+    },
+    {
+      "lineId": "FND-011",
+      "before": {
+        "id": "FND-011",
+        "description": "Helical pile installation machine rental",
+        "unit": "DAY",
+        "procurementMethod": "Rental",
+        "notes": "Source specifies Deere 75G or similar. Confirm auxiliary power and attachments included in rental."
+      },
+      "after": {
+        "id": "FND-011",
+        "description": "Helical pile installation machine rental - John Deere 50P / 50G",
+        "unit": "DAY",
+        "procurementMethod": "Rental",
+        "notes": "Only John Deere 50P or 50G per user. Rental excavator must be equipped with auxiliary hydraulic power for pile installation; confirm attachment compatibility. Tracks included.",
+        "specification": "John Deere 50P or 50G; equipped with auxiliary hydraulics and compatible pile installation attachment."
+      }
+    },
+    {
+      "lineId": "FND-017",
+      "before": {
+        "id": "FND-017",
+        "description": "Gap material / spacers",
+        "notes": "Confirm what 'gaps' means in the supplied list."
+      },
+      "after": {
+        "id": "FND-017",
+        "description": "1/2-inch HSS gap spacers",
+        "notes": "Count HSS gap locations x spacers per location; spacer dimensions and number per location require the connection layout.",
+        "specification": "Spacer forces a 1/2-inch gap between HSS members."
+      }
+    },
+    {
+      "lineId": "FND-018",
+      "before": {
+        "id": "FND-018",
+        "description": "Steel shims"
+      },
+      "after": {
+        "id": "FND-018",
+        "description": "Steel shims - roll-former die cutouts",
+        "notes": "Use roll-former die cutout pieces as shims per user. Count support/leveling locations and pieces per stack; thickness and stack heights required.",
+        "procurementMethod": "Inventory"
+      }
+    },
+    {
+      "lineId": "FND-019",
+      "before": {
+        "id": "FND-019",
+        "description": "Plastic protection / isolation material",
+        "unit": "SQFT",
+        "notes": "Measure coverage in square feet. Confirm exact use, material specification, and roll size."
+      },
+      "after": {
+        "id": "FND-019",
+        "description": "Crawl-space moisture vapor barrier",
+        "unit": "SQFT",
+        "notes": "Measure crawl-space coverage in SQFT plus specified laps and upturns. Confirm membrane specification and roll coverage.",
+        "specification": "Crawl-space moisture vapor barrier; material thickness and roll size to confirm."
+      }
+    },
+    {
+      "lineId": "FND-021",
+      "before": {
+        "id": "FND-021",
+        "description": "Laser-level tripod",
+        "unit": "EA",
+        "notes": "Accessory to laser-level kit; check whether included.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-021",
+        "description": "Laser total station",
+        "unit": "EA",
+        "notes": "User name replaces laser-level tripod. Confirm instrument and tripod kit contents; separate laser level FND-020 retained.",
+        "procurementMethod": "TBD"
+      }
+    },
+    {
+      "lineId": "FND-024",
+      "before": {
+        "id": "FND-024",
+        "description": "Spare tool batteries",
+        "unit": "EA",
+        "notes": "Match tool platform and capacity; shared across phases.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-024",
+        "description": "Milwaukee spare tool batteries",
+        "unit": "EA",
+        "notes": "Count crew spares by compatible Milwaukee platform and capacity; avoid mixed-platform assumptions.",
+        "procurementMethod": "TBD",
+        "specification": "Milwaukee ecosystem; match voltage/platform to tools."
+      }
+    },
+    {
+      "lineId": "FND-027",
+      "before": {
+        "id": "FND-027",
+        "description": "Battery charger",
+        "unit": "EA",
+        "notes": "Match battery platform; shared across phases.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-027",
+        "description": "Milwaukee battery charger",
+        "unit": "EA",
+        "notes": "Milwaukee ecosystem; confirm charging slots, voltage/platform and power supply.",
+        "procurementMethod": "TBD",
+        "specification": "Milwaukee charger compatible with selected tool batteries."
+      }
+    },
+    {
+      "lineId": "FND-041",
+      "before": {
+        "id": "FND-041",
+        "description": "Machine lifting straps",
+        "unit": "EA",
+        "notes": "Machine rigging; distinct from four-point floor lifting set.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-041",
+        "description": "Lifting straps",
+        "unit": "EA",
+        "notes": "Length unspecified. Confirm required length, rated load and configuration before selecting lifting straps. Add actual sizes only when confirmed.",
+        "procurementMethod": "TBD"
+      },
+      "clarification": "User clarified that the two previously listed lengths were examples, not required strap variants."
+    },
+    {
+      "lineId": "FND-043",
+      "before": {
+        "id": "FND-043",
+        "description": "Large digger rental",
+        "unit": "DAY",
+        "notes": "May be the same machine as pile installation rental; reconcile before ordering.",
+        "procurementMethod": "Rental"
+      },
+      "after": {
+        "id": "FND-043",
+        "description": "Large digger",
+        "unit": "EA",
+        "notes": "Owned equipment, not a rental. Confirm availability for the scheduled work; no rental days.",
+        "procurementMethod": "Inventory"
+      }
+    },
+    {
+      "lineId": "FND-045",
+      "before": {
+        "id": "FND-045",
+        "description": "Machine leveling kit",
+        "unit": "EA",
+        "notes": "Confirm kit contents and whether machine rental includes it.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-045",
+        "description": "Pipe level",
+        "unit": "EA",
+        "notes": "Pipe level used for machine leveling and alignment.",
+        "procurementMethod": "TBD"
+      }
+    },
+    {
+      "lineId": "FND-046",
+      "before": {
+        "id": "FND-046",
+        "description": "Magnetic drill",
+        "unit": "EA",
+        "notes": "For steel bedframe drilling.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-046",
+        "description": "Magnetic drill",
+        "unit": "EA",
+        "notes": "Shared drilling tool. Bits FND-047, cutting fluid FND-048 and pedestals FND-055 through FND-057 are grouped with this tool.",
+        "procurementMethod": "TBD",
+        "system": "Magnetic Drill"
+      }
+    },
+    {
+      "lineId": "FND-047",
+      "before": {
+        "id": "FND-047",
+        "description": "Annular cutter / hole-saw set",
+        "unit": "EA",
+        "notes": "One EA is one complete set; specify diameters.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-047",
+        "description": "Magnetic-drill bits - annular cutters",
+        "unit": "EA",
+        "notes": "Annular cutters are bits for the magnetic drill; specify hole diameter, cutting depth and arbor compatibility.",
+        "procurementMethod": "TBD",
+        "system": "Magnetic Drill - Bits"
+      }
+    },
+    {
+      "lineId": "FND-048",
+      "before": {
+        "id": "FND-048",
+        "description": "Cutting fluid",
+        "unit": "OZ",
+        "notes": "Fluid ounces; container size and compatible cutting application required.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "FND-048",
+        "description": "Magnetic-drill cutting fluid",
+        "unit": "OZ",
+        "notes": "Cutting fluid for magnetic drilling. Measure fluid ounces; container size is a purchasing specification.",
+        "procurementMethod": "TBD",
+        "system": "Magnetic Drill - Cutting Fluid"
+      }
+    },
+    {
+      "lineId": "PAN-007",
+      "before": {
+        "id": "PAN-007",
+        "description": "Floor installation foam",
+        "unit": "CUFT",
+        "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification."
+      },
+      "after": {
+        "id": "PAN-007",
+        "description": "Froth-Pak - floor cassette gaps",
+        "unit": "CUFT",
+        "notes": "Fill the 1/2-inch gaps between floor cassettes before the walls land. Required volume = joint length (FT) x 0.5 (IN) x fill depth (IN) / 144 (CUFT). Confirm joint length, fill depth and product yield.",
+        "takeoffFormula": "floor cassette joint length FT x 0.5 IN gap x fill depth IN / 144 = CUFT"
+      }
+    },
+    {
+      "lineId": "PAN-009",
+      "before": {
+        "id": "PAN-009",
+        "description": "Long self-drilling screws",
+        "owner": "Structural",
+        "packSize": 100,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "wall_connection_count",
+          "multiplier": 4,
+          "sparePercent": 0.1
+        }
+      },
+      "after": {
+        "id": "PAN-009",
+        "description": "Metal-to-metal self-drilling screws - #10 x 2-3/4-inch hex head",
+        "owner": "Structural",
+        "packSize": 100,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "wall_connection_count",
+          "multiplier": 4,
+          "sparePercent": 0.1
+        },
+        "specification": "#10 x 2-3/4-inch metal-to-metal self-drilling screw, hex head.",
+        "notes": "User-specified screw. Catalog four-per-connection allowance remains subject to the approved fastening detail."
+      }
+    },
+    {
+      "lineId": "PAN-010",
+      "before": {
+        "id": "PAN-010",
+        "description": "Long wood-to-metal screws",
+        "owner": "Structural",
+        "packSize": 100,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "wall_wood_to_metal_connection_count",
+          "sparePercent": 0.1
+        }
+      },
+      "after": {
+        "id": "PAN-010",
+        "description": "4-inch screws for temporary bracing",
+        "owner": "Structural",
+        "packSize": 100,
+        "rule": {
+          "sourceMode": "MANUAL",
+          "sparePercent": 0.1
+        },
+        "system": "Temporary Bracing",
+        "specification": "4-inch temporary-bracing screws; type and substrate compatibility to confirm.",
+        "takeoffFormula": "temporary brace connections x specified 4-inch screws per connection = EA",
+        "notes": "Temporary-bracing fasteners. Do not use the former wood-to-metal wall connection count for this item."
+      }
+    },
+    {
+      "lineId": "PAN-011",
+      "before": {
+        "id": "PAN-011",
+        "description": "Nuts for wall angles",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "wall_angle_connection_count",
+          "sparePercent": 0.1
+        }
+      },
+      "after": {
+        "id": "PAN-011",
+        "description": "Nuts for 4 x 4 wall angles",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "wall_angle_connection_count",
+          "sparePercent": 0.1
+        },
+        "notes": "Group with floor threaded connecting rod PAN-003. Confirm nuts per rod/angle and whether hardware is supplied with rods; do not order included nuts twice.",
+        "system": "Threaded Rod and Angle Hardware"
+      }
+    },
+    {
+      "lineId": "PAN-025",
+      "before": {
+        "id": "PAN-025",
+        "description": "Crane rental",
+        "unit": "DAY",
+        "notes": "Lift plan must specify pick capacity, counterweights, setup and computer configuration.",
+        "procurementMethod": "Rental"
+      },
+      "after": {
+        "id": "PAN-025",
+        "description": "Crane rental - main and auxiliary hooks included",
+        "unit": "DAY",
+        "notes": "Specify crane capacity, reach, configuration and rental duration for each lift plan. Main and auxiliary hooks are included with crane; no separate hook purchase lines.",
+        "procurementMethod": "Rental"
+      }
+    },
+    {
+      "lineId": "PAN-031",
+      "before": {
+        "id": "PAN-031",
+        "description": "Long level for panel straightness",
+        "unit": "EA",
+        "notes": "Specify working length.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "PAN-031",
+        "description": "Long levels for wall leveling",
+        "unit": "EA",
+        "notes": "Big/long levels for checking wall level, plumb and straightness; confirm needed lengths.",
+        "procurementMethod": "TBD"
+      }
+    },
+    {
+      "lineId": "PAN-037",
+      "before": {
+        "id": "PAN-037",
+        "description": "Squeeze clamp",
+        "unit": "EA",
+        "notes": "For truss/board installation; specify capacity.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "PAN-037",
+        "description": "Squeeze clamps - optional shared tools",
+        "unit": "EA",
+        "notes": "Nice-to-have shared clamps for wall installation and other work. Specify capacity and crew requirement; optional.",
+        "procurementMethod": "TBD",
+        "optional": true
+      }
+    },
+    {
+      "lineId": "PAN-038",
+      "before": {
+        "id": "PAN-038",
+        "description": "Metal clamp",
+        "unit": "EA",
+        "notes": "Confirm clamp style and capacity.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "PAN-038",
+        "description": "Heavy-duty threaded wall clamps",
+        "unit": "EA",
+        "notes": "Strong threaded metal clamps to hold adjacent walls together; confirm jaw capacity and required clamping force.",
+        "procurementMethod": "TBD",
+        "specification": "Heavy-duty threaded metal clamp for holding walls together."
+      }
+    },
+    {
+      "lineId": "PAN-039",
+      "before": {
+        "id": "PAN-039",
+        "description": "Sheet-metal holding magnet",
+        "unit": "EA",
+        "notes": "For truss/board installation; specify holding capacity.",
+        "procurementMethod": "TBD"
+      },
+      "after": {
+        "id": "PAN-039",
+        "description": "Sheet-metal holding magnet",
+        "unit": "EA",
+        "notes": "Tool to hold brackets and other items against metal while driving screws.",
+        "procurementMethod": "TBD"
+      }
+    },
+    {
+      "lineId": "FND-049",
+      "before": null,
+      "after": {
+        "id": "FND-049",
+        "description": "Paint markers",
+        "unit": "EA",
+        "system": "Layout and Marking",
+        "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements."
+      }
+    },
+    {
+      "lineId": "FND-050",
+      "before": null,
+      "after": {
+        "id": "FND-050",
+        "description": "Scribes",
+        "unit": "EA",
+        "system": "Layout and Marking",
+        "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements."
+      }
+    },
+    {
+      "lineId": "FND-051",
+      "before": null,
+      "after": {
+        "id": "FND-051",
+        "description": "Chalk line / centerline marking tool",
+        "unit": "EA",
+        "system": "Layout and Marking",
+        "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements."
+      }
+    },
+    {
+      "lineId": "FND-052",
+      "before": null,
+      "after": {
+        "id": "FND-052",
+        "description": "Marking paint",
+        "unit": "EA",
+        "system": "Layout and Marking",
+        "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements."
+      }
+    },
+    {
+      "lineId": "FND-053",
+      "before": null,
+      "after": {
+        "id": "FND-053",
+        "description": "Chalk-line refill",
+        "unit": "EA",
+        "system": "Layout and Marking",
+        "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements."
+      }
+    },
+    {
+      "lineId": "FND-054",
+      "before": null,
+      "after": {
+        "id": "FND-054",
+        "description": "Leveling string line",
+        "unit": "FT",
+        "system": "Leveling and Double-Checking",
+        "notes": "String for leveling and independent alignment checks. Measure required runs; spool length belongs in pack size."
+      }
+    },
+    {
+      "lineId": "FND-055",
+      "before": null,
+      "after": {
+        "id": "FND-055",
+        "description": "Side-drill pedestal / magnetic-drill fixture",
+        "unit": "EA",
+        "system": "Magnetic Drill - Fixtures",
+        "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line."
+      }
+    },
+    {
+      "lineId": "FND-056",
+      "before": null,
+      "after": {
+        "id": "FND-056",
+        "description": "HSS drill pedestal",
+        "unit": "EA",
+        "system": "Magnetic Drill - Fixtures",
+        "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line."
+      }
+    },
+    {
+      "lineId": "FND-057",
+      "before": null,
+      "after": {
+        "id": "FND-057",
+        "description": "Pile-cap pedestal for magnetic drill",
+        "unit": "EA",
+        "system": "Magnetic Drill - Fixtures",
+        "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line."
+      }
+    },
+    {
+      "lineId": "FND-058",
+      "before": null,
+      "after": {
+        "id": "FND-058",
+        "description": "Steel bedframe washers",
+        "unit": "EA",
+        "system": "Steel Bedframe Fasteners",
+        "notes": "User specifies 10 washers per nut and bolt. Pending clarification: 10 per pair versus 10 per individual nut and bolt; do not release a washer order before confirming.",
+        "takeoffFormula": "helical pile count x 2 bolt/nut pairs per pile x washers per pair (20 or 10; confirmation pending)",
+        "rule": {
+          "sourceMode": "MANUAL",
+          "sparePercent": 0.1
+        }
+      }
+    },
+    {
+      "lineId": "FND-014",
+      "before": {
+        "id": "FND-014",
+        "description": "Steel bedframe nuts",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "steel_bedframe_bolt_count",
+          "sparePercent": 0.1
+        },
+        "system": "Steel Bedframe Fasteners",
+        "inventoryPrefix": "FAST",
+        "categoryPath": [
+          "Fasteners",
+          "Steel Bedframe",
+          "Bolts Nuts Washers and Rod"
+        ],
+        "catalogId": "FAST-2"
+      },
+      "after": {
+        "id": "FND-014",
+        "description": "Steel bedframe nuts",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "CALCULATED",
+          "inputKey": "foundation_helical_pile_count",
+          "sparePercent": 0.1,
+          "multiplier": 2
+        },
+        "system": "Steel Bedframe Fasteners",
+        "inventoryPrefix": "FAST",
+        "categoryPath": [
+          "Fasteners",
+          "Steel Bedframe",
+          "Bolts Nuts Washers and Rod"
+        ],
+        "catalogId": "FAST-2",
+        "notes": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification."
+      }
+    },
+    {
+      "lineId": "FND-015",
+      "before": {
+        "id": "FND-015",
+        "description": "Steel bedframe bolts",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "DIRECT",
+          "inputKey": "steel_bedframe_bolt_count",
+          "sparePercent": 0.1
+        },
+        "system": "Steel Bedframe Fasteners",
+        "inventoryPrefix": "FAST",
+        "categoryPath": [
+          "Fasteners",
+          "Steel Bedframe",
+          "Bolts Nuts Washers and Rod"
+        ],
+        "catalogId": "FAST-3"
+      },
+      "after": {
+        "id": "FND-015",
+        "description": "Steel bedframe bolts",
+        "owner": "Structural",
+        "packSize": 25,
+        "rule": {
+          "sourceMode": "DIRECT",
+          "inputKey": "foundation_helical_pile_count",
+          "sparePercent": 0.1,
+          "multiplier": 2
+        },
+        "system": "Steel Bedframe Fasteners",
+        "inventoryPrefix": "FAST",
+        "categoryPath": [
+          "Fasteners",
+          "Steel Bedframe",
+          "Bolts Nuts Washers and Rod"
+        ],
+        "catalogId": "FAST-3",
+        "notes": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification."
+      }
+    }
+  ]
+}

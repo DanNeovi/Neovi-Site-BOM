@@ -1,0 +1,590 @@
+{
+  "purpose": "User-authorized editable planning estimates only; not model measurements or purchase authorization. Independent rows may overlap.",
+  "rules": {
+    "FIN-001": {
+      "driver": "floorArea",
+      "rate": 0.6,
+      "assumption": "Budget 0.6 FT of 12/2 MC per SQFT; routing and circuit design pending"
+    },
+    "FIN-002": {
+      "driver": "outlets",
+      "rate": 2,
+      "assumption": "Budget two MC fittings per outlet location"
+    },
+    "FIN-003": {
+      "driver": "floorArea",
+      "rate": 0.03,
+      "assumption": "Budget 0.03 FT per SQFT for this cable size; circuit assignment pending"
+    },
+    "FIN-005": {
+      "driver": "floorArea",
+      "rate": 0.03,
+      "assumption": "Budget 0.03 FT per SQFT for this cable size; circuit assignment pending"
+    },
+    "FIN-004": {
+      "driver": "project",
+      "rate": 8,
+      "assumption": "Budget eight fittings per project for this size"
+    },
+    "FIN-006": {
+      "driver": "project",
+      "rate": 8,
+      "assumption": "Budget eight fittings per project for this size"
+    },
+    "FIN-008": {
+      "driver": "exteriorLength",
+      "rate": 0.25,
+      "assumption": "Budget fire-bell route at 25% of exterior wall length"
+    },
+    "FIN-009": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT service route; actual service location pending"
+    },
+    "FIN-010": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT service route; actual service location pending"
+    },
+    "FIN-011": {
+      "driver": "project",
+      "rate": 6,
+      "assumption": "Budget six main-feed fittings"
+    },
+    "FIN-013": {
+      "driver": "project",
+      "rate": 30,
+      "assumption": "Budget 30 FT battery route; battery scope pending"
+    },
+    "FIN-014": {
+      "driver": "exteriorLength",
+      "rate": 0.25,
+      "assumption": "Budget conduit route at 25% of exterior wall length"
+    },
+    "FIN-015": {
+      "driver": "floorArea",
+      "rate": 0.12,
+      "assumption": "Budget sprinkler pipe at 0.12 FT per SQFT; sprinkler design pending"
+    },
+    "FIN-016": {
+      "driver": "floorArea",
+      "rate": 0.012,
+      "assumption": "Budget sprinkler fittings at 0.012 per SQFT"
+    },
+    "FIN-017": {
+      "driver": "floorArea",
+      "rate": 0.024,
+      "assumption": "Budget sprinkler rings at 0.024 per SQFT"
+    },
+    "FIN-018": {
+      "driver": "floorArea",
+      "rate": 0.006666666666666667,
+      "assumption": "Budget one sprinkler position per 150 SQFT; not a sprinkler layout"
+    },
+    "FIN-069": {
+      "driver": "floorArea",
+      "rate": 0.006666666666666667,
+      "assumption": "Budget one sprinkler position per 150 SQFT; not a sprinkler layout"
+    },
+    "FIN-122": {
+      "driver": "floorArea",
+      "rate": 0.006666666666666667,
+      "assumption": "Budget one sprinkler position per 150 SQFT; not a sprinkler layout"
+    },
+    "FIN-019": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one riser / assembly; these two catalog rows may describe the same purchase, reconcile before ordering"
+    },
+    "FIN-020": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one riser / assembly; these two catalog rows may describe the same purchase, reconcile before ordering"
+    },
+    "FIN-021": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-022": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-026": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-027": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-028": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-030": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-039": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-040": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-041": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-054": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-057": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-068": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-074": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one faucet per modeled sink module; kitchen/bath product split pending"
+    },
+    "FIN-078": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-081": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-093": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-124": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "Budget one per project; applicability and included components pending"
+    },
+    "FIN-023": {
+      "driver": "sinks",
+      "rate": 30,
+      "assumption": "Budget 30 FT pipe per modeled sink module; hot and cold counted separately"
+    },
+    "FIN-034": {
+      "driver": "sinks",
+      "rate": 30,
+      "assumption": "Budget 30 FT pipe per modeled sink module; hot and cold counted separately"
+    },
+    "FIN-024": {
+      "driver": "sinks",
+      "rate": 4,
+      "assumption": "Budget four fittings per modeled sink module for this supply"
+    },
+    "FIN-035": {
+      "driver": "sinks",
+      "rate": 4,
+      "assumption": "Budget four fittings per modeled sink module for this supply"
+    },
+    "FIN-025": {
+      "driver": "sinks",
+      "rate": 8,
+      "assumption": "Budget eight rings per modeled sink module for this supply"
+    },
+    "FIN-036": {
+      "driver": "sinks",
+      "rate": 8,
+      "assumption": "Budget eight rings per modeled sink module for this supply"
+    },
+    "FIN-029": {
+      "driver": "waterHeaters",
+      "rate": 2,
+      "assumption": "Budget two connections/valves per modeled heater; included hardware pending"
+    },
+    "FIN-032": {
+      "driver": "waterHeaters",
+      "rate": 2,
+      "assumption": "Budget two connections/valves per modeled heater; included hardware pending"
+    },
+    "FIN-031": {
+      "driver": "waterHeaters",
+      "rate": 10,
+      "assumption": "Budget 10 FT drain per modeled heater"
+    },
+    "FIN-033": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module for hot supply"
+    },
+    "FIN-070": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module for hot supply"
+    },
+    "FIN-071": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module for hot supply"
+    },
+    "FIN-037": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT of this main-water segment; surveyed route pending"
+    },
+    "FIN-038": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT of this main-water segment; surveyed route pending"
+    },
+    "FIN-042": {
+      "driver": "coldFixtures",
+      "rate": 1,
+      "assumption": "Budget one per sink module or toilet for cold supply"
+    },
+    "FIN-072": {
+      "driver": "coldFixtures",
+      "rate": 1,
+      "assumption": "Budget one per sink module or toilet for cold supply"
+    },
+    "FIN-073": {
+      "driver": "coldFixtures",
+      "rate": 1,
+      "assumption": "Budget one per sink module or toilet for cold supply"
+    },
+    "FIN-043": {
+      "driver": "coldFixtures",
+      "rate": 1,
+      "assumption": "Budget one test cap per sink module or toilet"
+    },
+    "FIN-044": {
+      "driver": "toilets",
+      "rate": 1,
+      "assumption": "Budget one assembly per modeled toilet; connection detail pending"
+    },
+    "FIN-046": {
+      "driver": "toilets",
+      "rate": 1,
+      "assumption": "Budget one assembly per modeled toilet; connection detail pending"
+    },
+    "FIN-047": {
+      "driver": "coldFixtures",
+      "rate": 1,
+      "assumption": "Budget one 3-inch coupling per sink module or toilet; diameter/detail pending"
+    },
+    "FIN-048": {
+      "driver": "project",
+      "rate": 2,
+      "assumption": "Budget two per project; test plan / drain detail pending"
+    },
+    "FIN-049": {
+      "driver": "project",
+      "rate": 2,
+      "assumption": "Budget two per project; test plan / drain detail pending"
+    },
+    "FIN-050": {
+      "driver": "coldFixtures",
+      "rate": 10,
+      "assumption": "Budget 10 FT vent per sink module or toilet; vent design pending"
+    },
+    "FIN-051": {
+      "driver": "coldFixtures",
+      "rate": 3,
+      "assumption": "Budget three vent fittings per sink module or toilet"
+    },
+    "FIN-052": {
+      "driver": "indoorUnits",
+      "rate": 1,
+      "assumption": "Budget one mounting assembly per modeled indoor AC unit"
+    },
+    "FIN-053": {
+      "driver": "indoorUnits",
+      "rate": 20,
+      "assumption": "Budget 20 FT condensate route per indoor AC unit"
+    },
+    "FIN-055": {
+      "driver": "indoorUnits",
+      "rate": 30,
+      "assumption": "Budget 30 FT line-set route per indoor unit; pair versus individual tube specification pending"
+    },
+    "FIN-056": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT outdoor-unit to branch-box power route"
+    },
+    "FIN-061": {
+      "driver": "outlets",
+      "rate": 0.2,
+      "assumption": "Budget one breaker per five outlet locations; panel circuit schedule pending"
+    },
+    "FIN-062": {
+      "driver": "solarPanels",
+      "rate": 12,
+      "assumption": "Budget 12 FT rail per modeled panel; rail layout pending"
+    },
+    "FIN-063": {
+      "driver": "solarPanels",
+      "rate": 4,
+      "assumption": "Budget four clips per panel; shared clips not deducted"
+    },
+    "FIN-065": {
+      "driver": "solarPanels",
+      "rate": 2,
+      "assumption": "Budget two connectors per panel; supplied leads not deducted"
+    },
+    "FIN-066": {
+      "driver": "project",
+      "rate": 50,
+      "assumption": "Budget 50 FT solar conduit route"
+    },
+    "FIN-067": {
+      "driver": "project",
+      "rate": 2,
+      "assumption": "Budget two solar roof penetrations"
+    },
+    "FIN-075": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module; overlaps/included drain parts require review"
+    },
+    "FIN-076": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module; overlaps/included drain parts require review"
+    },
+    "FIN-077": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module; overlaps/included drain parts require review"
+    },
+    "FIN-079": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module; overlaps/included drain parts require review"
+    },
+    "FIN-080": {
+      "driver": "sinks",
+      "rate": 1,
+      "assumption": "Budget one per modeled sink module; overlaps/included drain parts require review"
+    },
+    "FIN-082": {
+      "driver": "exteriorDoors",
+      "rate": 1,
+      "assumption": "One sill pan per exterior door"
+    },
+    "FIN-084": {
+      "driver": "doors",
+      "rate": 8,
+      "assumption": "Budget eight frame screws per modeled door"
+    },
+    "FIN-085": {
+      "driver": "doorJoint",
+      "rate": 0.006944444444444444,
+      "assumption": "Budget 1/2-inch gap x 2-inch fill depth; FT x 0.5 x 2 / 144 = CUFT"
+    },
+    "FIN-088": {
+      "driver": "windows",
+      "rate": 8,
+      "assumption": "Budget eight screws per modeled window"
+    },
+    "FIN-089": {
+      "driver": "windowPerimeter",
+      "rate": 0.32639923673660187,
+      "assumption": "Budget round 1/4-inch sealant bead; FT x pi x 0.25^2 / 4 x 12 / 1.8046875 = fluid OZ"
+    },
+    "FIN-090": {
+      "driver": "windowPerimeter",
+      "rate": 0.006944444444444444,
+      "assumption": "Budget 1/2-inch gap x 2-inch fill depth; FT x 0.5 x 2 / 144 = CUFT"
+    },
+    "FIN-091": {
+      "driver": "bathroomSinks",
+      "rate": 1,
+      "assumption": "Budget one vanity per modeled bathroom sink module; included components pending"
+    },
+    "FIN-092": {
+      "driver": "bathroomSinks",
+      "rate": 4,
+      "assumption": "Budget four vanity clips per modeled bathroom sink module; included components pending"
+    },
+    "FIN-095": {
+      "driver": "floorArea",
+      "rate": 0.15,
+      "assumption": "Budget 0.15 FT per SQFT for this low-voltage routing item"
+    },
+    "FIN-096": {
+      "driver": "floorArea",
+      "rate": 0.15,
+      "assumption": "Budget 0.15 FT per SQFT for this low-voltage routing item"
+    },
+    "FIN-097": {
+      "driver": "floorArea",
+      "rate": 0.15,
+      "assumption": "Budget 0.15 FT per SQFT for this low-voltage routing item"
+    },
+    "FIN-098": {
+      "driver": "outlets",
+      "rate": 0.25,
+      "assumption": "Budget one low-voltage connector per four outlet locations"
+    },
+    "FIN-101": {
+      "driver": "floorArea",
+      "rate": 0.25,
+      "assumption": "Budget 25% floor treatment x 1 LB/SQFT; separate products may overlap; yield/thickness pending"
+    },
+    "FIN-102": {
+      "driver": "floorArea",
+      "rate": 0.25,
+      "assumption": "Budget 25% floor treatment x 1 LB/SQFT; separate products may overlap; yield/thickness pending"
+    },
+    "FIN-103": {
+      "driver": "floorArea",
+      "rate": 0.05,
+      "assumption": "Budget one repair screw per 20 SQFT"
+    },
+    "FIN-104": {
+      "driver": "floorArea",
+      "rate": 1,
+      "assumption": "Budget one layer over modeled livable floor area; wet-room exclusions and waste pending"
+    },
+    "FIN-105": {
+      "driver": "floorArea",
+      "rate": 1,
+      "assumption": "Budget one layer over modeled livable floor area; wet-room exclusions and waste pending"
+    },
+    "FIN-106": {
+      "driver": "exteriorLength",
+      "rate": 0.25,
+      "assumption": "Budget one finish angle per 4 FT exterior run; connection detail pending"
+    },
+    "FIN-107": {
+      "driver": "exteriorLength",
+      "rate": 2,
+      "assumption": "Budget 2 FT-high finish strip along exterior wall run"
+    },
+    "FIN-108": {
+      "driver": "exteriorLength",
+      "rate": 4,
+      "assumption": "Budget four finish screws per FT exterior wall run"
+    },
+    "FIN-109": {
+      "driver": "exteriorLength",
+      "rate": 0.006944444444444444,
+      "assumption": "Budget 1/2-inch x 2-inch foam joint along exterior run"
+    },
+    "FIN-110": {
+      "driver": "exteriorLength",
+      "rate": 1,
+      "assumption": "Budget roof-edge run equal to exterior wall length; roof geometry may differ"
+    },
+    "FIN-115": {
+      "driver": "exteriorLength",
+      "rate": 1,
+      "assumption": "Budget roof-edge run equal to exterior wall length; roof geometry may differ"
+    },
+    "FIN-116": {
+      "driver": "exteriorLength",
+      "rate": 1,
+      "assumption": "Budget roof-edge run equal to exterior wall length; roof geometry may differ"
+    },
+    "FIN-111": {
+      "driver": "exteriorLength",
+      "rate": 2,
+      "assumption": "Budget two trim fasteners per FT exterior wall run"
+    },
+    "FIN-114": {
+      "driver": "exteriorLength",
+      "rate": 2,
+      "assumption": "Budget two trim fasteners per FT exterior wall run"
+    },
+    "FIN-112": {
+      "driver": "exteriorLength",
+      "rate": 0.5,
+      "assumption": "Budget one clamp/clip per 2 FT exterior run; engineered spacing pending"
+    },
+    "FIN-113": {
+      "driver": "exteriorLength",
+      "rate": 0.5,
+      "assumption": "Budget one clamp/clip per 2 FT exterior run; engineered spacing pending"
+    },
+    "FIN-117": {
+      "driver": "exteriorLength",
+      "rate": 0.5,
+      "assumption": "Budget one clamp/clip per 2 FT exterior run; engineered spacing pending"
+    },
+    "FIN-118": {
+      "driver": "exteriorLength",
+      "rate": 2,
+      "assumption": "Budget 2 FT-wide soffit along exterior run"
+    },
+    "FIN-119": {
+      "driver": "wallTrim",
+      "rate": 1,
+      "assumption": "Budget ceiling profile run from two interior wall sides plus one exterior side; shared boundaries pending"
+    },
+    "FIN-121": {
+      "driver": "floorArea",
+      "rate": 0.006666666666666667,
+      "assumption": "Budget one light opening per 150 SQFT; lighting plan pending"
+    },
+    "FIN-123": {
+      "driver": "project",
+      "rate": 4,
+      "assumption": "Budget 4 fluid OZ project adhesive allowance"
+    },
+    "FIN-125": {
+      "driver": "project",
+      "rate": 20,
+      "assumption": "Budget one 20 LB propane fill"
+    },
+    "FND-001": {
+      "driver": "project",
+      "rate": 4,
+      "assumption": "Budget four mud mats; access layout pending"
+    },
+    "FND-011": {
+      "driver": "project",
+      "rate": 5,
+      "assumption": "Budget five rental days; installation production pending"
+    },
+    "FND-018": {
+      "driver": "hssBeams",
+      "rate": 4,
+      "assumption": "Budget four shims per foundation beam; levels and bearing details pending"
+    },
+    "FND-019": {
+      "driver": "exteriorLength",
+      "rate": 1,
+      "assumption": "Budget 1 FT-wide isolation strip along exterior run"
+    },
+    "PAN-012": {
+      "driver": "wallLength",
+      "rate": 0.1,
+      "assumption": "Budget one temporary brace per 10 FT wall; bracing plan pending"
+    },
+    "PAN-015": {
+      "driver": "wallLength",
+      "rate": 0.001,
+      "assumption": "Budget 0.001 CUFT corner foam per FT wall as a project-size proxy"
+    }
+  }
+}

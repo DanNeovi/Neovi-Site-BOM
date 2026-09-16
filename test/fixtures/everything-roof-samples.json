@@ -1,0 +1,25 @@
+{
+  "sourceFile": "Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json",
+  "exportElementCount": 200802,
+  "purpose": "Sample arithmetic regression only; not a complete roof takeoff or approved purchasing quantity",
+  "rows": [
+    {
+      "sourceReference": "host:675d990f-7b84-4669-a42d-cb94461859a0-00b000a0",
+      "value": 1663.9150001015241,
+      "unit": "SQFT",
+      "type": "Sheathing_7 1/2\" - Vertical"
+    },
+    {
+      "sourceReference": "host:675d990f-7b84-4669-a42d-cb94461859a0-00b00976",
+      "value": 844.8633865335852,
+      "unit": "SQFT",
+      "type": "Sheathing_7 1/2\" - Vertical"
+    },
+    {
+      "sourceReference": "host:e210887a-792d-4cff-8ee7-3a9c6c4b0a8a-00b012b8",
+      "value": 185.4091291931332,
+      "unit": "SQFT",
+      "type": "Sheathing_7 1/2\" - Vertical"
+    }
+  ]
+}

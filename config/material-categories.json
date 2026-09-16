@@ -1,0 +1,855 @@
+{
+  "source": "Material_Package_Sequence_Compact_annotated (1) (1).pdf, all seven pages, plus supplied edit summary",
+  "pages": [
+    {
+      "title": "Site & foundation",
+      "subtitle": "Shared site supplies serve every category. Foundation components stay grouped by installation package.",
+      "cards": [
+        {
+          "title": "Site Setup & Shared Supplies",
+          "stage": "ALL STAGES",
+          "box": [
+            30,
+            505,
+            732,
+            213
+          ],
+          "parts": [
+            "Mud mats",
+            "+ Temporary barriers and site signs",
+            "+ Extension cords, temporary lighting and power distribution",
+            "+ Covered storage bins and material-protection tarps"
+          ],
+          "tools": [
+            "+ Drill / impact driver; sockets",
+            "+ Tape measure; laser level",
+            "+ Broom; wet/dry vacuum",
+            "+ Foam applicator and cleaner kit"
+          ],
+          "consumables": [
+            "Drill bits - one dozen; sizes to confirm",
+            "Cutting fluid",
+            "Site foam / Froth Pak: floor joints, wall corners and truss finish",
+            "+ Marking paint, chalk, tape, rags and waste bags"
+          ],
+          "note": "Site foam is stocked here once; confirm products and yields for each application. Added site items marked + replace the generic placeholders as proposals."
+        },
+        {
+          "title": "Helical Piles",
+          "stage": "STAGE 1",
+          "box": [
+            30,
+            280,
+            360,
+            230
+          ],
+          "parts": [
+            "Helical piles and extensions",
+            "Pile caps, pins and brackets"
+          ],
+          "tools": [
+            "Pile installation machine rental",
+            "+ Laser level",
+            "+ Torque monitor"
+          ],
+          "consumables": [
+            "Shared site supplies"
+          ],
+          "note": "Confirm pile-system equipment with installer. Original quantity references: page 9."
+        },
+        {
+          "title": "Steel Bedframe",
+          "stage": "STAGE 1",
+          "box": [
+            402,
+            280,
+            360,
+            230
+          ],
+          "parts": [
+            "HSS beams",
+            "Bolts and nuts",
+            "Threaded rod; steel shims",
+            "Crawlspace vapor barrier - '6 mm plastic' per markup; confirm thickness"
+          ],
+          "tools": [
+            "+ Torque wrench",
+            "+ Impact driver and sockets",
+            "+ Laser level"
+          ],
+          "consumables": [
+            "+ Vapor-barrier seam tape",
+            "Cutting fluid: shared site supply"
+          ],
+          "note": "Welding consumables and gap material / spacers removed as marked."
+        }
+      ]
+    },
+    {
+      "title": "Panels",
+      "subtitle": "Stage 2 contains Floor, Wall, Truss and Roof. Rough MEP is assigned to Stage 3.",
+      "cards": [
+        {
+          "title": "Floor",
+          "stage": "STAGE 2",
+          "box": [
+            30,
+            505,
+            360,
+            222
+          ],
+          "parts": [
+            "4 x 3 floor connection plates",
+            "Hold-down hardware: threaded connecting rod; connection nuts",
+            "#10 floor connection screws"
+          ],
+          "tools": [
+            "Four-point lifting straps",
+            "+ Impact driver",
+            "+ Torque wrench",
+            "+ Level"
+          ],
+          "consumables": [
+            "Site foam: see shared supplies",
+            "+ Driver bits"
+          ],
+          "note": "Floor connection washers removed. Plate minimum remains open: 100 or 250."
+        },
+        {
+          "title": "Wall",
+          "stage": "STAGE 2",
+          "box": [
+            402,
+            505,
+            360,
+            222
+          ],
+          "parts": [
+            "#10 screws to floor",
+            "Temporary bracing: 2 x 4s and long wood-to-metal screws",
+            "1/2-inch nuts for wall angles",
+            "Simpson hold-down washers and nuts; wall-to-wall plates"
+          ],
+          "tools": [
+            "Two-point lift: Eric's Hooks",
+            "Level",
+            "+ Impact driver",
+            "+ Tape measure"
+          ],
+          "consumables": [
+            "Site foam: see shared supplies",
+            "+ Driver bits"
+          ],
+          "note": "Hold-down washers in this wall package remain; only floor connection washers were crossed out."
+        },
+        {
+          "title": "Truss",
+          "stage": "STAGE 2",
+          "box": [
+            30,
+            271,
+            360,
+            221
+          ],
+          "parts": [
+            "#10 truss screws",
+            "Simpson clips",
+            "Truss stitch pieces",
+            "Site purlins"
+          ],
+          "tools": [
+            "+ Impact driver",
+            "+ Level",
+            "+ Clamps"
+          ],
+          "consumables": [
+            "+ Driver bits",
+            "+ Marking supplies"
+          ],
+          "note": "Confirm Simpson clip model and screw lengths. Existing quantity rules: page 9."
+        },
+        {
+          "title": "Roof",
+          "stage": "STAGE 2",
+          "box": [
+            402,
+            271,
+            360,
+            221
+          ],
+          "parts": [
+            "Varying-height steel studs for roof slope",
+            "Roof-panel screws on purlins",
+            "Roof-panel rivets"
+          ],
+          "tools": [
+            "Seam roller",
+            "+ Rivet tool",
+            "+ Impact driver",
+            "+ Metal snips"
+          ],
+          "consumables": [
+            "Roof-panel butyl tape",
+            "+ Driver / drill bits"
+          ],
+          "note": "Steel-stud lengths, heights and count need a revised takeoff; the former area rule is not sufficient."
+        }
+      ]
+    },
+    {
+      "title": "Electrical & solar",
+      "subtitle": "Rough Electrical and Finish Electrical sit directly beside each other, with Solar as its own category.",
+      "cards": [
+        {
+          "title": "Rough Electrical",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            360,
+            278
+          ],
+          "parts": [
+            "MC cable + fitting groups: 12/2 + 3/8-inch; 10/3 + 1/2-inch; 8/3 + 3/4-inch",
+            "Breaker panel; meter combo panel",
+            "Main-feed wire, conduit and fittings",
+            "Tesla battery feed: 4/3 wire",
+            "Electrical conduit: 1 inch"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "+ MC cable cutter",
+            "+ Wire stripper",
+            "+ Conduit bender",
+            "+ Drill / driver"
+          ],
+          "consumables": [
+            "+ Electrical tape",
+            "+ Wire labels",
+            "+ Pulling lubricant"
+          ],
+          "note": "Wire/fitting pairs reproduce the markup, pending specification confirmation. Fire-bell wire is listed once under Fire Protection."
+        },
+        {
+          "title": "Finish Electrical",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            505,
+            360,
+            278
+          ],
+          "parts": [
+            "Electrical panel covers",
+            "Outlet covers",
+            "High-amperage outlets and covers",
+            "Exterior outlet covers",
+            "Breakers"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "+ Torque screwdriver",
+            "+ Voltage tester",
+            "+ Receptacle tester"
+          ],
+          "consumables": [
+            "+ Circuit labels",
+            "+ Electrical tape"
+          ],
+          "note": "Sprinkler covers moved to Fire Protection. Magnetic clamps are shared utility tools; allocate by crew, not by repeated listing."
+        },
+        {
+          "title": "Solar",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            215,
+            732,
+            165
+          ],
+          "parts": [
+            "IronRidge rails and clips; solar panels",
+            "Solar connectors; roof solar conduit",
+            "Waterproof penetration hat; roof junction box"
+          ],
+          "tools": [
+            "+ Torque wrench",
+            "+ PV connector tools",
+            "+ Drill / driver"
+          ],
+          "consumables": [
+            "+ Wire labels",
+            "+ Approved penetration sealant"
+          ],
+          "note": "Confirm penetration-hat product and compatible weatherproofing detail; preserve the complete roof-penetration assembly scope."
+        }
+      ]
+    },
+    {
+      "title": "Plumbing & sewer",
+      "subtitle": "Group assemblies for packing while keeping each component identifiable for quantities and purchasing.",
+      "cards": [
+        {
+          "title": "Rough Plumbing",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            732,
+            225
+          ],
+          "parts": [
+            "Hot-water PEX package: pipe, fittings and rings",
+            "Cold-water PEX package: pipe, fittings and rings",
+            "Water-heater package: heater, flex connectors, pan, drain and shutoff valves",
+            "Recirculation pump; one-way valves; hot- and cold-water push-on valves",
+            "House and underground main water lines; backflow valve; water meter and meter box"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "+ PEX cutter and system-matched connection tool",
+            "+ Adjustable wrenches",
+            "+ Pressure-test kit"
+          ],
+          "consumables": [
+            "+ Compatible thread sealant",
+            "+ Identification labels"
+          ],
+          "note": "Water-heater drain remains a separate measured component within the grouped package."
+        },
+        {
+          "title": "Finish Plumbing",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            268,
+            360,
+            218
+          ],
+          "parts": [
+            "Hot- and cold-water flex hoses; sink faucet; sink-bowl drain",
+            "Slip-joint package: 1-1/2-inch PVC adapter, P-traps, bends and adapters",
+            "Trim covers: one escutcheon item plus cleanout cover",
+            "Wall or roof vent cap"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "+ Basin wrench",
+            "+ Adjustable wrench"
+          ],
+          "consumables": [
+            "+ Compatible fixture sealant",
+            "+ Cleaning rags"
+          ],
+          "note": "Escutcheons consolidated across hot/cold; cleanout cover remains a distinct component."
+        },
+        {
+          "title": "Sewer & Vent",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            268,
+            360,
+            218
+          ],
+          "parts": [
+            "Toilet package: 90 fittings, bottoms and trim, bolts and hardware",
+            "3-inch rubber couplings: sink / toilet",
+            "2-inch rubber couplings: laundry / small drain",
+            "2-inch PVC vent pipe and fittings"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "Sewer test group: caps and balloons",
+            "+ Pipe cutter",
+            "+ Nut driver"
+          ],
+          "consumables": [
+            "+ Compatible PVC joining products",
+            "+ Marking supplies"
+          ],
+          "note": "Confirm 'toilet bottoms and trim.' Test caps may be expendable; confirm reuse before ordering."
+        }
+      ]
+    },
+    {
+      "title": "Fire protection, HVAC & smart home",
+      "subtitle": "Each utility has a complete category. Shared magnetic clamps are allocated across utility crews.",
+      "cards": [
+        {
+          "title": "Fire Protection",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            732,
+            210
+          ],
+          "parts": [
+            "Fire PEX pipe, fittings and rings",
+            "Sprinkler heads; sprinkler covers",
+            "Fire riser and riser assembly",
+            "Fire alarm; fire bell",
+            "Fire-bell-to-riser wire (source: 12/2 MC fire-bell wire); confirm circuit specification"
+          ],
+          "tools": [
+            "+ Magnetic clamps",
+            "+ PEX cutter and system-matched connection tool",
+            "+ Pressure-test kit",
+            "+ Sprinkler-head wrench"
+          ],
+          "consumables": [
+            "+ Compatible thread sealant",
+            "+ Wire / system labels"
+          ],
+          "note": "Fire-bell wire and sprinkler covers are relocated from electrical to this category; do not count them twice."
+        },
+        {
+          "title": "HVAC",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            283,
+            360,
+            233
+          ],
+          "parts": [
+            "Indoor AC-unit mounting hardware",
+            "Condensate drains and routing",
+            "Branch box",
+            "Refrigerant lines",
+            "Power from outdoor unit to branch box"
+          ],
+          "tools": [
+            "+ Magnetic clamps",
+            "+ Flaring / torque tools",
+            "+ Vacuum pump and gauge",
+            "+ Leak-test equipment"
+          ],
+          "consumables": [
+            "+ Line labels",
+            "+ Approved joint / routing consumables"
+          ],
+          "note": "Tools are proposed for trade review. Indoor AC ceiling frames are listed under Ceiling."
+        },
+        {
+          "title": "Low Voltage / Smart Home",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            283,
+            360,
+            233
+          ],
+          "parts": [
+            "Smart-home wire",
+            "Low-voltage power wires",
+            "Wire-routing materials",
+            "Low-voltage connectors"
+          ],
+          "tools": [
+            "Magnetic clamps",
+            "+ Cable stripper",
+            "+ Termination tool",
+            "+ Cable tester",
+            "+ Fish tape"
+          ],
+          "consumables": [
+            "+ Cable labels",
+            "+ Cable ties"
+          ],
+          "note": "Keep this category together; it no longer breaks across pages. Confirm connector and routing products."
+        }
+      ]
+    },
+    {
+      "title": "Openings & cabinetry",
+      "subtitle": "Kitchen Cabinets, Bathroom Vanity and Closets are separate categories. Final trim is collected on page 8.",
+      "cards": [
+        {
+          "title": "Windows & Doors",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            360,
+            245
+          ],
+          "parts": [
+            "Exterior door sill pans",
+            "#8 x 4-inch door-frame screws",
+            "Window screws",
+            "Interior-door installation package: DD to define"
+          ],
+          "tools": [
+            "+ Level",
+            "+ Drill / driver",
+            "+ Caulking gun",
+            "+ Setting tools"
+          ],
+          "consumables": [
+            "Exterior door flashing",
+            "Door gap foam",
+            "Window silicone",
+            "Window gap filler"
+          ],
+          "note": "Window trim moves to Final Finishes. Opening-specific foam stays here pending product confirmation."
+        },
+        {
+          "title": "Kitchen Cabinets",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            505,
+            360,
+            245
+          ],
+          "parts": [
+            "Kitchen cabinets",
+            "Kitchen island",
+            "+ Cabinet mounting screws / brackets",
+            "+ Shims; filler and end panels"
+          ],
+          "tools": [
+            "+ Cabinet clamps",
+            "+ Level",
+            "+ Drill / driver",
+            "+ Stud finder"
+          ],
+          "consumables": [
+            "+ Driver bits",
+            "+ Masking tape"
+          ],
+          "note": "Confirm cabinet schedule, mounting details and proposed installation items before finalizing the kit."
+        },
+        {
+          "title": "Bathroom Vanity",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            248,
+            360,
+            198
+          ],
+          "parts": [
+            "Bathroom vanity",
+            "Vanity clips"
+          ],
+          "tools": [
+            "+ Level",
+            "+ Drill / driver",
+            "+ Clamps"
+          ],
+          "consumables": [
+            "+ Compatible sealant",
+            "+ Driver bits"
+          ],
+          "note": "Plumbing connections belong to Finish Plumbing."
+        },
+        {
+          "title": "Closets",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            248,
+            360,
+            198
+          ],
+          "parts": [
+            "+ Shelves and support brackets",
+            "+ Closet rods and sockets",
+            "+ Mounting screws / anchors"
+          ],
+          "tools": [
+            "+ Tape measure",
+            "+ Level",
+            "+ Drill / driver",
+            "+ Stud finder"
+          ],
+          "consumables": [
+            "+ Driver bits",
+            "+ Marking supplies"
+          ],
+          "note": "Proposed replacement for the undefined closet kit; confirm against the selected closet system."
+        }
+      ]
+    },
+    {
+      "title": "Flooring, truss & exterior",
+      "subtitle": "Installation parts stay with the trade; site foam remains in the shared supply category.",
+      "cards": [
+        {
+          "title": "Flooring",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            360,
+            220
+          ],
+          "parts": [
+            "Screws for floor creaks",
+            "Rubber underlayment",
+            "Floorboards"
+          ],
+          "tools": [
+            "+ Floor sander / grinder",
+            "+ Dust extractor",
+            "+ Mixing drill",
+            "+ Flooring saw"
+          ],
+          "consumables": [
+            "Sanding abrasives",
+            "Grinding wheel",
+            "Self-leveling compound"
+          ],
+          "note": "'Sand' replaced by sanding abrasives; self-leveling compound is retained separately."
+        },
+        {
+          "title": "Truss Finish",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            505,
+            360,
+            220
+          ],
+          "parts": [
+            "Simpson angle clips",
+            "3/8-inch concrete board",
+            "Truss-area finish screws"
+          ],
+          "tools": [
+            "+ Board cutter",
+            "+ Drill / driver",
+            "+ Level"
+          ],
+          "consumables": [
+            "Site foam: see shared supplies",
+            "+ Cutting / driver bits"
+          ],
+          "note": "Rock wool between walls in the truss area is in Final Finishes, as requested."
+        },
+        {
+          "title": "Exterior Finish",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            273,
+            732,
+            223
+          ],
+          "parts": [
+            "Gutter / fascia package: roof-panel trim, gutter material and fascia material",
+            "Gutter / fascia hardware: rivets, S-5 roof-panel clamps, angle clips and screws",
+            "Soffit package: soffit angles and panels",
+            "Garage-door installation package: DD to define"
+          ],
+          "tools": [
+            "+ Rivet tool",
+            "+ Metal snips",
+            "+ Drill / driver",
+            "+ Level"
+          ],
+          "consumables": [
+            "+ Approved joint sealant",
+            "+ Drill / driver bits"
+          ],
+          "note": "Soffit clips renamed to soffit angles per markup. Confirm the actual attachment detail and garage-door kit with DD."
+        }
+      ]
+    },
+    {
+      "title": "Ceiling & final finishes",
+      "subtitle": "Solid Surface Touch-Up and Final Finishes are new categories, kept separate from the installation packages.",
+      "cards": [
+        {
+          "title": "Ceiling",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            505,
+            732,
+            213
+          ],
+          "parts": [
+            "Garage-ceiling drywall; drywall screws",
+            "Stretch-ceiling profiles; stretch-ceiling screws - ask DD",
+            "LED profiles; can-light circles; fire-sprinkler circles",
+            "Stretch-ceiling frames for indoor AC units; frames for skylights"
+          ],
+          "tools": [
+            "Heat gun",
+            "+ Laser level",
+            "+ Drill / driver",
+            "+ Profile-cutting tools"
+          ],
+          "consumables": [
+            "Super glue",
+            "Propane"
+          ],
+          "note": "Confirm stretch-ceiling fasteners with DD. Retain propane from source; confirm the intended heating equipment."
+        },
+        {
+          "title": "Solid Surface Touch-Up",
+          "stage": "STAGE 3",
+          "box": [
+            30,
+            280,
+            360,
+            230
+          ],
+          "parts": [
+            "Corners; patches",
+            "1/2-inch material",
+            "1/4-inch material",
+            "Window sill"
+          ],
+          "tools": [
+            "+ Sander",
+            "+ Clamps",
+            "+ Caulking gun",
+            "+ Trimming tools"
+          ],
+          "consumables": [
+            "Alcohol",
+            "Glue",
+            "VHB tape",
+            "Dowsil 795 silicone",
+            "+ Sanding pads"
+          ],
+          "note": "Confirm material / color, adhesive compatibility and VHB product before packing."
+        },
+        {
+          "title": "Final Finishes",
+          "stage": "STAGE 3",
+          "box": [
+            402,
+            280,
+            360,
+            230
+          ],
+          "parts": [
+            "Rock wool between walls in truss area",
+            "Baseboards throughout",
+            "Window and door trims",
+            "Window screens",
+            "Door locks"
+          ],
+          "tools": [
+            "+ Miter saw",
+            "+ Trim nailer",
+            "+ Drill / driver",
+            "+ Utility knife"
+          ],
+          "consumables": [
+            "+ Finish nails",
+            "+ Compatible caulk",
+            "+ Touch-up filler"
+          ],
+          "note": "Window trim appears here once. Confirm quantities by room / opening and the final finish schedule."
+        }
+      ]
+    }
+  ],
+  "quantity_rules": [
+    [
+      "Helical piles / caps / brackets",
+      "Use the corresponding foundation pile, cap and bracket counts."
+    ],
+    [
+      "HSS beams",
+      "Use steel bedframe HSS beam count."
+    ],
+    [
+      "Bedframe bolts and nuts",
+      "Each follows steel bedframe bolt count; include 10% spare."
+    ],
+    [
+      "4 x 3 floor connection plates",
+      "Floor-to-floor connection count; source minimum 250. Resolve 100 versus 250."
+    ],
+    [
+      "Floor hold-down threaded rod",
+      "Floor-to-HSS connection count; include 25% spare."
+    ],
+    [
+      "Floor connection nuts",
+      "2 per floor-to-HSS connection; include 10% spare."
+    ],
+    [
+      "#10 floor connection screws",
+      "Floor connection count; include 10% spare."
+    ],
+    [
+      "#10 wall-to-floor screws",
+      "4 per wall connection; include 10% spare."
+    ],
+    [
+      "Temporary-bracing screws",
+      "Wall wood-to-metal connection count; include 10% spare."
+    ],
+    [
+      "1/2-inch wall-angle nuts",
+      "Wall angle connection count; include 10% spare."
+    ],
+    [
+      "Wall hold-down washers and nuts",
+      "Wall hold-down count; include 10% spare. EA = one complete hardware assembly."
+    ],
+    [
+      "Wall-to-wall plates",
+      "Wall-to-wall connection count; plate design and quantity rule still need confirmation."
+    ],
+    [
+      "#10 truss screws / Simpson clips",
+      "Truss connection / truss angle count respectively; include 10% spare."
+    ],
+    [
+      "Truss stitch pieces / site purlins",
+      "Stitch piece count / roof purlin total length respectively; purlins include 5% spare."
+    ],
+    [
+      "Varying-height slope studs",
+      "Replace former roof slope area + 10% rule with a stud count / length / height takeoff."
+    ],
+    [
+      "Roof-panel screws / rivets",
+      "Roof panel connection / roof rivet count respectively; include 10% spare."
+    ],
+    [
+      "Roof-panel butyl tape",
+      "Roof joint length; include 10% spare. Measure in linear feet."
+    ],
+    [
+      "Garage-ceiling drywall",
+      "Garage ceiling area; include 10% spare. Measure in square feet."
+    ]
+  ],
+  "review_notes": [
+    [
+      "Category structure",
+      "The eight category pages replace the sequence-only layout. Stage labels remain as references: Foundation = 1; Panels = 2; all MEP and finishes = 3. Shared Site Setup serves all stages. Rough and Finish Electrical are adjacent on page 3."
+    ],
+    [
+      "Parts, tools and consumables",
+      "Parts are installed components, including fasteners. Tools are reusable equipment and rentals. Consumables include applied foam, tape, sealant, abrasives and compounds. Items marked + are proposed additions, not source-confirmed requirements. Quantities, tool availability and exact products require trade review."
+    ],
+    [
+      "Vapor barrier and revised specifications",
+      "The handwritten vapor-barrier note says '6 mm plastic.' Confirm whether 6 mm or 6 mil was intended; this draft does not silently substitute a thickness. Confirm the 4/3 battery feed, 1-inch electrical conduit scope, screw lengths, Simpson clip models and roof-slope stud takeoff."
+    ],
+    [
+      "DD and remaining definition work",
+      "DD: define the interior-door and garage-door installation packages and the stretch-ceiling screws. Trade leads: confirm the proposed closet and cabinet installation components, 'toilet bottoms and trim,' and the 100-versus-250 floor-plate minimum."
+    ],
+    [
+      "Consolidation without double counting",
+      "Floor, wall-corner and truss-finish foam are pooled under Site Setup. Opening-specific foam remains under Windows & Doors. Fire-bell wire and sprinkler covers move to Fire Protection; window trim moves to Final Finishes. Magnetic clamps are referenced by utility crew, with shared stock counted once."
+    ],
+    [
+      "Source and quantities",
+      "Based on all seven pages of Material_Package_Sequence_Compact_annotated (1) (1).pdf and the supplied edit summary. Original non-manual quantity rules are retained on page 9, with the obsolete slope-material rule explicitly flagged for replacement. New and unspecified items have no invented quantities. This is a category review document, not an approved purchase order."
+    ]
+  ]
+}

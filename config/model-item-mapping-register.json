@@ -1,0 +1,4073 @@
+{
+  "FND-001": {
+    "search": [
+      "mud.?mat"
+    ],
+    "requirement": "Count mat layout locations; mat dimensions and access layout required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-049": {
+    "search": [
+      "paint",
+      "markers"
+    ],
+    "requirement": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-050": {
+    "search": [
+      "scribes"
+    ],
+    "requirement": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-051": {
+    "search": [
+      "chalk",
+      "line",
+      "centerline",
+      "marking",
+      "tool"
+    ],
+    "requirement": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-052": {
+    "search": [
+      "marking",
+      "paint"
+    ],
+    "requirement": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-053": {
+    "search": [
+      "chalk",
+      "line",
+      "refill"
+    ],
+    "requirement": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-054": {
+    "search": [
+      "leveling",
+      "string",
+      "line"
+    ],
+    "requirement": "String for leveling and independent alignment checks. Measure required runs; spool length belongs in pack size.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-003": {
+    "search": [
+      "site.?suppl"
+    ],
+    "requirement": "Placeholder: replace with an exact purchasable item before mapping.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-055": {
+    "search": [
+      "side",
+      "drill",
+      "pedestal",
+      "magnetic",
+      "drill",
+      "fixture"
+    ],
+    "requirement": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-056": {
+    "search": [
+      "drill",
+      "pedestal"
+    ],
+    "requirement": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-057": {
+    "search": [
+      "pile",
+      "pedestal",
+      "magnetic",
+      "drill"
+    ],
+    "requirement": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-005": {
+    "search": [
+      "site.?suppl"
+    ],
+    "requirement": "Placeholder: replace with an exact purchasable item before mapping.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-020": {
+    "search": [
+      "laser.?level"
+    ],
+    "requirement": "Count or measure Laser level in EA; confirm exact product, pack size and project requirement. Shared tool; used for foundation and panel layout.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-021": {
+    "search": [
+      "total.?station",
+      "survey"
+    ],
+    "requirement": "Count or measure Laser-level tripod in EA; confirm exact product, pack size and project requirement. Accessory to laser-level kit; check whether included.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-022": {
+    "search": [
+      "laser.?level.?pipe"
+    ],
+    "requirement": "Count or measure Laser-level pipe attachment in EA; confirm exact product, pack size and project requirement. Accessory to laser-level kit; confirm mounting system.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-023": {
+    "search": [
+      "cordless.?drill"
+    ],
+    "requirement": "Count or measure Cordless drill in EA; confirm exact product, pack size and project requirement. Shared with panel installation.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-024": {
+    "search": [
+      "milwaukee",
+      "batter"
+    ],
+    "requirement": "Count or measure Spare tool batteries in EA; confirm exact product, pack size and project requirement. Match tool platform and capacity; shared across phases.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-025": {
+    "search": [
+      "inch.?heavy.?duty"
+    ],
+    "requirement": "Count or measure 1/2-inch heavy-duty impact wrench in EA; confirm exact product, pack size and project requirement. Confirm drive size and required torque.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-026": {
+    "search": [
+      "hex.?drive.?impact"
+    ],
+    "requirement": "Count or measure Hex-drive impact driver in EA; confirm exact product, pack size and project requirement. Shared with panels and gutter/fascia work.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-027": {
+    "search": [
+      "milwaukee",
+      "charger"
+    ],
+    "requirement": "Count or measure Battery charger in EA; confirm exact product, pack size and project requirement. Match battery platform; shared across phases.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-028": {
+    "search": [
+      "drill.?bit.?set"
+    ],
+    "requirement": "Count or measure Drill-bit set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; specify sizes.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-029": {
+    "search": [
+      "impact.?socket.?set"
+    ],
+    "requirement": "Count or measure Impact socket set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; compatible with impact drive.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-030": {
+    "search": [
+      "driver.?bit.?set"
+    ],
+    "requirement": "Count or measure Driver-bit set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; shared across phases.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-031": {
+    "search": [
+      "prybar"
+    ],
+    "requirement": "Count or measure Prybar in EA; confirm exact product, pack size and project requirement. Shared with panel installation.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-032": {
+    "search": [
+      "hammer"
+    ],
+    "requirement": "Count or measure Hammer in EA; confirm exact product, pack size and project requirement. Shared with panel installation.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-033": {
+    "search": [
+      "tongue.?and.?groove"
+    ],
+    "requirement": "Count or measure Tongue-and-groove pliers in EA; confirm exact product, pack size and project requirement. Source: Channel Lock Pliers.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-034": {
+    "search": [
+      "adjustable.?wrench"
+    ],
+    "requirement": "Count or measure Adjustable wrench in EA; confirm exact product, pack size and project requirement. Source: Crescent Wrenches.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-035": {
+    "search": [
+      "sump.?pump.?for"
+    ],
+    "requirement": "Count or measure Sump pump for flooded trenches in EA; confirm exact product, pack size and project requirement. Seasonal/site need; confirm capacity.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-036": {
+    "search": [
+      "extension.?cord"
+    ],
+    "requirement": "Count or measure Extension cord in EA; confirm exact product, pack size and project requirement. Specify cord length, rating and connectors; reusable.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-037": {
+    "search": [
+      "site.?water.?hose"
+    ],
+    "requirement": "Count or measure Site water hose in FT; confirm exact product, pack size and project requirement. Specify hose diameter and purchased lengths.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-006": {
+    "search": [
+      "helical",
+      "pile"
+    ],
+    "requirement": "Count identified helical pile instances; distinguish foundations from annotations.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-007": {
+    "search": [
+      "pile",
+      "extension"
+    ],
+    "requirement": "Sum extension segments per pile; installed depth and segment lengths required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-009": {
+    "search": [
+      "pile",
+      "pin"
+    ],
+    "requirement": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-010": {
+    "search": [
+      "pile",
+      "bracket",
+      "saddle"
+    ],
+    "requirement": "Count pile-specific brackets; establish pile-to-bracket association.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-011": {
+    "search": [
+      "helical",
+      "pile"
+    ],
+    "requirement": "Only John Deere 50P or 50G per user. Rental excavator must be equipped with auxiliary hydraulic power for pile installation; confirm attachment compatibility. Tracks included.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-040": {
+    "search": [
+      "machine.?lifting.?chains"
+    ],
+    "requirement": "Count or measure Machine lifting chains in EA; confirm exact product, pack size and project requirement. Specify rated assembly and length.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-041": {
+    "search": [
+      "lifting.?strap",
+      "lifting.?sling"
+    ],
+    "requirement": "Count or measure Machine lifting straps in EA; confirm exact product, pack size and project requirement. Machine rigging; distinct from four-point floor lifting set.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-043": {
+    "search": [
+      "digger",
+      "excavator"
+    ],
+    "requirement": "Count or measure Large digger rental in DAY; confirm exact product, pack size and project requirement. May be the same machine as pile installation rental; reconcile before ordering.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-045": {
+    "search": [
+      "pipe.?level"
+    ],
+    "requirement": "Count or measure Machine leveling kit in EA; confirm exact product, pack size and project requirement. Confirm kit contents and whether machine rental includes it.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-012": {
+    "search": [
+      "hollow",
+      "hss"
+    ],
+    "requirement": "Count foundation-level hollow structural beams in authoritative structural source.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-014": {
+    "search": [
+      "bolt",
+      "nut"
+    ],
+    "requirement": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-015": {
+    "search": [
+      "bolt",
+      "nut"
+    ],
+    "requirement": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-016": {
+    "search": [
+      "thread",
+      "rod"
+    ],
+    "requirement": "Sum rod cut lengths; diameter and bedframe connection association required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-058": {
+    "search": [
+      "steel",
+      "bedframe",
+      "washers"
+    ],
+    "requirement": "helical pile count x 2 bolt/nut pairs per pile x washers per pair (20 or 10; confirmation pending); User specifies 10 washers per nut and bolt. Pending clarification: 10 per pair versus 10 per individual nut and bolt; do not release a washer order before confirming.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-017": {
+    "search": [
+      "spacer",
+      "gap"
+    ],
+    "requirement": "Count HSS gap locations x spacers per location; spacer dimensions and number per location require the connection layout.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-018": {
+    "search": [
+      "shim"
+    ],
+    "requirement": "Use roll-former die cutout pieces as shims per user. Count support/leveling locations and pieces per stack; thickness and stack heights required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-019": {
+    "search": [
+      "vapor.?barrier",
+      "vapour.?barrier",
+      "crawl.?space",
+      "moisture.?barrier"
+    ],
+    "requirement": "Measure crawl-space coverage in SQFT plus specified laps and upturns. Confirm membrane specification and roll coverage.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-046": {
+    "search": [
+      "magnetic.?drill"
+    ],
+    "requirement": "Count or measure Magnetic drill in EA; confirm exact product, pack size and project requirement. For steel bedframe drilling.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-047": {
+    "search": [
+      "annular",
+      "magnetic.?drill.*bit",
+      "mag.?drill.*bit"
+    ],
+    "requirement": "Count or measure Annular cutter / hole-saw set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; specify diameters.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-048": {
+    "search": [
+      "cutting.?fluid"
+    ],
+    "requirement": "Count or measure Cutting fluid in OZ; confirm exact product, pack size and project requirement. Fluid ounces; container size and compatible cutting application required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-001": {
+    "search": [
+      "lifting"
+    ],
+    "requirement": "Confirmed standard: 1 complete four-point lifting set per project; not 4 separate straps.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-002": {
+    "search": [
+      "plate"
+    ],
+    "requirement": "Count exact flat 4x3 plate types; exclude bent plates and unspecified generic plates.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-003": {
+    "search": [
+      "bolt",
+      "rod",
+      "saddle"
+    ],
+    "requirement": "Count floor-to-HSS joints; identify rod/washer/nut assembly and avoid counting bolt patterns as joints.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-004": {
+    "search": [
+      "bolt",
+      "rod",
+      "saddle"
+    ],
+    "requirement": "Count floor-to-HSS joints; identify rod/washer/nut assembly and avoid counting bolt patterns as joints.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-005": {
+    "search": [
+      "bolt",
+      "rod",
+      "saddle"
+    ],
+    "requirement": "Count floor-to-HSS joints; identify rod/washer/nut assembly and avoid counting bolt patterns as joints.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-006": {
+    "search": [
+      "floorclip",
+      "fastener"
+    ],
+    "requirement": "Sum floor connection fasteners; leg fastener types must identify these screws.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-007": {
+    "search": [
+      "froth",
+      "foam",
+      "floor.*joint"
+    ],
+    "requirement": "floor cassette joint length FT x 0.5 IN gap x fill depth IN / 144 = CUFT; Fill the 1/2-inch gaps between floor cassettes before the walls land. Required volume = joint length (FT) x 0.5 (IN) x fill depth (IN) / 144 (CUFT). Confirm joint length, fill depth and product yield.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-025": {
+    "search": [
+      "crane.?rental"
+    ],
+    "requirement": "Count or measure Crane rental in DAY; confirm exact product, pack size and project requirement. Lift plan must specify pick capacity, counterweights, setup and computer configuration.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-028": {
+    "search": [
+      "inch.?right.?angle"
+    ],
+    "requirement": "Count or measure 1/2-inch right-angle impact wrench in EA; confirm exact product, pack size and project requirement. Source: 90 impact gun; confirm drive and clearance.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-008": {
+    "search": [
+      "lifting",
+      "hook"
+    ],
+    "requirement": "Confirmed standard: 2 two-point lifts with custom hooks per project.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-009": {
+    "search": [
+      "wall",
+      "clip",
+      "fastener"
+    ],
+    "requirement": "Count eligible wall joints x 4; classify joint details and screw type first.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-010": {
+    "search": [
+      "temporary.?brac",
+      "bracing.*screw",
+      "4.?inch.*screw"
+    ],
+    "requirement": "temporary brace connections x specified 4-inch screws per connection = EA; Temporary-bracing fasteners. Do not use the former wood-to-metal wall connection count for this item.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-011": {
+    "search": [
+      "4.?x.?4.*angle",
+      "wall.?angle",
+      "threaded.?rod"
+    ],
+    "requirement": "Group with floor threaded connecting rod PAN-003. Confirm nuts per rod/angle and whether hardware is supplied with rods; do not order included nuts twice.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-030": {
+    "search": [
+      "number.?wall.?bottom"
+    ],
+    "requirement": "Count or measure Number 10 wall-bottom-track-to-floor screws in EA; confirm exact product, pack size and project requirement. Confirm length and connection detail; reconcile with other wall connection screws.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-012": {
+    "search": [
+      "brace",
+      "bracing"
+    ],
+    "requirement": "Count temporary 2x4 braces from site bracing layout; permanent framing is excluded.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-013": {
+    "search": [
+      "holdown",
+      "hold.down"
+    ],
+    "requirement": "Count Simpson hold-downs x one complete washer/nut assembly per catalog.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-029": {
+    "search": [
+      "hold.?down.?bolts"
+    ],
+    "requirement": "Count or measure Hold-down bolts in EA; confirm exact product, pack size and project requirement. Washers/nuts already covered by PAN-013; verify factory-supplied hardware.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-014": {
+    "search": [
+      "plate",
+      "wall"
+    ],
+    "requirement": "Count explicitly wall-to-wall plate details; floor plates cannot be reused as this takeoff.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-015": {
+    "search": [
+      "wall",
+      "corner",
+      "foam"
+    ],
+    "requirement": "Foam CUFT = SUM(corner height FT x gap width IN x depth IN / 144); gap geometry required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-034": {
+    "search": [
+      "spare.?froth.?pak"
+    ],
+    "requirement": "Count or measure Spare Froth-Pak spray nozzle in EA; confirm exact product, pack size and project requirement. Match foam system and nozzle type.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-035": {
+    "search": [
+      "foam.?gun.?cleaner"
+    ],
+    "requirement": "Count or measure Foam-gun cleaner / compatible solvent in OZ; confirm exact product, pack size and project requirement. Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection. Fluid ounces.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-031": {
+    "search": [
+      "long.?level.?for"
+    ],
+    "requirement": "Count or measure Long level for panel straightness in EA; confirm exact product, pack size and project requirement. Specify working length.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-032": {
+    "search": [
+      "right.?angle.?driver"
+    ],
+    "requirement": "Count or measure Right-angle driver-bit attachment in EA; confirm exact product, pack size and project requirement. Source: 90 bits; confirm tool/bit configuration.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-037": {
+    "search": [
+      "squeeze.?clamp"
+    ],
+    "requirement": "Count or measure Squeeze clamp in EA; confirm exact product, pack size and project requirement. For truss/board installation; specify capacity.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-038": {
+    "search": [
+      "threaded.*clamp",
+      "wall.*clamp"
+    ],
+    "requirement": "Count or measure Metal clamp in EA; confirm exact product, pack size and project requirement. Confirm clamp style and capacity.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-039": {
+    "search": [
+      "sheet.?metal.?holding"
+    ],
+    "requirement": "Count or measure Sheet-metal holding magnet in EA; confirm exact product, pack size and project requirement. For truss/board installation; specify holding capacity.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-036": {
+    "search": [
+      "site.?cement.?board"
+    ],
+    "requirement": "Count or measure Site cement board (CB) in SQFT; confirm exact product, pack size and project requirement. CB interpreted as cement board from nearby list wording; confirm material and thickness.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-016": {
+    "search": [
+      "truss",
+      "fastener"
+    ],
+    "requirement": "Sum screws from truss connection schedule; members and datum nodes are not screws.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-017": {
+    "search": [
+      "truss",
+      "angle",
+      "clip"
+    ],
+    "requirement": "Count identified truss angles; distinguish wall/floor clips from truss connections.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-018": {
+    "search": [
+      "truss",
+      "stitch"
+    ],
+    "requirement": "Count named truss stitch pieces; distinguish web members, caps and connectors.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Walls",
+      "Floors"
+    ]
+  },
+  "PAN-019": {
+    "search": [
+      "purlin"
+    ],
+    "requirement": "Sum purlin cut lengths in FT; exclude truss chords and generic framing.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-040": {
+    "search": [
+      "cement.?board.?metal"
+    ],
+    "requirement": "Count or measure Cement-board-to-metal screws in EA; confirm exact product, pack size and project requirement. Confirm fastener length, coating and board/steel thickness; distinguish later finish screws.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-020": {
+    "search": [
+      "roof",
+      "slope"
+    ],
+    "requirement": "Sum actual slope build-up areas; roof finish layers are not automatically slope material.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-021": {
+    "search": [
+      "roof",
+      "purlin",
+      "screw"
+    ],
+    "requirement": "Sum roof panel-to-purlin fasteners from attachment details; spacing/type required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-022": {
+    "search": [
+      "roof",
+      "rivet"
+    ],
+    "requirement": "Count rivets at specified roof details; spacing and lap locations required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-023": {
+    "search": [
+      "roof",
+      "joint",
+      "butyl"
+    ],
+    "requirement": "Sum taped seam lengths x tape runs per seam; seam topology and tape scope required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-024": {
+    "search": [
+      "roller"
+    ],
+    "requirement": "Catalog allowance 1 roller; confirm installation method and crew equipment.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Roofs"
+    ]
+  },
+  "PAN-041": {
+    "search": [
+      "large.?panel.?cutting"
+    ],
+    "requirement": "Count or measure Large panel-cutting saw in EA; confirm exact product, pack size and project requirement. Confirm blade, cutting depth and panel compatibility.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-042": {
+    "search": [
+      "angle.?grinder"
+    ],
+    "requirement": "Count or measure Angle grinder in EA; confirm exact product, pack size and project requirement. For roof-panel work; specify wheel type.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-043": {
+    "search": [
+      "aviation.?snips"
+    ],
+    "requirement": "Count or measure Aviation snips in EA; confirm exact product, pack size and project requirement. Shared with rough electrical installation.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "PAN-044": {
+    "search": [
+      "rivet.?gun"
+    ],
+    "requirement": "Count or measure Rivet gun in EA; confirm exact product, pack size and project requirement. Shared with gutter/fascia installation.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-001": {
+    "search": [
+      "12/2",
+      "12-2",
+      "mc.cable"
+    ],
+    "requirement": "Sum routed 12/2 MC cable lengths; circuit length alone does not establish cable type.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-002": {
+    "search": [
+      "mc",
+      "fitting"
+    ],
+    "requirement": "Count specified 3/8 MC terminations; ends and fitting sizes required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-003": {
+    "search": [
+      "10/3",
+      "10-3",
+      "mc.cable"
+    ],
+    "requirement": "Sum routed 10/3 MC cable lengths; gauge and conductor count required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-004": {
+    "search": [
+      "fitting"
+    ],
+    "requirement": "Count 1/2 electrical fittings by type; generic pipe fittings are excluded.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-005": {
+    "search": [
+      "8/3",
+      "8-3",
+      "mc.cable"
+    ],
+    "requirement": "Sum routed 8/3 MC cable lengths; gauge and conductor count required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-006": {
+    "search": [
+      "fitting"
+    ],
+    "requirement": "Count 3/4 electrical fittings by type; termination details required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-007": {
+    "search": [
+      "breaker.panel"
+    ],
+    "requirement": "Count main breaker panel assemblies, excluding smart-home boxes.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-008": {
+    "search": [
+      "fire",
+      "bell",
+      "cable"
+    ],
+    "requirement": "Sum fire-bell circuit routes for specified 12/2 MC cable.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-009": {
+    "search": [
+      "feed",
+      "panel",
+      "circuit"
+    ],
+    "requirement": "Feeder route length x conductor runs; route and conductor specification required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-010": {
+    "search": [
+      "conduit",
+      "feed"
+    ],
+    "requirement": "Sum feeder conduit routes; distinguish conduit from individual conductor length.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-011": {
+    "search": [
+      "feed",
+      "fitting"
+    ],
+    "requirement": "Count feeder fittings at bends/terminations; sizes and routed system required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-012": {
+    "search": [
+      "meter",
+      "shutoff"
+    ],
+    "requirement": "Count meter/shutoff combo panels; excludes water meter equipment.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-013": {
+    "search": [
+      "tesla",
+      "powerwall"
+    ],
+    "requirement": "Sum battery wire routes; equipment count does not establish wire length.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-014": {
+    "search": [
+      "conduit"
+    ],
+    "requirement": "Sum conduit lengths by size/system; exclude feeder and solar runs counted separately.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-015": {
+    "search": [
+      "pex",
+      "fire",
+      "pipe"
+    ],
+    "requirement": "Sum fire PEX routes; pipe material and fire-system identity required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-016": {
+    "search": [
+      "pex",
+      "fire",
+      "fitting"
+    ],
+    "requirement": "Count fire PEX fittings by system and type.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-017": {
+    "search": [
+      "pex",
+      "ring"
+    ],
+    "requirement": "Count crimped fire-system ends x rings per end; joint method required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-018": {
+    "search": [
+      "sprinkler"
+    ],
+    "requirement": "Count actual sprinkler heads; exclude ceiling symbols and cutouts.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-019": {
+    "search": [
+      "riser"
+    ],
+    "requirement": "Count fire riser assemblies; define component boundary to avoid duplicate purchase.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-020": {
+    "search": [
+      "riser"
+    ],
+    "requirement": "Count fire riser assemblies; define component boundary to avoid duplicate purchase.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-021": {
+    "search": [
+      "fire.alarm",
+      "smoke"
+    ],
+    "requirement": "Count specified fire alarm assemblies; smoke detector count is not a sprinkler alarm takeoff.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-022": {
+    "search": [
+      "bell"
+    ],
+    "requirement": "Count fire bells; distinguish detectors and control panels.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-023": {
+    "search": [
+      "hot",
+      "pex",
+      "pipe"
+    ],
+    "requirement": "Sum hot-water PEX lengths with material and hot-water system identity.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-024": {
+    "search": [
+      "hot",
+      "pex",
+      "fitting"
+    ],
+    "requirement": "Count hot-water PEX fittings by system, size and type.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-025": {
+    "search": [
+      "hot",
+      "pex",
+      "ring"
+    ],
+    "requirement": "Count hot-water crimped ends; joint method and port counts required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-026": {
+    "search": [
+      "recirc",
+      "pump"
+    ],
+    "requirement": "Count recirculation pumps; exclude unrelated pumps.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-027": {
+    "search": [
+      "check.valve",
+      "one.way"
+    ],
+    "requirement": "Count check valves from identified hot-water system.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-028": {
+    "search": [
+      "water.heater"
+    ],
+    "requirement": "Count water heaters, not fixtures named as heater cutouts.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-029": {
+    "search": [
+      "water.heater",
+      "flex"
+    ],
+    "requirement": "Count flex-connected heater ports; selected connection method required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-030": {
+    "search": [
+      "water.heater",
+      "pan"
+    ],
+    "requirement": "Count heaters requiring separate drain pans; installation detail required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-031": {
+    "search": [
+      "water.heater",
+      "drain"
+    ],
+    "requirement": "Sum heater drain routes; heater count cannot determine run length.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-032": {
+    "search": [
+      "water.heater",
+      "valve"
+    ],
+    "requirement": "Count heater isolation points by piping detail; number of valves required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-033": {
+    "search": [
+      "hot",
+      "valve"
+    ],
+    "requirement": "Count hot-water push-on valves; connection method and fixture ports required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-034": {
+    "search": [
+      "cold",
+      "pex",
+      "pipe"
+    ],
+    "requirement": "Sum cold-water PEX lengths with system/material identity.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-035": {
+    "search": [
+      "cold",
+      "pex",
+      "fitting"
+    ],
+    "requirement": "Count cold-water fittings by system, size and type.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-036": {
+    "search": [
+      "cold",
+      "pex",
+      "ring"
+    ],
+    "requirement": "Count cold-water crimped ends; joint method required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-037": {
+    "search": [
+      "water",
+      "pipe"
+    ],
+    "requirement": "Sum house main water routes; separate from branch and underground runs.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-038": {
+    "search": [
+      "water",
+      "pipe"
+    ],
+    "requirement": "Sum underground main route; underground scope and route elevations required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-039": {
+    "search": [
+      "backflow"
+    ],
+    "requirement": "Count backflow devices from identified water service.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-040": {
+    "search": [
+      "water.meter"
+    ],
+    "requirement": "Count water meters; electrical meter combo is excluded.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-041": {
+    "search": [
+      "meter.box",
+      "water.meter"
+    ],
+    "requirement": "Count separate water-meter boxes; enclosure/product boundary required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-042": {
+    "search": [
+      "cold",
+      "valve"
+    ],
+    "requirement": "Count cold-water push-on valves; connection specification required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-043": {
+    "search": [
+      "test",
+      "cap",
+      "sewer"
+    ],
+    "requirement": "Count temporary sewer test caps from test-zone plan.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-044": {
+    "search": [
+      "toilet",
+      "elbow"
+    ],
+    "requirement": "Count actual toilet 90 elbows; wall-hung toilet fixtures do not establish elbow geometry.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-046": {
+    "search": [
+      "toilet"
+    ],
+    "requirement": "Count actual toilets x one complete hardware assembly per catalog; exclude plumbing cutouts.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-047": {
+    "search": [
+      "coupling",
+      "sink",
+      "toilet"
+    ],
+    "requirement": "Count 3-inch rubber joints by actual pipe connection size/material.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-048": {
+    "search": [
+      "coupling",
+      "laundry"
+    ],
+    "requirement": "Count 2-inch rubber joints by actual pipe connection size/material.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-049": {
+    "search": [
+      "test",
+      "balloon",
+      "sewer"
+    ],
+    "requirement": "Count reusable sewer test balloons from test-zone plan.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-050": {
+    "search": [
+      "vent",
+      "pipe"
+    ],
+    "requirement": "Sum 2-inch PVC vent routes; verify diameter, PVC material and vent system.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-051": {
+    "search": [
+      "vent",
+      "fitting"
+    ],
+    "requirement": "Count 2-inch PVC vent fittings; distinguish waste and vent fittings.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-052": {
+    "search": [
+      "mini.split"
+    ],
+    "requirement": "Count indoor units x one mounting-hardware assembly per catalog.",
+    "categories": [
+      "Mechanical Equipment",
+      "Ducts",
+      "Duct Accessories",
+      "Pipes",
+      "Pipe Fittings",
+      "Electrical Equipment",
+      "Generic Models"
+    ]
+  },
+  "FIN-053": {
+    "search": [
+      "condensate",
+      "drain"
+    ],
+    "requirement": "Sum actual condensate drain routes, including vertical offsets.",
+    "categories": [
+      "Mechanical Equipment",
+      "Ducts",
+      "Duct Accessories",
+      "Pipes",
+      "Pipe Fittings",
+      "Electrical Equipment",
+      "Generic Models"
+    ]
+  },
+  "FIN-054": {
+    "search": [
+      "branch.box"
+    ],
+    "requirement": "Count HVAC branch boxes; electrical junction boxes are excluded.",
+    "categories": [
+      "Mechanical Equipment",
+      "Ducts",
+      "Duct Accessories",
+      "Pipes",
+      "Pipe Fittings",
+      "Electrical Equipment",
+      "Generic Models"
+    ]
+  },
+  "FIN-055": {
+    "search": [
+      "refrigerant",
+      "line.set"
+    ],
+    "requirement": "Sum specified refrigerant tube runs; distinguish pair length from individual tube length.",
+    "categories": [
+      "Mechanical Equipment",
+      "Ducts",
+      "Duct Accessories",
+      "Pipes",
+      "Pipe Fittings",
+      "Electrical Equipment",
+      "Generic Models"
+    ]
+  },
+  "FIN-056": {
+    "search": [
+      "branch.box",
+      "cable"
+    ],
+    "requirement": "Sum outdoor-to-branch-box power routes with conductor specification.",
+    "categories": [
+      "Mechanical Equipment",
+      "Ducts",
+      "Duct Accessories",
+      "Pipes",
+      "Pipe Fittings",
+      "Electrical Equipment",
+      "Generic Models"
+    ]
+  },
+  "FIN-126": {
+    "search": [
+      "diagonal.?cutters"
+    ],
+    "requirement": "Count or measure Diagonal cutters in EA; confirm exact product, pack size and project requirement. Source: Diagnols.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-127": {
+    "search": [
+      "striking.?flathead.?screwdriver"
+    ],
+    "requirement": "Count or measure Striking flathead screwdriver in EA; confirm exact product, pack size and project requirement. Source specifies hammer-compatible screwdriver.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-128": {
+    "search": [
+      "phillips.?screwdriver"
+    ],
+    "requirement": "Count or measure Phillips screwdriver in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-129": {
+    "search": [
+      "pin.?hammer"
+    ],
+    "requirement": "Count or measure Pin hammer in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-130": {
+    "search": [
+      "small.?torque.?wrench"
+    ],
+    "requirement": "Count or measure Small torque wrench in EA; confirm exact product, pack size and project requirement. For electrical terminations; confirm torque range.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-131": {
+    "search": [
+      "hex.?key.?socket"
+    ],
+    "requirement": "Count or measure Hex-key socket set in EA; confirm exact product, pack size and project requirement. One EA is one complete set.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-132": {
+    "search": [
+      "fish.?tape"
+    ],
+    "requirement": "Count or measure Fish tape in EA; confirm exact product, pack size and project requirement. Specify tape length.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-133": {
+    "search": [
+      "large.?wire.?cutters"
+    ],
+    "requirement": "Count or measure Large wire cutters in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-134": {
+    "search": [
+      "cable.?cutter"
+    ],
+    "requirement": "Count or measure MC cable cutter in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-135": {
+    "search": [
+      "automatic.?wire.?stripper"
+    ],
+    "requirement": "Count or measure Automatic wire stripper in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-136": {
+    "search": [
+      "electrical.?hole.?saw"
+    ],
+    "requirement": "Count or measure Electrical hole-saw set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; separate application from steel annular cutters.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-137": {
+    "search": [
+      "wago.?connector.?for"
+    ],
+    "requirement": "Count or measure WAGO connector for 12 AWG wire in EA; confirm exact product, pack size and project requirement. Confirm model number, conductor range and port count; do not infer compatibility from label alone.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-138": {
+    "search": [
+      "wago.?connector.?for"
+    ],
+    "requirement": "Count or measure WAGO connector for 10 AWG wire in EA; confirm exact product, pack size and project requirement. Confirm model number, conductor range and port count.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-139": {
+    "search": [
+      "polaris.?type.?insulated"
+    ],
+    "requirement": "Count or measure Polaris-type insulated lug in EA; confirm exact product, pack size and project requirement. Confirm model, conductor size range and port count.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-140": {
+    "search": [
+      "tube.?cutter.?lennox"
+    ],
+    "requirement": "Count or measure Tube cutter (Lennox, standard) in EA; confirm exact product, pack size and project requirement. Source brand spelling preserved; confirm manufacturer and cutting range.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-141": {
+    "search": [
+      "large.?tube.?cutter"
+    ],
+    "requirement": "Count or measure Large tube cutter (Lennox) in EA; confirm exact product, pack size and project requirement. Confirm manufacturer and cutting range.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-142": {
+    "search": [
+      "electric.?tube.?cutter"
+    ],
+    "requirement": "Count or measure Electric tube cutter in EA; confirm exact product, pack size and project requirement. Confirm pipe compatibility and cutting range.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-143": {
+    "search": [
+      "thread.?sealant.?loctite"
+    ],
+    "requirement": "Count or measure Thread sealant (Loctite 565) in OZ; confirm exact product, pack size and project requirement. Source-specified product; confirm system compatibility and package measurement basis.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-144": {
+    "search": [
+      "cpvc.?cement.?tyco"
+    ],
+    "requirement": "Count or measure CPVC cement (Tyco red glue) in OZ; confirm exact product, pack size and project requirement. Source-specified product description; confirm exact product and pipe-system compatibility.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-148": {
+    "search": [
+      "water.?pressure.?tester"
+    ],
+    "requirement": "Count or measure Water pressure tester set in EA; confirm exact product, pack size and project requirement. One EA is one set; source requests all sizes, so list adapters by size.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-149": {
+    "search": [
+      "hot.?cold.?water"
+    ],
+    "requirement": "Count or measure Hot/cold water test tie-together slip tee in EA; confirm exact product, pack size and project requirement. Specify tee sizes and test connection detail.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-150": {
+    "search": [
+      "red.?plumbing.?tool"
+    ],
+    "requirement": "Count or measure Red plumbing tool (identify exact tool) in EA; confirm exact product, pack size and project requirement. Original description retained; exact tool name/model required before purchase.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-151": {
+    "search": [
+      "pvc.?primer"
+    ],
+    "requirement": "Count or measure PVC primer in OZ; confirm exact product, pack size and project requirement. Fluid ounces; confirm product compatibility.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-152": {
+    "search": [
+      "pvc.?cement"
+    ],
+    "requirement": "Count or measure PVC cement in OZ; confirm exact product, pack size and project requirement. Fluid ounces; confirm product compatibility.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-157": {
+    "search": [
+      "rough.?box"
+    ],
+    "requirement": "Count or measure AC rough-in box in EA; confirm exact product, pack size and project requirement. Confirm indoor-unit compatibility.",
+    "categories": [
+      "Mechanical Equipment",
+      "Duct Accessories",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-057": {
+    "search": [
+      "breaker.panel"
+    ],
+    "requirement": "One cover per breaker panel is a derived assembly rule; verify covers are not included.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-058": {
+    "search": [
+      "outlet"
+    ],
+    "requirement": "One cover per ordinary indoor box; stacked locations count twice; exclude high-amp/exterior.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-059": {
+    "search": [
+      "outlet"
+    ],
+    "requirement": "One outlet-and-cover assembly per explicitly 30/50 AMP location; keep separate from regular covers.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-060": {
+    "search": [
+      "outlet"
+    ],
+    "requirement": "One weatherproof cover per regular exterior outlet; exclude high-amp assemblies already covered.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-061": {
+    "search": [
+      "circuit",
+      "breaker"
+    ],
+    "requirement": "Count scheduled breakers by poles/type; circuits do not automatically equal individual breakers.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-062": {
+    "search": [
+      "ironridge",
+      "rail"
+    ],
+    "requirement": "Sum specified solar rails; panel count alone cannot establish rail layout.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-063": {
+    "search": [
+      "ironridge",
+      "clip"
+    ],
+    "requirement": "Count end/mid clamps from racking layout and exact product.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-064": {
+    "search": [
+      "solar.panel"
+    ],
+    "requirement": "Count solar panel instances; exclude roof surfaces and generic solar accessories.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-065": {
+    "search": [
+      "solar",
+      "connector"
+    ],
+    "requirement": "Count string connectors from wiring topology; module count is insufficient.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-066": {
+    "search": [
+      "solar",
+      "conduit"
+    ],
+    "requirement": "Sum routed solar conduit runs; keep separate from other conduit.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-067": {
+    "search": [
+      "solar",
+      "penetration"
+    ],
+    "requirement": "Count solar roof penetrations with waterproofing assembly scope.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-068": {
+    "search": [
+      "junction",
+      "solar"
+    ],
+    "requirement": "Count roof junction boxes belonging to solar system.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-069": {
+    "search": [
+      "sprinkler"
+    ],
+    "requirement": "Cover compatibility unresolved for recessed versus concealed heads; head count alone is insufficient.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers"
+    ]
+  },
+  "FIN-070": {
+    "search": [
+      "hot",
+      "flex",
+      "sink"
+    ],
+    "requirement": "Count hot flex-connected ports; fixture assembly internals and hose inclusion required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-071": {
+    "search": [
+      "hot",
+      "escutcheon"
+    ],
+    "requirement": "Count hot-water wall penetrations requiring separate escutcheons.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-072": {
+    "search": [
+      "cold",
+      "flex",
+      "sink"
+    ],
+    "requirement": "Count cold flex-connected ports; distinguish hard-piped ports.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-073": {
+    "search": [
+      "cold",
+      "escutcheon"
+    ],
+    "requirement": "Count cold-water penetrations requiring separate escutcheons.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-074": {
+    "search": [
+      "faucet",
+      "tap"
+    ],
+    "requirement": "Count actual sink faucets; sink bowls may contain factory faucet assemblies.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-075": {
+    "search": [
+      "slip",
+      "adapter"
+    ],
+    "requirement": "Count 1-1/2-inch PVC-to-slip transitions; pipe sizes and joints required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-076": {
+    "search": [
+      "trap",
+      "sink"
+    ],
+    "requirement": "Count actual slip-joint traps; fixture counts do not establish trap type.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-077": {
+    "search": [
+      "slip",
+      "bend"
+    ],
+    "requirement": "Count slip-joint bends from drainage routing.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-078": {
+    "search": [
+      "cleanout"
+    ],
+    "requirement": "Count cleanouts requiring separate covers.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-079": {
+    "search": [
+      "sink",
+      "drain"
+    ],
+    "requirement": "Count bowl drains excluding factory-included strainers; bowl count and supply scope required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-080": {
+    "search": [
+      "slip",
+      "adapter"
+    ],
+    "requirement": "Count remaining slip adapters excluding FIN-075 transitions.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-081": {
+    "search": [
+      "vent",
+      "cap"
+    ],
+    "requirement": "Count vent terminal caps; open plumbing vents may not use caps.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-145": {
+    "search": [
+      "line.?pressure.?test"
+    ],
+    "requirement": "Count or measure Line-pressure test equipment in EA; confirm exact product, pack size and project requirement. One EA is one test-equipment set; test pressure/procedure by responsible installer.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-146": {
+    "search": [
+      "hydrotest.?water.?hose"
+    ],
+    "requirement": "Count or measure Hydrotest water hose in FT; confirm exact product, pack size and project requirement. Water access is a site prerequisite; hose diameter and connection specification required.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-147": {
+    "search": [
+      "hydrotest.?pump.?connection"
+    ],
+    "requirement": "Count or measure Hydrotest pump-connection fittings in EA; confirm exact product, pack size and project requirement. Specify each fitting type, size and model; coordinate with sprinkler consultant.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Sprinklers",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-153": {
+    "search": [
+      "slip.?joint.?tube"
+    ],
+    "requirement": "Count or measure Slip-joint / PE tube cutter in EA; confirm exact product, pack size and project requirement. Classified under finish plumbing by function; confirm cutting range.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-045": {
+    "search": [
+      "toilet",
+      "trim"
+    ],
+    "requirement": "Ambiguous catalog wording: define toilet bottoms/trim product before mapping.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models"
+    ]
+  },
+  "FIN-154": {
+    "search": [
+      "toilet.?bowl"
+    ],
+    "requirement": "Count or measure Toilet bowl in EA; confirm exact product, pack size and project requirement. Confirm model and factory/site supply split.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-155": {
+    "search": [
+      "toilet.?mounting.?rods"
+    ],
+    "requirement": "Count or measure Toilet mounting rods in EA; confirm exact product, pack size and project requirement. Confirm count per toilet and whether included with FIN-046 hardware.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-156": {
+    "search": [
+      "toilet.?connection.?fittings"
+    ],
+    "requirement": "Count or measure Toilet connection fittings in EA; confirm exact product, pack size and project requirement. Specify exact fitting types/sizes; check existing toilet 90 and coupling rows.",
+    "categories": [
+      "Plumbing Fixtures",
+      "Plumbing Equipment",
+      "Pipes",
+      "Pipe Fittings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-158": {
+    "search": [
+      "fan.?cover"
+    ],
+    "requirement": "Count or measure Fan cover in EA; confirm exact product, pack size and project requirement. Source location ambiguous; classified as ventilation finish. Confirm fan model and whether cover is included.",
+    "categories": [
+      "Mechanical Equipment",
+      "Duct Accessories",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-082": {
+    "search": [
+      "door"
+    ],
+    "requirement": "Count doors hosted by exterior-function walls; exclude garage vehicle doors. One sill pan per opening.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-083": {
+    "search": [
+      "door"
+    ],
+    "requirement": "SUM(door count by rough-opening size x (2 x height + width)); exterior host walls, head and two jambs, sill pan separate.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-084": {
+    "search": [
+      "door",
+      "screw"
+    ],
+    "requirement": "Sum frame attachment positions from door installation schedule.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-085": {
+    "search": [
+      "door",
+      "foam"
+    ],
+    "requirement": "SUM(opening joint length x gap width x depth); gap width/depth required.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-086": {
+    "search": [
+      "interior.door"
+    ],
+    "requirement": "Placeholder: define exact interior-door materials before mapping.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-087": {
+    "search": [
+      "window"
+    ],
+    "requirement": "SUM(2 x (rough width + rough height) x sides); user rule interior wall = 2 sides, exterior wall = 1; exclude skylights.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-088": {
+    "search": [
+      "window",
+      "screw"
+    ],
+    "requirement": "Sum attachment positions per window schedule; spacing and edge conditions required.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-089": {
+    "search": [
+      "window",
+      "sealant"
+    ],
+    "requirement": "Sealant FL OZ = joint length FT x bead area SQIN x 12 / 1.8046875; bead dimensions required.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-090": {
+    "search": [
+      "window",
+      "foam"
+    ],
+    "requirement": "SUM(perimeter FT x gap width IN x depth IN / 144); gap dimensions required.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-159": {
+    "search": [
+      "window.?screen"
+    ],
+    "requirement": "Count or measure Window screen in EA; confirm exact product, pack size and project requirement. Match opening and window model; check factory inclusion.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-160": {
+    "search": [
+      "window.?hardware.?and"
+    ],
+    "requirement": "Count or measure Window hardware and handle set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; check factory inclusion.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-161": {
+    "search": [
+      "window.?trim.?attachment"
+    ],
+    "requirement": "Count or measure Window-trim attachment hardware in EA; confirm exact product, pack size and project requirement. Confirm exact attachment system and fasteners.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-162": {
+    "search": [
+      "window.?shade"
+    ],
+    "requirement": "Count or measure Window shade in EA; confirm exact product, pack size and project requirement. Include setup/settings in installation scope; verify shade sizes and controls.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-091": {
+    "search": [
+      "vanity",
+      "cabinet"
+    ],
+    "requirement": "Count complete vanity cabinets; countertops and sink modules are not equivalent.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Generic Models",
+      "Plumbing Fixtures"
+    ]
+  },
+  "FIN-092": {
+    "search": [
+      "vanity",
+      "clip"
+    ],
+    "requirement": "Count vanity attachment points x clips per point; attachment design required.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Generic Models",
+      "Plumbing Fixtures"
+    ]
+  },
+  "FIN-093": {
+    "search": [
+      "island"
+    ],
+    "requirement": "Count complete kitchen islands; grouping of base cabinets required.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Generic Models",
+      "Plumbing Fixtures"
+    ]
+  },
+  "FIN-094": {
+    "search": [
+      "closet"
+    ],
+    "requirement": "Placeholder: define exact closet materials before mapping.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Generic Models",
+      "Plumbing Fixtures"
+    ]
+  },
+  "FIN-163": {
+    "search": [
+      "cabinet.?lifter"
+    ],
+    "requirement": "Count or measure Cabinet lifter in EA; confirm exact product, pack size and project requirement. Confirm load rating and lifting range.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-095": {
+    "search": [
+      "smart",
+      "wire"
+    ],
+    "requirement": "Sum routed smart-home cable lengths by cable specification.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-096": {
+    "search": [
+      "low.voltage",
+      "wire"
+    ],
+    "requirement": "Sum low-voltage power runs, separate from smart-home signal wire.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-097": {
+    "search": [
+      "routing",
+      "conduit"
+    ],
+    "requirement": "Sum dedicated wire-routing lengths; product and overlap scope required.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-098": {
+    "search": [
+      "connector",
+      "smart"
+    ],
+    "requirement": "Count low-voltage terminations by connector type.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models"
+    ]
+  },
+  "FIN-164": {
+    "search": [
+      "cable.?tie"
+    ],
+    "requirement": "Count or measure Cable tie in EA; confirm exact product, pack size and project requirement. Quantity in individual ties; bundle/pack size in purchasing specification.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-165": {
+    "search": [
+      "wire.?routing.?magnet"
+    ],
+    "requirement": "Count or measure Wire-routing magnet in EA; confirm exact product, pack size and project requirement. Confirm whether pulling aid or permanent retention magnet.",
+    "categories": [
+      "Electrical Fixtures",
+      "Electrical Equipment",
+      "Electrical Circuits",
+      "Conduits",
+      "Conduit Fittings",
+      "Cable Trays",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-099": {
+    "search": [
+      "ceiling",
+      "garage"
+    ],
+    "requirement": "Sum gypsum ceiling area spatially matched to GARAGE room; exclude stretch ceiling.",
+    "categories": [
+      "Ceilings",
+      "Rooms"
+    ]
+  },
+  "FIN-100": {
+    "search": [
+      "garage.door"
+    ],
+    "requirement": "Placeholder: define garage-door installation materials before mapping.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models"
+    ]
+  },
+  "FIN-166": {
+    "search": [
+      "drywall.?screws"
+    ],
+    "requirement": "Count or measure Drywall screws in EA; confirm exact product, pack size and project requirement. Specify length, board thickness and framing substrate.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-167": {
+    "search": [
+      "forklift.?rental.?for"
+    ],
+    "requirement": "Count or measure Forklift rental for garage-door handling in DAY; confirm exact product, pack size and project requirement. Confirm capacity, reach and access; coordinate door handling plan.",
+    "categories": [
+      "Doors",
+      "Windows",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-101": {
+    "search": [
+      "sand",
+      "level"
+    ],
+    "requirement": "Area x fill depth x bulk density; survey depth and material density required.",
+    "categories": [
+      "Floors",
+      "Generic Models"
+    ]
+  },
+  "FIN-102": {
+    "search": [
+      "self.level",
+      "struco"
+    ],
+    "requirement": "Area x specified thickness / product coverage x bag weight; product yield required.",
+    "categories": [
+      "Floors",
+      "Generic Models"
+    ]
+  },
+  "FIN-103": {
+    "search": [
+      "floor",
+      "screw"
+    ],
+    "requirement": "Count diagnosed floor-creak repair points x screws per repair.",
+    "categories": [
+      "Floors",
+      "Generic Models"
+    ]
+  },
+  "FIN-104": {
+    "search": [
+      "rubber",
+      "underlay"
+    ],
+    "requirement": "Sum actual rubber-underlayment layer area; finish area alone does not prove underlayment.",
+    "categories": [
+      "Floors",
+      "Generic Models"
+    ]
+  },
+  "FIN-105": {
+    "search": [
+      "wood.floor",
+      "floorboard"
+    ],
+    "requirement": "Sum finished floor top-face area; imported solids require validated area, not total surface area.",
+    "categories": [
+      "Floors",
+      "Generic Models"
+    ]
+  },
+  "FIN-168": {
+    "search": [
+      "large.?floor.?sander"
+    ],
+    "requirement": "Count or measure Large floor sander in EA; confirm exact product, pack size and project requirement. Confirm sander type and working width.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-169": {
+    "search": [
+      "large.?floor.?grinder"
+    ],
+    "requirement": "Count or measure Large floor grinder in EA; confirm exact product, pack size and project requirement. Distinct from roof-panel angle grinder.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-170": {
+    "search": [
+      "concrete.?grinding.?disc"
+    ],
+    "requirement": "Count or measure Concrete grinding disc in EA; confirm exact product, pack size and project requirement. Source: Cement Disc; confirm diameter and grinder compatibility.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-171": {
+    "search": [
+      "heavy.?duty.?scissors"
+    ],
+    "requirement": "Count or measure Heavy-duty scissors in EA; confirm exact product, pack size and project requirement. ",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-172": {
+    "search": [
+      "floorboard.?sheet.?cutter"
+    ],
+    "requirement": "Count or measure Floorboard / sheet cutter in EA; confirm exact product, pack size and project requirement. Confirm flooring material and cutter configuration.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-106": {
+    "search": [
+      "simpson",
+      "angle",
+      "clip"
+    ],
+    "requirement": "Count Simpson angle clips in truss finish scope; generic clip names are insufficient.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Floors",
+      "Walls",
+      "Ceilings"
+    ]
+  },
+  "FIN-107": {
+    "search": [
+      "cement.board",
+      "concrete.board"
+    ],
+    "requirement": "Sum board area in truss finish scope; floor/deck cement board is excluded.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Floors",
+      "Walls",
+      "Ceilings"
+    ]
+  },
+  "FIN-108": {
+    "search": [
+      "truss",
+      "screw"
+    ],
+    "requirement": "Sum finish attachment points from board fastening pattern.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Floors",
+      "Walls",
+      "Ceilings"
+    ]
+  },
+  "FIN-109": {
+    "search": [
+      "truss",
+      "foam"
+    ],
+    "requirement": "Sum truss-area void volumes; joint geometry and foam coverage required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Floors",
+      "Walls",
+      "Ceilings"
+    ]
+  },
+  "FIN-110": {
+    "search": [
+      "roof",
+      "trim"
+    ],
+    "requirement": "Sum identified roof edge trim runs with profile/lap schedule.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-111": {
+    "search": [
+      "gutter",
+      "fascia",
+      "rivet"
+    ],
+    "requirement": "Count rivets from trim joint details and fastening spacing.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-112": {
+    "search": [
+      "s.5",
+      "clamp"
+    ],
+    "requirement": "Count S-5 clamps from attachment plan; roof panel count is insufficient.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-113": {
+    "search": [
+      "gutter",
+      "fascia",
+      "clip"
+    ],
+    "requirement": "Count trim angles at actual attachment locations.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-114": {
+    "search": [
+      "gutter",
+      "fascia",
+      "screw"
+    ],
+    "requirement": "Sum gutter/fascia screw positions from attachment spacing.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-115": {
+    "search": [
+      "gutter"
+    ],
+    "requirement": "Sum instance Length for gutter elements in FT.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-116": {
+    "search": [
+      "fascia"
+    ],
+    "requirement": "Sum fascia profile run lengths; generic roof perimeter may include non-fascia edges.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-117": {
+    "search": [
+      "soffit",
+      "clip"
+    ],
+    "requirement": "Count soffit attachment positions x clips per position.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-118": {
+    "search": [
+      "soffit"
+    ],
+    "requirement": "Sum soffit panel coverage area; exclude roofs and interior ceilings.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Structural Connections"
+    ]
+  },
+  "FIN-173": {
+    "search": [
+      "chop.?saw"
+    ],
+    "requirement": "Count or measure Chop saw in EA; confirm exact product, pack size and project requirement. Specify blade suitable for trim material.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-174": {
+    "search": [
+      "circular.?saw"
+    ],
+    "requirement": "Count or measure Circular saw in EA; confirm exact product, pack size and project requirement. Source: SkilSaw; specify suitable blade.",
+    "categories": [
+      "Roofs",
+      "Gutters",
+      "Fascias",
+      "Soffits",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-119": {
+    "search": [
+      "stretch",
+      "strech",
+      "ceiling"
+    ],
+    "requirement": "Sum stretch-ceiling attachment boundary runs; ceiling area does not give perimeter/profile intersections.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-120": {
+    "search": [
+      "led.profile"
+    ],
+    "requirement": "Sum measured Light Strip Length for modeled LED profiles; exclude symbolic visibility length.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-121": {
+    "search": [
+      "downlight"
+    ],
+    "requirement": "One ceiling circle per modeled recessed downlight; verify ceiling installation scope.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-122": {
+    "search": [
+      "sprinkler"
+    ],
+    "requirement": "One ceiling circle per sprinkler head; verify ceiling installation scope.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-123": {
+    "search": [
+      "glue"
+    ],
+    "requirement": "Count glued rings x adhesive usage per ring; product consumption required.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-124": {
+    "search": [
+      "heat.gun"
+    ],
+    "requirement": "Catalog allowance 1 heat gun; crew equipment applicability required.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-125": {
+    "search": [
+      "propane"
+    ],
+    "requirement": "Burn rate LB/hour x operating hours; equipment and work duration required.",
+    "categories": [
+      "Ceilings",
+      "Lighting Fixtures",
+      "Sprinklers",
+      "Generic Models"
+    ]
+  },
+  "FIN-175": {
+    "search": [
+      "solid.?surface.?touch"
+    ],
+    "requirement": "Count or measure Solid-surface touch-up kit in EA; confirm exact product, pack size and project requirement. One EA is one kit; confirm contents and finish match.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-176": {
+    "search": [
+      "solid.?surface.?adhesive"
+    ],
+    "requirement": "Count or measure Solid-surface adhesive in OZ; confirm exact product, pack size and project requirement. Confirm compatible adhesive, color and package measurement basis.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-177": {
+    "search": [
+      "grit.?sanding.?paper"
+    ],
+    "requirement": "Count or measure 60-grit sanding paper in EA; confirm exact product, pack size and project requirement. Specify sheet/disc dimensions; one EA is one sheet/disc.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-178": {
+    "search": [
+      "grit.?sanding.?paper"
+    ],
+    "requirement": "Count or measure 120-grit sanding paper in EA; confirm exact product, pack size and project requirement. Specify sheet/disc dimensions; one EA is one sheet/disc.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-179": {
+    "search": [
+      "grit.?sanding.?paper"
+    ],
+    "requirement": "Count or measure 220-grit sanding paper in EA; confirm exact product, pack size and project requirement. Specify sheet/disc dimensions; one EA is one sheet/disc.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-180": {
+    "search": [
+      "hot.?glue.?sticks"
+    ],
+    "requirement": "Count or measure Hot-glue sticks in EA; confirm exact product, pack size and project requirement. Specify diameter, length and formulation.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-181": {
+    "search": [
+      "solid.?surface.?sander"
+    ],
+    "requirement": "Count or measure Solid-surface sander in EA; confirm exact product, pack size and project requirement. Distinct finishing application from large floor sander.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-182": {
+    "search": [
+      "hot.?glue.?gun"
+    ],
+    "requirement": "Count or measure Hot-glue gun in EA; confirm exact product, pack size and project requirement. Match glue-stick diameter.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-183": {
+    "search": [
+      "manual.?suction.?cup"
+    ],
+    "requirement": "Count or measure Manual suction cup lifter in EA; confirm exact product, pack size and project requirement. Confirm material compatibility and load rating.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FIN-184": {
+    "search": [
+      "electric.?suction.?cup"
+    ],
+    "requirement": "Count or measure Electric suction cup lifter in EA; confirm exact product, pack size and project requirement. Confirm material compatibility and load rating.",
+    "categories": [
+      "Casework",
+      "Furniture",
+      "Floors",
+      "Walls",
+      "Ceilings",
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  }
+}

@@ -1,3 +1,41 @@
+// Stable display sections. Keep existing numbers when adding work categories.
+export const CATEGORY_SECTIONS = Object.freeze([
+  ["1.1", "Foundation", "Site Setup and Support", "Sitework"],
+  ["1.2", "Foundation", "Helical Piles", "Structural"],
+  ["1.3", "Foundation", "Steel Bedframe", "Structural"],
+  ["1.4", "Panels", "Floors", "Structural"],
+  ["1.5", "Panels", "Walls", "Structural"],
+  ["2.1", "Panels", "Floors", "Structural"],
+  ["2.2", "Panels", "Walls", "Structural"],
+  ["2.3", "Panels", "Trusses", "Structural"],
+  ["2.4", "Panels", "Roof Panels", "Building Envelope"],
+  ["2.5", "Finishing", "Rough MEP", "Electrical"],
+  ["2.6", "Finishing", "Rough MEP", "Fire Protection"],
+  ["2.7", "Finishing", "Rough MEP", "Plumbing"],
+  ["2.8", "Finishing", "Rough MEP", "Mechanical"],
+  ["2.9", "Finishing", "Low Voltage", "Electrical"],
+  ["3.1", "Finishing", "Finish MEP", "Electrical"],
+  ["3.2", "Finishing", "Finish MEP", "Fire Protection"],
+  ["3.3", "Finishing", "Finish MEP", "Plumbing"],
+  ["3.4", "Finishing", "Windows and Doors", "Doors & Windows"],
+  ["3.5", "Finishing", "Cabinets", "Interior Finishes"],
+  ["3.6", "Finishing", "Low Voltage", "Electrical"],
+  ["3.7", "Finishing", "General", "Interior Finishes"],
+  ["3.8", "Finishing", "General", "Doors & Windows"],
+  ["3.9", "Finishing", "Flooring", "Interior Finishes"],
+  ["3.10", "Finishing", "Truss Area Finish", "Interior Finishes"],
+  ["3.11", "Finishing", "Gutter / Fascia", "Building Envelope"],
+  ["3.12", "Finishing", "Ceiling", "Interior Finishes"],
+  ["3.14", "Finishing", "Solid Surface", "Interior Finishes"],
+  ["3.15", "Finishing", "Finish MEP", "Mechanical"],
+]);
+
+export function categorySectionNumber(deliveryStage, phase, workArea, category) {
+  const section = CATEGORY_SECTIONS.find(([number, p, w, c]) =>
+    number.split(".")[0] === String(deliveryStage) && p === phase && w === workArea && c === category);
+  return section ? section[0] : "Unnumbered";
+}
+
 export const PHASE_HEADERS = Object.freeze([
   "Work Area", "Category", "Kit ID", "Line ID", "Item ID", "Scope", "Item", "Specification", "Unit", "Owner",
   "Source Mode", "Input Key", "Source Value", "Multiplier", "Fixed Qty", "Manual Base Qty", "Calculation",
@@ -21,6 +59,7 @@ export const ITEM_HEADERS = Object.freeze([
 export const BOM_LINE_HEADERS = Object.freeze([
   "Line ID", "Item ID", "Phase", "Work Area", "Category", "Kit ID", "Scope", "Line Notes", "System", "Delivery Stage",
   "Site Team", "Team Scope",
+  "Catalog ID", "Category Path",
 ]);
 
 export const RULE_HEADERS = Object.freeze([
@@ -79,10 +118,21 @@ export function phaseRowFormulas(row, inputStartRow = 2, inputEndRow = 1001, pha
   const linePhase = lineLookup("C");
   const specificationApproved = itemLookup("D");
   const ruleStatus = ruleLookup("J");
+  const n = (key) => `TEXT($${c[key]}${row},"0.########")`;
+  const calculationSteps = [
+    `IF(${modeRef}="FIXED","Fixed "&${n("fixedQty")},IF(${modeRef}="MANUAL","Manual "&${n("manualBaseQty")},SUBSTITUTE($${c.inputKey}${row},"_"," ")&": "&${n("sourceValue")}&" x "&${n("multiplier")}))&" = "&${n("requiredQty")}&" "&${unitRef}&" required"`,
+    `"Spare = round up("&${n("requiredQty")}&" x "&TEXT($${c.sparePercent}${row},"0.####%")&", increment "&${n("increment")}&") = "&${n("spareQty")}`,
+    `"Kit = round up(MAX("&${n("requiredQty")}&" + "&${n("spareQty")}&" spare + "&${n("manualExtra")}&" extra, minimum "&${n("minimumKitQty")}&"), increment "&${n("increment")}&") = "&${n("kitDemand")}&" "&${unitRef}`,
+    `"Net = MAX(0, "&${n("totalItemDemand")}&" all kits + "&TEXT(${procurementLookup("M")},"0.########")&" stock - "&${n("onHand")}&" on hand - "&${n("alreadyCommitted")}&" committed) = "&${n("netNeed")}`,
+    `IF(OR(NOT(ISNUMBER($${c.packSize}${row})),$${c.packSize}${row}<=0),"Order unavailable: enter a positive pack size",IF($${c.netNeed}${row}=0,"Order = 0 (no net need)","Order = round up(MAX("&${n("netNeed")}&", minimum "&${n("minimumOrderQty")}&"), pack "&${n("packSize")}&") = "&${n("orderQty")}&" "&${unitRef}))`,
+    `"Order once per Item ID across all phases"`,
+    `IF(OR(NOT(ISNUMBER($${c.unitCost}${row})),$${c.unitCost}${row}<0),"Cost unavailable: enter a non-negative unit cost", "Cost = "&${n("orderQty")}&" x "&${n("unitCost")}&" = "&TEXT($${c.extendedCost}${row},"0.00"))`,
+    `IF(OR($${c.review}${row}<>"",${procurementLookup("X")}<>"",COUNTIF('Import Audit'!$D$5:$D$1004,"<>")>0),"PREVIEW ONLY: resolve Needs Review / Import Audit before buying","")`,
+  ];
   const reviewBody = `TEXTJOIN("; ",TRUE,IF(OR($${c.lineId}${row}="",$${c.itemId}${row}="",$${c.item}${row}="",$${c.unit}${row}="",$${c.owner}${row}=""),"Missing line or item information",""),IF(OR(${specificationApproved}<>TRUE,LEFT($${c.specification}${row},3)="TBD"),"Specification needs approval",""),IF($${c.owner}${row}="Unassigned","Owner needs assignment",""),IF($${c.status}${row}="","Status required",""),IF(AND(OR(${modeRef}="DIRECT",${modeRef}="CALCULATED"),$${c.inputKey}${row}=""),"Missing input key",""),IF(AND(OR(${modeRef}="DIRECT",${modeRef}="CALCULATED"),${matchingInputCount}=0),"Input not supplied with expected unit for active project/revision",""),IF(OR(AND(${modeRef}="MANUAL",OR(NOT(ISNUMBER($${c.manualBaseQty}${row})),$${c.manualBaseQty}${row}<0)),NOT(ISNUMBER($${c.manualExtra}${row})),$${c.manualExtra}${row}<0),"Manual quantities must be non-negative numbers",""),IF(AND(${modeRef}="MANUAL",$${c.manualBaseQty}${row}=0,$${c.status}${row}<>"Not Required"),"Manual quantity required or mark Not Required",""),IF(AND($${c.manualExtra}${row}>0,$${c.notes}${row}=""),"Manual extra needs a reason",""),IF(OR($${c.multiplier}${row}<0,$${c.fixedQty}${row}<0,$${c.sparePercent}${row}<0,$${c.increment}${row}<=0,$${c.minimumKitQty}${row}<0),"Calculation assumptions are invalid",""),IF($${c.scope}${row}="FACTORY","Factory-only item",""),IF(${ruleStatus}<>"APPROVED","Calculation rule needs approval",""),IF(${linePhase}<>"${escapeFormulaText(phaseName)}","Line belongs on different phase tab",""))`;
 
   return {
-    stage: `=${lineLookup("D")}`,
+    stage: `=IFERROR(VLOOKUP(${lineLookup("J")}&"|"&${lineLookup("C")}&"|"&${lineLookup("D")}&"|"&${lineLookup("E")},'Template Settings'!$M$4:$N$100,2,FALSE),"Unnumbered")&" "&${lineLookup("D")}`,
     category: `=${lineLookup("E")}`,
     kitId: `=${lineLookup("F")}`,
     itemId: `=${lineLookup("B")}`,
@@ -96,7 +146,6 @@ export function phaseRowFormulas(row, inputStartRow = 2, inputEndRow = 1001, pha
     sourceValue: `=IF(OR(${modeRef}="DIRECT",${modeRef}="CALCULATED"),IFERROR(SUMIFS(${inputValues},${inputKeys},$${c.inputKey}${row},${inputUnits},${expectedInputUnit},${schemaIdRange},${expectedSchemaId},${schemaRange},${expectedSchema},${projectRange},${activeProject},${revisionRange},${activeRevision}),0),0)`,
     multiplier: `=${ruleLookup("E")}`,
     fixedQty: `=${ruleLookup("F")}`,
-    calculation: `=IF(${modeRef}="FIXED","Fixed "&TEXT($${c.fixedQty}${row},"0.##")&" "&${unitRef},IF(${modeRef}="MANUAL","Manual "&TEXT($${c.manualBaseQty}${row},"0.##")&" "&${unitRef},IF($${c.inputKey}${row}="","Missing input key",TEXT(${sourceRef},"0.##")&" × "&TEXT($${c.multiplier}${row},"0.##")&IF($${c.sparePercent}${row}>0," + "&TEXT($${c.sparePercent}${row},"0.0%")&" spare","")&IF($${c.minimumKitQty}${row}>0,"; min kit "&TEXT($${c.minimumKitQty}${row},"0.##"),""))))`,
     requiredQty: `=MAX(0,IF(${modeRef}="FIXED",$${c.fixedQty}${row},IF(${modeRef}="MANUAL",$${c.manualBaseQty}${row},${sourceRef}*$${c.multiplier}${row})))`,
     sparePercent: `=${ruleLookup("G")}`,
     spareQty: `=IF(OR($${c.requiredQty}${row}="",$${c.increment}${row}<=0),0,CEILING(MAX(0,$${c.requiredQty}${row}*$${c.sparePercent}${row}),$${c.increment}${row}))`,
@@ -121,6 +170,8 @@ export function phaseRowFormulas(row, inputStartRow = 2, inputEndRow = 1001, pha
     deliveryStage: `=${lineLookup("J")}`,
     siteTeam: `=${lineLookup("K")}`,
     teamScope: `=${lineLookup("L")}`,
+    // Keep the explanation beside Required Qty, using the same calculated cells.
+    calculation: `=TEXTJOIN(CHAR(10),TRUE,${calculationSteps.join(",")})`,
   };
 }
 

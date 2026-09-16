@@ -1,0 +1,25 @@
+{
+  "sourceFile": "Neovi_560 Franklin_00003_Shop Drawing.neovi-model.json",
+  "exportElementCount": 128660,
+  "purpose": "Sample arithmetic regression only; not a complete roof takeoff or approved purchasing quantity",
+  "rows": [
+    {
+      "sourceReference": "host:a81bd13a-86a0-46bf-ae17-e5b9367f1ac9-009cc091",
+      "value": 3148.9659522312145,
+      "unit": "SQFT",
+      "type": "Roof 1"
+    },
+    {
+      "sourceReference": "host:bc658e8c-eccc-484d-8c92-e5cf818aaa01-00ac6b9f",
+      "value": 0.32231472015199186,
+      "unit": "SQFT",
+      "type": "Roofs 2"
+    },
+    {
+      "sourceReference": "host:bc658e8c-eccc-484d-8c92-e5cf818aaa01-00ac725b",
+      "value": 55.57068569979738,
+      "unit": "SQFT",
+      "type": "Roofs 3"
+    }
+  ]
+}

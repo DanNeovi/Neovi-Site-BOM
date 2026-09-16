@@ -1,0 +1,10 @@
+// Run only the repository's tests, not copies in generated delivery folders.
+import fs from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+const directory = new URL("../test/", import.meta.url);
+const files = (await fs.readdir(directory)).filter(name => name.endsWith(".test.mjs")).sort();
+if (!files.length) throw new Error("No unit tests found");
+const result = spawnSync(process.execPath, ["--test", ...files.map(name => fileURLToPath(new URL(name, directory)))], { stdio: "inherit" });
+if (result.error) throw result.error;
+process.exitCode = result.status ?? 1;

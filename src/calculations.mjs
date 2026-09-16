@@ -1,7 +1,5 @@
 import { SOURCE_MODES } from "./template-model.mjs";
 
-const EPSILON = 1e-9;
-
 export function roundUpTo(value, increment = 1) {
   const numericValue = Number(value);
   const numericIncrement = Number(increment);
@@ -10,7 +8,13 @@ export function roundUpTo(value, increment = 1) {
     throw new RangeError(`Increment must be a positive number: ${increment}`);
   }
   if (numericValue <= 0) return 0;
-  return Math.ceil((numericValue - EPSILON) / numericIncrement) * numericIncrement;
+  const ratio = numericValue / numericIncrement;
+  const nearest = Math.round(ratio);
+  // Correct only binary floating-point noise at a positive multiple. A small
+  // positive demand must never round down to zero or lose a real extra pack.
+  const multiple = nearest > 0 && Math.abs(ratio - nearest) <= Number.EPSILON * Math.abs(ratio)
+    ? nearest : Math.ceil(ratio);
+  return multiple * numericIncrement;
 }
 
 export function calculateBomLine(line, projectInputMap, projectFields = {}) {
@@ -71,7 +75,7 @@ export function calculateBomLine(line, projectInputMap, projectFields = {}) {
     ruleSpareQty,
     manualExtra,
     kitDemandQty,
-    calculation: formatCalculation(line, { sourceValue, manualBaseQty, requiredQty, ruleSpareQty, kitDemandQty }),
+    calculation: formatCalculation(line, { sourceValue, manualBaseQty, manualExtra, requiredQty, ruleSpareQty, kitDemandQty }),
     issues,
   };
 }
@@ -91,8 +95,8 @@ export function calculateProcurementItem(item, lineResults, projectFields = {}) 
   const targetStock = nonNegative(projectFields.targetStock ?? item.targetStockQty);
   const netNeed = Math.max(0, totalKitDemand + targetStock - onHand - alreadyCommitted);
   const minimumOrderQty = nonNegative(projectFields.minimumOrderQty ?? item.minimumOrderQty);
-  const packSize = positive(projectFields.packSize ?? item.packSize, 1);
-  const orderQty = netNeed === 0 ? 0 : roundUpTo(Math.max(netNeed, minimumOrderQty), packSize);
+  const packSize = positive(projectFields.packSize ?? item.packSize, 0);
+  const orderQty = netNeed === 0 || packSize === 0 ? 0 : roundUpTo(Math.max(netNeed, minimumOrderQty), packSize);
   const unitCost = nullableNonNegative(projectFields.unitCost ?? item.unitCost);
   const issues = reviewProcurementItem(item, {
     ...projectFields,
@@ -124,7 +128,7 @@ export function calculateProcurementItem(item, lineResults, projectFields = {}) 
     minimumOrderQty,
     orderQty,
     unitCost,
-    extendedCost: unitCost === null ? null : orderQty * unitCost,
+    extendedCost: orderQty === 0 ? 0 : unitCost === null ? null : orderQty * unitCost,
     issues,
   };
 }
@@ -186,9 +190,8 @@ function reviewProcurementItem(item, fields = {}) {
     if (!item.partNumber) issues.push("Part number required");
   }
   if (fields.orderQty > 0 && fields.unitCost === null) issues.push("Unit cost required");
-  if (Number(fields.rawOnHand ?? fields.onHand ?? 0) < 0
-    || Number(fields.rawAlreadyCommitted ?? fields.alreadyCommitted ?? 0) < 0) {
-    issues.push("Inventory quantities cannot be negative");
+  if (![fields.rawOnHand, fields.rawAlreadyCommitted].every(value => Number.isFinite(value) && value >= 0)) {
+    issues.push("Inventory quantities must be non-negative numbers");
   }
   if (!Number.isFinite(Number(fields.rawTargetStock)) || Number(fields.rawTargetStock) < 0) issues.push("Target stock cannot be negative");
   if (!Number.isFinite(Number(fields.rawPackSize)) || Number(fields.rawPackSize) <= 0) issues.push("Pack size must be positive");
@@ -202,17 +205,13 @@ function reviewProcurementItem(item, fields = {}) {
 
 function formatCalculation(line, values) {
   const unit = line.unit ?? "";
-  if (line.sourceMode === "FIXED") return `Fixed ${formatNumber(line.fixedQty)} ${unit}`.trim();
-  if (line.sourceMode === "MANUAL") return `Manual ${formatNumber(values.manualBaseQty)} ${unit}`.trim();
-
-  const parts = [
-    `${formatNumber(values.sourceValue)} ${humanizeKey(line.inputKey)}`,
-    `× ${formatNumber(line.multiplier)}`,
-  ];
-  if (Number(line.sparePercent) > 0) parts.push(`+ ${formatPercent(line.sparePercent)} spare`);
-  if (Number(line.minimumKitQty) > 0) parts.push(`min kit ${formatNumber(line.minimumKitQty)}`);
-  parts.push(`= ${formatNumber(values.kitDemandQty)} ${unit}`);
-  return parts.join(" ").trim();
+  const n = formatNumber;
+  const base = line.sourceMode === "FIXED" ? `Fixed ${n(line.fixedQty)}`
+    : line.sourceMode === "MANUAL" ? `Manual ${n(values.manualBaseQty)}`
+      : `${n(values.sourceValue)} ${humanizeKey(line.inputKey)} × ${n(line.multiplier)}`;
+  return `${base} = ${n(values.requiredQty)} ${unit} required; `
+    + `Spare = round up(${n(values.requiredQty)} × ${formatPercent(line.sparePercent)}, increment ${n(line.quantityIncrement)}) = ${n(values.ruleSpareQty)}; `
+    + `Kit = round up(MAX(${n(values.requiredQty)} + ${n(values.ruleSpareQty)} spare + ${n(values.manualExtra)} extra, minimum ${n(line.minimumKitQty)}), increment ${n(line.quantityIncrement)}) = ${n(values.kitDemandQty)} ${unit}`;
 }
 
 function nonNegative(value) {
@@ -229,7 +228,7 @@ function numericOrNaN(value) {
 function nullableNonNegative(value) {
   if (value === undefined || value === null || value === "") return null;
   const numeric = Number(value);
-  return Number.isFinite(numeric) ? Math.max(0, numeric) : null;
+  return Number.isFinite(numeric) && numeric >= 0 ? numeric : null;
 }
 
 function positive(value, fallback) {

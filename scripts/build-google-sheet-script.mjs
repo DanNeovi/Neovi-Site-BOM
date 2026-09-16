@@ -20,7 +20,7 @@ const model = args.snapshot
   : await loadTemplateConfig(configPath);
 const { config, lines, items, warnings } = model;
 const outputPath = path.resolve(
-  args.output ?? `outputs/site-bom-v${config.settings.templateVersion}/Neovi-Site-BOM-Builder.gs`,
+  args.output ?? `outputs/NeoviBOM/05-Google-Sheet/Neovi-Site-BOM-Builder.gs`,
 );
 let normalizedProjectInputs = [];
 if (args.inputs) {

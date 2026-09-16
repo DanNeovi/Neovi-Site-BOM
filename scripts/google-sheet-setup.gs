@@ -56,7 +56,7 @@ function setupSiteBomTemplate_(options) {
 
   for (const [sheetName, a1] of [
     ["Items", "A1:N3"],
-    ["BOM Lines", "A1:L3"],
+    ["BOM Lines", "A1:N3"],
     ["Rules", "A1:K3"],
     ["Import Audit", "A1:D1004"],
   ]) {
@@ -64,7 +64,7 @@ function setupSiteBomTemplate_(options) {
     protectStrict_(sheet.getRange(a1), `${SITE_BOM_PROTECTION_PREFIX}: ${sheetName} ${a1}`);
   }
 
-  for (const [sheetName, columnCount] of [["Items", 14], ["BOM Lines", 12], ["Rules", 11]]) {
+  for (const [sheetName, columnCount] of [["Items", 14], ["BOM Lines", BOM_LINE_HEADERS.length], ["Rules", 11]]) {
     const sheet = requiredSheet_(spreadsheet, sheetName);
     const lastRow = Math.max(4, lastDataRow_(sheet, 1));
     const a1 = sheet.getRange(4, 1, lastRow - 3, columnCount).getA1Notation();
@@ -111,10 +111,11 @@ function downloadSiteBomMasterSnapshot() {
     unitCost: row[9] === "" ? null : row[9], packSize: row[10], minimumOrderQty: row[11],
     targetStockQty: row[12], notes: text_(row[13]),
   }));
-  const bomLines = masterRows_(requiredSheet_(spreadsheet, "BOM Lines"), 4, 12).map((row) => ({
+  const bomLines = masterRows_(requiredSheet_(spreadsheet, "BOM Lines"), 4, BOM_LINE_HEADERS.length).map((row) => ({
     lineId: text_(row[0]), itemId: text_(row[1]), phase: text_(row[2]), stage: text_(row[3]),
     category: text_(row[4]), kitId: text_(row[5]), scope: text_(row[6]), lineNotes: text_(row[7]),
     system: text_(row[8]), deliveryStage: text_(row[9]), siteTeam: text_(row[10]), teamScope: text_(row[11]),
+    catalogId: text_(row[12]), categoryPath: text_(row[13]).split(" > ").filter(Boolean),
   }));
   const rules = masterRows_(requiredSheet_(spreadsheet, "Rules"), 4, 11).map((row) => ({
     lineId: text_(row[0]), sourceMode: text_(row[1]), inputKey: text_(row[2]), inputUnit: text_(row[3]),
@@ -182,6 +183,7 @@ function validateSiteBomBeforeApproval() {
 }
 
 function syncSiteBomMasterData_(spreadsheet) {
+  writeCategorySections_(requiredSheet_(spreadsheet, "Template Settings"));
   const itemSheet = requiredSheet_(spreadsheet, "Items");
   const lineSheet = requiredSheet_(spreadsheet, "BOM Lines");
   const ruleSheet = requiredSheet_(spreadsheet, "Rules");
@@ -254,6 +256,8 @@ function syncPhaseRows_(sheet, orderedLineIds) {
   updatePhaseSummary_(sheet, Math.max(startRow, activeLastRow));
   replaceFilter_(sheet, 7, Math.max(startRow, activeLastRow), 46);
   refreshPhaseConditionalFormatting_(sheet, Math.max(startRow, activeLastRow));
+  sheet.setColumnWidth(17, 520);
+  sheet.getRange(startRow, 17, capacityLastRow - startRow + 1, 1).setWrap(true);
 }
 
 function syncProcurementRows_(sheet, orderedItemIds) {

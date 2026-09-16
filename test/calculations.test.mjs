@@ -92,7 +92,7 @@ test("negative inventory is normalized safely and still flagged", () => {
   );
   assert.equal(result.onHand, 0);
   assert.equal(result.alreadyCommitted, 0);
-  assert.ok(result.issues.includes("Inventory quantities cannot be negative"));
+  assert.ok(result.issues.includes("Inventory quantities must be non-negative numbers"));
 });
 
 test("negative manual quantities cannot reduce demand and remain visible for review", () => {
@@ -125,8 +125,9 @@ test("invalid procurement assumptions are normalized and flagged", () => {
     { targetStock: -5, packSize: 0, minimumOrderQty: -2, unitCost: -10 },
   );
   assert.equal(result.targetStock, 0);
-  assert.equal(result.packSize, 1);
-  assert.equal(result.unitCost, 0);
+  assert.equal(result.packSize, 0);
+  assert.equal(result.orderQty, 0);
+  assert.equal(result.unitCost, null);
   assert.ok(result.issues.includes("Target stock cannot be negative"));
   assert.ok(result.issues.includes("Pack size must be positive"));
   assert.ok(result.issues.includes("Minimum order cannot be negative"));
@@ -137,4 +138,21 @@ test("roundUpTo supports decimal units without floating point overshoot", () => 
   assert.equal(roundUpTo(10, 0.5), 10);
   assert.equal(roundUpTo(10.01, 0.5), 10.5);
   assert.equal(roundUpTo(0, 0.25), 0);
+  assert.equal(roundUpTo(0.1 + 0.2, 0.1), 0.30000000000000004);
+  assert.equal(roundUpTo(1e-10, 1), 1);
+  assert.equal(roundUpTo(1 + 1e-10, 1), 2);
+});
+
+test("missing and invalid costs match sheet semantics without suggesting free purchases", () => {
+  const demand = [{ itemId: "PAN-009", kitDemandQty: 100 }];
+  for (const unitCost of ["", -10, "invalid"]) {
+    assert.equal(calculateProcurementItem(item("PAN-009"), demand, { unitCost }).extendedCost, null);
+    assert.equal(calculateProcurementItem(item("PAN-009"), [], { unitCost }).extendedCost, 0);
+  }
+});
+
+test("nonnumeric inventory is flagged rather than silently accepted as zero", () => {
+  for (const fields of [{ onHand: "unknown" }, { alreadyCommitted: Infinity }]) {
+    assert.ok(calculateProcurementItem(item("PAN-009"), [], fields).issues.includes("Inventory quantities must be non-negative numbers"));
+  }
 });

@@ -5,11 +5,16 @@
   "type": "module",
   "description": "Configurable native Google Sheets Site BOM generated from Revit CSV inputs.",
   "scripts": {
+    "export:data": "node scripts/export-data.mjs",
+    "verify:data": "node scripts/verify-data-exports.mjs",
+    "catalog:sync": "node scripts/sync-catalog-identities.mjs",
+    "build:project-reports": "python scripts/rebuild-project-reports.py --package",
+    "test:mappings": "python -m unittest discover -s test -p test_model_takeoff_rules.py",
     "validate": "node scripts/validate-template.mjs",
     "validate:csv": "node scripts/validate-project-input-csv.mjs",
     "validate:google-sheet": "node scripts/validate-google-sheet-builder.mjs",
-    "test:unit": "node --test",
-    "test": "node scripts/build-google-sheet-script.mjs && node scripts/build-no-quantity-inputs.mjs && node --test",
+    "test:unit": "node scripts/run-unit-tests.mjs",
+    "test": "node scripts/build-google-sheet-script.mjs && node scripts/build-no-quantity-inputs.mjs && node scripts/run-unit-tests.mjs",
     "check": "npm run validate && npm run validate:csv && npm test",
     "build:template": "node scripts/build-google-sheet-script.mjs",
     "build:no-quantity-inputs": "node scripts/build-no-quantity-inputs.mjs",
@@ -18,5 +23,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
   }
 }

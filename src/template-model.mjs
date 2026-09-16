@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { categorySectionNumber } from "./workbook-formulas.mjs";
 
 export const SOURCE_MODES = Object.freeze(["DIRECT", "CALCULATED", "FIXED", "MANUAL"]);
 export const SCOPES = Object.freeze(["SITE", "FACTORY", "BOTH"]);
@@ -158,6 +159,12 @@ export function flattenBomLines(config) {
             kitId: item.kitId ?? category.kitId ?? stage.kitId ?? `${phase.code}-UNASSIGNED`,
             lineId,
             itemId,
+            catalogId: item.catalogId ?? "",
+            categoryPath: item.categoryPath ?? [],
+            inventoryPrefix: item.inventoryPrefix ?? "",
+            variants: item.variants ?? [],
+            takeoffFormula: item.takeoffFormula ?? "",
+            optional: item.optional === true,
             scope: item.scope ?? category.scope ?? defaults.scope ?? "SITE",
             description: item.description,
             specification,
@@ -191,7 +198,9 @@ export function flattenBomLines(config) {
     }
   }
 
-  return lines;
+  return lines.map(line => ({ ...line,
+    categorySection: categorySectionNumber(line.deliveryStage, line.phase, line.stage, line.category),
+  }));
 }
 
 export function buildItemCatalog(lines) {

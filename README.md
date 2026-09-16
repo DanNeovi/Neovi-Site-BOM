@@ -1,6 +1,25 @@
 # Neovi Site BOM
 
-## Final Deliverable
+## Current Files
+
+All current generated files live in [outputs/NeoviBOM](outputs/NeoviBOM/). Open [START-HERE.md](outputs/NeoviBOM/START-HERE.md) for direct links to the PDFs and CSVs.
+
+The main exports are [NeoviBOM.xlsx](outputs/NeoviBOM/NeoviBOM.xlsx) for filtering and review and [NeoviBOM.json](outputs/NeoviBOM/NeoviBOM.json) for software. Both contain the same catalog and Franklin/Santa Rita results. The workbook is a review snapshot, not an editable calculation model. JSON quantities are numeric, missing values are `null`, category paths are arrays, and permanent IDs join project rows to catalog items. Planning estimates remain separate from required quantities. Formula explanations and full evidence references are included in JSON; oversized Excel evidence cells point to it.
+
+Install exporter dependencies with `npm ci`. Run `npm run export:data` after rebuilding project results; `npm run verify:data` checks the exported JSON against the source and reopens the workbook to compare every project quantity. Normal `--package` rebuilds also produce both exports.
+
+- `01-Catalog`: checklist CSV, formula guide, related-items PDF and folder index.
+- `02-Projects`: separate Franklin and Santa Rita PDFs, CSVs and supporting evidence.
+- `03-Categories`: related-items PDFs and nested item folders.
+- `04-Audits`: change log, completeness and model checks, and earlier-addition history.
+- `05-Google-Sheet`: current Apps Script builder and project-input CSV.
+- `_Internal`: model scan caches and rebuild/cleanup provenance.
+
+Run `python scripts/rebuild-project-reports.py --package` to refresh this same folder. Normal builds do not create dated copies, a second source tree or ZIP archives. Editable source remains in this repository's `config/`, `src/`, `scripts/` and `test/`; original model exports remain in Downloads.
+
+Obsolete generated files were moved to `_Internal/Superseded-Archive/` because automatic approval review blocked deletion. That archive is excluded from the current deliverables and rebuilds.
+
+## Google Sheet Deliverable
 
 The operational deliverable is one native Google Sheet with exactly three visible tabs:
 
@@ -10,7 +29,7 @@ The operational deliverable is one native Google Sheet with exactly three visibl
 
 Each phase tab contains its own work areas, categories, kits, items, quantities, purchasing information, status, and review issues. There is no Site BOM website, database, server, API, or live Google/Revit connection.
 
-The workflow uses two temporary file types for specific purposes:
+The Google Sheet workflow uses these file types; the PDF and CSV review package is retained in the current output folder above:
 
 | File | Purpose | Permanent deliverable? |
 |---|---|---|
@@ -33,7 +52,7 @@ versioned Site BOM contract + catalog seed
                        |
 Revit Site BOM button |
         |
-        +----> no-quantity Project Inputs checklist (22 populated input rows)
+        +----> no-quantity Project Inputs checklist (19 populated input rows)
         |
         +----> revision-stamped populated Project Inputs CSV
         |
@@ -82,6 +101,32 @@ Use `itemNotes` for purchasing/specification notes shared by every occurrence of
 
 ## Quantity Logic
 
+For complete Franklin/Santa Rita reports, run `node scripts/build-full-project-reports.mjs` and `python scripts/build-project-test-pdf.py` after the export audit. The resulting PDF and per-project CSVs include all 275 items, each formula and an explicit N/A reason. Unknown quantities and purchasing inputs remain N/A. Generic roof measurements are retained as evidence but do not become slope-material demand without a verified mapping; prior synthetic pack/inventory/price examples are not project quantities.
+
+Work categories now have stable delivery-stage numbers: `2.1 Floors`, `2.2 Walls`, `3.10 Truss Area Finish`, `3.11 Gutter / Fascia`. The first number is the delivery stage; the named phase is shown separately. The PDF groups items beneath numbered category headings with phase and trade. The CSV and phase tabs prefix **Work Area** with the same section number while retaining the controlled trade **Category**. Numbers remain text, so `3.10` is distinct from `3.1`. The registry is `CATEGORY_SECTIONS` in `src/workbook-formulas.mjs`; new unmapped work categories display `Unnumbered` until assigned a permanent section.
+
+Every phase row's **Calculation** cell now shows the live arithmetic for required quantity, rounded spares, manual extras, minimum kit quantity, inventory deductions, and the final pack-rounded order. The order is shared across all occurrences of an Item ID and must only be purchased once. Review issues label the explanation as a preview. The shipping checklist's **Quantity Basis** contains the corresponding item-specific formula even before quantities are entered; manual rows explicitly identify the takeoff that is still needed.
+
+Rebuild with `npm.cmd run check`. For an existing master, replace its Apps Script with the rebuilt builder and run **Site BOM > Sync template changes** to regenerate the explanations while retaining project entries. The local build does not update an existing Google Sheet automatically.
+
+Large Everything exports (`.neovi-model.json`) can be inspected without loading the whole file into memory:
+
+```powershell
+python scripts/inspect-everything-export.py "C:\path\project.neovi-model.json" outputs/NeoviBOM/_Internal/Model-Data/project-evidence.json
+```
+
+This diagnostic uses Python `ijson` and records category counts, BOM-tagged elements, and sample measured parameters with source IDs. It is not a production takeoff mapping: raw Everything exports include types, annotations, links, and alternative phases. The committed export samples test quantity math only, not a complete project's purchase list.
+
+For the two-pass quantity audit, first inspect the Santa Rita and Franklin exports into `outputs/NeoviBOM/_Internal/Model-Data/santa-rita-evidence.json` and `outputs/NeoviBOM/_Internal/Model-Data/franklin-evidence.json`, then run:
+
+```powershell
+npm.cmd run check
+node scripts/audit-quantity-math.mjs outputs/NeoviBOM/_Internal/Model-Data/santa-rita-evidence.json outputs/NeoviBOM/_Internal/Model-Data/franklin-evidence.json
+python scripts/verify-quantity-audit.py
+```
+
+The audit exercises 840 scenarios across the catalog, round-trips all qualifying roof-area records through the CSV importer, and independently verifies the results with Python Decimal arithmetic. It writes a source-by-source Markdown report and clearly labeled test-only CSVs. Roof candidates exclude links, demolition, design options, and non-instance areas; material overlap and applicability still need project review before treating these areas as purchasable roof material.
+
 Phase lines calculate installation/kit demand without vendor-pack rounding:
 
 ```text
@@ -113,8 +158,8 @@ This ordering is important. Inventory is subtracted before vendor-pack rounding.
 
 The adjacent `NeoviRevitEnergyExport` repository includes one **Site BOM** Revit button. Its popup provides four explicit actions:
 
-1. **Save bundled Site BOM checklist template** writes the pinned 21-column, 168-item Site-only shipping checklist with stages `1`, `2`, and `3`, nine predetermined Site Teams and trade categories, detailed Systems, fixed Team Scopes, and blank Project, Revision, and Quantity. It is a versioned bundled template, not a model-derived export, and does not require an open project.
-2. **Export blank Project Inputs template** writes the 12 required columns plus the 22 current contract-defined input rows. Input Key, Record Type, Unit, Source, Source Reference, Location, Notes, Schema ID, and Schema Version are populated; Project, Revision, and Value are intentionally blank. It does not inspect the model and does not require `BOM Revision` or installed parameters.
+1. **Save bundled Site BOM checklist template** writes the pinned 21-column, 275-item Site-only shipping checklist with stages `1`, `2`, and `3`, nine predetermined Site Teams and trade categories, detailed Systems, fixed Team Scopes, and blank Project, Revision, and Quantity. It is a versioned bundled template, not a model-derived export, and does not require an open project.
+2. **Export blank Project Inputs template** writes the 12 required columns plus the current contract-defined input rows. Input Key, Record Type, Unit, Source, Source Reference, Location, Notes, Schema ID, and Schema Version are populated; Project, Revision, and Value are intentionally blank. It does not inspect the model and does not require `BOM Revision` or installed parameters.
 3. **Export populated Revit inputs** exports the real project data and enforces the revision and parameter requirements below.
 4. **Install or refresh Site BOM parameters** prepares the active host or linked source model for populated exports.
 
@@ -126,10 +171,10 @@ To regenerate the filled no-quantity files directly from this repository, run:
 npm.cmd run build:no-quantity-inputs
 ```
 
-This creates two CSVs in `outputs/site-bom-v0.4.0/`:
+This creates two CSVs in `outputs/NeoviBOM/`:
 
-- `Neovi-Site-BOM-Project-Inputs-No-Quantities.csv` contains the 22 operational input rows currently consumed by the Google Sheet rules. Its `Location` begins with `1`, `2`, or `3`.
-- `Neovi-Site-BOM-All-Discussed-Items-No-Quantities.csv` is the human-facing shipping checklist. It contains the 168 Site BOM lines only: items that must be delivered, rented, or brought to the jobsite. Factory equipment, factory consumables, and factory-production takeoff facts are intentionally excluded. Every row retains `Schema ID`, `Schema Version`, `Catalog Version`, `Project`, and `Revision`. `Stage` uses exactly `1`, `2`, or `3`. `Site Team` and `Team Scope` are predetermined by the contract rather than selected by field crews. Blank `Quantity` remains beside `Item`. `Category` uses nine broad controlled trade groups, while `System` preserves details such as Hot Water, Solar, Purlins, or Exterior Doors. `Line ID` identifies the occurrence and `Item ID` identifies the purchasable product.
+- `05-Google-Sheet/Neovi-Site-BOM-Project-Inputs-No-Quantities.csv` contains the 19 operational input rows currently consumed by the Google Sheet rules. Its `Location` begins with `1`, `2`, or `3`.
+- `01-Catalog/Neovi-Site-BOM-Checklist.csv` is the human-facing shipping checklist. It contains the 275 Site BOM lines only: items that must be delivered, rented, or brought to the jobsite. Factory equipment, factory consumables, and factory-production takeoff facts are intentionally excluded. Every row retains `Schema ID`, `Schema Version`, `Catalog Version`, `Project`, and `Revision`. `Stage` uses exactly `1`, `2`, or `3`. `Site Team` and `Team Scope` are predetermined by the contract rather than selected by field crews. Blank `Quantity` remains beside `Item`. `Category` uses nine broad controlled trade groups, while `System` preserves details such as Hot Water, Solar, Purlins, or Exterior Doors. `Line ID` identifies the occurrence and `Item ID` identifies the purchasable product. `Catalog ID` is the permanent identifier and `Category Path` gives the nested folder grouping.
 
 After generating and reviewing a release, synchronize the pinned contract, catalog, and checksum manifest into the adjacent Revit repository:
 
@@ -185,7 +230,7 @@ npm.cmd run check
 `build:template` now creates and validates one self-contained native Google Sheets builder without requiring Excel or an `.xlsx` file:
 
 ```text
-outputs/site-bom-v0.4.0/Neovi-Site-BOM-Builder.gs
+outputs/NeoviBOM/05-Google-Sheet/Neovi-Site-BOM-Builder.gs
 ```
 
 The generated master starts with blank Active Project, Active Revision, and Project Inputs. The sample project files in `config/` are validation fixtures and are not loaded into the operational master.
@@ -291,11 +336,11 @@ Project-input CSVs must contain exactly the 12 documented columns in order. CSV 
 
 The normalized starter list contains:
 
-- 168 BOM Lines;
-- 19 Foundation lines;
-- 24 Panels lines;
-- 125 Finishing lines;
-- 22 project Input Keys.
+- 275 BOM Lines;
+- 50 Foundation lines;
+- 41 Panels lines;
+- 184 Finishing lines;
+- 19 project Input Keys.
 
 The structure is implemented, but the seed is intentionally not approved for purchasing. Exact specifications, owners, vendors, part numbers, costs, pack sizes, minimum orders, and most calculation rules still require operational or engineering approval. The 4 x 3 floor-plate minimum remains explicitly marked for a 100-versus-250 decision.
 
@@ -321,3 +366,41 @@ A project revision is ready only when:
 - [Google: Import data into Sheets](https://support.google.com/docs/answer/12236443)
 - [Google: Protect and hide sheets](https://support.google.com/docs/answer/1218656)
 - [Google: Add and use checkboxes](https://support.google.com/docs/answer/7684717)
+
+### Rebuild the Franklin and Santa Rita project reports
+
+Run `python scripts/rebuild-project-reports.py --package`. Add `--rescan` to read the original Everything exports again. Named-family mapping rules are saved in `scripts/map-project-takeoffs.py`; absence of BOM tags does not prevent those mappings. Counts retain element keys, include structural links where specified, and exclude view-specific, demolished and design-option elements.
+
+The report engine calculates required, spare and base kit independently of purchasing data. Base kit excludes unentered extras and uses catalog rounding/minimum rules; it is not the final order. Missing takeoffs remain N/A, not zero.
+
+Optional `outputs/NeoviBOM/_Internal/Model-Data/franklin-purchasing-inputs.json` and `santa-rita-purchasing-inputs.json` accept objects keyed by Item ID. Fields are `manualExtra`, `onHand`, `committed`, `targetStock`, `packSize`, `minimumOrder`, and `unitCost`. Enter actual values (including explicit zero where confirmed). Rebuilding then calculates final kit, net, order and cost as their dependencies become available. The PDF shows the base-kit subtotal; the CSV additionally contains final kit demand.
+
+The full mapping register is `config/model-item-mapping-register.json`: every one of the 275 items has explicit source categories, search criteria and measurement requirements. These searches only collect evidence; numeric quantities require the checked selectors in `scripts/map-project-takeoffs.py` and `scripts/model_takeoff_rules.py`.
+
+Each project also exports a 275-row `*-mapping-audit.csv` and a detailed JSON with candidate element keys and source types. Status distinguishes measured values, derived allowances, catalog allowances, conflicting/missing inputs, no identified source, and undefined catalog items. No match means unknown, not zero. Changed source file size/time invalidates the scan cache. Run `npm run test:mappings` for selector tests.
+# Category catalog and annotated updates
+
+The current delivery is in `outputs/NeoviBOM/`.
+Start with `03-Categories/`: each root has a related-items PDF, and nested
+folders contain item CSVs with formulas and separate Franklin/Santa Rita results.
+`01-Catalog/Catalog-Folder-Index.csv` links every active item to its folder.
+
+Permanent identifiers (`TOOL-1`, `FAST-1`, `FIX-1`, etc.) are stored in
+`config/catalog-identities.json`. The suffix is an arbitrary-length decimal
+string, allocated with BigInt. Existing identifiers remain unchanged when
+items move, and retired identifiers are never reused. Phase/stage section
+numbers and legacy FND/PAN/FIN IDs remain separate from these catalog IDs.
+
+To add an item, give it a new legacy ID, `inventoryPrefix` and a `categoryPath`
+array in `config/site-bom.template.json`, then run `npm run catalog:sync`.
+Do not edit existing IDs or recycle deleted numbers. The sync also updates
+the expected catalog size. Run `npm run check`, then
+`python scripts/rebuild-project-reports.py --all-models --package` to refresh
+the delivery. Original large model exports stay in Downloads.
+
+The annotated September 15 edits, including retirement/replacement links,
+are recorded in `config/catalog-revision-2026-09-15.json` and published as
+`04-Audits/Catalog-Changes.pdf` and `.csv`. A missing measurement remains N/A; planning
+estimates stay separate. The washer count interpretation is explicitly pending
+until the user confirms whether ten washers applies to a bolt/nut pair or to
+each component.

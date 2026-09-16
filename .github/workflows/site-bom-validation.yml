@@ -12,10 +12,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - run: npm.cmd ci
       - run: npm.cmd run check
-      - name: Publish versioned Site BOM exports
+      - name: Publish current Site BOM exports
         uses: actions/upload-artifact@v4
         with:
           name: neovi-site-bom-${{ github.sha }}
-          path: outputs/site-bom-v*/
+          path: |
+            outputs/NeoviBOM/01-Catalog/
+            outputs/NeoviBOM/05-Google-Sheet/
           if-no-files-found: error

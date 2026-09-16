@@ -3,3 +3,6 @@ outputs/
 previews/
 *.tmp
 *.log
+output/
+tmp/
+__pycache__/

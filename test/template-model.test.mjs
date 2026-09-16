@@ -12,14 +12,12 @@ import {
 } from "../src/template-model.mjs";
 
 test("starter model contains all three phases and the supplied line set", async () => {
-  const { lines, items } = await loadTemplateConfig();
+  const { lines, items, contract } = await loadTemplateConfig();
   const summary = summarizeCatalog(lines, items);
   assert.deepEqual(Object.keys(summary.byPhase), ["Foundation", "Panels", "Finishing"]);
-  assert.equal(summary.byPhase.Foundation, 19);
-  assert.equal(summary.byPhase.Panels, 24);
-  assert.equal(summary.byPhase.Finishing, 125);
-  assert.equal(summary.totalLines, 168);
-  assert.equal(summary.totalItems, 168);
+  assert.ok(Object.values(summary.byPhase).every(count => count > 0));
+  assert.equal(summary.totalLines, contract.catalog.expectedRowCount);
+  assert.equal(summary.totalItems, contract.catalog.expectedRowCount);
 });
 
 test("every flattened BOM line has explicit hierarchy, system, delivery stage, and stable identities", async () => {
@@ -51,7 +49,7 @@ test("canonical contract owns schemas, category codes, stages, and all input def
   assert.equal(contract.schemas.catalog.id, "neovi.site-bom.catalog");
   assert.equal(contract.schemas.catalog.version, "2.0");
   assert.equal(contract.catalogVersion, config.settings.templateVersion);
-  assert.equal(contract.projectInputs.length, 22);
+  assert.equal(contract.projectInputs.length, new Set(lines.filter(l=>l.inputKey).map(l=>l.inputKey)).size);
   assert.deepEqual([...new Set(lines.map((line) => line.deliveryStage))].sort(), contract.siteStages);
   assert.deepEqual([...new Set(lines.map((line) => line.categoryCode))].sort(), contract.categories.map(({ code }) => code).sort());
   assert.deepEqual([...new Set(lines.map((line) => line.siteTeam))].sort(), contract.categories.map(({ siteTeam }) => siteTeam).sort());

@@ -13,7 +13,7 @@ await import("./build-no-quantity-inputs.mjs");
 await fs.mkdir(destination, { recursive: true });
 
 const catalogName = "Neovi-Site-BOM-All-Discussed-Items-No-Quantities.csv";
-const catalogSource = path.resolve(moduleDir, `../outputs/site-bom-v${config.settings.templateVersion}/${catalogName}`);
+const catalogSource = path.resolve(moduleDir, `../outputs/NeoviBOM/01-Catalog/Neovi-Site-BOM-Checklist.csv`);
 const catalogDestination = path.join(destination, catalogName);
 const contractDestination = path.join(destination, "NeoviSiteBom.contract.json");
 await fs.copyFile(catalogSource, catalogDestination);

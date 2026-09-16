@@ -121,6 +121,17 @@ function buildNativeSettings_(sheet) {
   sheet.setColumnWidth(1, 170);
   sheet.setColumnWidth(2, 245);
   sheet.setColumnWidth(3, 340);
+  writeCategorySections_(sheet);
+}
+
+function writeCategorySections_(sheet) {
+  sheet.getRange("M3:N3").setValues([["Stage | Phase | Work Area | Category", "Category Section"]]);
+  sheet.getRange("M4:N100").clearContent();
+  const rows = CATEGORY_SECTIONS.map(([number, phase, area, category]) =>
+    [[number.split(".")[0], phase, area, category].join("|"), number]);
+  sheet.getRange(4, 13, rows.length, 2).setNumberFormat("@").setValues(rows);
+  sheet.setColumnWidth(13, 380);
+  sheet.setColumnWidth(14, 130);
 }
 
 function buildNativeItems_(sheet) {
@@ -155,17 +166,18 @@ function buildNativeBomLines_(sheet) {
   const rows = SITE_BOM_BUILD_DATA.lines.map((line) => [
     line.lineId, line.itemId, line.phase, line.stage, line.category, line.kitId, line.scope, line.lineNotes,
     line.system, line.deliveryStage, line.siteTeam, line.teamScope,
+    line.catalogId, line.categoryPath.join(" > "),
   ]);
   sheet.getRange("A1:L1").merge().setValue("BOM Lines — fixed work area, trade, site team, delivery stage, and kit placement");
   styleTitle_(sheet.getRange("A1:L1"), SITE_BOM_COLORS.navy);
-  sheet.getRange("A3:L3").setValues([BOM_LINE_HEADERS]);
-  styleHeader_(sheet.getRange("A3:L3"));
-  sheet.getRange(4, 1, rows.length, 12).setValues(rows).setBackground(SITE_BOM_COLORS.templateInput);
+  sheet.getRange("A3:N3").setValues([BOM_LINE_HEADERS]);
+  styleHeader_(sheet.getRange("A3:N3"));
+  sheet.getRange(4, 1, rows.length, 14).setValues(rows).setBackground(SITE_BOM_COLORS.templateInput);
   sheet.getRange(4, 5, rows.length, 1).setDataValidation(rangeValidation_("Template Settings", "K4:K100"));
   sheet.getRange(4, 10, rows.length, 1).setDataValidation(listValidation_(SITE_BOM_BUILD_DATA.settings.siteStages));
-  sheet.getRange(3, 1, rows.length + 1, 12).createFilter();
+  sheet.getRange(3, 1, rows.length + 1, 14).createFilter();
   sheet.setFrozenRows(3);
-  setColumnWidths_(sheet, [105, 105, 100, 165, 180, 125, 80, 300, 170, 105, 185, 320]);
+  setColumnWidths_(sheet, [105, 105, 100, 165, 180, 125, 80, 300, 170, 105, 185, 320, 110, 340]);
 }
 
 function buildNativeRules_(sheet) {
@@ -353,6 +365,8 @@ function buildNativePhase_(sheet, phase) {
   sheet.setFrozenRows(7);
   sheet.setFrozenColumns(5);
   setColumnWidths_(sheet, [145, 160, 115, 95, 95, 65, 210, 260, 65, 100, 95, 205, 80, 65, 75, 85, 225, 80, 70, 80, 75, 85, 80, 80, 95, 75, 100, 75, 75, 85, 105, 120, 125, 125, 80, 105, 90, 100, 95, 245, 245, 290, 170, 105, 185, 320]);
+  sheet.setColumnWidth(17, 520);
+  sheet.getRange(7, 17).setNote("Live quantity and purchasing math. Round up means the next multiple of the stated increment or pack size. All-phase order quantities repeat for shared items: order once per Item ID. Preview amounts require resolved review issues.");
 }
 
 

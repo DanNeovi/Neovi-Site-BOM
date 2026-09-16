@@ -71,7 +71,14 @@
                   "id": "FND-001",
                   "description": "Mud mats",
                   "unit": "EA",
-                  "procurementMethod": "Rental"
+                  "procurementMethod": "Rental",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Rentals",
+                    "Site Setup and Support"
+                  ],
+                  "catalogId": "EQUIP-1"
                 }
               ],
               "system": "Site Access",
@@ -81,9 +88,88 @@
               "name": "Sitework",
               "items": [
                 {
-                  "id": "FND-002",
-                  "description": "Define foundation site supplies",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "id": "FND-049",
+                  "description": "Paint markers",
+                  "unit": "EA",
+                  "system": "Layout and Marking",
+                  "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+                  "inventoryPrefix": "SUP",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Marking Supplies"
+                  ],
+                  "catalogId": "SUP-1"
+                },
+                {
+                  "id": "FND-050",
+                  "description": "Scribes",
+                  "unit": "EA",
+                  "system": "Layout and Marking",
+                  "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Layout Tools"
+                  ],
+                  "catalogId": "TOOL-1"
+                },
+                {
+                  "id": "FND-051",
+                  "description": "Chalk line / centerline marking tool",
+                  "unit": "EA",
+                  "system": "Layout and Marking",
+                  "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Layout Tools"
+                  ],
+                  "catalogId": "TOOL-2"
+                },
+                {
+                  "id": "FND-052",
+                  "description": "Marking paint",
+                  "unit": "EA",
+                  "system": "Layout and Marking",
+                  "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+                  "inventoryPrefix": "SUP",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Marking Supplies"
+                  ],
+                  "catalogId": "SUP-2"
+                },
+                {
+                  "id": "FND-053",
+                  "description": "Chalk-line refill",
+                  "unit": "EA",
+                  "system": "Layout and Marking",
+                  "notes": "Layout / centerline marking supplies. Confirm tip, color, product and pack size; quantity from crew requirements.",
+                  "inventoryPrefix": "SUP",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Marking Supplies"
+                  ],
+                  "catalogId": "SUP-3"
+                },
+                {
+                  "id": "FND-054",
+                  "description": "Leveling string line",
+                  "unit": "FT",
+                  "system": "Leveling and Double-Checking",
+                  "notes": "String for leveling and independent alignment checks. Measure required runs; spool length belongs in pack size.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Layout Tools"
+                  ],
+                  "catalogId": "TOOL-3"
                 }
               ],
               "system": "General Site Supplies",
@@ -95,7 +181,13 @@
                 {
                   "id": "FND-003",
                   "description": "Define foundation consumables",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "notes": "Placeholder from the supplied list; replace with exact items.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Sitework",
+                    "Site Consumables"
+                  ],
+                  "catalogId": "MAT-1"
                 }
               ],
               "system": "Site Consumables",
@@ -105,9 +197,46 @@
               "name": "Sitework",
               "items": [
                 {
-                  "id": "FND-004",
-                  "description": "Define foundation fixtures",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "id": "FND-055",
+                  "description": "Side-drill pedestal / magnetic-drill fixture",
+                  "unit": "EA",
+                  "system": "Magnetic Drill - Fixtures",
+                  "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+                  "inventoryPrefix": "FIX",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Fixtures"
+                  ],
+                  "catalogId": "FIX-1"
+                },
+                {
+                  "id": "FND-056",
+                  "description": "HSS drill pedestal",
+                  "unit": "EA",
+                  "system": "Magnetic Drill - Fixtures",
+                  "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+                  "inventoryPrefix": "FIX",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Fixtures"
+                  ],
+                  "catalogId": "FIX-2"
+                },
+                {
+                  "id": "FND-057",
+                  "description": "Pile-cap pedestal for magnetic drill",
+                  "unit": "EA",
+                  "system": "Magnetic Drill - Fixtures",
+                  "notes": "Reusable drilling fixture; confirm pedestal dimensions and compatibility. Pile-cap pedestal is a fixture, not a restored pile-cap purchase line.",
+                  "inventoryPrefix": "FIX",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Fixtures"
+                  ],
+                  "catalogId": "FIX-3"
                 }
               ],
               "system": "Site Fixtures",
@@ -119,11 +248,299 @@
                 {
                   "id": "FND-005",
                   "description": "Define useful site additions",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "notes": "Placeholder from the supplied list; replace with exact items.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Sitework",
+                    "Site Additions"
+                  ],
+                  "catalogId": "MAT-2"
                 }
               ],
               "system": "Site Additions",
               "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "system": "Survey & Layout Tools",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-020",
+                  "description": "Laser level",
+                  "unit": "EA",
+                  "notes": "Shared tool; used for foundation and panel layout.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-4"
+                },
+                {
+                  "id": "FND-021",
+                  "description": "Laser total station",
+                  "unit": "EA",
+                  "notes": "User name replaces laser-level tripod. Confirm instrument and tripod kit contents; separate laser level FND-020 retained.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-5"
+                },
+                {
+                  "id": "FND-022",
+                  "description": "Laser-level pipe attachment",
+                  "unit": "EA",
+                  "notes": "Accessory to laser-level kit; confirm mounting system.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-6"
+                }
+              ]
+            },
+            {
+              "name": "Sitework",
+              "system": "Shared Power Tools",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-023",
+                  "description": "Cordless drill",
+                  "unit": "EA",
+                  "notes": "Shared with panel installation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Power Tools"
+                  ],
+                  "catalogId": "TOOL-7"
+                },
+                {
+                  "id": "FND-024",
+                  "description": "Milwaukee spare tool batteries",
+                  "unit": "EA",
+                  "notes": "Count crew spares by compatible Milwaukee platform and capacity; avoid mixed-platform assumptions.",
+                  "procurementMethod": "TBD",
+                  "specification": "Milwaukee ecosystem; match voltage/platform to tools.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Power Tools",
+                    "Milwaukee Batteries and Charging"
+                  ],
+                  "catalogId": "TOOL-8"
+                },
+                {
+                  "id": "FND-025",
+                  "description": "1/2-inch heavy-duty impact wrench",
+                  "unit": "EA",
+                  "notes": "Confirm drive size and required torque.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Power Tools"
+                  ],
+                  "catalogId": "TOOL-9"
+                },
+                {
+                  "id": "FND-026",
+                  "description": "Hex-drive impact driver",
+                  "unit": "EA",
+                  "notes": "Shared with panels and gutter/fascia work.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Power Tools"
+                  ],
+                  "catalogId": "TOOL-10"
+                },
+                {
+                  "id": "FND-027",
+                  "description": "Milwaukee battery charger",
+                  "unit": "EA",
+                  "notes": "Milwaukee ecosystem; confirm charging slots, voltage/platform and power supply.",
+                  "procurementMethod": "TBD",
+                  "specification": "Milwaukee charger compatible with selected tool batteries.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Power Tools",
+                    "Milwaukee Batteries and Charging"
+                  ],
+                  "catalogId": "TOOL-11"
+                }
+              ]
+            },
+            {
+              "name": "Sitework",
+              "system": "Shared Hand Tools & Bits",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-028",
+                  "description": "Drill-bit set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set; specify sizes.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-12"
+                },
+                {
+                  "id": "FND-029",
+                  "description": "Impact socket set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set; compatible with impact drive.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-13"
+                },
+                {
+                  "id": "FND-030",
+                  "description": "Driver-bit set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set; shared across phases.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-14"
+                },
+                {
+                  "id": "FND-031",
+                  "description": "Prybar",
+                  "unit": "EA",
+                  "notes": "Shared with panel installation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-15"
+                },
+                {
+                  "id": "FND-032",
+                  "description": "Hammer",
+                  "unit": "EA",
+                  "notes": "Shared with panel installation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-16"
+                },
+                {
+                  "id": "FND-033",
+                  "description": "Tongue-and-groove pliers",
+                  "unit": "EA",
+                  "notes": "Source: Channel Lock Pliers.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-17"
+                },
+                {
+                  "id": "FND-034",
+                  "description": "Adjustable wrench",
+                  "unit": "EA",
+                  "notes": "Source: Crescent Wrenches.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Shared Hand Tools & Bits"
+                  ],
+                  "catalogId": "TOOL-18"
+                }
+              ]
+            },
+            {
+              "name": "Sitework",
+              "system": "Temporary Power & Water",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-035",
+                  "description": "Sump pump for flooded trenches",
+                  "unit": "EA",
+                  "notes": "Seasonal/site need; confirm capacity.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Temporary Power & Water"
+                  ],
+                  "catalogId": "TOOL-19"
+                },
+                {
+                  "id": "FND-036",
+                  "description": "Extension cord",
+                  "unit": "EA",
+                  "notes": "Specify cord length, rating and connectors; reusable.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Temporary Power & Water"
+                  ],
+                  "catalogId": "TOOL-20"
+                },
+                {
+                  "id": "FND-037",
+                  "description": "Site water hose",
+                  "unit": "FT",
+                  "notes": "Specify hose diameter and purchased lengths.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Temporary Power & Water"
+                  ],
+                  "catalogId": "TOOL-21"
+                }
+              ]
             }
           ]
         },
@@ -142,12 +559,24 @@
                     "sourceMode": "DIRECT",
                     "inputKey": "foundation_helical_pile_count",
                     "status": "READY_FOR_TEST"
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Piles"
+                  ],
+                  "catalogId": "MAT-3"
                 },
                 {
                   "id": "FND-007",
                   "description": "Pile extensions",
-                  "owner": "Structural"
+                  "owner": "Structural",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Piles"
+                  ],
+                  "catalogId": "MAT-4"
                 }
               ],
               "system": "Piles",
@@ -157,18 +586,22 @@
               "name": "Structural",
               "items": [
                 {
-                  "id": "FND-008",
-                  "description": "Pile caps",
+                  "id": "FND-009",
+                  "description": "Pile pins - complete sets",
                   "owner": "Structural",
                   "rule": {
-                    "sourceMode": "DIRECT",
-                    "inputKey": "foundation_pile_cap_count"
-                  }
-                },
-                {
-                  "id": "FND-009",
-                  "description": "Pile pins",
-                  "owner": "Structural"
+                    "sourceMode": "FIXED",
+                    "fixedQty": 3,
+                    "sparePercent": 0
+                  },
+                  "notes": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Helical Piles",
+                    "Pin Sets"
+                  ],
+                  "catalogId": "FAST-1"
                 },
                 {
                   "id": "FND-010",
@@ -177,7 +610,13 @@
                   "rule": {
                     "sourceMode": "DIRECT",
                     "inputKey": "foundation_pile_bracket_count"
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Pile Connections"
+                  ],
+                  "catalogId": "MAT-5"
                 }
               ],
               "system": "Pile Connections",
@@ -188,13 +627,84 @@
               "items": [
                 {
                   "id": "FND-011",
-                  "description": "Helical pile installation machine rental",
+                  "description": "Helical pile installation machine rental - John Deere 50P / 50G",
                   "unit": "DAY",
-                  "procurementMethod": "Rental"
+                  "procurementMethod": "Rental",
+                  "notes": "Only John Deere 50P or 50G per user. Rental excavator must be equipped with auxiliary hydraulic power for pile installation; confirm attachment compatibility. Tracks included.",
+                  "specification": "John Deere 50P or 50G; equipped with auxiliary hydraulics and compatible pile installation attachment.",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Rentals",
+                    "Helical Piles"
+                  ],
+                  "catalogId": "EQUIP-2"
                 }
               ],
               "system": "Installation Equipment",
               "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "system": "Installation Machine Accessories",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-040",
+                  "description": "Machine lifting chains",
+                  "unit": "EA",
+                  "notes": "Specify rated assembly and length.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Chains",
+                    "Machine Chains"
+                  ],
+                  "catalogId": "RIG-1"
+                },
+                {
+                  "id": "FND-041",
+                  "description": "Lifting straps",
+                  "unit": "EA",
+                  "notes": "Length unspecified. Confirm required length, rated load and configuration before selecting lifting straps. Add actual sizes only when confirmed.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Straps"
+                  ],
+                  "catalogId": "RIG-2"
+                },
+                {
+                  "id": "FND-043",
+                  "description": "Large digger",
+                  "unit": "EA",
+                  "notes": "Owned equipment, not a rental. Confirm availability for the scheduled work; no rental days.",
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Owned",
+                    "Helical Piles"
+                  ],
+                  "catalogId": "EQUIP-3"
+                },
+                {
+                  "id": "FND-045",
+                  "description": "Pipe level",
+                  "unit": "EA",
+                  "notes": "Pipe level used for machine leveling and alignment.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-22"
+                }
+              ]
             }
           ]
         },
@@ -212,22 +722,16 @@
                   "rule": {
                     "sourceMode": "DIRECT",
                     "inputKey": "steel_bedframe_hss_beam_count"
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Primary Steel"
+                  ],
+                  "catalogId": "MAT-6"
                 }
               ],
               "system": "Primary Steel",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Structural",
-              "items": [
-                {
-                  "id": "FND-013",
-                  "description": "Welding consumables",
-                  "owner": "Structural"
-                }
-              ],
-              "system": "Welding",
               "deliveryStage": "1"
             },
             {
@@ -240,9 +744,19 @@
                   "packSize": 25,
                   "rule": {
                     "sourceMode": "CALCULATED",
-                    "inputKey": "steel_bedframe_bolt_count",
-                    "sparePercent": 0.1
-                  }
+                    "inputKey": "foundation_helical_pile_count",
+                    "sparePercent": 0.1,
+                    "multiplier": 2
+                  },
+                  "system": "Steel Bedframe Fasteners",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Steel Bedframe",
+                    "Bolts Nuts Washers and Rod"
+                  ],
+                  "catalogId": "FAST-2",
+                  "notes": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification."
                 },
                 {
                   "id": "FND-015",
@@ -251,15 +765,52 @@
                   "packSize": 25,
                   "rule": {
                     "sourceMode": "DIRECT",
-                    "inputKey": "steel_bedframe_bolt_count",
-                    "sparePercent": 0.1
-                  }
+                    "inputKey": "foundation_helical_pile_count",
+                    "sparePercent": 0.1,
+                    "multiplier": 2
+                  },
+                  "system": "Steel Bedframe Fasteners",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Steel Bedframe",
+                    "Bolts Nuts Washers and Rod"
+                  ],
+                  "catalogId": "FAST-3",
+                  "notes": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification."
                 },
                 {
                   "id": "FND-016",
                   "description": "Steel bedframe threaded rod",
                   "owner": "Structural",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "system": "Steel Bedframe Fasteners",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Steel Bedframe",
+                    "Bolts Nuts Washers and Rod"
+                  ],
+                  "catalogId": "FAST-4"
+                },
+                {
+                  "id": "FND-058",
+                  "description": "Steel bedframe washers",
+                  "unit": "EA",
+                  "system": "Steel Bedframe Fasteners",
+                  "notes": "User specifies 10 washers per nut and bolt. Pending clarification: 10 per pair versus 10 per individual nut and bolt; do not release a washer order before confirming.",
+                  "takeoffFormula": "helical pile count x 2 bolt/nut pairs per pile x washers per pair (20 or 10; confirmation pending)",
+                  "rule": {
+                    "sourceMode": "MANUAL",
+                    "sparePercent": 0.1
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Steel Bedframe",
+                    "Bolts Nuts Washers and Rod"
+                  ],
+                  "catalogId": "FAST-5"
                 }
               ],
               "system": "Fasteners",
@@ -270,12 +821,29 @@
               "items": [
                 {
                   "id": "FND-017",
-                  "description": "Gap material / spacers",
-                  "notes": "Confirm what 'gaps' means in the supplied list."
+                  "description": "1/2-inch HSS gap spacers",
+                  "notes": "Count HSS gap locations x spacers per location; spacer dimensions and number per location require the connection layout.",
+                  "specification": "Spacer forces a 1/2-inch gap between HSS members.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Materials",
+                    "Steel Bedframe",
+                    "Gap Spacers and Shims"
+                  ],
+                  "catalogId": "MAT-7"
                 },
                 {
                   "id": "FND-018",
-                  "description": "Steel shims"
+                  "description": "Steel shims - roll-former die cutouts",
+                  "notes": "Use roll-former die cutout pieces as shims per user. Count support/leveling locations and pieces per stack; thickness and stack heights required.",
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Materials",
+                    "Steel Bedframe",
+                    "Gap Spacers and Shims"
+                  ],
+                  "catalogId": "MAT-8"
                 }
               ],
               "system": "Shims & Spacers",
@@ -286,13 +854,73 @@
               "items": [
                 {
                   "id": "FND-019",
-                  "description": "Plastic protection / isolation material",
+                  "description": "Crawl-space moisture vapor barrier",
                   "unit": "SQFT",
-                  "notes": "Measure coverage in square feet. Confirm exact use, material specification, and roll size."
+                  "notes": "Measure crawl-space coverage in SQFT plus specified laps and upturns. Confirm membrane specification and roll coverage.",
+                  "specification": "Crawl-space moisture vapor barrier; material thickness and roll size to confirm.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Materials",
+                    "Crawl Space",
+                    "Moisture Vapor Barrier"
+                  ],
+                  "catalogId": "MAT-9"
                 }
               ],
               "system": "Isolation",
               "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "system": "Steel Drilling Tools & Consumables",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-046",
+                  "description": "Magnetic drill",
+                  "unit": "EA",
+                  "notes": "Shared drilling tool. Bits FND-047, cutting fluid FND-048 and pedestals FND-055 through FND-057 are grouped with this tool.",
+                  "procurementMethod": "TBD",
+                  "system": "Magnetic Drill",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Drill"
+                  ],
+                  "catalogId": "TOOL-23"
+                },
+                {
+                  "id": "FND-047",
+                  "description": "Magnetic-drill bits - annular cutters",
+                  "unit": "EA",
+                  "notes": "Annular cutters are bits for the magnetic drill; specify hole diameter, cutting depth and arbor compatibility.",
+                  "procurementMethod": "TBD",
+                  "system": "Magnetic Drill - Bits",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Bits"
+                  ],
+                  "catalogId": "TOOL-24"
+                },
+                {
+                  "id": "FND-048",
+                  "description": "Magnetic-drill cutting fluid",
+                  "unit": "OZ",
+                  "notes": "Cutting fluid for magnetic drilling. Measure fluid ounces; container size is a purchasing specification.",
+                  "procurementMethod": "TBD",
+                  "system": "Magnetic Drill - Cutting Fluid",
+                  "inventoryPrefix": "SUP",
+                  "categoryPath": [
+                    "Tools",
+                    "Magnetic Drill",
+                    "Cutting Fluid"
+                  ],
+                  "catalogId": "SUP-4"
+                }
+              ]
             }
           ]
         }
@@ -312,12 +940,19 @@
               "items": [
                 {
                   "id": "PAN-001",
-                  "description": "Four-point lifting straps",
+                  "description": "Four-point lifting strap set",
                   "rule": {
                     "sourceMode": "FIXED",
-                    "fixedQty": 4
+                    "fixedQty": 1
                   },
-                  "procurementMethod": "Inventory"
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Straps",
+                    "Four-Point Sets"
+                  ],
+                  "catalogId": "RIG-3"
                 }
               ],
               "system": "Rigging",
@@ -335,7 +970,13 @@
                     "inputKey": "floor_to_floor_connection_count",
                     "minimumKitQty": 250,
                     "notes": "Confirm whether minimum kit quantity is 100 or 250."
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Floor Connections"
+                  ],
+                  "catalogId": "MAT-10"
                 },
                 {
                   "id": "PAN-003",
@@ -347,7 +988,14 @@
                     "inputKey": "floor_to_hss_connection_count",
                     "sparePercent": 0.25,
                     "status": "READY_FOR_TEST"
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Floor Connections",
+                    "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+                  ],
+                  "catalogId": "FAST-6"
                 },
                 {
                   "id": "PAN-004",
@@ -359,7 +1007,14 @@
                     "inputKey": "floor_to_hss_connection_count",
                     "multiplier": 2,
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Floor Connections",
+                    "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+                  ],
+                  "catalogId": "FAST-7"
                 },
                 {
                   "id": "PAN-005",
@@ -371,7 +1026,14 @@
                     "inputKey": "floor_to_hss_connection_count",
                     "multiplier": 2,
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Floor Connections",
+                    "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+                  ],
+                  "catalogId": "FAST-8"
                 }
               ],
               "system": "Floor Connections",
@@ -389,7 +1051,14 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "floor_connection_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Floor Connections",
+                    "Screws"
+                  ],
+                  "catalogId": "FAST-9"
                 }
               ],
               "system": "Fasteners",
@@ -400,13 +1069,63 @@
               "items": [
                 {
                   "id": "PAN-007",
-                  "description": "Floor installation foam",
+                  "description": "Froth-Pak - floor cassette gaps",
                   "unit": "CUFT",
-                  "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification."
+                  "notes": "Fill the 1/2-inch gaps between floor cassettes before the walls land. Required volume = joint length (FT) x 0.5 (IN) x fill depth (IN) / 144 (CUFT). Confirm joint length, fill depth and product yield.",
+                  "takeoffFormula": "floor cassette joint length FT x 0.5 IN gap x fill depth IN / 144 = CUFT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Materials",
+                    "Floor Panels",
+                    "Froth-Pak Joint Foam"
+                  ],
+                  "catalogId": "MAT-11"
                 }
               ],
               "system": "Sealants & Foam",
               "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "system": "Crane & Rigging",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "PAN-025",
+                  "description": "Crane rental - main and auxiliary hooks included",
+                  "unit": "DAY",
+                  "notes": "Specify crane capacity, reach, configuration and rental duration for each lift plan. Main and auxiliary hooks are included with crane; no separate hook purchase lines.",
+                  "procurementMethod": "Rental",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Rentals",
+                    "Floors"
+                  ],
+                  "catalogId": "EQUIP-4"
+                }
+              ]
+            },
+            {
+              "name": "Structural",
+              "system": "Installation Tools",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "PAN-028",
+                  "description": "1/2-inch right-angle impact wrench",
+                  "unit": "EA",
+                  "notes": "Source: 90 impact gun; confirm drive and clearance.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Structural Installation",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "TOOL-25"
+                }
+              ]
             }
           ]
         },
@@ -423,9 +1142,16 @@
                   "unit": "EA",
                   "rule": {
                     "sourceMode": "FIXED",
-                    "fixedQty": 1
+                    "fixedQty": 2
                   },
-                  "procurementMethod": "Inventory"
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Straps",
+                    "Two-Point Sets"
+                  ],
+                  "catalogId": "RIG-4"
                 }
               ],
               "system": "Rigging",
@@ -436,7 +1162,7 @@
               "items": [
                 {
                   "id": "PAN-009",
-                  "description": "Long self-drilling screws",
+                  "description": "Metal-to-metal self-drilling screws - #10 x 2-3/4-inch hex head",
                   "owner": "Structural",
                   "packSize": 100,
                   "rule": {
@@ -444,29 +1170,71 @@
                     "inputKey": "wall_connection_count",
                     "multiplier": 4,
                     "sparePercent": 0.1
-                  }
+                  },
+                  "specification": "#10 x 2-3/4-inch metal-to-metal self-drilling screw, hex head.",
+                  "notes": "User-specified screw. Catalog four-per-connection allowance remains subject to the approved fastening detail.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Walls",
+                    "Wall Connections"
+                  ],
+                  "catalogId": "FAST-10"
                 },
                 {
                   "id": "PAN-010",
-                  "description": "Long wood-to-metal screws",
+                  "description": "4-inch screws for temporary bracing",
                   "owner": "Structural",
                   "packSize": 100,
                   "rule": {
-                    "sourceMode": "CALCULATED",
-                    "inputKey": "wall_wood_to_metal_connection_count",
+                    "sourceMode": "MANUAL",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "system": "Temporary Bracing",
+                  "specification": "4-inch temporary-bracing screws; type and substrate compatibility to confirm.",
+                  "takeoffFormula": "temporary brace connections x specified 4-inch screws per connection = EA",
+                  "notes": "Temporary-bracing fasteners. Do not use the former wood-to-metal wall connection count for this item.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Wall Connections",
+                    "Temporary Bracing Screws"
+                  ],
+                  "catalogId": "FAST-11"
                 },
                 {
                   "id": "PAN-011",
-                  "description": "Nuts for wall angles",
+                  "description": "Nuts for 4 x 4 wall angles",
                   "owner": "Structural",
                   "packSize": 25,
                   "rule": {
                     "sourceMode": "CALCULATED",
                     "inputKey": "wall_angle_connection_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "notes": "Group with floor threaded connecting rod PAN-003. Confirm nuts per rod/angle and whether hardware is supplied with rods; do not order included nuts twice.",
+                  "system": "Threaded Rod and Angle Hardware",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Floor Connections",
+                    "Threaded Rod and 4 x 4 Wall-Angle Hardware"
+                  ],
+                  "catalogId": "FAST-12"
+                },
+                {
+                  "id": "PAN-030",
+                  "description": "Number 10 wall-bottom-track-to-floor screws",
+                  "unit": "EA",
+                  "notes": "Confirm length and connection detail; reconcile with other wall connection screws.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Walls",
+                    "Wall Connections"
+                  ],
+                  "catalogId": "FAST-13"
                 }
               ],
               "system": "Wall Connections",
@@ -477,8 +1245,15 @@
               "items": [
                 {
                   "id": "PAN-012",
-                  "description": "2 x 4 temporary wall bracing",
-                  "unit": "EA"
+                  "description": "2 x 4 x 16 ft temporary wall bracing",
+                  "unit": "EA",
+                  "notes": "One EA is one 16 FT brace; quantity follows approved temporary-bracing layout.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Temporary Bracing"
+                  ],
+                  "catalogId": "MAT-12"
                 }
               ],
               "system": "Temporary Bracing",
@@ -497,7 +1272,28 @@
                     "inputKey": "wall_hold_down_count",
                     "sparePercent": 0.1
                   },
-                  "notes": "EA means one complete washer-and-nut hardware assembly per hold-down."
+                  "notes": "EA means one complete washer-and-nut hardware assembly per hold-down.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Walls",
+                    "Hold-Downs"
+                  ],
+                  "catalogId": "FAST-14"
+                },
+                {
+                  "id": "PAN-029",
+                  "description": "Hold-down bolts",
+                  "unit": "EA",
+                  "notes": "Washers/nuts already covered by PAN-013; verify factory-supplied hardware.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Walls",
+                    "Hold-Downs"
+                  ],
+                  "catalogId": "FAST-15"
                 }
               ],
               "system": "Hold-Downs",
@@ -514,7 +1310,13 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "wall_to_wall_connection_count"
                   },
-                  "notes": "Confirm plate design and quantity rule."
+                  "notes": "Confirm plate design and quantity rule.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Wall-to-Wall Connections"
+                  ],
+                  "catalogId": "MAT-13"
                 }
               ],
               "system": "Wall-to-Wall Connections",
@@ -527,11 +1329,144 @@
                   "id": "PAN-015",
                   "description": "Froth Pak foam for wall corners",
                   "unit": "CUFT",
-                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification."
+                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Materials",
+                    "Wall Panels",
+                    "Froth-Pak Corner Foam"
+                  ],
+                  "catalogId": "MAT-14"
+                },
+                {
+                  "id": "PAN-034",
+                  "description": "Spare Froth-Pak spray nozzle",
+                  "unit": "EA",
+                  "notes": "Match foam system and nozzle type.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Structural Installation",
+                    "Sealants & Foam"
+                  ],
+                  "catalogId": "TOOL-26"
+                },
+                {
+                  "id": "PAN-035",
+                  "description": "Foam-gun cleaner / compatible solvent",
+                  "unit": "OZ",
+                  "notes": "Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection. Fluid ounces.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Sealants & Foam"
+                  ],
+                  "catalogId": "MAT-15"
                 }
               ],
               "system": "Sealants & Foam",
               "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "system": "Installation Tools",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "PAN-031",
+                  "description": "Long levels for wall leveling",
+                  "unit": "EA",
+                  "notes": "Big/long levels for checking wall level, plumb and straightness; confirm needed lengths.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-27"
+                },
+                {
+                  "id": "PAN-032",
+                  "description": "Right-angle driver-bit attachment",
+                  "unit": "EA",
+                  "notes": "Source: 90 bits; confirm tool/bit configuration.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Structural Installation",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "TOOL-28"
+                },
+                {
+                  "id": "PAN-037",
+                  "description": "Squeeze clamps - optional shared tools",
+                  "unit": "EA",
+                  "notes": "Nice-to-have shared clamps for wall installation and other work. Specify capacity and crew requirement; optional.",
+                  "procurementMethod": "TBD",
+                  "optional": true,
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Wall Installation",
+                    "Clamps and Holding Magnets"
+                  ],
+                  "catalogId": "TOOL-29"
+                },
+                {
+                  "id": "PAN-038",
+                  "description": "Heavy-duty threaded wall clamps",
+                  "unit": "EA",
+                  "notes": "Strong threaded metal clamps to hold adjacent walls together; confirm jaw capacity and required clamping force.",
+                  "procurementMethod": "TBD",
+                  "specification": "Heavy-duty threaded metal clamp for holding walls together.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Wall Installation",
+                    "Clamps and Holding Magnets"
+                  ],
+                  "catalogId": "TOOL-30"
+                },
+                {
+                  "id": "PAN-039",
+                  "description": "Sheet-metal holding magnet",
+                  "unit": "EA",
+                  "notes": "Tool to hold brackets and other items against metal while driving screws.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Wall Installation",
+                    "Clamps and Holding Magnets"
+                  ],
+                  "catalogId": "TOOL-31"
+                }
+              ]
+            },
+            {
+              "name": "Structural",
+              "system": "Site Board Installation",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "PAN-036",
+                  "description": "Site cement board (CB)",
+                  "unit": "SQFT",
+                  "notes": "CB interpreted as cement board from nearby list wording; confirm material and thickness.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Site Board Installation"
+                  ],
+                  "catalogId": "MAT-16"
+                }
+              ]
             }
           ]
         },
@@ -551,7 +1486,14 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "truss_connection_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Trusses",
+                    "Fasteners"
+                  ],
+                  "catalogId": "FAST-16"
                 }
               ],
               "system": "Fasteners",
@@ -568,7 +1510,13 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "truss_angle_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Connections"
+                  ],
+                  "catalogId": "MAT-17"
                 },
                 {
                   "id": "PAN-018",
@@ -577,7 +1525,13 @@
                   "rule": {
                     "sourceMode": "DIRECT",
                     "inputKey": "truss_stitch_piece_count"
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Connections"
+                  ],
+                  "catalogId": "MAT-18"
                 }
               ],
               "system": "Connections",
@@ -595,11 +1549,38 @@
                     "sourceMode": "DIRECT",
                     "inputKey": "roof_purlin_total_length",
                     "sparePercent": 0.05
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Purlins"
+                  ],
+                  "catalogId": "MAT-19"
                 }
               ],
               "system": "Purlins",
               "deliveryStage": "2"
+            },
+            {
+              "name": "Structural",
+              "system": "Board Fasteners",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "PAN-040",
+                  "description": "Cement-board-to-metal screws",
+                  "unit": "EA",
+                  "notes": "Confirm fastener length, coating and board/steel thickness; distinguish later finish screws.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Trusses",
+                    "Board Fasteners"
+                  ],
+                  "catalogId": "FAST-17"
+                }
+              ]
             }
           ]
         },
@@ -618,7 +1599,13 @@
                     "sourceMode": "DIRECT",
                     "inputKey": "roof_slope_material_area",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Slope Build-Up"
+                  ],
+                  "catalogId": "MAT-20"
                 }
               ],
               "system": "Slope Build-Up",
@@ -636,7 +1623,14 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "roof_panel_connection_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Roof Panels",
+                    "Panel Fasteners"
+                  ],
+                  "catalogId": "FAST-18"
                 },
                 {
                   "id": "PAN-022",
@@ -646,7 +1640,14 @@
                     "sourceMode": "CALCULATED",
                     "inputKey": "roof_rivet_count",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Roof Panels",
+                    "Panel Fasteners"
+                  ],
+                  "catalogId": "FAST-19"
                 }
               ],
               "system": "Panel Fasteners",
@@ -664,7 +1665,13 @@
                     "inputKey": "roof_joint_length",
                     "sparePercent": 0.1
                   },
-                  "notes": "Measure tape in linear feet; roll length belongs in pack size/specification."
+                  "notes": "Measure tape in linear feet; roll length belongs in pack size/specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Joint Sealing"
+                  ],
+                  "catalogId": "MAT-21"
                 }
               ],
               "system": "Joint Sealing",
@@ -680,11 +1687,81 @@
                     "sourceMode": "FIXED",
                     "fixedQty": 1
                   },
-                  "procurementMethod": "Inventory"
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "TOOL-32"
                 }
               ],
               "system": "Installation Tools",
               "deliveryStage": "2"
+            },
+            {
+              "name": "Building Envelope",
+              "system": "Cutting & Fastening Tools",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "PAN-041",
+                  "description": "Large panel-cutting saw",
+                  "unit": "EA",
+                  "notes": "Confirm blade, cutting depth and panel compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Cutting & Fastening Tools"
+                  ],
+                  "catalogId": "TOOL-33"
+                },
+                {
+                  "id": "PAN-042",
+                  "description": "Angle grinder",
+                  "unit": "EA",
+                  "notes": "For roof-panel work; specify wheel type.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Cutting & Fastening Tools"
+                  ],
+                  "catalogId": "TOOL-34"
+                },
+                {
+                  "id": "PAN-043",
+                  "description": "Aviation snips",
+                  "unit": "EA",
+                  "notes": "Shared with rough electrical installation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Cutting & Fastening Tools"
+                  ],
+                  "catalogId": "TOOL-35"
+                },
+                {
+                  "id": "PAN-044",
+                  "description": "Rivet gun",
+                  "unit": "EA",
+                  "notes": "Shared with gutter/fascia installation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Cutting & Fastening Tools"
+                  ],
+                  "catalogId": "TOOL-36"
+                }
+              ]
             }
           ]
         }
@@ -706,66 +1783,150 @@
                 {
                   "id": "FIN-001",
                   "description": "12/2 MC cable",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-22"
                 },
                 {
                   "id": "FIN-002",
-                  "description": "3/8-inch MC fittings"
+                  "description": "3/8-inch MC fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-23"
                 },
                 {
                   "id": "FIN-003",
                   "description": "10/3 MC cable",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-24"
                 },
                 {
                   "id": "FIN-004",
-                  "description": "1/2-inch fittings"
+                  "description": "1/2-inch fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-25"
                 },
                 {
                   "id": "FIN-005",
                   "description": "8/3 MC cable",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-26"
                 },
                 {
                   "id": "FIN-006",
-                  "description": "3/4-inch fittings"
+                  "description": "3/4-inch fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-27"
                 },
                 {
                   "id": "FIN-007",
-                  "description": "Breaker panel"
+                  "description": "Breaker panel",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-28"
                 },
                 {
                   "id": "FIN-008",
                   "description": "12/2 MC fire-bell wire",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-29"
                 },
                 {
                   "id": "FIN-009",
                   "description": "Main-feed wire",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-30"
                 },
                 {
                   "id": "FIN-010",
                   "description": "Main-feed conduit",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-31"
                 },
                 {
                   "id": "FIN-011",
-                  "description": "Main-feed fittings"
+                  "description": "Main-feed fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-32"
                 },
                 {
                   "id": "FIN-012",
-                  "description": "Meter combo panel"
+                  "description": "Meter combo panel",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-33"
                 },
                 {
                   "id": "FIN-013",
                   "description": "Wire to Tesla battery",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-34"
                 },
                 {
                   "id": "FIN-014",
                   "description": "Electrical conduit",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Distribution"
+                  ],
+                  "catalogId": "MAT-35"
                 }
               ],
               "system": "Electrical Distribution",
@@ -779,36 +1940,84 @@
                 {
                   "id": "FIN-015",
                   "description": "Fire PEX pipe",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-36"
                 },
                 {
                   "id": "FIN-016",
-                  "description": "Fire PEX fittings"
+                  "description": "Fire PEX fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-37"
                 },
                 {
                   "id": "FIN-017",
-                  "description": "Fire PEX rings"
+                  "description": "Fire PEX rings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-38"
                 },
                 {
                   "id": "FIN-018",
-                  "description": "Sprinkler heads"
+                  "description": "Sprinkler heads",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-39"
                 },
                 {
                   "id": "FIN-019",
-                  "description": "Fire riser"
+                  "description": "Fire riser",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-40"
                 },
                 {
                   "id": "FIN-020",
                   "description": "Fire-riser assembly",
-                  "unit": "EA"
+                  "unit": "EA",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-41"
                 },
                 {
                   "id": "FIN-021",
-                  "description": "Fire alarm"
+                  "description": "Fire alarm",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-42"
                 },
                 {
                   "id": "FIN-022",
-                  "description": "Fire bell"
+                  "description": "Fire bell",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-43"
                 }
               ],
               "system": "Fire Sprinkler",
@@ -822,48 +2031,114 @@
                 {
                   "id": "FIN-023",
                   "description": "Hot-water PEX pipe",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-44"
                 },
                 {
                   "id": "FIN-024",
-                  "description": "Hot-water PEX fittings"
+                  "description": "Hot-water PEX fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-45"
                 },
                 {
                   "id": "FIN-025",
-                  "description": "Hot-water PEX rings"
+                  "description": "Hot-water PEX rings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-46"
                 },
                 {
                   "id": "FIN-026",
-                  "description": "Recirculation pump"
+                  "description": "Recirculation pump",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-47"
                 },
                 {
                   "id": "FIN-027",
-                  "description": "One-way valves"
+                  "description": "One-way valves",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-48"
                 },
                 {
                   "id": "FIN-028",
-                  "description": "Water heater"
+                  "description": "Water heater",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-49"
                 },
                 {
                   "id": "FIN-029",
-                  "description": "Water-heater flex connectors"
+                  "description": "Water-heater flex connectors",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-50"
                 },
                 {
                   "id": "FIN-030",
-                  "description": "Water-heater pan"
+                  "description": "Water-heater pan",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-51"
                 },
                 {
                   "id": "FIN-031",
                   "description": "Water-heater drain",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-52"
                 },
                 {
                   "id": "FIN-032",
-                  "description": "Water-heater shutoff valves"
+                  "description": "Water-heater shutoff valves",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-53"
                 },
                 {
                   "id": "FIN-033",
-                  "description": "Hot-water push-on valves"
+                  "description": "Hot-water push-on valves",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-54"
                 }
               ],
               "system": "Hot Water",
@@ -877,41 +2152,95 @@
                 {
                   "id": "FIN-034",
                   "description": "Cold-water PEX pipe",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-55"
                 },
                 {
                   "id": "FIN-035",
-                  "description": "Cold-water PEX fittings"
+                  "description": "Cold-water PEX fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-56"
                 },
                 {
                   "id": "FIN-036",
-                  "description": "Cold-water PEX rings"
+                  "description": "Cold-water PEX rings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-57"
                 },
                 {
                   "id": "FIN-037",
                   "description": "House main water line",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-58"
                 },
                 {
                   "id": "FIN-038",
                   "description": "Underground main water line",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-59"
                 },
                 {
                   "id": "FIN-039",
-                  "description": "Backflow valve"
+                  "description": "Backflow valve",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-60"
                 },
                 {
                   "id": "FIN-040",
-                  "description": "Water meter"
+                  "description": "Water meter",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-61"
                 },
                 {
                   "id": "FIN-041",
-                  "description": "Meter box"
+                  "description": "Meter box",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-62"
                 },
                 {
                   "id": "FIN-042",
-                  "description": "Cold-water push-on valves"
+                  "description": "Cold-water push-on valves",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-63"
                 }
               ],
               "system": "Cold Water",
@@ -924,34 +2253,66 @@
               "items": [
                 {
                   "id": "FIN-043",
-                  "description": "Sewer test caps"
+                  "description": "Sewer test caps",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-64"
                 },
                 {
                   "id": "FIN-044",
-                  "description": "Toilet 90 fittings"
-                },
-                {
-                  "id": "FIN-045",
-                  "description": "Toilet bottoms and trim",
-                  "notes": "Confirm original wording and exact product."
+                  "description": "Toilet 90 fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-65"
                 },
                 {
                   "id": "FIN-046",
                   "description": "Toilet bolts and hardware",
                   "unit": "EA",
-                  "notes": "EA means one complete toilet hardware assembly."
+                  "notes": "EA means one complete toilet hardware assembly.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Rough MEP",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "FAST-20"
                 },
                 {
                   "id": "FIN-047",
-                  "description": "3-inch rubber couplings for sink / toilet"
+                  "description": "3-inch rubber couplings for sink / toilet",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-66"
                 },
                 {
                   "id": "FIN-048",
-                  "description": "2-inch rubber couplings for laundry / small drain"
+                  "description": "2-inch rubber couplings for laundry / small drain",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-67"
                 },
                 {
                   "id": "FIN-049",
-                  "description": "Sewer test balloons"
+                  "description": "Sewer test balloons",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-68"
                 }
               ],
               "system": "Sanitary Waste",
@@ -965,11 +2326,23 @@
                 {
                   "id": "FIN-050",
                   "description": "2-inch PVC vent pipe",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Plumbing Vent"
+                  ],
+                  "catalogId": "MAT-69"
                 },
                 {
                   "id": "FIN-051",
-                  "description": "2-inch PVC vent fittings"
+                  "description": "2-inch PVC vent fittings",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Plumbing Vent"
+                  ],
+                  "catalogId": "MAT-70"
                 }
               ],
               "system": "Plumbing Vent",
@@ -984,30 +2357,451 @@
                   "id": "FIN-052",
                   "description": "Indoor AC-unit mounting hardware",
                   "unit": "EA",
-                  "notes": "EA means one complete mounting-hardware assembly per indoor unit."
+                  "notes": "EA means one complete mounting-hardware assembly per indoor unit.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC"
+                  ],
+                  "catalogId": "MAT-71"
                 },
                 {
                   "id": "FIN-053",
                   "description": "Condensate drains and routing",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC"
+                  ],
+                  "catalogId": "MAT-72"
                 },
                 {
                   "id": "FIN-054",
-                  "description": "Branch box"
+                  "description": "Branch box",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC"
+                  ],
+                  "catalogId": "MAT-73"
                 },
                 {
                   "id": "FIN-055",
                   "description": "Refrigerant lines",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC"
+                  ],
+                  "catalogId": "MAT-74"
                 },
                 {
                   "id": "FIN-056",
                   "description": "Power from outdoor unit to branch box",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC"
+                  ],
+                  "catalogId": "MAT-75"
                 }
               ],
               "system": "HVAC",
               "deliveryStage": "2"
+            },
+            {
+              "name": "Electrical",
+              "system": "Electrical Installation Tools",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-126",
+                  "description": "Diagonal cutters",
+                  "unit": "EA",
+                  "notes": "Source: Diagnols.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-37"
+                },
+                {
+                  "id": "FIN-127",
+                  "description": "Striking flathead screwdriver",
+                  "unit": "EA",
+                  "notes": "Source specifies hammer-compatible screwdriver.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-38"
+                },
+                {
+                  "id": "FIN-128",
+                  "description": "Phillips screwdriver",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-39"
+                },
+                {
+                  "id": "FIN-129",
+                  "description": "Pin hammer",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-40"
+                },
+                {
+                  "id": "FIN-130",
+                  "description": "Small torque wrench",
+                  "unit": "EA",
+                  "notes": "For electrical terminations; confirm torque range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-41"
+                },
+                {
+                  "id": "FIN-131",
+                  "description": "Hex-key socket set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-42"
+                },
+                {
+                  "id": "FIN-132",
+                  "description": "Fish tape",
+                  "unit": "EA",
+                  "notes": "Specify tape length.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-43"
+                },
+                {
+                  "id": "FIN-133",
+                  "description": "Large wire cutters",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-44"
+                },
+                {
+                  "id": "FIN-134",
+                  "description": "MC cable cutter",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-45"
+                },
+                {
+                  "id": "FIN-135",
+                  "description": "Automatic wire stripper",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-46"
+                },
+                {
+                  "id": "FIN-136",
+                  "description": "Electrical hole-saw set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set; separate application from steel annular cutters.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Electrical",
+                    "Electrical Installation Tools"
+                  ],
+                  "catalogId": "TOOL-47"
+                }
+              ]
+            },
+            {
+              "name": "Electrical",
+              "system": "Wire Connectors",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-137",
+                  "description": "WAGO connector for 12 AWG wire",
+                  "unit": "EA",
+                  "notes": "Confirm model number, conductor range and port count; do not infer compatibility from label alone.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Wire Connectors"
+                  ],
+                  "catalogId": "MAT-76"
+                },
+                {
+                  "id": "FIN-138",
+                  "description": "WAGO connector for 10 AWG wire",
+                  "unit": "EA",
+                  "notes": "Confirm model number, conductor range and port count.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Wire Connectors"
+                  ],
+                  "catalogId": "MAT-77"
+                },
+                {
+                  "id": "FIN-139",
+                  "description": "Polaris-type insulated lug",
+                  "unit": "EA",
+                  "notes": "Confirm model, conductor size range and port count.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Wire Connectors"
+                  ],
+                  "catalogId": "MAT-78"
+                }
+              ]
+            },
+            {
+              "name": "Fire Protection",
+              "system": "Pipe Installation Tools",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-140",
+                  "description": "Tube cutter (Lennox, standard)",
+                  "unit": "EA",
+                  "notes": "Source brand spelling preserved; confirm manufacturer and cutting range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Pipe Installation Tools"
+                  ],
+                  "catalogId": "TOOL-48"
+                },
+                {
+                  "id": "FIN-141",
+                  "description": "Large tube cutter (Lennox)",
+                  "unit": "EA",
+                  "notes": "Confirm manufacturer and cutting range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Pipe Installation Tools"
+                  ],
+                  "catalogId": "TOOL-49"
+                },
+                {
+                  "id": "FIN-142",
+                  "description": "Electric tube cutter",
+                  "unit": "EA",
+                  "notes": "Confirm pipe compatibility and cutting range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Pipe Installation Tools"
+                  ],
+                  "catalogId": "TOOL-50"
+                }
+              ]
+            },
+            {
+              "name": "Fire Protection",
+              "system": "Pipe Joint Consumables",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-143",
+                  "description": "Thread sealant (Loctite 565)",
+                  "unit": "OZ",
+                  "notes": "Source-specified product; confirm system compatibility and package measurement basis.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Pipe Joint Consumables"
+                  ],
+                  "catalogId": "MAT-79"
+                },
+                {
+                  "id": "FIN-144",
+                  "description": "CPVC cement (Tyco red glue)",
+                  "unit": "OZ",
+                  "notes": "Source-specified product description; confirm exact product and pipe-system compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Pipe Joint Consumables"
+                  ],
+                  "catalogId": "MAT-80"
+                }
+              ]
+            },
+            {
+              "name": "Plumbing",
+              "system": "Water Testing Tools & Fittings",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-148",
+                  "description": "Water pressure tester set",
+                  "unit": "EA",
+                  "notes": "One EA is one set; source requests all sizes, so list adapters by size.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Plumbing",
+                    "Water Testing Tools & Fittings"
+                  ],
+                  "catalogId": "TOOL-51"
+                },
+                {
+                  "id": "FIN-149",
+                  "description": "Hot/cold water test tie-together slip tee",
+                  "unit": "EA",
+                  "notes": "Specify tee sizes and test connection detail.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Plumbing",
+                    "Water Testing Tools & Fittings"
+                  ],
+                  "catalogId": "TOOL-52"
+                },
+                {
+                  "id": "FIN-150",
+                  "description": "Red plumbing tool (identify exact tool)",
+                  "unit": "EA",
+                  "notes": "Original description retained; exact tool name/model required before purchase.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Plumbing",
+                    "Water Testing Tools & Fittings"
+                  ],
+                  "catalogId": "TOOL-53"
+                }
+              ]
+            },
+            {
+              "name": "Plumbing",
+              "system": "PVC Joint Consumables",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-151",
+                  "description": "PVC primer",
+                  "unit": "OZ",
+                  "notes": "Fluid ounces; confirm product compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "PVC Joint Consumables"
+                  ],
+                  "catalogId": "MAT-81"
+                },
+                {
+                  "id": "FIN-152",
+                  "description": "PVC cement",
+                  "unit": "OZ",
+                  "notes": "Fluid ounces; confirm product compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "PVC Joint Consumables"
+                  ],
+                  "catalogId": "MAT-82"
+                }
+              ]
+            },
+            {
+              "name": "Mechanical",
+              "system": "HVAC Rough-In",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-157",
+                  "description": "AC rough-in box",
+                  "unit": "EA",
+                  "notes": "Confirm indoor-unit compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "HVAC Rough-In"
+                  ],
+                  "catalogId": "MAT-83"
+                }
+              ]
             }
           ]
         },
@@ -1021,25 +2815,55 @@
               "items": [
                 {
                   "id": "FIN-057",
-                  "description": "Electrical panel covers"
+                  "description": "Electrical panel covers",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Finish"
+                  ],
+                  "catalogId": "MAT-84"
                 },
                 {
                   "id": "FIN-058",
-                  "description": "Outlet covers"
+                  "description": "Outlet covers",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Finish"
+                  ],
+                  "catalogId": "MAT-85"
                 },
                 {
                   "id": "FIN-059",
                   "description": "High-amperage outlets and covers",
                   "unit": "EA",
-                  "notes": "EA means one complete outlet-and-cover assembly."
+                  "notes": "EA means one complete outlet-and-cover assembly.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Finish"
+                  ],
+                  "catalogId": "MAT-86"
                 },
                 {
                   "id": "FIN-060",
-                  "description": "Exterior outlet covers"
+                  "description": "Exterior outlet covers",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Finish"
+                  ],
+                  "catalogId": "MAT-87"
                 },
                 {
                   "id": "FIN-061",
-                  "description": "Breakers"
+                  "description": "Breakers",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Electrical Finish"
+                  ],
+                  "catalogId": "MAT-88"
                 }
               ],
               "system": "Electrical Finish",
@@ -1053,34 +2877,76 @@
                 {
                   "id": "FIN-062",
                   "description": "IronRidge rails",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-89"
                 },
                 {
                   "id": "FIN-063",
-                  "description": "IronRidge clips"
+                  "description": "IronRidge clips",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-90"
                 },
                 {
                   "id": "FIN-064",
-                  "description": "Solar panels"
+                  "description": "Solar panels",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-91"
                 },
                 {
                   "id": "FIN-065",
-                  "description": "Solar connectors"
+                  "description": "Solar connectors",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-92"
                 },
                 {
                   "id": "FIN-066",
                   "description": "Roof solar conduit",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-93"
                 },
                 {
                   "id": "FIN-067",
                   "description": "Solar roof penetration",
                   "unit": "EA",
-                  "notes": "EA means one complete roof-penetration assembly."
+                  "notes": "EA means one complete roof-penetration assembly.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-94"
                 },
                 {
                   "id": "FIN-068",
-                  "description": "Roof junction box"
+                  "description": "Roof junction box",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Solar"
+                  ],
+                  "catalogId": "MAT-95"
                 }
               ],
               "system": "Solar",
@@ -1093,7 +2959,13 @@
               "items": [
                 {
                   "id": "FIN-069",
-                  "description": "Sprinkler covers"
+                  "description": "Sprinkler covers",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Fire Protection",
+                    "Fire Sprinkler"
+                  ],
+                  "catalogId": "MAT-96"
                 }
               ],
               "system": "Fire Sprinkler",
@@ -1106,11 +2978,23 @@
               "items": [
                 {
                   "id": "FIN-070",
-                  "description": "Hot-water flex hoses"
+                  "description": "Hot-water flex hoses",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-97"
                 },
                 {
                   "id": "FIN-071",
-                  "description": "Hot-water escutcheons"
+                  "description": "Hot-water escutcheons",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Hot Water"
+                  ],
+                  "catalogId": "MAT-98"
                 }
               ],
               "system": "Hot Water",
@@ -1123,15 +3007,33 @@
               "items": [
                 {
                   "id": "FIN-072",
-                  "description": "Cold-water flex hoses"
+                  "description": "Cold-water flex hoses",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-99"
                 },
                 {
                   "id": "FIN-073",
-                  "description": "Cold-water escutcheons"
+                  "description": "Cold-water escutcheons",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-100"
                 },
                 {
                   "id": "FIN-074",
-                  "description": "Sink faucet"
+                  "description": "Sink faucet",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Cold Water"
+                  ],
+                  "catalogId": "MAT-101"
                 }
               ],
               "system": "Cold Water",
@@ -1144,27 +3046,63 @@
               "items": [
                 {
                   "id": "FIN-075",
-                  "description": "1-1/2-inch PVC-to-slip-joint adapter"
+                  "description": "1-1/2-inch PVC-to-slip-joint adapter",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-102"
                 },
                 {
                   "id": "FIN-076",
-                  "description": "Slip-joint P-traps"
+                  "description": "Slip-joint P-traps",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-103"
                 },
                 {
                   "id": "FIN-077",
-                  "description": "Slip-joint bends"
+                  "description": "Slip-joint bends",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-104"
                 },
                 {
                   "id": "FIN-078",
-                  "description": "Cleanout cover"
+                  "description": "Cleanout cover",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-105"
                 },
                 {
                   "id": "FIN-079",
-                  "description": "Sink-bowl drain"
+                  "description": "Sink-bowl drain",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-106"
                 },
                 {
                   "id": "FIN-080",
-                  "description": "Slip-joint adapters"
+                  "description": "Slip-joint adapters",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Sanitary Waste"
+                  ],
+                  "catalogId": "MAT-107"
                 }
               ],
               "system": "Sanitary Waste",
@@ -1177,11 +3115,164 @@
               "items": [
                 {
                   "id": "FIN-081",
-                  "description": "Wall or roof vent cap"
+                  "description": "Wall or roof vent cap",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Plumbing Vent"
+                  ],
+                  "catalogId": "MAT-108"
                 }
               ],
               "system": "Plumbing Vent",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Fire Protection",
+              "system": "Hydrostatic Testing",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-145",
+                  "description": "Line-pressure test equipment",
+                  "unit": "EA",
+                  "notes": "One EA is one test-equipment set; test pressure/procedure by responsible installer.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Hydrostatic Testing"
+                  ],
+                  "catalogId": "TOOL-54"
+                },
+                {
+                  "id": "FIN-146",
+                  "description": "Hydrotest water hose",
+                  "unit": "FT",
+                  "notes": "Water access is a site prerequisite; hose diameter and connection specification required.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Hydrostatic Testing"
+                  ],
+                  "catalogId": "TOOL-55"
+                },
+                {
+                  "id": "FIN-147",
+                  "description": "Hydrotest pump-connection fittings",
+                  "unit": "EA",
+                  "notes": "Specify each fitting type, size and model; coordinate with sprinkler consultant.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Fire Protection",
+                    "Hydrostatic Testing"
+                  ],
+                  "catalogId": "TOOL-56"
+                }
+              ]
+            },
+            {
+              "name": "Plumbing",
+              "system": "Plumbing Installation Tools",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-153",
+                  "description": "Slip-joint / PE tube cutter",
+                  "unit": "EA",
+                  "notes": "Classified under finish plumbing by function; confirm cutting range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Plumbing",
+                    "Plumbing Installation Tools"
+                  ],
+                  "catalogId": "TOOL-57"
+                }
+              ]
+            },
+            {
+              "name": "Plumbing",
+              "system": "Toilet Finish",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-045",
+                  "description": "Toilet flush buttons and trim",
+                  "notes": "Latest list clarifies Toilet Buttons; match toilet model and avoid factory-supplied duplicate hardware.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Toilet Finish"
+                  ],
+                  "catalogId": "MAT-109"
+                },
+                {
+                  "id": "FIN-154",
+                  "description": "Toilet bowl",
+                  "unit": "EA",
+                  "notes": "Confirm model and factory/site supply split.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Toilet Finish"
+                  ],
+                  "catalogId": "MAT-110"
+                },
+                {
+                  "id": "FIN-155",
+                  "description": "Toilet mounting rods",
+                  "unit": "EA",
+                  "notes": "Confirm count per toilet and whether included with FIN-046 hardware.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Toilet Finish"
+                  ],
+                  "catalogId": "MAT-111"
+                },
+                {
+                  "id": "FIN-156",
+                  "description": "Toilet connection fittings",
+                  "unit": "EA",
+                  "notes": "Specify exact fitting types/sizes; check existing toilet 90 and coupling rows.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Plumbing",
+                    "Toilet Finish"
+                  ],
+                  "catalogId": "MAT-112"
+                }
+              ]
+            },
+            {
+              "name": "Mechanical",
+              "system": "Ventilation Finish",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-158",
+                  "description": "Fan cover",
+                  "unit": "EA",
+                  "notes": "Source location ambiguous; classified as ventilation finish. Confirm fan model and whether cover is included.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Mechanical",
+                    "Ventilation Finish"
+                  ],
+                  "catalogId": "MAT-113"
+                }
+              ]
             }
           ]
         },
@@ -1194,24 +3285,49 @@
               "items": [
                 {
                   "id": "FIN-082",
-                  "description": "Exterior door sill pans"
+                  "description": "Exterior door sill pans",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Exterior Doors"
+                  ],
+                  "catalogId": "MAT-114"
                 },
                 {
                   "id": "FIN-083",
                   "description": "Exterior door flashing",
                   "unit": "FT",
-                  "notes": "Measure flashing in linear feet; roll width and length belong in the specification."
+                  "notes": "Measure flashing in linear feet; roll width and length belong in the specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Exterior Doors"
+                  ],
+                  "catalogId": "MAT-115"
                 },
                 {
                   "id": "FIN-084",
                   "description": "Door-frame screws",
-                  "packSize": 100
+                  "packSize": 100,
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Windows and Doors",
+                    "Exterior Doors"
+                  ],
+                  "catalogId": "FAST-21"
                 },
                 {
                   "id": "FIN-085",
                   "description": "Door gap foam",
                   "unit": "CUFT",
-                  "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification."
+                  "notes": "Measure installed foam volume; can size and yield belong in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Exterior Doors"
+                  ],
+                  "catalogId": "MAT-116"
                 }
               ],
               "system": "Exterior Doors",
@@ -1224,7 +3340,13 @@
                 {
                   "id": "FIN-086",
                   "description": "Define interior door installation materials",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "notes": "Placeholder from the supplied list; replace with exact items.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Interior Doors"
+                  ],
+                  "catalogId": "MAT-117"
                 }
               ],
               "system": "Interior Doors",
@@ -1237,27 +3359,111 @@
                 {
                   "id": "FIN-087",
                   "description": "Window trim",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Windows"
+                  ],
+                  "catalogId": "MAT-118"
                 },
                 {
                   "id": "FIN-088",
-                  "description": "Window screws"
+                  "description": "Window screws",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Windows and Doors",
+                    "Windows"
+                  ],
+                  "catalogId": "FAST-22"
                 },
                 {
                   "id": "FIN-089",
                   "description": "Window silicone",
                   "unit": "OZ",
-                  "notes": "Measure sealant by fluid ounces; cartridge size belongs in the purchasing specification."
+                  "notes": "Measure sealant by fluid ounces; cartridge size belongs in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Windows"
+                  ],
+                  "catalogId": "MAT-119"
                 },
                 {
                   "id": "FIN-090",
                   "description": "Window gap filler",
                   "unit": "CUFT",
-                  "notes": "Measure installed filler volume; package size and yield belong in the purchasing specification."
+                  "notes": "Measure installed filler volume; package size and yield belong in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Windows"
+                  ],
+                  "catalogId": "MAT-120"
                 }
               ],
               "system": "Windows",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Doors & Windows",
+              "system": "Window Accessories",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-159",
+                  "description": "Window screen",
+                  "unit": "EA",
+                  "notes": "Match opening and window model; check factory inclusion.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Window Accessories"
+                  ],
+                  "catalogId": "MAT-121"
+                },
+                {
+                  "id": "FIN-160",
+                  "description": "Window hardware and handle set",
+                  "unit": "EA",
+                  "notes": "One EA is one complete set; check factory inclusion.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Window Accessories"
+                  ],
+                  "catalogId": "MAT-122"
+                },
+                {
+                  "id": "FIN-161",
+                  "description": "Window-trim attachment hardware",
+                  "unit": "EA",
+                  "notes": "Confirm exact attachment system and fasteners.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Window Accessories"
+                  ],
+                  "catalogId": "MAT-123"
+                },
+                {
+                  "id": "FIN-162",
+                  "description": "Window shade",
+                  "unit": "EA",
+                  "notes": "Include setup/settings in installation scope; verify shade sizes and controls.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Window Accessories"
+                  ],
+                  "catalogId": "MAT-124"
+                }
+              ]
             }
           ]
         },
@@ -1270,11 +3476,23 @@
               "items": [
                 {
                   "id": "FIN-091",
-                  "description": "Bathroom vanity"
+                  "description": "Bathroom vanity",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Bathroom Cabinetry"
+                  ],
+                  "catalogId": "MAT-125"
                 },
                 {
                   "id": "FIN-092",
-                  "description": "Vanity clips"
+                  "description": "Vanity clips",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Bathroom Cabinetry"
+                  ],
+                  "catalogId": "MAT-126"
                 }
               ],
               "system": "Bathroom Cabinetry",
@@ -1286,7 +3504,13 @@
               "items": [
                 {
                   "id": "FIN-093",
-                  "description": "Kitchen island"
+                  "description": "Kitchen island",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Kitchen Cabinetry"
+                  ],
+                  "catalogId": "MAT-127"
                 }
               ],
               "system": "Kitchen Cabinetry",
@@ -1299,11 +3523,38 @@
                 {
                   "id": "FIN-094",
                   "description": "Define closet installation materials",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "notes": "Placeholder from the supplied list; replace with exact items.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Closets"
+                  ],
+                  "catalogId": "MAT-128"
                 }
               ],
               "system": "Closets",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "system": "Cabinet Installation Tools",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-163",
+                  "description": "Cabinet lifter",
+                  "unit": "EA",
+                  "notes": "Confirm load rating and lifting range.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Cabinet Installation Tools"
+                  ],
+                  "catalogId": "TOOL-58"
+                }
+              ]
             }
           ]
         },
@@ -1319,27 +3570,84 @@
                   "id": "FIN-095",
                   "description": "Smart-home wire",
                   "unit": "FT",
-                  "deliveryStage": "2"
+                  "deliveryStage": "2",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Low Voltage"
+                  ],
+                  "catalogId": "MAT-129"
                 },
                 {
                   "id": "FIN-096",
                   "description": "Low-voltage power wires",
                   "unit": "FT",
-                  "deliveryStage": "2"
+                  "deliveryStage": "2",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Low Voltage"
+                  ],
+                  "catalogId": "MAT-130"
                 },
                 {
                   "id": "FIN-097",
                   "description": "Wire-routing materials",
                   "unit": "FT",
-                  "deliveryStage": "2"
+                  "deliveryStage": "2",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Low Voltage"
+                  ],
+                  "catalogId": "MAT-131"
                 },
                 {
                   "id": "FIN-098",
-                  "description": "Low-voltage connectors"
+                  "description": "Low-voltage connectors",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Low Voltage"
+                  ],
+                  "catalogId": "MAT-132"
                 }
               ],
               "system": "Low Voltage",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Electrical",
+              "system": "Cable Management",
+              "deliveryStage": "2",
+              "items": [
+                {
+                  "id": "FIN-164",
+                  "description": "Cable tie",
+                  "unit": "EA",
+                  "notes": "Quantity in individual ties; bundle/pack size in purchasing specification.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Cable Management"
+                  ],
+                  "catalogId": "MAT-133"
+                },
+                {
+                  "id": "FIN-165",
+                  "description": "Wire-routing magnet",
+                  "unit": "EA",
+                  "notes": "Confirm whether pulling aid or permanent retention magnet.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Electrical",
+                    "Cable Management"
+                  ],
+                  "catalogId": "MAT-134"
+                }
+              ]
             }
           ]
         },
@@ -1358,7 +3666,13 @@
                     "sourceMode": "DIRECT",
                     "inputKey": "garage_ceiling_area",
                     "sparePercent": 0.1
-                  }
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Drywall"
+                  ],
+                  "catalogId": "MAT-135"
                 }
               ],
               "system": "Drywall",
@@ -1371,11 +3685,59 @@
                 {
                   "id": "FIN-100",
                   "description": "Define garage-door installation materials",
-                  "notes": "Placeholder from the supplied list; replace with exact items."
+                  "notes": "Placeholder from the supplied list; replace with exact items.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Doors and Windows",
+                    "Garage Doors"
+                  ],
+                  "catalogId": "MAT-136"
                 }
               ],
               "system": "Garage Doors",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "system": "Drywall Fasteners",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-166",
+                  "description": "Drywall screws",
+                  "unit": "EA",
+                  "notes": "Specify length, board thickness and framing substrate.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "General",
+                    "Drywall Fasteners"
+                  ],
+                  "catalogId": "FAST-23"
+                }
+              ]
+            },
+            {
+              "name": "Doors & Windows",
+              "system": "Garage-Door Handling Equipment",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-167",
+                  "description": "Forklift rental for garage-door handling",
+                  "unit": "DAY",
+                  "notes": "Confirm capacity, reach and access; coordinate door handling plan.",
+                  "procurementMethod": "Rental",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Rentals",
+                    "General"
+                  ],
+                  "catalogId": "EQUIP-5"
+                }
+              ]
             }
           ]
         },
@@ -1390,17 +3752,36 @@
                   "id": "FIN-101",
                   "description": "Sand and leveling material",
                   "unit": "LB",
-                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification."
+                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Floor Preparation"
+                  ],
+                  "catalogId": "MAT-137"
                 },
                 {
                   "id": "FIN-102",
                   "description": "Self-leveling compound",
                   "unit": "LB",
-                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification."
+                  "notes": "Measure dry material by weight; bag weight belongs in pack size/specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Floor Preparation"
+                  ],
+                  "catalogId": "MAT-138"
                 },
                 {
                   "id": "FIN-103",
-                  "description": "Screws for floor creaks"
+                  "description": "Screws for floor creaks",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Flooring",
+                    "Floor Preparation"
+                  ],
+                  "catalogId": "FAST-24"
                 }
               ],
               "system": "Floor Preparation",
@@ -1413,7 +3794,13 @@
                 {
                   "id": "FIN-104",
                   "description": "Rubber underlayment",
-                  "unit": "SQFT"
+                  "unit": "SQFT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Underlayment"
+                  ],
+                  "catalogId": "MAT-139"
                 }
               ],
               "system": "Underlayment",
@@ -1426,11 +3813,93 @@
                 {
                   "id": "FIN-105",
                   "description": "Floorboards",
-                  "unit": "SQFT"
+                  "unit": "SQFT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Finish Flooring"
+                  ],
+                  "catalogId": "MAT-140"
                 }
               ],
               "system": "Finish Flooring",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Interior Finishes",
+              "system": "Floor Installation Tools & Abrasives",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-168",
+                  "description": "Large floor sander",
+                  "unit": "EA",
+                  "notes": "Confirm sander type and working width.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Floor Installation Tools & Abrasives"
+                  ],
+                  "catalogId": "TOOL-59"
+                },
+                {
+                  "id": "FIN-169",
+                  "description": "Large floor grinder",
+                  "unit": "EA",
+                  "notes": "Distinct from roof-panel angle grinder.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Floor Installation Tools & Abrasives"
+                  ],
+                  "catalogId": "TOOL-60"
+                },
+                {
+                  "id": "FIN-170",
+                  "description": "Concrete grinding disc",
+                  "unit": "EA",
+                  "notes": "Source: Cement Disc; confirm diameter and grinder compatibility.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Floor Installation Tools & Abrasives"
+                  ],
+                  "catalogId": "MAT-141"
+                },
+                {
+                  "id": "FIN-171",
+                  "description": "Heavy-duty scissors",
+                  "unit": "EA",
+                  "notes": "",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Floor Installation Tools & Abrasives"
+                  ],
+                  "catalogId": "TOOL-61"
+                },
+                {
+                  "id": "FIN-172",
+                  "description": "Floorboard / sheet cutter",
+                  "unit": "EA",
+                  "notes": "Confirm flooring material and cutter configuration.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Floor Installation Tools & Abrasives"
+                  ],
+                  "catalogId": "TOOL-62"
+                }
+              ]
             }
           ]
         },
@@ -1443,7 +3912,14 @@
               "items": [
                 {
                   "id": "FIN-106",
-                  "description": "Simpson angle clips"
+                  "description": "Simpson angle clips",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Truss Area Finish",
+                    "Connection Hardware"
+                  ],
+                  "catalogId": "FAST-25"
                 }
               ],
               "system": "Connection Hardware",
@@ -1456,7 +3932,13 @@
                   "id": "FIN-107",
                   "description": "Concrete board",
                   "unit": "SQFT",
-                  "notes": "Measure board coverage in square feet; sheet dimensions belong in the specification."
+                  "notes": "Measure board coverage in square feet; sheet dimensions belong in the specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Board Finish"
+                  ],
+                  "catalogId": "MAT-142"
                 }
               ],
               "system": "Board Finish",
@@ -1467,13 +3949,26 @@
               "items": [
                 {
                   "id": "FIN-108",
-                  "description": "Truss-area finish screws"
+                  "description": "Truss-area finish screws",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Truss Area Finish",
+                    "Sealants & Fasteners"
+                  ],
+                  "catalogId": "FAST-26"
                 },
                 {
                   "id": "FIN-109",
                   "description": "Truss-area Froth Pak foam",
                   "unit": "CUFT",
-                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification."
+                  "notes": "Measure installed foam volume; kit size and yield belong in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Sealants & Fasteners"
+                  ],
+                  "catalogId": "MAT-143"
                 }
               ],
               "system": "Sealants & Fasteners",
@@ -1491,23 +3986,56 @@
                 {
                   "id": "FIN-110",
                   "description": "Roof-panel trim",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Roof Trim"
+                  ],
+                  "catalogId": "MAT-144"
                 },
                 {
                   "id": "FIN-111",
-                  "description": "Gutter / fascia rivets"
+                  "description": "Gutter / fascia rivets",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Gutter / Fascia",
+                    "Roof Trim"
+                  ],
+                  "catalogId": "FAST-27"
                 },
                 {
                   "id": "FIN-112",
-                  "description": "S-5 roof-panel clamps"
+                  "description": "S-5 roof-panel clamps",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Roof Trim"
+                  ],
+                  "catalogId": "MAT-145"
                 },
                 {
                   "id": "FIN-113",
-                  "description": "Gutter / fascia angle clips"
+                  "description": "Gutter / fascia angle clips",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Gutter / Fascia",
+                    "Roof Trim"
+                  ],
+                  "catalogId": "FAST-28"
                 },
                 {
                   "id": "FIN-114",
-                  "description": "Gutter / fascia screws"
+                  "description": "Gutter / fascia screws",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Gutter / Fascia",
+                    "Roof Trim"
+                  ],
+                  "catalogId": "FAST-29"
                 }
               ],
               "system": "Roof Trim",
@@ -1520,7 +4048,13 @@
                 {
                   "id": "FIN-115",
                   "description": "Gutter material",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Gutters"
+                  ],
+                  "catalogId": "MAT-146"
                 }
               ],
               "system": "Gutters",
@@ -1533,7 +4067,13 @@
                 {
                   "id": "FIN-116",
                   "description": "Fascia material",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Fascia"
+                  ],
+                  "catalogId": "MAT-147"
                 }
               ],
               "system": "Fascia",
@@ -1545,17 +4085,64 @@
               "items": [
                 {
                   "id": "FIN-117",
-                  "description": "Soffit clips"
+                  "description": "Soffit clips",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Soffits"
+                  ],
+                  "catalogId": "MAT-148"
                 },
                 {
                   "id": "FIN-118",
                   "description": "Soffit panels",
                   "unit": "SQFT",
-                  "notes": "Measure panel coverage in square feet; sheet dimensions belong in the specification."
+                  "notes": "Measure panel coverage in square feet; sheet dimensions belong in the specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Roof and Envelope",
+                    "Soffits"
+                  ],
+                  "catalogId": "MAT-149"
                 }
               ],
               "system": "Soffits",
               "deliveryStage": "3"
+            },
+            {
+              "name": "Building Envelope",
+              "system": "Trim Cutting Tools",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-173",
+                  "description": "Chop saw",
+                  "unit": "EA",
+                  "notes": "Specify blade suitable for trim material.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Trim Cutting Tools"
+                  ],
+                  "catalogId": "TOOL-63"
+                },
+                {
+                  "id": "FIN-174",
+                  "description": "Circular saw",
+                  "unit": "EA",
+                  "notes": "Source: SkilSaw; specify suitable blade.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Building Envelope",
+                    "Trim Cutting Tools"
+                  ],
+                  "catalogId": "TOOL-64"
+                }
+              ]
             }
           ]
         },
@@ -1569,12 +4156,24 @@
                 {
                   "id": "FIN-119",
                   "description": "Stretch-ceiling profiles",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Profiles"
+                  ],
+                  "catalogId": "MAT-150"
                 },
                 {
                   "id": "FIN-120",
                   "description": "LED profiles",
-                  "unit": "FT"
+                  "unit": "FT",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Profiles"
+                  ],
+                  "catalogId": "MAT-151"
                 }
               ],
               "system": "Profiles",
@@ -1586,11 +4185,23 @@
               "items": [
                 {
                   "id": "FIN-121",
-                  "description": "Can-light circles"
+                  "description": "Can-light circles",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Cutouts"
+                  ],
+                  "catalogId": "MAT-152"
                 },
                 {
                   "id": "FIN-122",
-                  "description": "Fire-sprinkler circles"
+                  "description": "Fire-sprinkler circles",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Cutouts"
+                  ],
+                  "catalogId": "MAT-153"
                 }
               ],
               "system": "Cutouts",
@@ -1604,7 +4215,13 @@
                   "id": "FIN-123",
                   "description": "Super glue",
                   "unit": "OZ",
-                  "notes": "Measure adhesive in fluid ounces; bottle size belongs in the purchasing specification."
+                  "notes": "Measure adhesive in fluid ounces; bottle size belongs in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "MAT-154"
                 },
                 {
                   "id": "FIN-124",
@@ -1613,17 +4230,185 @@
                     "sourceMode": "FIXED",
                     "fixedQty": 1
                   },
-                  "procurementMethod": "Inventory"
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "TOOL-65"
                 },
                 {
                   "id": "FIN-125",
                   "description": "Propane",
                   "unit": "LB",
-                  "notes": "Measure propane by weight; cylinder size belongs in the purchasing specification."
+                  "notes": "Measure propane by weight; cylinder size belongs in the purchasing specification.",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Installation Tools"
+                  ],
+                  "catalogId": "MAT-155"
                 }
               ],
               "system": "Installation Tools",
               "deliveryStage": "3"
+            }
+          ]
+        },
+        {
+          "name": "Solid Surface",
+          "kitId": "FIN-SOLID-SURFACE",
+          "categories": [
+            {
+              "name": "Interior Finishes",
+              "system": "Surface Repair Consumables",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-175",
+                  "description": "Solid-surface touch-up kit",
+                  "unit": "EA",
+                  "notes": "One EA is one kit; confirm contents and finish match.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "TOOL-66"
+                },
+                {
+                  "id": "FIN-176",
+                  "description": "Solid-surface adhesive",
+                  "unit": "OZ",
+                  "notes": "Confirm compatible adhesive, color and package measurement basis.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "MAT-156"
+                },
+                {
+                  "id": "FIN-177",
+                  "description": "60-grit sanding paper",
+                  "unit": "EA",
+                  "notes": "Specify sheet/disc dimensions; one EA is one sheet/disc.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "MAT-157"
+                },
+                {
+                  "id": "FIN-178",
+                  "description": "120-grit sanding paper",
+                  "unit": "EA",
+                  "notes": "Specify sheet/disc dimensions; one EA is one sheet/disc.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "MAT-158"
+                },
+                {
+                  "id": "FIN-179",
+                  "description": "220-grit sanding paper",
+                  "unit": "EA",
+                  "notes": "Specify sheet/disc dimensions; one EA is one sheet/disc.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "MAT-159"
+                },
+                {
+                  "id": "FIN-180",
+                  "description": "Hot-glue sticks",
+                  "unit": "EA",
+                  "notes": "Specify diameter, length and formulation.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Interior Finishes",
+                    "Surface Repair Consumables"
+                  ],
+                  "catalogId": "MAT-160"
+                }
+              ]
+            },
+            {
+              "name": "Interior Finishes",
+              "system": "Surface Installation Tools",
+              "deliveryStage": "3",
+              "items": [
+                {
+                  "id": "FIN-181",
+                  "description": "Solid-surface sander",
+                  "unit": "EA",
+                  "notes": "Distinct finishing application from large floor sander.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Surface Installation Tools"
+                  ],
+                  "catalogId": "TOOL-67"
+                },
+                {
+                  "id": "FIN-182",
+                  "description": "Hot-glue gun",
+                  "unit": "EA",
+                  "notes": "Match glue-stick diameter.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Surface Installation Tools"
+                  ],
+                  "catalogId": "TOOL-68"
+                },
+                {
+                  "id": "FIN-183",
+                  "description": "Manual suction cup lifter",
+                  "unit": "EA",
+                  "notes": "Confirm material compatibility and load rating.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Surface Installation Tools"
+                  ],
+                  "catalogId": "TOOL-69"
+                },
+                {
+                  "id": "FIN-184",
+                  "description": "Electric suction cup lifter",
+                  "unit": "EA",
+                  "notes": "Confirm material compatibility and load rating.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Interior Finishes",
+                    "Surface Installation Tools"
+                  ],
+                  "catalogId": "TOOL-70"
+                }
+              ]
             }
           ]
         }

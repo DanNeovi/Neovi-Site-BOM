@@ -2,10 +2,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadTemplateConfig } from "../src/template-model.mjs";
+import { quantityBasis } from "../src/quantity-explanations.mjs";
 
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
 const { config, lines, contract } = await loadTemplateConfig();
-const outputDir = path.resolve(moduleDir, `../outputs/site-bom-v${config.settings.templateVersion}`);
+const outputDir = path.resolve(moduleDir, `../outputs/NeoviBOM/05-Google-Sheet`);
 const projectInputSchema = contract.schemas.projectInputs;
 const catalogSchema = contract.schemas.catalog;
 const siteStages = Object.freeze([...contract.siteStages]);
@@ -46,6 +47,8 @@ const siteShippingHeaders = [
   "Line ID",
   "Item ID",
   "Notes",
+  "Catalog ID",
+  "Category Path",
 ];
 
 function csvCell(value) {
@@ -95,24 +98,10 @@ function toSiteShippingCsv(rows) {
     entry.lineId,
     entry.itemId,
     entry.notes,
+    entry.catalogId,
+    entry.categoryPath,
   ])];
   return matrix.map((cells) => cells.map(csvCell).join(",")).join("\r\n") + "\r\n";
-}
-
-function humanizeInputKey(inputKey) {
-  return inputKey.replaceAll("_", " ");
-}
-
-function quantityBasis(line) {
-  const parts = [];
-  if (line.sourceMode === "DIRECT") parts.push(`Use ${humanizeInputKey(line.inputKey)}`);
-  else if (line.sourceMode === "CALCULATED") parts.push(`Calculate from ${humanizeInputKey(line.inputKey)}`);
-  else if (line.sourceMode === "FIXED") parts.push("Standard site item; confirm before shipment");
-  else parts.push("Confirm quantity to ship");
-  if (line.multiplier !== 1) parts.push(`${line.multiplier} per source quantity`);
-  if (line.sparePercent > 0) parts.push(`include ${line.sparePercent * 100}% spare`);
-  if (line.minimumKitQty > 0) parts.push(`minimum ${line.minimumKitQty}`);
-  return parts.join("; ");
 }
 
 function cleanNotes(line) {
@@ -183,7 +172,7 @@ const operationalRows = contract.projectInputs.map((entry) => ({
   unit: entry.unit,
   source: entry.source,
   sourceReference: entry.sourceReference,
-  location: `${entry.deliveryStage} / ${entry.location}`,
+  location: `${entry.deliveryStage} / ${[...new Set(lines.filter(line => line.inputKey === entry.inputKey).map(line => `${line.categorySection} ${line.stage} (Phase: ${line.phase})`))].join("; ") || entry.location}`,
   notes: entry.notes,
 }));
 
@@ -194,7 +183,7 @@ const catalogRows = lines
     teamScope: line.teamScope,
     sourceOrdinal: line.sourceOrdinal,
     phase: line.phase,
-    workArea: line.stage,
+    workArea: `${line.categorySection} ${line.stage}`,
     category: line.category,
     categoryCode: line.categoryCode,
     system: line.system,
@@ -203,6 +192,8 @@ const catalogRows = lines
     quantityBasis: quantityBasis(line),
     lineId: line.lineId,
     itemId: line.itemId,
+    catalogId: line.catalogId,
+    categoryPath: line.categoryPath.join(' > '),
     sourceReference: `site-bom.template.json#${line.lineId}`,
     notes: cleanNotes(line),
   }))
@@ -210,7 +201,8 @@ const catalogRows = lines
     || left.sourceOrdinal.join(".").localeCompare(right.sourceOrdinal.join("."), undefined, { numeric: true }));
 
 const operationalPath = path.join(outputDir, "Neovi-Site-BOM-Project-Inputs-No-Quantities.csv");
-const catalogPath = path.join(outputDir, "Neovi-Site-BOM-All-Discussed-Items-No-Quantities.csv");
+const catalogPath = path.resolve(moduleDir, "../outputs/NeoviBOM/01-Catalog/Neovi-Site-BOM-Checklist.csv");
+await fs.mkdir(path.dirname(catalogPath), { recursive: true });
 validateDraftRows(operationalRows, config.settings, "Operational inputs");
 validateSiteRows(catalogRows, config.settings);
 if (operationalRows.length !== Object.keys(config.settings.inputUnits).length) {

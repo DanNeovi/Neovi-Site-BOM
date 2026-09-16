@@ -21,6 +21,7 @@ test("downloaded flat master snapshots rebuild the same line model", async () =>
       lineId: line.lineId, itemId: line.itemId, phase: line.phase, stage: line.stage,
       category: line.category, kitId: line.kitId, scope: line.scope, lineNotes: line.lineNotes,
       system: line.system, deliveryStage: line.deliveryStage,
+      catalogId: line.catalogId, categoryPath: line.categoryPath,
     })),
     rules: lines.map((line) => ({
       lineId: line.lineId, sourceMode: line.sourceMode, inputKey: line.inputKey, inputUnit: line.inputUnit,
@@ -32,6 +33,11 @@ test("downloaded flat master snapshots rebuild the same line model", async () =>
   const rebuilt = masterSnapshotToConfig(snapshot);
   assert.deepEqual(validateTemplateConfig(rebuilt).errors, []);
   assert.equal(flattenBomLines(rebuilt).length, lines.length);
+  for (const line of flattenBomLines(rebuilt)) {
+    const original=lines.find(l=>l.lineId===line.lineId);
+    assert.equal(line.catalogId,original.catalogId);
+    assert.deepEqual(line.categoryPath,original.categoryPath);
+  }
   assert.equal(flattenBomLines(rebuilt).find((line) => line.lineId === "PAN-003").inputUnit, "EA");
   assert.equal(flattenBomLines(rebuilt).find((line) => line.lineId === "PAN-003").system, "Floor Connections");
 

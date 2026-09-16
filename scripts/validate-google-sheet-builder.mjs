@@ -7,7 +7,7 @@ import { loadTemplateConfig } from "../src/template-model.mjs";
 export async function validateGoogleSheetBuilder(builderFile) {
   if (!builderFile) {
     const { config } = await loadTemplateConfig();
-    builderFile = `outputs/site-bom-v${config.settings.templateVersion}/Neovi-Site-BOM-Builder.gs`;
+    builderFile = `outputs/NeoviBOM/05-Google-Sheet/Neovi-Site-BOM-Builder.gs`;
   }
   const builderPath = path.resolve(builderFile);
   const source = await fs.readFile(builderPath, "utf8");
@@ -71,7 +71,7 @@ export async function validateGoogleSheetBuilder(builderFile) {
   assert.match(source, /\["Import Audit", "A1:D1004"\]/);
   assert.match(source, /"A1:AT7"/);
   assert.match(source, /"A1:X3"/);
-  assert.match(source, /\["BOM Lines", "A1:L3"\]/);
+  assert.match(source, /\["BOM Lines", "A1:N3"\]/);
   assert.match(source, /`Q8:AJ\$\{lastRow\}`/);
   assert.match(source, /fixed master/);
   assert.match(source, /Site BOM is not ready for approval/);
