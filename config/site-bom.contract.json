@@ -12,7 +12,7 @@
     }
   },
   "catalog": {
-    "expectedRowCount": 275
+    "expectedRowCount": 276
   },
   "phases": [
     "Foundation",

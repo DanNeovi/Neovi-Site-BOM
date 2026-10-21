@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "next": {
-    "EQUIP": "6",
+    "EQUIP": "7",
     "SUP": "5",
-    "TOOL": "71",
+    "TOOL": "73",
     "MAT": "161",
     "FIX": "4",
     "FAST": "30",
@@ -73,7 +73,7 @@
     "FND-054": {
       "catalogId": "TOOL-3",
       "status": "active",
-      "description": "Leveling string line",
+      "description": "Leveling string line (100 ft set assumed)",
       "categoryPath": [
         "Tools",
         "Layout and Leveling",
@@ -82,7 +82,7 @@
     },
     "FND-003": {
       "catalogId": "MAT-1",
-      "status": "active",
+      "status": "retired",
       "description": "Define foundation consumables",
       "categoryPath": [
         "Sitework",
@@ -121,7 +121,7 @@
     },
     "FND-005": {
       "catalogId": "MAT-2",
-      "status": "active",
+      "status": "retired",
       "description": "Define useful site additions",
       "categoryPath": [
         "Sitework",
@@ -301,7 +301,7 @@
     "FND-037": {
       "catalogId": "TOOL-21",
       "status": "active",
-      "description": "Site water hose",
+      "description": "Site water hose (100 ft assumed)",
       "categoryPath": [
         "Tools",
         "Shared Site Tools",
@@ -348,7 +348,7 @@
     "FND-011": {
       "catalogId": "EQUIP-2",
       "status": "active",
-      "description": "Helical pile installation machine rental - John Deere 50P / 50G",
+      "description": "Helical pile and substructure machine rental - John Deere 50P / 50G",
       "categoryPath": [
         "Equipment",
         "Rentals",
@@ -496,7 +496,7 @@
     "FND-048": {
       "catalogId": "SUP-4",
       "status": "active",
-      "description": "Magnetic-drill cutting fluid",
+      "description": "Magnetic-drill cutting fluid (16 oz bottle assumed)",
       "categoryPath": [
         "Tools",
         "Magnetic Drill",
@@ -703,7 +703,7 @@
     "PAN-035": {
       "catalogId": "MAT-15",
       "status": "active",
-      "description": "Foam-gun cleaner / compatible solvent",
+      "description": "Foam-gun cleaner / compatible solvent (16 oz can assumed)",
       "categoryPath": [
         "Structural",
         "Sealants & Foam"
@@ -1569,7 +1569,7 @@
     "FIN-143": {
       "catalogId": "MAT-79",
       "status": "active",
-      "description": "Thread sealant (Loctite 565)",
+      "description": "Thread sealant (Loctite 565; 50 mL tube assumed)",
       "categoryPath": [
         "Fire Protection",
         "Pipe Joint Consumables"
@@ -1578,7 +1578,7 @@
     "FIN-144": {
       "catalogId": "MAT-80",
       "status": "active",
-      "description": "CPVC cement (Tyco red glue)",
+      "description": "CPVC cement (Tyco red glue; 16 oz can assumed)",
       "categoryPath": [
         "Fire Protection",
         "Pipe Joint Consumables"
@@ -1617,7 +1617,7 @@
     "FIN-151": {
       "catalogId": "MAT-81",
       "status": "active",
-      "description": "PVC primer",
+      "description": "PVC primer (16 oz can assumed)",
       "categoryPath": [
         "Plumbing",
         "PVC Joint Consumables"
@@ -1626,7 +1626,7 @@
     "FIN-152": {
       "catalogId": "MAT-82",
       "status": "active",
-      "description": "PVC cement",
+      "description": "PVC cement (16 oz can assumed)",
       "categoryPath": [
         "Plumbing",
         "PVC Joint Consumables"
@@ -1879,7 +1879,7 @@
     "FIN-146": {
       "catalogId": "TOOL-55",
       "status": "active",
-      "description": "Hydrotest water hose",
+      "description": "Hydrotest water hose (100 ft assumed)",
       "categoryPath": [
         "Tools",
         "Fire Protection",
@@ -2019,7 +2019,7 @@
     "FIN-089": {
       "catalogId": "MAT-119",
       "status": "active",
-      "description": "Window silicone",
+      "description": "Window silicone (10 oz cartridge assumed)",
       "categoryPath": [
         "Doors and Windows",
         "Windows"
@@ -2484,7 +2484,7 @@
     "FIN-123": {
       "catalogId": "MAT-154",
       "status": "active",
-      "description": "Super glue",
+      "description": "Super glue (4 oz bottle assumed)",
       "categoryPath": [
         "Interior Finishes",
         "Installation Tools"
@@ -2503,7 +2503,7 @@
     "FIN-125": {
       "catalogId": "MAT-155",
       "status": "active",
-      "description": "Propane",
+      "description": "Propane (20 lb cylinder assumed)",
       "categoryPath": [
         "Interior Finishes",
         "Installation Tools"
@@ -2522,7 +2522,7 @@
     "FIN-176": {
       "catalogId": "MAT-156",
       "status": "active",
-      "description": "Solid-surface adhesive",
+      "description": "Solid-surface adhesive (16 oz cartridge assumed)",
       "categoryPath": [
         "Interior Finishes",
         "Surface Repair Consumables"
@@ -2602,6 +2602,36 @@
         "Tools",
         "Interior Finishes",
         "Surface Installation Tools"
+      ]
+    },
+    "FND-059": {
+      "catalogId": "TOOL-71",
+      "status": "active",
+      "description": "Total station",
+      "categoryPath": [
+        "Tools",
+        "Layout and Leveling",
+        "Surveying Tools"
+      ]
+    },
+    "FND-061": {
+      "catalogId": "TOOL-72",
+      "status": "active",
+      "description": "Orange-handle magnets",
+      "categoryPath": [
+        "Tools",
+        "Structural Installation",
+        "Holding Magnets"
+      ]
+    },
+    "FND-060": {
+      "catalogId": "EQUIP-6",
+      "status": "active",
+      "description": "Digger motor",
+      "categoryPath": [
+        "Equipment",
+        "Helical Piles",
+        "Installation Attachments"
       ]
     }
   }

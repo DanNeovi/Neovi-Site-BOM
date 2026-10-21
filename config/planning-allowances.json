@@ -408,8 +408,8 @@
     },
     "FIN-089": {
       "driver": "windowPerimeter",
-      "rate": 0.32639923673660187,
-      "assumption": "Budget round 1/4-inch sealant bead; FT x pi x 0.25^2 / 4 x 12 / 1.8046875 = fluid OZ"
+      "rate": 0.03263992367366019,
+      "assumption": "Budget round 1/4-inch sealant bead: FT x pi x 0.25^2 / 4 x 12 / 1.8046875 = fluid OZ; divide by assumed 10-fluid-OZ cartridge and round up to EA"
     },
     "FIN-090": {
       "driver": "windowPerimeter",
@@ -548,13 +548,13 @@
     },
     "FIN-123": {
       "driver": "project",
-      "rate": 4,
-      "assumption": "Budget 4 fluid OZ project adhesive allowance"
+      "rate": 1,
+      "assumption": "Budget 4 fluid OZ project adhesive allowance / one assumed 4-fluid-OZ bottle = 1 EA"
     },
     "FIN-125": {
       "driver": "project",
-      "rate": 20,
-      "assumption": "Budget one 20 LB propane fill"
+      "rate": 1,
+      "assumption": "Budget 20 LB propane / one assumed 20-LB cylinder = 1 EA; confirm existing cylinder inventory and refill need"
     },
     "FND-001": {
       "driver": "project",
@@ -563,8 +563,23 @@
     },
     "FND-011": {
       "driver": "project",
-      "rate": 5,
-      "assumption": "Budget five rental days; installation production pending"
+      "rate": 14,
+      "assumption": "Two-week machine rental for helical pile and substructure work = 14 calendar days; confirm rental billing, mobilization and installation schedule"
+    },
+    "FND-054": {
+      "driver": "project",
+      "rate": 10,
+      "assumption": "10 leveling-string sets per user; assume one 100-FT spool per set, giving 1,000 FT available. Confirm actual runs, reuse and spool size"
+    },
+    "FND-060": {
+      "driver": "project",
+      "rate": 1,
+      "assumption": "One pile-installation digger motor or drive attachment per user direction; verify whether included with the machine rental or owned equipment"
+    },
+    "FND-061": {
+      "driver": "project",
+      "rate": 10,
+      "assumption": "Ten orange-handle holding magnets per user direction; confirm pull rating, exact product and reusable crew stock"
     },
     "FND-018": {
       "driver": "hssBeams",

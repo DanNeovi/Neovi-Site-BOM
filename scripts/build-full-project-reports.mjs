@@ -86,7 +86,7 @@ for (const project of audit.projects) {
     }
     if (['FIN-089','FIN-090'].includes(row.lineId) && openingTakeoffs.windowPerimeter !== null) {
       const n=openingTakeoffs.windowPerimeter.toFixed(3);
-      row.requiredFormula=row.lineId==='FIN-090'?`R = ${n} FT joint x gap width IN x fill depth IN / 144`:`R = ${n} FT joint x bead area SQIN x 12 / 1.8046875`;
+      row.requiredFormula=row.lineId==='FIN-090'?`R = ${n} FT joint x gap width IN x fill depth IN / 144`:`R = ceil(${n} FT joint x bead area SQIN x 12 / 1.8046875 FL OZ / selected cartridge FL OZ) EA`;
       row.reason='Window joint perimeter calculated from opening dimensions. Fill/bead cross-section still required; window trim side multiplier does not multiply the physical gap.';
     }
     const estimate = row.required === null ? planning.estimates[row.lineId] : null;

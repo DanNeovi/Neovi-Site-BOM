@@ -1,6 +1,16 @@
 {
-  "source": "Downloads/Neovi-All-Related-Items-Side-by-Side_annotated.pdf and user instructions, 2026-09-15",
+  "source": "Downloads/Neovi-All-Related-Items-Side-by-Side_annotated.pdf and user instructions, 2026-09-15 and 2026-10-14",
   "retired": {
+    "FND-003": {
+      "description": "Define foundation consumables",
+      "reason": "Removed by user on 2026-10-14; leave the shared foundation Materials section empty until real items are defined.",
+      "replacements": []
+    },
+    "FND-005": {
+      "description": "Define useful site additions",
+      "reason": "Removed by user on 2026-10-14; named tools are listed individually in Helical Piles.",
+      "replacements": []
+    },
     "FND-002": {
       "description": "Define foundation site supplies",
       "reason": "Replaced generic supplies with named layout supplies.",
@@ -698,6 +708,26 @@
         ],
         "catalogId": "FAST-3",
         "notes": "User pile-based rule: plan helical pile count x 2. Bedframe bolts and nuts are grouped together; washers have their own line FND-058 with multiplier pending clarification."
+      }
+    },
+    {
+      "lineId": "FND-060",
+      "before": null,
+      "after": {
+        "id": "FND-060",
+        "description": "Digger motor",
+        "unit": "EA",
+        "notes": "Added from user directions on 2026-10-14; exact product and inventory require confirmation."
+      }
+    },
+    {
+      "lineId": "FND-061",
+      "before": null,
+      "after": {
+        "id": "FND-061",
+        "description": "Orange-handle magnets",
+        "unit": "EA",
+        "notes": "Added from user directions on 2026-10-14; exact product and inventory require confirmation."
       }
     }
   ]

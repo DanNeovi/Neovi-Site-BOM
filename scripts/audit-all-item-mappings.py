@@ -1,4 +1,4 @@
-"""Audit all 275 explicit selectors, keeping missing inputs and source evidence visible."""
+"""Audit all active selectors, keeping missing inputs and source evidence visible."""
 import collections
 import csv
 import json

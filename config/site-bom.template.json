@@ -78,7 +78,8 @@
                     "Rentals",
                     "Site Setup and Support"
                   ],
-                  "catalogId": "EQUIP-1"
+                  "catalogId": "EQUIP-1",
+                  "notes": "Foundation supplemental access item; seasonal. Monroe budgets four mats, pending access layout and crew inventory."
                 }
               ],
               "system": "Site Access",
@@ -86,6 +87,268 @@
             },
             {
               "name": "Sitework",
+              "items": [
+                {
+                  "id": "FND-059",
+                  "description": "Total station",
+                  "unit": "EA",
+                  "system": "Leveling and Double-Checking",
+                  "notes": "Surveying tool for site layout, setting out points, and checking positions and elevations.",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Surveying Tools"
+                  ],
+                  "catalogId": "TOOL-71"
+                }
+              ],
+              "system": "General Site Supplies",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Sitework",
+              "system": "Survey & Layout Tools",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-021",
+                  "description": "Laser total station",
+                  "unit": "EA",
+                  "notes": "User name replaces laser-level tripod. Confirm instrument and tripod kit contents; separate laser level FND-020 retained.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-5"
+                }
+              ]
+            },
+            {
+              "name": "Sitework",
+              "system": "Temporary Power & Water",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-035",
+                  "description": "Sump pump for flooded trenches",
+                  "unit": "EA",
+                  "notes": "Seasonal/site need; confirm capacity.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Shared Site Tools",
+                    "Temporary Power & Water"
+                  ],
+                  "catalogId": "TOOL-19"
+                }
+              ]
+            },
+            {
+              "name": "Sitework",
+              "system": "Foundation Supplemental Tools",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-061",
+                  "description": "Orange-handle magnets",
+                  "unit": "EA",
+                  "notes": "Ten reusable orange-handle holding magnets per user direction. Confirm exact product, pull rating and crew inventory before ordering.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Structural Installation",
+                    "Holding Magnets"
+                  ],
+                  "catalogId": "TOOL-72"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Helical Piles",
+          "kitId": "FND-PILE",
+          "categories": [
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-006",
+                  "description": "Helical piles",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "foundation_helical_pile_count",
+                    "status": "READY_FOR_TEST"
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Piles"
+                  ],
+                  "catalogId": "MAT-3"
+                },
+                {
+                  "id": "FND-007",
+                  "description": "Pile extensions",
+                  "owner": "Structural",
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Piles"
+                  ],
+                  "catalogId": "MAT-4"
+                }
+              ],
+              "system": "Piles",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-009",
+                  "description": "Pile pins - complete sets",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "FIXED",
+                    "fixedQty": 3,
+                    "sparePercent": 0
+                  },
+                  "notes": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+                  "inventoryPrefix": "FAST",
+                  "categoryPath": [
+                    "Fasteners",
+                    "Helical Piles",
+                    "Pin Sets"
+                  ],
+                  "catalogId": "FAST-1"
+                },
+                {
+                  "id": "FND-010",
+                  "description": "Pile brackets",
+                  "owner": "Structural",
+                  "rule": {
+                    "sourceMode": "DIRECT",
+                    "inputKey": "foundation_pile_bracket_count"
+                  },
+                  "inventoryPrefix": "MAT",
+                  "categoryPath": [
+                    "Structural",
+                    "Pile Connections"
+                  ],
+                  "catalogId": "MAT-5"
+                }
+              ],
+              "system": "Pile Connections",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "items": [
+                {
+                  "id": "FND-011",
+                  "description": "Helical pile and substructure machine rental - John Deere 50P / 50G",
+                  "unit": "DAY",
+                  "procurementMethod": "Rental",
+                  "notes": "Plan two weeks (14 calendar days) for helical pile and substructure work. Rental machine must have auxiliary hydraulic power and compatible pile installation attachment; tracks included. Confirm billed duration and mobilization.",
+                  "specification": "John Deere 50P or 50G; equipped with auxiliary hydraulics and compatible pile installation attachment.",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Rentals",
+                    "Helical Piles"
+                  ],
+                  "catalogId": "EQUIP-2"
+                },
+                {
+                  "id": "FND-060",
+                  "description": "Digger motor",
+                  "unit": "EA",
+                  "notes": "One pile-installation motor or drive attachment per project as directed. Confirm whether it is included with the John Deere rental or existing owned digger before procurement.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Helical Piles",
+                    "Installation Attachments"
+                  ],
+                  "catalogId": "EQUIP-6"
+                }
+              ],
+              "system": "Installation Equipment",
+              "deliveryStage": "1"
+            },
+            {
+              "name": "Structural",
+              "system": "Installation Machine Accessories",
+              "deliveryStage": "1",
+              "items": [
+                {
+                  "id": "FND-040",
+                  "description": "Machine lifting chains",
+                  "unit": "EA",
+                  "notes": "Specify rated assembly and length.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Chains",
+                    "Machine Chains"
+                  ],
+                  "catalogId": "RIG-1"
+                },
+                {
+                  "id": "FND-041",
+                  "description": "Lifting straps",
+                  "unit": "EA",
+                  "notes": "Length unspecified. Confirm required length, rated load and configuration before selecting lifting straps. Add actual sizes only when confirmed.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "RIG",
+                  "categoryPath": [
+                    "Rigging",
+                    "Lifting Straps"
+                  ],
+                  "catalogId": "RIG-2"
+                },
+                {
+                  "id": "FND-043",
+                  "description": "Large digger",
+                  "unit": "EA",
+                  "notes": "Owned equipment, not a rental. Confirm availability for the scheduled work; no rental days.",
+                  "procurementMethod": "Inventory",
+                  "inventoryPrefix": "EQUIP",
+                  "categoryPath": [
+                    "Equipment",
+                    "Owned",
+                    "Helical Piles"
+                  ],
+                  "catalogId": "EQUIP-3"
+                },
+                {
+                  "id": "FND-045",
+                  "description": "Pipe level",
+                  "unit": "EA",
+                  "notes": "Pipe level used for machine leveling and alignment.",
+                  "procurementMethod": "TBD",
+                  "inventoryPrefix": "TOOL",
+                  "categoryPath": [
+                    "Tools",
+                    "Layout and Leveling",
+                    "Levels and Surveying"
+                  ],
+                  "catalogId": "TOOL-22"
+                }
+              ]
+            },
+            {
+              "name": "Structural",
               "items": [
                 {
                   "id": "FND-049",
@@ -159,10 +422,10 @@
                 },
                 {
                   "id": "FND-054",
-                  "description": "Leveling string line",
-                  "unit": "FT",
+                  "description": "Leveling string line (100 ft set assumed)",
+                  "unit": "EA",
                   "system": "Leveling and Double-Checking",
-                  "notes": "String for leveling and independent alignment checks. Measure required runs; spool length belongs in pack size.",
+                  "notes": "Plan ten complete 100-ft sets/spools, or 1,000 ft of available string, for pile layout. Confirm run lengths, reuse and actual spool size.",
                   "inventoryPrefix": "TOOL",
                   "categoryPath": [
                     "Tools",
@@ -172,29 +435,11 @@
                   "catalogId": "TOOL-3"
                 }
               ],
-              "system": "General Site Supplies",
+              "system": "Pile Layout and Marking",
               "deliveryStage": "1"
             },
             {
-              "name": "Sitework",
-              "items": [
-                {
-                  "id": "FND-003",
-                  "description": "Define foundation consumables",
-                  "notes": "Placeholder from the supplied list; replace with exact items.",
-                  "inventoryPrefix": "MAT",
-                  "categoryPath": [
-                    "Sitework",
-                    "Site Consumables"
-                  ],
-                  "catalogId": "MAT-1"
-                }
-              ],
-              "system": "Site Consumables",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Sitework",
+              "name": "Structural",
               "items": [
                 {
                   "id": "FND-055",
@@ -239,30 +484,12 @@
                   "catalogId": "FIX-3"
                 }
               ],
-              "system": "Site Fixtures",
+              "system": "Pile Drill Fixtures",
               "deliveryStage": "1"
             },
             {
-              "name": "Sitework",
-              "items": [
-                {
-                  "id": "FND-005",
-                  "description": "Define useful site additions",
-                  "notes": "Placeholder from the supplied list; replace with exact items.",
-                  "inventoryPrefix": "MAT",
-                  "categoryPath": [
-                    "Sitework",
-                    "Site Additions"
-                  ],
-                  "catalogId": "MAT-2"
-                }
-              ],
-              "system": "Site Additions",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Sitework",
-              "system": "Survey & Layout Tools",
+              "name": "Structural",
+              "system": "Pile Survey and Layout Tools",
               "deliveryStage": "1",
               "items": [
                 {
@@ -278,20 +505,6 @@
                     "Levels and Surveying"
                   ],
                   "catalogId": "TOOL-4"
-                },
-                {
-                  "id": "FND-021",
-                  "description": "Laser total station",
-                  "unit": "EA",
-                  "notes": "User name replaces laser-level tripod. Confirm instrument and tripod kit contents; separate laser level FND-020 retained.",
-                  "procurementMethod": "TBD",
-                  "inventoryPrefix": "TOOL",
-                  "categoryPath": [
-                    "Tools",
-                    "Layout and Leveling",
-                    "Levels and Surveying"
-                  ],
-                  "catalogId": "TOOL-5"
                 },
                 {
                   "id": "FND-022",
@@ -310,8 +523,8 @@
               ]
             },
             {
-              "name": "Sitework",
-              "system": "Shared Power Tools",
+              "name": "Structural",
+              "system": "Pile Power Tools",
               "deliveryStage": "1",
               "items": [
                 {
@@ -389,8 +602,8 @@
               ]
             },
             {
-              "name": "Sitework",
-              "system": "Shared Hand Tools & Bits",
+              "name": "Structural",
+              "system": "Pile Hand Tools and Bits",
               "deliveryStage": "1",
               "items": [
                 {
@@ -494,24 +707,10 @@
               ]
             },
             {
-              "name": "Sitework",
-              "system": "Temporary Power & Water",
+              "name": "Structural",
+              "system": "Pile Temporary Power and Water",
               "deliveryStage": "1",
               "items": [
-                {
-                  "id": "FND-035",
-                  "description": "Sump pump for flooded trenches",
-                  "unit": "EA",
-                  "notes": "Seasonal/site need; confirm capacity.",
-                  "procurementMethod": "TBD",
-                  "inventoryPrefix": "TOOL",
-                  "categoryPath": [
-                    "Tools",
-                    "Shared Site Tools",
-                    "Temporary Power & Water"
-                  ],
-                  "catalogId": "TOOL-19"
-                },
                 {
                   "id": "FND-036",
                   "description": "Extension cord",
@@ -528,9 +727,9 @@
                 },
                 {
                   "id": "FND-037",
-                  "description": "Site water hose",
-                  "unit": "FT",
-                  "notes": "Specify hose diameter and purchased lengths.",
+                  "description": "Site water hose (100 ft assumed)",
+                  "unit": "EA",
+                  "notes": "One complete 100-ft hose is the Monroe planning allowance. Confirm site reach, diameter, pressure rating and connectors before ordering.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "TOOL",
                   "categoryPath": [
@@ -539,170 +738,6 @@
                     "Temporary Power & Water"
                   ],
                   "catalogId": "TOOL-21"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Helical Piles",
-          "kitId": "FND-PILE",
-          "categories": [
-            {
-              "name": "Structural",
-              "items": [
-                {
-                  "id": "FND-006",
-                  "description": "Helical piles",
-                  "owner": "Structural",
-                  "rule": {
-                    "sourceMode": "DIRECT",
-                    "inputKey": "foundation_helical_pile_count",
-                    "status": "READY_FOR_TEST"
-                  },
-                  "inventoryPrefix": "MAT",
-                  "categoryPath": [
-                    "Structural",
-                    "Piles"
-                  ],
-                  "catalogId": "MAT-3"
-                },
-                {
-                  "id": "FND-007",
-                  "description": "Pile extensions",
-                  "owner": "Structural",
-                  "inventoryPrefix": "MAT",
-                  "categoryPath": [
-                    "Structural",
-                    "Piles"
-                  ],
-                  "catalogId": "MAT-4"
-                }
-              ],
-              "system": "Piles",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Structural",
-              "items": [
-                {
-                  "id": "FND-009",
-                  "description": "Pile pins - complete sets",
-                  "owner": "Structural",
-                  "rule": {
-                    "sourceMode": "FIXED",
-                    "fixedQty": 3,
-                    "sparePercent": 0
-                  },
-                  "notes": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
-                  "inventoryPrefix": "FAST",
-                  "categoryPath": [
-                    "Fasteners",
-                    "Helical Piles",
-                    "Pin Sets"
-                  ],
-                  "catalogId": "FAST-1"
-                },
-                {
-                  "id": "FND-010",
-                  "description": "Pile brackets",
-                  "owner": "Structural",
-                  "rule": {
-                    "sourceMode": "DIRECT",
-                    "inputKey": "foundation_pile_bracket_count"
-                  },
-                  "inventoryPrefix": "MAT",
-                  "categoryPath": [
-                    "Structural",
-                    "Pile Connections"
-                  ],
-                  "catalogId": "MAT-5"
-                }
-              ],
-              "system": "Pile Connections",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Structural",
-              "items": [
-                {
-                  "id": "FND-011",
-                  "description": "Helical pile installation machine rental - John Deere 50P / 50G",
-                  "unit": "DAY",
-                  "procurementMethod": "Rental",
-                  "notes": "Only John Deere 50P or 50G per user. Rental excavator must be equipped with auxiliary hydraulic power for pile installation; confirm attachment compatibility. Tracks included.",
-                  "specification": "John Deere 50P or 50G; equipped with auxiliary hydraulics and compatible pile installation attachment.",
-                  "inventoryPrefix": "EQUIP",
-                  "categoryPath": [
-                    "Equipment",
-                    "Rentals",
-                    "Helical Piles"
-                  ],
-                  "catalogId": "EQUIP-2"
-                }
-              ],
-              "system": "Installation Equipment",
-              "deliveryStage": "1"
-            },
-            {
-              "name": "Structural",
-              "system": "Installation Machine Accessories",
-              "deliveryStage": "1",
-              "items": [
-                {
-                  "id": "FND-040",
-                  "description": "Machine lifting chains",
-                  "unit": "EA",
-                  "notes": "Specify rated assembly and length.",
-                  "procurementMethod": "TBD",
-                  "inventoryPrefix": "RIG",
-                  "categoryPath": [
-                    "Rigging",
-                    "Lifting Chains",
-                    "Machine Chains"
-                  ],
-                  "catalogId": "RIG-1"
-                },
-                {
-                  "id": "FND-041",
-                  "description": "Lifting straps",
-                  "unit": "EA",
-                  "notes": "Length unspecified. Confirm required length, rated load and configuration before selecting lifting straps. Add actual sizes only when confirmed.",
-                  "procurementMethod": "TBD",
-                  "inventoryPrefix": "RIG",
-                  "categoryPath": [
-                    "Rigging",
-                    "Lifting Straps"
-                  ],
-                  "catalogId": "RIG-2"
-                },
-                {
-                  "id": "FND-043",
-                  "description": "Large digger",
-                  "unit": "EA",
-                  "notes": "Owned equipment, not a rental. Confirm availability for the scheduled work; no rental days.",
-                  "procurementMethod": "Inventory",
-                  "inventoryPrefix": "EQUIP",
-                  "categoryPath": [
-                    "Equipment",
-                    "Owned",
-                    "Helical Piles"
-                  ],
-                  "catalogId": "EQUIP-3"
-                },
-                {
-                  "id": "FND-045",
-                  "description": "Pipe level",
-                  "unit": "EA",
-                  "notes": "Pipe level used for machine leveling and alignment.",
-                  "procurementMethod": "TBD",
-                  "inventoryPrefix": "TOOL",
-                  "categoryPath": [
-                    "Tools",
-                    "Layout and Leveling",
-                    "Levels and Surveying"
-                  ],
-                  "catalogId": "TOOL-22"
                 }
               ]
             }
@@ -907,9 +942,9 @@
                 },
                 {
                   "id": "FND-048",
-                  "description": "Magnetic-drill cutting fluid",
-                  "unit": "OZ",
-                  "notes": "Cutting fluid for magnetic drilling. Measure fluid ounces; container size is a purchasing specification.",
+                  "description": "Magnetic-drill cutting fluid (16 oz bottle assumed)",
+                  "unit": "EA",
+                  "notes": "Plan 2 fluid oz per modeled HSS beam; divide total fluid need by an assumed 16-oz bottle and round up. Confirm drilling method and bottle size.",
                   "procurementMethod": "TBD",
                   "system": "Magnetic Drill - Cutting Fluid",
                   "inventoryPrefix": "SUP",
@@ -1354,9 +1389,9 @@
                 },
                 {
                   "id": "PAN-035",
-                  "description": "Foam-gun cleaner / compatible solvent",
-                  "unit": "OZ",
-                  "notes": "Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection. Fluid ounces.",
+                  "description": "Foam-gun cleaner / compatible solvent (16 oz can assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 16-oz can per project. Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
@@ -2675,9 +2710,9 @@
               "items": [
                 {
                   "id": "FIN-143",
-                  "description": "Thread sealant (Loctite 565)",
-                  "unit": "OZ",
-                  "notes": "Source-specified product; confirm system compatibility and package measurement basis.",
+                  "description": "Thread sealant (Loctite 565; 50 mL tube assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 50-mL tube is a starter Monroe allowance because the fire-pipe joint count is unavailable. Confirm actual joint use, fire-system compatibility and package before ordering.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
@@ -2688,9 +2723,9 @@
                 },
                 {
                   "id": "FIN-144",
-                  "description": "CPVC cement (Tyco red glue)",
-                  "unit": "OZ",
-                  "notes": "Source-specified product description; confirm exact product and pipe-system compatibility.",
+                  "description": "CPVC cement (Tyco red glue; 16 oz can assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm exact product, pack and pipe-system compatibility.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
@@ -2757,9 +2792,9 @@
               "items": [
                 {
                   "id": "FIN-151",
-                  "description": "PVC primer",
-                  "unit": "OZ",
-                  "notes": "Fluid ounces; confirm product compatibility.",
+                  "description": "PVC primer (16 oz can assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm product and pipe-system compatibility.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
@@ -2770,9 +2805,9 @@
                 },
                 {
                   "id": "FIN-152",
-                  "description": "PVC cement",
-                  "unit": "OZ",
-                  "notes": "Fluid ounces; confirm product compatibility.",
+                  "description": "PVC cement (16 oz can assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm product and pipe-system compatibility.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
@@ -3148,9 +3183,9 @@
                 },
                 {
                   "id": "FIN-146",
-                  "description": "Hydrotest water hose",
-                  "unit": "FT",
-                  "notes": "Water access is a site prerequisite; hose diameter and connection specification required.",
+                  "description": "Hydrotest water hose (100 ft assumed)",
+                  "unit": "EA",
+                  "notes": "One complete 100-ft hydrotest hose is the Monroe planning allowance. Confirm reach, diameter, pressure rating and connectors; it may be shared with the site water hose if compatible.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "TOOL",
                   "categoryPath": [
@@ -3380,9 +3415,9 @@
                 },
                 {
                   "id": "FIN-089",
-                  "description": "Window silicone",
-                  "unit": "OZ",
-                  "notes": "Measure sealant by fluid ounces; cartridge size belongs in the purchasing specification.",
+                  "description": "Window silicone (10 oz cartridge assumed)",
+                  "unit": "EA",
+                  "notes": "Calculate fluid-ounce demand from window-joint perimeter and an assumed quarter-inch bead, then divide by an assumed 10-fluid-oz cartridge and round up. Verify joint size and cartridge volume.",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
                     "Doors and Windows",
@@ -4213,9 +4248,9 @@
               "items": [
                 {
                   "id": "FIN-123",
-                  "description": "Super glue",
-                  "unit": "OZ",
-                  "notes": "Measure adhesive in fluid ounces; bottle size belongs in the purchasing specification.",
+                  "description": "Super glue (4 oz bottle assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 4-fluid-oz bottle covers the 4-fluid-oz project allowance. Verify bottle size and actual installation use.",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
                     "Interior Finishes",
@@ -4241,9 +4276,9 @@
                 },
                 {
                   "id": "FIN-125",
-                  "description": "Propane",
-                  "unit": "LB",
-                  "notes": "Measure propane by weight; cylinder size belongs in the purchasing specification.",
+                  "description": "Propane (20 lb cylinder assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 20-lb cylinder covers the 20-lb project allowance. Confirm equipment, work duration, whether a cylinder is already available, and refill policy.",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [
                     "Interior Finishes",
@@ -4282,9 +4317,9 @@
                 },
                 {
                   "id": "FIN-176",
-                  "description": "Solid-surface adhesive",
-                  "unit": "OZ",
-                  "notes": "Confirm compatible adhesive, color and package measurement basis.",
+                  "description": "Solid-surface adhesive (16 oz cartridge assumed)",
+                  "unit": "EA",
+                  "notes": "One assumed 16-fluid-oz cartridge covers the 16-fluid-oz project allowance. Confirm compatible adhesive, color and package volume.",
                   "procurementMethod": "TBD",
                   "inventoryPrefix": "MAT",
                   "categoryPath": [

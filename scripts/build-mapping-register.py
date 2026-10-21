@@ -130,7 +130,7 @@ FIN-085|door,foam|SUM(opening joint length x gap width x depth); gap width/depth
 FIN-086|interior.door|Placeholder: define exact interior-door materials before mapping.
 FIN-087|window|SUM(2 x (rough width + rough height) x sides); user rule interior wall = 2 sides, exterior wall = 1; exclude skylights.
 FIN-088|window,screw|Sum attachment positions per window schedule; spacing and edge conditions required.
-FIN-089|window,sealant|Sealant FL OZ = joint length FT x bead area SQIN x 12 / 1.8046875; bead dimensions required.
+FIN-089|window,sealant|Sealant cartridges EA = ceil(joint length FT x bead area SQIN x 12 / 1.8046875 FL OZ per cartridge volume); assumed cartridge is 10 FL OZ; bead dimensions required.
 FIN-090|window,foam|SUM(perimeter FT x gap width IN x depth IN / 144); gap dimensions required.
 FIN-091|vanity,cabinet|Count complete vanity cabinets; countertops and sink modules are not equivalent.
 FIN-092|vanity,clip|Count vanity attachment points x clips per point; attachment design required.
@@ -164,9 +164,9 @@ FIN-119|stretch,strech,ceiling|Sum stretch-ceiling attachment boundary runs; cei
 FIN-120|led.profile|Sum measured Light Strip Length for modeled LED profiles; exclude symbolic visibility length.
 FIN-121|downlight|One ceiling circle per modeled recessed downlight; verify ceiling installation scope.
 FIN-122|sprinkler|One ceiling circle per sprinkler head; verify ceiling installation scope.
-FIN-123|glue|Count glued rings x adhesive usage per ring; product consumption required.
+FIN-123|glue|Count adhesive bottles EA = ceil(total adhesive use FL OZ / assumed 4-FL-OZ bottle); product consumption required.
 FIN-124|heat.gun|Catalog allowance 1 heat gun; crew equipment applicability required.
-FIN-125|propane|Burn rate LB/hour x operating hours; equipment and work duration required.
+FIN-125|propane|Count propane cylinders EA = ceil(burn rate LB/hour x operating hours / assumed 20-LB cylinder); equipment and work duration required.
 '''
 
 def build():
@@ -178,10 +178,12 @@ def build():
             entries[line_id] = {'search': search.split(','), 'requirement': requirement}
     catalog = json.loads((ROOT/'outputs/NeoviBOM/_Internal/Model-Data/catalog-lines.json').read_text())
     additions=json.loads((ROOT/'config/additions-2026-09-15.json').read_text())
+    current_by_id={line['lineId']:line for line in catalog}
     for item in additions:
-        words=re.findall(r'[A-Za-z]{3,}',item['description'])
+        current=current_by_id.get(item['lineId'],item)
+        words=re.findall(r'[A-Za-z]{3,}',current['description'])
         entries[item['lineId']]={'search':['.?'.join(words[:3]).lower()],
-            'requirement':f"Count or measure {item['description']} in {item['unit']}; confirm exact product, pack size and project requirement. "+item['notes']}
+            'requirement':f"Count or measure {current['description']} in {current['unit']}; confirm exact product, pack size and project requirement. "+current.get('itemNotes',current.get('notes',''))}
     structural=['Structural Foundations','Structural Framing','Structural Columns','Structural Connections','Bolts','Generic Models','Assemblies']
     plumbing=['Plumbing Fixtures','Plumbing Equipment','Pipes','Pipe Fittings','Generic Models']
     electrical=['Electrical Fixtures','Electrical Equipment','Electrical Circuits','Conduits','Conduit Fittings','Cable Trays','Generic Models']

@@ -6,8 +6,8 @@ from opening_takeoffs import add_opening_rules
 def map_model(rows):
  rows=select_unique(rows)
  rules={
- 'PAN-002':('Structural Connections','BIMSF-Plate',{'16 GA. 4"x3" Plate','16 GA. 3"x4" Plate'}),
- 'PAN-013':('Structural Connections',('Holdown-Simpson_Strong_Tie-HDU-3D','Holdown-Simpson_Strong_Tie-SHDU-3D'),None),
+ 'PAN-002':('Structural Connections',('BIMSF-Plate','BIMSF-Plate1'),{'16 GA. 4"x3" Plate','16 GA. 3"x4" Plate'}),
+ 'PAN-013':('Structural Connections',('Holdown-Simpson_Strong_Tie-HDU-3D','Holdown-Simpson_Strong_Tie-SHDU-3D','CF_SHDU9_3d_Cad_MULT_Prod1','CF_SHD15S_3d_Cad_MULT_Prod','CF_SHD10S_3d_Cad_MULT_Prod','CF_SHD10B_3D_CAD_MULT_Prod'),None),
  'FIN-052':('Mechanical Equipment','Neovi_ME_Ceiling-recessed_Mini-Split',None),
  'FIN-046':('Plumbing Fixtures','Neovi_PF_Toilets',None),
  'FIN-007':('Electrical Equipment','Neovi_EF_Breaker Panel Assembly and VoidM',None),
@@ -32,7 +32,7 @@ def map_model(rows):
     assert math.isfinite(value) and value>=0
    refs.append(dict(key=e['key'],family=e['family'],type=e['type'],value=value,sourceKey=e['sourceKey']))
   formula = 'COUNT(hold-downs) x 1 hardware assembly per hold-down (catalog rule)' if line=='PAN-013' else 'COUNT(indoor units) x 1 mounting assembly (catalog rule)' if line=='FIN-052' else 'COUNT(toilets) x 1 hardware assembly (catalog rule)' if line=='FIN-046' else 'SUM(instance Length in FT)' if line=='FIN-115' else 'COUNT(unique matching model instances)'
-  out[line]=dict(value=sum(r['value'] for r in refs),references=[r['key'] for r in refs],elements=refs,formula=formula,description='Simpson hold-downs' if line=='PAN-013' else family,verified=True)
+  out[line]=dict(value=sum(r['value'] for r in refs),references=[r['key'] for r in refs],elements=refs,formula=formula,description='Simpson/CF hold-downs' if line=='PAN-013' else ', '.join(families),verified=True)
  add_extended_rules(rows,out)
  add_circuit_rules(rows,out)
  opening_report=add_opening_rules(rows,out)

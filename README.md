@@ -2,6 +2,14 @@
 
 ## Current Files
 
+For a simple visual overview, open [Site Bill of Material](outputs/NeoviBOM/NeoviBOM.html) in a browser. Two views are available: a combined ordering list and a phase checklist. Site Setup is separate; Foundation has shared equipment/supplemental items and Helical Piles/Bedframe packages with Materials, Tools, and Consumables columns. Click items for details. Use Print / Save PDF for a complete phase or combined list.
+
+The user-supplied BOM Skeleton and later directions are recorded in `config/site-bom-checklist.json`. The viewer builder layers these entries and listed quantities over the catalog without changing model-derived project quantities. Quantity labels distinguish user-provided numbers from Monroe planning estimates. A blank sheet entry with one clear catalog mapping can show its Monroe estimate; unlinked or repeated ambiguous entries remain N/A. When repeated sheet uses share one Monroe item, the combined list shows that estimate once as a shared total. Explicit repeated sheet part types (such as 9/16-inch cutters) combine across work areas, with their supplied quantities summed. Other entries combine by matching part numbers/vendor/unit, complete specifications/prefix/unit, or identical descriptions/unit. The checklist is a layout guide, not an exhaustive inventory. Foundation catalog items not named in the sheet remain fully visible in Shared Foundation Support, Helical Piles, or Bedframe; Panels and Finishing likewise show their full inventories. Open a viewer row to see the calculation and assumption first; expand its evidence or catalog details only when needed. Hoses, string spools, cutting fluid, cleaner, sealants, glue and propane count as complete EA packages with assumed sizes stated in their descriptions and calculations. Installed cable, pipe, rod, board and other measured materials retain length, area, volume or weight units. Keep the HTML in the output folder for document links to work.
+
+As of October 14, 2026, the Foundation checklist places the two-week John Deere rental and named crew tools under Helical Piles, counts one digger motor, ten orange-handle magnets and ten leveling-string sets, and removes nylon chokers. Mud mats appear in Foundation supplemental; the Shared Foundation Support Materials section is intentionally empty. The rental shows 14 calendar days as a planning conversion from two weeks. FND-003 and FND-005 are retired placeholders; their catalog IDs remain reserved.
+
+Run `npm run build:viewer` to regenerate the viewer from the existing JSON snapshot. `npm run export:data` and normal package rebuilds refresh it automatically.
+
 All current generated files live in [outputs/NeoviBOM](outputs/NeoviBOM/). Open [START-HERE.md](outputs/NeoviBOM/START-HERE.md) for direct links to the PDFs and CSVs.
 
 The main exports are [NeoviBOM.xlsx](outputs/NeoviBOM/NeoviBOM.xlsx) for filtering and review and [NeoviBOM.json](outputs/NeoviBOM/NeoviBOM.json) for software. Both contain the same catalog and Franklin/Santa Rita results. The workbook is a review snapshot, not an editable calculation model. JSON quantities are numeric, missing values are `null`, category paths are arrays, and permanent IDs join project rows to catalog items. Planning estimates remain separate from required quantities. Formula explanations and full evidence references are included in JSON; oversized Excel evidence cells point to it.
@@ -27,7 +35,7 @@ The operational deliverable is one native Google Sheet with exactly three visibl
 2. **Panels**
 3. **Finishing**
 
-Each phase tab contains its own work areas, categories, kits, items, quantities, purchasing information, status, and review issues. There is no Site BOM website, database, server, API, or live Google/Revit connection.
+Each phase tab contains its own work areas, categories, kits, items, quantities, purchasing information, status, and review issues. The offline HTML viewer complements the Sheet for review; it requires no database, server, API, or live Google/Revit connection.
 
 The Google Sheet workflow uses these file types; the PDF and CSV review package is retained in the current output folder above:
 
@@ -101,7 +109,15 @@ Use `itemNotes` for purchasing/specification notes shared by every occurrence of
 
 ## Quantity Logic
 
-For complete Franklin/Santa Rita reports, run `node scripts/build-full-project-reports.mjs` and `python scripts/build-project-test-pdf.py` after the export audit. The resulting PDF and per-project CSVs include all 275 items, each formula and an explicit N/A reason. Unknown quantities and purchasing inputs remain N/A. Generic roof measurements are retained as evidence but do not become slope-material demand without a verified mapping; prior synthetic pack/inventory/price examples are not project quantities.
+For complete Franklin/Santa Rita reports, run `node scripts/build-full-project-reports.mjs` and `python scripts/build-project-test-pdf.py` after the export audit. The resulting PDF and per-project CSVs include all 276 items, each formula and an explicit N/A reason. Unknown quantities and purchasing inputs remain N/A. Generic roof measurements are retained as evidence but do not become slope-material demand without a verified mapping; prior synthetic pack/inventory/price examples are not project quantities.
+
+### Monroe planning formulas
+
+Run `python scripts/scan-monroe-model.py` once to stream the current Monroe JSON from Downloads, then `python scripts/build-monroe-estimates.py` and `python scripts/audit-monroe-values.py`. The readable 276-row quantity report is `outputs/NeoviBOM/05-Monroe/Monroe-Item-Formulas.md`; the matching JSON includes quantities, formulas, source element keys, assumptions, spares and base kit quantities. `Monroe-Value-Audit.md` and `.json` independently recompute each quantity, spare and base kit, verify catalog and model references, label which values are measured or assumed, and rank the design and scope decisions with the largest quantity effect. Passing arithmetic does not approve installation scope or procurement. The scanner checks source size and modification time before using its cached physical elements. It uses Shapely to union the floor meshes and verify that their projected areas match Revit's typed areas. Rates are editable in `config/planning-allowances.json` and `config/monroe-planning-overrides.json`.
+
+The offline `outputs/NeoviBOM/NeoviBOM.html` viewer shows the Monroe quantity, formula, assumption, average rates, base kit and applicable story allocation inside each represented item's expanded details. The full Monroe reports remain under Documents > Monroe; the catalog's second total-station row is intentionally suppressed in the viewer because the supplied sheet already represents that tool.
+
+Monroe has overlapping first-story livable floor takeoffs. The scanner unions their XY meshes, then subtracts the portion shared with the modeled garage room; the report records the excluded areas and uses net first- and second-story measurements. Host stud-wall lengths are split into interior, exterior and garage runs, with first- and second-story interior/exterior comparisons. Wall area uses the model's typed Area after openings for 71 of 72 selected stud walls and gross length x height for the one wall without Area. The site wall CB estimate assumes 10% of this net exterior-wall face proxy, while truss-stage board screws assume 10% of roof sheathing area and ten screws per covered SQFT. The separate 2-FT concrete-board band and its finish screws share one band-area driver at eight screws per covered SQFT. These board scopes need reconciliation. Wall-run and livable-area planning quantities have first- and second-story budget allocations where their driver supports it; door and window screw allocations use the modeled story of each opening. Every defined catalog item has a quantity-per-livable-SQFT comparison in addition to its controlling formula and driver; project-only tool averages are comparisons, not purchasing rates. Truss-connection screws use 50 modeled truss labels, two assumed bearings per truss and four screws per bearing, or 0.142086 screws per roof SQFT as an early area proxy. Linked pile-cap saddles provide pile-position proxies, and room areas drive dry-floor finishes. Every modeled ordinary, quad, stacked, high-amperage and exterior outlet has a cover class. Operable windows drive screen and handle allowances; fixed windows are excluded. LED profile runs are spatially reconciled across two model families. Model-linked quantities and confirmed fixed standards remain distinct from planning estimates. Undefined catalog placeholders get a labeled zero planning allowance; zero is not a measured quantity. Inventory and product ordering still require project review.
 
 Work categories now have stable delivery-stage numbers: `2.1 Floors`, `2.2 Walls`, `3.10 Truss Area Finish`, `3.11 Gutter / Fascia`. The first number is the delivery stage; the named phase is shown separately. The PDF groups items beneath numbered category headings with phase and trade. The CSV and phase tabs prefix **Work Area** with the same section number while retaining the controlled trade **Category**. Numbers remain text, so `3.10` is distinct from `3.1`. The registry is `CATEGORY_SECTIONS` in `src/workbook-formulas.mjs`; new unmapped work categories display `Unnumbered` until assigned a permanent section.
 
@@ -158,7 +174,7 @@ This ordering is important. Inventory is subtracted before vendor-pack rounding.
 
 The adjacent `NeoviRevitEnergyExport` repository includes one **Site BOM** Revit button. Its popup provides four explicit actions:
 
-1. **Save bundled Site BOM checklist template** writes the pinned 21-column, 275-item Site-only shipping checklist with stages `1`, `2`, and `3`, nine predetermined Site Teams and trade categories, detailed Systems, fixed Team Scopes, and blank Project, Revision, and Quantity. It is a versioned bundled template, not a model-derived export, and does not require an open project.
+1. **Save bundled Site BOM checklist template** writes the pinned 21-column, 276-item Site-only shipping checklist with stages `1`, `2`, and `3`, nine predetermined Site Teams and trade categories, detailed Systems, fixed Team Scopes, and blank Project, Revision, and Quantity. It is a versioned bundled template, not a model-derived export, and does not require an open project.
 2. **Export blank Project Inputs template** writes the 12 required columns plus the current contract-defined input rows. Input Key, Record Type, Unit, Source, Source Reference, Location, Notes, Schema ID, and Schema Version are populated; Project, Revision, and Value are intentionally blank. It does not inspect the model and does not require `BOM Revision` or installed parameters.
 3. **Export populated Revit inputs** exports the real project data and enforces the revision and parameter requirements below.
 4. **Install or refresh Site BOM parameters** prepares the active host or linked source model for populated exports.
@@ -174,7 +190,7 @@ npm.cmd run build:no-quantity-inputs
 This creates two CSVs in `outputs/NeoviBOM/`:
 
 - `05-Google-Sheet/Neovi-Site-BOM-Project-Inputs-No-Quantities.csv` contains the 19 operational input rows currently consumed by the Google Sheet rules. Its `Location` begins with `1`, `2`, or `3`.
-- `01-Catalog/Neovi-Site-BOM-Checklist.csv` is the human-facing shipping checklist. It contains the 275 Site BOM lines only: items that must be delivered, rented, or brought to the jobsite. Factory equipment, factory consumables, and factory-production takeoff facts are intentionally excluded. Every row retains `Schema ID`, `Schema Version`, `Catalog Version`, `Project`, and `Revision`. `Stage` uses exactly `1`, `2`, or `3`. `Site Team` and `Team Scope` are predetermined by the contract rather than selected by field crews. Blank `Quantity` remains beside `Item`. `Category` uses nine broad controlled trade groups, while `System` preserves details such as Hot Water, Solar, Purlins, or Exterior Doors. `Line ID` identifies the occurrence and `Item ID` identifies the purchasable product. `Catalog ID` is the permanent identifier and `Category Path` gives the nested folder grouping.
+- `01-Catalog/Neovi-Site-BOM-Checklist.csv` is the human-facing shipping checklist. It contains the 276 Site BOM lines only: items that must be delivered, rented, or brought to the jobsite. Factory equipment, factory consumables, and factory-production takeoff facts are intentionally excluded. Every row retains `Schema ID`, `Schema Version`, `Catalog Version`, `Project`, and `Revision`. `Stage` uses exactly `1`, `2`, or `3`. `Site Team` and `Team Scope` are predetermined by the contract rather than selected by field crews. Blank `Quantity` remains beside `Item`. `Category` uses nine broad controlled trade groups, while `System` preserves details such as Hot Water, Solar, Purlins, or Exterior Doors. `Line ID` identifies the occurrence and `Item ID` identifies the purchasable product. `Catalog ID` is the permanent identifier and `Category Path` gives the nested folder grouping.
 
 After generating and reviewing a release, synchronize the pinned contract, catalog, and checksum manifest into the adjacent Revit repository:
 
@@ -336,7 +352,7 @@ Project-input CSVs must contain exactly the 12 documented columns in order. CSV 
 
 The normalized starter list contains:
 
-- 275 BOM Lines;
+- 276 BOM Lines;
 - 50 Foundation lines;
 - 41 Panels lines;
 - 184 Finishing lines;
@@ -375,9 +391,9 @@ The report engine calculates required, spare and base kit independently of purch
 
 Optional `outputs/NeoviBOM/_Internal/Model-Data/franklin-purchasing-inputs.json` and `santa-rita-purchasing-inputs.json` accept objects keyed by Item ID. Fields are `manualExtra`, `onHand`, `committed`, `targetStock`, `packSize`, `minimumOrder`, and `unitCost`. Enter actual values (including explicit zero where confirmed). Rebuilding then calculates final kit, net, order and cost as their dependencies become available. The PDF shows the base-kit subtotal; the CSV additionally contains final kit demand.
 
-The full mapping register is `config/model-item-mapping-register.json`: every one of the 275 items has explicit source categories, search criteria and measurement requirements. These searches only collect evidence; numeric quantities require the checked selectors in `scripts/map-project-takeoffs.py` and `scripts/model_takeoff_rules.py`.
+The full mapping register is `config/model-item-mapping-register.json`: every one of the 276 items has explicit source categories, search criteria and measurement requirements. These searches only collect evidence; numeric quantities require the checked selectors in `scripts/map-project-takeoffs.py` and `scripts/model_takeoff_rules.py`.
 
-Each project also exports a 275-row `*-mapping-audit.csv` and a detailed JSON with candidate element keys and source types. Status distinguishes measured values, derived allowances, catalog allowances, conflicting/missing inputs, no identified source, and undefined catalog items. No match means unknown, not zero. Changed source file size/time invalidates the scan cache. Run `npm run test:mappings` for selector tests.
+Each project also exports a 276-row `*-mapping-audit.csv` and a detailed JSON with candidate element keys and source types. Status distinguishes measured values, derived allowances, catalog allowances, conflicting/missing inputs, no identified source, and undefined catalog items. No match means unknown, not zero. Changed source file size/time invalidates the scan cache. Run `npm run test:mappings` for selector tests.
 # Category catalog and annotated updates
 
 The current delivery is in `outputs/NeoviBOM/`.
@@ -404,3 +420,8 @@ are recorded in `config/catalog-revision-2026-09-15.json` and published as
 estimates stay separate. The washer count interpretation is explicitly pending
 until the user confirms whether ten washers applies to a bolt/nut pair or to
 each component.
+
+
+## Full list audit
+
+Run `npm run audit:viewer` to rebuild the viewer, test both views, and audit every entry, screenshot quantity, source reference, ordering group, and document link. The item-by-item findings are in [Full-List-Audit.md](outputs/NeoviBOM/04-Audits/Full-List-Audit.md) with machine-readable results alongside it. `npm run check`, `npm run test:mappings`, and `npm run verify:data` cover the underlying catalog/calculations/exports. `npm run readiness` separately identifies purchasing inputs still requiring approval or completion; software tests passing does not clear those findings.

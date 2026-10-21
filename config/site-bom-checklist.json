@@ -1,0 +1,383 @@
+{
+  "source": "User-supplied Site BOM / BOM Skeleton and October 14, 2026 directions",
+  "quantityMeaning": "Listed quantities come from the supplied sheet or later explicit user directions. They are not model takeoffs or approved order quantities; blanks remain unknown.",
+  "additionalRepresentedReferences": [
+    "FND-021"
+  ],
+  "rows": [
+    {
+      "id": "SHEET-001",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Temporary power",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-002",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Temporary water",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-003",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Tents and chairs",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-004",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Porta-potty",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-005",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Underground utilities",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-006",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Permit card and box",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-007",
+      "stage": "Site Setup",
+      "group": "Equipment",
+      "description": "Trenching",
+      "quantity": null,
+      "unit": "N/A",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-008",
+      "stage": "Shared Foundation Support",
+      "group": "Supplemental",
+      "description": "Mud mats (winter)",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-001",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-009",
+      "stage": "Helical Piles",
+      "group": "Equipment",
+      "description": "Machine rental JD (helical piles and substructure; 2 weeks)",
+      "quantity": 14,
+      "unit": "DAY",
+      "reference": "FND-011",
+      "purchaseType": null,
+      "specification": "John Deere 50P or 50G with auxiliary hydraulics; 14 calendar-day planning period"
+    },
+    {
+      "id": "SHEET-010",
+      "stage": "Helical Piles",
+      "group": "Equipment",
+      "description": "Digger motor",
+      "quantity": 1,
+      "unit": "EA",
+      "reference": "FND-060",
+      "purchaseType": null,
+      "specification": "Pile-installation motor/attachment; confirm whether included with the rented machine"
+    },
+    {
+      "id": "SHEET-011",
+      "stage": "Shared Foundation Support",
+      "group": "Equipment",
+      "description": "Total station surveying",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-059",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-012",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Prybars",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-031",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-013",
+      "stage": "Shared Foundation Support",
+      "group": "Supplemental",
+      "description": "Orange-handle magnets",
+      "quantity": 10,
+      "unit": "EA",
+      "reference": "FND-061",
+      "purchaseType": null,
+      "specification": "Orange-handle magnet; holding capacity and exact product to confirm"
+    },
+    {
+      "id": "SHEET-015",
+      "stage": "Helical Piles",
+      "group": "Supplemental",
+      "description": "Lifting straps",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-041",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-016",
+      "stage": "Helical Piles",
+      "group": "Materials",
+      "description": "Helical piles (6-inch)",
+      "quantity": 50,
+      "unit": "EA",
+      "reference": "FND-006",
+      "purchaseType": null,
+      "specification": "6-inch helical piles, as listed in supplied sheet"
+    },
+    {
+      "id": "SHEET-017",
+      "stage": "Helical Piles",
+      "group": "Materials",
+      "description": "Helical piles (4-inch)",
+      "quantity": 25,
+      "unit": "EA",
+      "reference": "FND-006",
+      "purchaseType": null,
+      "specification": "4-inch helical piles, as listed in supplied sheet"
+    },
+    {
+      "id": "SHEET-018",
+      "stage": "Helical Piles",
+      "group": "Materials",
+      "description": "Pile caps",
+      "quantity": 75,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-019",
+      "stage": "Helical Piles",
+      "group": "Materials",
+      "description": "Nuts",
+      "quantity": 200,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-020",
+      "stage": "Helical Piles",
+      "group": "Materials",
+      "description": "Bolts",
+      "quantity": 200,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-021",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Magnetic drill",
+      "quantity": 3,
+      "unit": "EA",
+      "reference": "FND-046",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-022",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Chalk line",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-051",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-023",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Scribe",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-050",
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-024",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Impact",
+      "quantity": null,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": "sheet-impact",
+      "specification": null
+    },
+    {
+      "id": "SHEET-025",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Socket set",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-029",
+      "purchaseType": "sheet-socket-set",
+      "specification": null
+    },
+    {
+      "id": "SHEET-026",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Annular cutter (9/16-inch)",
+      "quantity": 12,
+      "unit": "EA",
+      "reference": "FND-047",
+      "purchaseType": "sheet-cutter-9-16",
+      "specification": "9/16-inch annular cutter"
+    },
+    {
+      "id": "SHEET-027",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Cutting fluid (16 oz bottle assumed)",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-048",
+      "purchaseType": "sheet-cutting-fluid",
+      "specification": null
+    },
+    {
+      "id": "SHEET-028",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Drill bits",
+      "quantity": null,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": "sheet-drill-bits",
+      "specification": null
+    },
+    {
+      "id": "SHEET-029",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Pens",
+      "quantity": null,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": null
+    },
+    {
+      "id": "SHEET-030",
+      "stage": "Bedframe",
+      "group": "Materials",
+      "description": "8x6 beam, L=8 ft",
+      "quantity": 6,
+      "unit": "EA",
+      "reference": "FND-012",
+      "purchaseType": null,
+      "specification": "8x6 beam, length 8 ft; remaining specification not supplied"
+    },
+    {
+      "id": "SHEET-031",
+      "stage": "Bedframe",
+      "group": "Tools",
+      "description": "Impact",
+      "quantity": 2,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": "sheet-impact",
+      "specification": null
+    },
+    {
+      "id": "SHEET-032",
+      "stage": "Bedframe",
+      "group": "Tools",
+      "description": "Socket set",
+      "quantity": 2,
+      "unit": "EA",
+      "reference": "FND-029",
+      "purchaseType": "sheet-socket-set",
+      "specification": null
+    },
+    {
+      "id": "SHEET-033",
+      "stage": "Bedframe",
+      "group": "Consumables",
+      "description": "Annular cutter (9/16-inch)",
+      "quantity": 12,
+      "unit": "EA",
+      "reference": "FND-047",
+      "purchaseType": "sheet-cutter-9-16",
+      "specification": "9/16-inch annular cutter"
+    },
+    {
+      "id": "SHEET-034",
+      "stage": "Bedframe",
+      "group": "Consumables",
+      "description": "Cutting fluid (16 oz bottle assumed)",
+      "quantity": null,
+      "unit": "EA",
+      "reference": "FND-048",
+      "purchaseType": "sheet-cutting-fluid",
+      "specification": null
+    },
+    {
+      "id": "SHEET-035",
+      "stage": "Bedframe",
+      "group": "Consumables",
+      "description": "Drill bits",
+      "quantity": null,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": "sheet-drill-bits",
+      "specification": null
+    }
+  ]
+}

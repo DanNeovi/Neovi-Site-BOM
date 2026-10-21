@@ -49,7 +49,7 @@ def outlet_class(e):
     text=(e.get('family','')+' '+e.get('type','')).lower()
     if re.search(r'(30|50)\s*amp',text): return 'FIN-059'
     if 'exterior' in text: return 'FIN-060'
-    if any(t in text for t in ('regular_outlet','bidet_outlet','sub zero_outlet')): return 'FIN-058'
+    if any(t in text for t in ('regular_outlet','quad_outlet','bidet_outlet','sub zero_outlet')): return 'FIN-058'
     return None
 
 def add_hardware_rules(rows, out):

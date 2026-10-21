@@ -126,6 +126,8 @@ export async function exportData(){
   await workbook.xlsx.writeFile(path.join(output,'NeoviBOM.xlsx'));
   const { verifyExports } = await import('./verify-data-exports.mjs');
   await verifyExports(snapshot);
+  const { buildViewer } = await import('./build-viewer.mjs');
+  await buildViewer(snapshot);
   console.log(`Exported NeoviBOM.xlsx and NeoviBOM.json: ${snapshot.items.length} items, ${snapshot.projects.length} projects.`);
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))await exportData();

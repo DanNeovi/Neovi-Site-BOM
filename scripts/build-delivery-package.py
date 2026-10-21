@@ -54,6 +54,7 @@ This is the single current output folder. Source code and editable catalog setti
 
 Open these first:
 
+- [Simple offline viewer](NeoviBOM.html) - searchable materials, project comparison, details and documents
 - [Excel workbook](NeoviBOM.xlsx) - filterable catalog and both projects
 - [Software JSON export](NeoviBOM.json) - the same data with full source references
 - [Full checklist CSV](01-Catalog/Neovi-Site-BOM-Checklist.csv)

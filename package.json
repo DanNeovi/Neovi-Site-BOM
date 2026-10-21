@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Configurable native Google Sheets Site BOM generated from Revit CSV inputs.",
   "scripts": {
+    "build:viewer": "node scripts/build-viewer.mjs",
     "export:data": "node scripts/export-data.mjs",
     "verify:data": "node scripts/verify-data-exports.mjs",
     "catalog:sync": "node scripts/sync-catalog-identities.mjs",
@@ -19,7 +20,8 @@
     "build:template": "node scripts/build-google-sheet-script.mjs",
     "build:no-quantity-inputs": "node scripts/build-no-quantity-inputs.mjs",
     "readiness": "node scripts/validate-release-readiness.mjs",
-    "sync:revit": "node scripts/sync-revit-site-bom.mjs"
+    "sync:revit": "node scripts/sync-revit-site-bom.mjs",
+    "audit:viewer": "npm run build:viewer && node test/viewer-smoke.mjs && node scripts/audit-viewer.mjs"
   },
   "engines": {
     "node": ">=20"

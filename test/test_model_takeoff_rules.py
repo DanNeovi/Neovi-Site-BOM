@@ -5,6 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from model_takeoff_rules import measured, parameter, select_unique, outlet_class, add_extended_rules, add_hardware_rules, add_circuit_rules, eligible
 from opening_takeoffs import add_opening_rules
 from planning_estimates import estimate_rules
+from project_model_mapper import map_model
 
 def element(key='host:a',**kwargs):
     return dict(key=key,sourceKey='host',phaseCreated='New Construction',parameters=[],**kwargs)
@@ -68,6 +69,22 @@ class MappingTests(unittest.TestCase):
         out={};add_hardware_rules([e],out);self.assertNotIn('FND-008',out)
         e['parameters'][0]['stringValue']='Level : Pile Cap'
         add_hardware_rules([e],out);self.assertEqual(out['FND-008']['value'],1)
+
+    def test_monroe_plate_and_hold_down_families_are_selected(self):
+        plate=element('host/structural:plate',category='Structural Connections',
+                      family='BIMSF-Plate1',type='16 GA. 3"x4" Plate')
+        hold=element('host/structural:hold',category='Structural Connections',
+                     family='CF_SHD15S_3d_Cad_MULT_Prod',type='CF_SHD15S_3d_Cad_MULT_Prod')
+        plate['sourceKey']=hold['sourceKey']='host/structural'
+        mapped,_=map_model([plate,hold])
+        self.assertEqual(mapped['PAN-002']['value'],1)
+        self.assertEqual(mapped['PAN-013']['value'],1)
+
+    def test_quad_outlet_uses_standard_cover_class(self):
+        from model_takeoff_rules import outlet_class
+        quad=element(category='Electrical Fixtures',family='Neovi_EF-Outlet_Horizontal',
+                     type='Quad_Outlet_Cutout @ 44"')
+        self.assertEqual(outlet_class(quad),'FIN-058')
 
     def opening_fixture(self, function=1):
         def p(name,value,spec='length',scope='type'):

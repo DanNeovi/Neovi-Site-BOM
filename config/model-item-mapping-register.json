@@ -14,6 +14,223 @@
       "Assemblies"
     ]
   },
+  "FND-059": {
+    "search": [
+      "total",
+      "station"
+    ],
+    "requirement": "Surveying tool for site layout, setting out points, and checking positions and elevations.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-021": {
+    "search": [
+      "total.?station",
+      "survey"
+    ],
+    "requirement": "Count or measure Laser total station in EA; confirm exact product, pack size and project requirement. User name replaces laser-level tripod. Confirm instrument and tripod kit contents; separate laser level FND-020 retained.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-035": {
+    "search": [
+      "sump.?pump.?for"
+    ],
+    "requirement": "Count or measure Sump pump for flooded trenches in EA; confirm exact product, pack size and project requirement. Seasonal/site need; confirm capacity.",
+    "categories": [
+      "Generic Models",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-061": {
+    "search": [
+      "orange",
+      "handle",
+      "magnets"
+    ],
+    "requirement": "Ten reusable orange-handle holding magnets per user direction. Confirm exact product, pull rating and crew inventory before ordering.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-006": {
+    "search": [
+      "helical",
+      "pile"
+    ],
+    "requirement": "Count identified helical pile instances; distinguish foundations from annotations.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-007": {
+    "search": [
+      "pile",
+      "extension"
+    ],
+    "requirement": "Sum extension segments per pile; installed depth and segment lengths required.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-009": {
+    "search": [
+      "pile",
+      "pin"
+    ],
+    "requirement": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-010": {
+    "search": [
+      "pile",
+      "bracket",
+      "saddle"
+    ],
+    "requirement": "Count pile-specific brackets; establish pile-to-bracket association.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-011": {
+    "search": [
+      "helical",
+      "pile"
+    ],
+    "requirement": "Plan two weeks (14 calendar days) for helical pile and substructure work. Rental machine must have auxiliary hydraulic power and compatible pile installation attachment; tracks included. Confirm billed duration and mobilization.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-060": {
+    "search": [
+      "digger",
+      "motor"
+    ],
+    "requirement": "One pile-installation motor or drive attachment per project as directed. Confirm whether it is included with the John Deere rental or existing owned digger before procurement.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies"
+    ]
+  },
+  "FND-040": {
+    "search": [
+      "machine.?lifting.?chains"
+    ],
+    "requirement": "Count or measure Machine lifting chains in EA; confirm exact product, pack size and project requirement. Specify rated assembly and length.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-041": {
+    "search": [
+      "lifting.?strap",
+      "lifting.?sling"
+    ],
+    "requirement": "Count or measure Lifting straps in EA; confirm exact product, pack size and project requirement. Length unspecified. Confirm required length, rated load and configuration before selecting lifting straps. Add actual sizes only when confirmed.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-043": {
+    "search": [
+      "digger",
+      "excavator"
+    ],
+    "requirement": "Count or measure Large digger in EA; confirm exact product, pack size and project requirement. Owned equipment, not a rental. Confirm availability for the scheduled work; no rental days.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
+  "FND-045": {
+    "search": [
+      "pipe.?level"
+    ],
+    "requirement": "Count or measure Pipe level in EA; confirm exact product, pack size and project requirement. Pipe level used for machine leveling and alignment.",
+    "categories": [
+      "Structural Foundations",
+      "Structural Framing",
+      "Structural Columns",
+      "Structural Connections",
+      "Bolts",
+      "Generic Models",
+      "Assemblies",
+      "Specialty Equipment"
+    ]
+  },
   "FND-049": {
     "search": [
       "paint",
@@ -101,24 +318,10 @@
     "search": [
       "leveling",
       "string",
-      "line"
+      "line",
+      "assumed"
     ],
-    "requirement": "String for leveling and independent alignment checks. Measure required runs; spool length belongs in pack size.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-003": {
-    "search": [
-      "site.?suppl"
-    ],
-    "requirement": "Placeholder: replace with an exact purchasable item before mapping.",
+    "requirement": "Plan ten complete 100-ft sets/spools, or 1,000 ft of available string, for pile layout. Confirm run lengths, reuse and actual spool size.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -183,37 +386,11 @@
       "Assemblies"
     ]
   },
-  "FND-005": {
-    "search": [
-      "site.?suppl"
-    ],
-    "requirement": "Placeholder: replace with an exact purchasable item before mapping.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
   "FND-020": {
     "search": [
       "laser.?level"
     ],
     "requirement": "Count or measure Laser level in EA; confirm exact product, pack size and project requirement. Shared tool; used for foundation and panel layout.",
-    "categories": [
-      "Generic Models",
-      "Specialty Equipment"
-    ]
-  },
-  "FND-021": {
-    "search": [
-      "total.?station",
-      "survey"
-    ],
-    "requirement": "Count or measure Laser-level tripod in EA; confirm exact product, pack size and project requirement. Accessory to laser-level kit; check whether included.",
     "categories": [
       "Generic Models",
       "Specialty Equipment"
@@ -244,7 +421,7 @@
       "milwaukee",
       "batter"
     ],
-    "requirement": "Count or measure Spare tool batteries in EA; confirm exact product, pack size and project requirement. Match tool platform and capacity; shared across phases.",
+    "requirement": "Count or measure Milwaukee spare tool batteries in EA; confirm exact product, pack size and project requirement. Count crew spares by compatible Milwaukee platform and capacity; avoid mixed-platform assumptions.",
     "categories": [
       "Generic Models",
       "Specialty Equipment"
@@ -275,7 +452,7 @@
       "milwaukee",
       "charger"
     ],
-    "requirement": "Count or measure Battery charger in EA; confirm exact product, pack size and project requirement. Match battery platform; shared across phases.",
+    "requirement": "Count or measure Milwaukee battery charger in EA; confirm exact product, pack size and project requirement. Milwaukee ecosystem; confirm charging slots, voltage/platform and power supply.",
     "categories": [
       "Generic Models",
       "Specialty Equipment"
@@ -351,16 +528,6 @@
       "Specialty Equipment"
     ]
   },
-  "FND-035": {
-    "search": [
-      "sump.?pump.?for"
-    ],
-    "requirement": "Count or measure Sump pump for flooded trenches in EA; confirm exact product, pack size and project requirement. Seasonal/site need; confirm capacity.",
-    "categories": [
-      "Generic Models",
-      "Specialty Equipment"
-    ]
-  },
   "FND-036": {
     "search": [
       "extension.?cord"
@@ -375,156 +542,9 @@
     "search": [
       "site.?water.?hose"
     ],
-    "requirement": "Count or measure Site water hose in FT; confirm exact product, pack size and project requirement. Specify hose diameter and purchased lengths.",
+    "requirement": "Count or measure Site water hose (100 ft assumed) in EA; confirm exact product, pack size and project requirement. One complete 100-ft hose is the Monroe planning allowance. Confirm site reach, diameter, pressure rating and connectors before ordering.",
     "categories": [
       "Generic Models",
-      "Specialty Equipment"
-    ]
-  },
-  "FND-006": {
-    "search": [
-      "helical",
-      "pile"
-    ],
-    "requirement": "Count identified helical pile instances; distinguish foundations from annotations.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-007": {
-    "search": [
-      "pile",
-      "extension"
-    ],
-    "requirement": "Sum extension segments per pile; installed depth and segment lengths required.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-009": {
-    "search": [
-      "pile",
-      "pin"
-    ],
-    "requirement": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-010": {
-    "search": [
-      "pile",
-      "bracket",
-      "saddle"
-    ],
-    "requirement": "Count pile-specific brackets; establish pile-to-bracket association.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-011": {
-    "search": [
-      "helical",
-      "pile"
-    ],
-    "requirement": "Only John Deere 50P or 50G per user. Rental excavator must be equipped with auxiliary hydraulic power for pile installation; confirm attachment compatibility. Tracks included.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies"
-    ]
-  },
-  "FND-040": {
-    "search": [
-      "machine.?lifting.?chains"
-    ],
-    "requirement": "Count or measure Machine lifting chains in EA; confirm exact product, pack size and project requirement. Specify rated assembly and length.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies",
-      "Specialty Equipment"
-    ]
-  },
-  "FND-041": {
-    "search": [
-      "lifting.?strap",
-      "lifting.?sling"
-    ],
-    "requirement": "Count or measure Machine lifting straps in EA; confirm exact product, pack size and project requirement. Machine rigging; distinct from four-point floor lifting set.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies",
-      "Specialty Equipment"
-    ]
-  },
-  "FND-043": {
-    "search": [
-      "digger",
-      "excavator"
-    ],
-    "requirement": "Count or measure Large digger rental in DAY; confirm exact product, pack size and project requirement. May be the same machine as pile installation rental; reconcile before ordering.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies",
-      "Specialty Equipment"
-    ]
-  },
-  "FND-045": {
-    "search": [
-      "pipe.?level"
-    ],
-    "requirement": "Count or measure Machine leveling kit in EA; confirm exact product, pack size and project requirement. Confirm kit contents and whether machine rental includes it.",
-    "categories": [
-      "Structural Foundations",
-      "Structural Framing",
-      "Structural Columns",
-      "Structural Connections",
-      "Bolts",
-      "Generic Models",
-      "Assemblies",
       "Specialty Equipment"
     ]
   },
@@ -662,7 +682,7 @@
     "search": [
       "magnetic.?drill"
     ],
-    "requirement": "Count or measure Magnetic drill in EA; confirm exact product, pack size and project requirement. For steel bedframe drilling.",
+    "requirement": "Count or measure Magnetic drill in EA; confirm exact product, pack size and project requirement. Shared drilling tool. Bits FND-047, cutting fluid FND-048 and pedestals FND-055 through FND-057 are grouped with this tool.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -680,7 +700,7 @@
       "magnetic.?drill.*bit",
       "mag.?drill.*bit"
     ],
-    "requirement": "Count or measure Annular cutter / hole-saw set in EA; confirm exact product, pack size and project requirement. One EA is one complete set; specify diameters.",
+    "requirement": "Count or measure Magnetic-drill bits - annular cutters in EA; confirm exact product, pack size and project requirement. Annular cutters are bits for the magnetic drill; specify hole diameter, cutting depth and arbor compatibility.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -694,9 +714,9 @@
   },
   "FND-048": {
     "search": [
-      "cutting.?fluid"
+      "magnetic.?drill.?cutting"
     ],
-    "requirement": "Count or measure Cutting fluid in OZ; confirm exact product, pack size and project requirement. Fluid ounces; container size and compatible cutting application required.",
+    "requirement": "Count or measure Magnetic-drill cutting fluid (16 oz bottle assumed) in EA; confirm exact product, pack size and project requirement. Plan 2 fluid oz per modeled HSS beam; divide total fluid need by an assumed 16-oz bottle and round up. Confirm drilling method and bottle size.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -838,9 +858,9 @@
   },
   "PAN-025": {
     "search": [
-      "crane.?rental"
+      "crane.?rental.?main"
     ],
-    "requirement": "Count or measure Crane rental in DAY; confirm exact product, pack size and project requirement. Lift plan must specify pick capacity, counterweights, setup and computer configuration.",
+    "requirement": "Count or measure Crane rental - main and auxiliary hooks included in DAY; confirm exact product, pack size and project requirement. Specify crane capacity, reach, configuration and rental duration for each lift plan. Main and auxiliary hooks are included with crane; no separate hook purchase lines.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -1068,7 +1088,7 @@
     "search": [
       "foam.?gun.?cleaner"
     ],
-    "requirement": "Count or measure Foam-gun cleaner / compatible solvent in OZ; confirm exact product, pack size and project requirement. Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection. Fluid ounces.",
+    "requirement": "Count or measure Foam-gun cleaner / compatible solvent (16 oz can assumed) in EA; confirm exact product, pack size and project requirement. One assumed 16-oz can per project. Source mentions throttle-body cleaner; verify foam-tool manufacturer compatibility before product selection.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -1082,9 +1102,9 @@
   },
   "PAN-031": {
     "search": [
-      "long.?level.?for"
+      "long.?levels.?for"
     ],
-    "requirement": "Count or measure Long level for panel straightness in EA; confirm exact product, pack size and project requirement. Specify working length.",
+    "requirement": "Count or measure Long levels for wall leveling in EA; confirm exact product, pack size and project requirement. Big/long levels for checking wall level, plumb and straightness; confirm needed lengths.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -1114,9 +1134,9 @@
   },
   "PAN-037": {
     "search": [
-      "squeeze.?clamp"
+      "squeeze.?clamps.?optional"
     ],
-    "requirement": "Count or measure Squeeze clamp in EA; confirm exact product, pack size and project requirement. For truss/board installation; specify capacity.",
+    "requirement": "Count or measure Squeeze clamps - optional shared tools in EA; confirm exact product, pack size and project requirement. Nice-to-have shared clamps for wall installation and other work. Specify capacity and crew requirement; optional.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -1133,7 +1153,7 @@
       "threaded.*clamp",
       "wall.*clamp"
     ],
-    "requirement": "Count or measure Metal clamp in EA; confirm exact product, pack size and project requirement. Confirm clamp style and capacity.",
+    "requirement": "Count or measure Heavy-duty threaded wall clamps in EA; confirm exact product, pack size and project requirement. Strong threaded metal clamps to hold adjacent walls together; confirm jaw capacity and required clamping force.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -1149,7 +1169,7 @@
     "search": [
       "sheet.?metal.?holding"
     ],
-    "requirement": "Count or measure Sheet-metal holding magnet in EA; confirm exact product, pack size and project requirement. For truss/board installation; specify holding capacity.",
+    "requirement": "Count or measure Sheet-metal holding magnet in EA; confirm exact product, pack size and project requirement. Tool to hold brackets and other items against metal while driving screws.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -2497,7 +2517,7 @@
     "search": [
       "thread.?sealant.?loctite"
     ],
-    "requirement": "Count or measure Thread sealant (Loctite 565) in OZ; confirm exact product, pack size and project requirement. Source-specified product; confirm system compatibility and package measurement basis.",
+    "requirement": "Count or measure Thread sealant (Loctite 565; 50 mL tube assumed) in EA; confirm exact product, pack size and project requirement. One assumed 50-mL tube is a starter Monroe allowance because the fire-pipe joint count is unavailable. Confirm actual joint use, fire-system compatibility and package before ordering.",
     "categories": [
       "Plumbing Fixtures",
       "Plumbing Equipment",
@@ -2512,7 +2532,7 @@
     "search": [
       "cpvc.?cement.?tyco"
     ],
-    "requirement": "Count or measure CPVC cement (Tyco red glue) in OZ; confirm exact product, pack size and project requirement. Source-specified product description; confirm exact product and pipe-system compatibility.",
+    "requirement": "Count or measure CPVC cement (Tyco red glue; 16 oz can assumed) in EA; confirm exact product, pack size and project requirement. One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm exact product, pack and pipe-system compatibility.",
     "categories": [
       "Plumbing Fixtures",
       "Plumbing Equipment",
@@ -2567,9 +2587,9 @@
   },
   "FIN-151": {
     "search": [
-      "pvc.?primer"
+      "pvc.?primer.?can"
     ],
-    "requirement": "Count or measure PVC primer in OZ; confirm exact product, pack size and project requirement. Fluid ounces; confirm product compatibility.",
+    "requirement": "Count or measure PVC primer (16 oz can assumed) in EA; confirm exact product, pack size and project requirement. One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm product and pipe-system compatibility.",
     "categories": [
       "Plumbing Fixtures",
       "Plumbing Equipment",
@@ -2581,9 +2601,9 @@
   },
   "FIN-152": {
     "search": [
-      "pvc.?cement"
+      "pvc.?cement.?can"
     ],
-    "requirement": "Count or measure PVC cement in OZ; confirm exact product, pack size and project requirement. Fluid ounces; confirm product compatibility.",
+    "requirement": "Count or measure PVC cement (16 oz can assumed) in EA; confirm exact product, pack size and project requirement. One assumed 16-fluid-oz can covers the Monroe 16-fluid-oz project allowance. Confirm product and pipe-system compatibility.",
     "categories": [
       "Plumbing Fixtures",
       "Plumbing Equipment",
@@ -2994,7 +3014,7 @@
     "search": [
       "hydrotest.?water.?hose"
     ],
-    "requirement": "Count or measure Hydrotest water hose in FT; confirm exact product, pack size and project requirement. Water access is a site prerequisite; hose diameter and connection specification required.",
+    "requirement": "Count or measure Hydrotest water hose (100 ft assumed) in EA; confirm exact product, pack size and project requirement. One complete 100-ft hydrotest hose is the Monroe planning allowance. Confirm reach, diameter, pressure rating and connectors; it may be shared with the site water hose if compatible.",
     "categories": [
       "Plumbing Fixtures",
       "Plumbing Equipment",
@@ -3187,7 +3207,7 @@
       "window",
       "sealant"
     ],
-    "requirement": "Sealant FL OZ = joint length FT x bead area SQIN x 12 / 1.8046875; bead dimensions required.",
+    "requirement": "Sealant cartridges EA = ceil(joint length FT x bead area SQIN x 12 / 1.8046875 FL OZ per cartridge volume); assumed cartridge is 10 FL OZ; bead dimensions required.",
     "categories": [
       "Doors",
       "Windows",
@@ -3888,7 +3908,7 @@
     "search": [
       "glue"
     ],
-    "requirement": "Count glued rings x adhesive usage per ring; product consumption required.",
+    "requirement": "Count adhesive bottles EA = ceil(total adhesive use FL OZ / assumed 4-FL-OZ bottle); product consumption required.",
     "categories": [
       "Ceilings",
       "Lighting Fixtures",
@@ -3912,7 +3932,7 @@
     "search": [
       "propane"
     ],
-    "requirement": "Burn rate LB/hour x operating hours; equipment and work duration required.",
+    "requirement": "Count propane cylinders EA = ceil(burn rate LB/hour x operating hours / assumed 20-LB cylinder); equipment and work duration required.",
     "categories": [
       "Ceilings",
       "Lighting Fixtures",
@@ -3939,7 +3959,7 @@
     "search": [
       "solid.?surface.?adhesive"
     ],
-    "requirement": "Count or measure Solid-surface adhesive in OZ; confirm exact product, pack size and project requirement. Confirm compatible adhesive, color and package measurement basis.",
+    "requirement": "Count or measure Solid-surface adhesive (16 oz cartridge assumed) in EA; confirm exact product, pack size and project requirement. One assumed 16-fluid-oz cartridge covers the 16-fluid-oz project allowance. Confirm compatible adhesive, color and package volume.",
     "categories": [
       "Casework",
       "Furniture",
