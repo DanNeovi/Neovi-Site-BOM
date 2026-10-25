@@ -19,7 +19,7 @@
       "total",
       "station"
     ],
-    "requirement": "Surveying tool for site layout, setting out points, and checking positions and elevations.",
+    "requirement": "Surveying tool for site layout, setting out points, and checking positions and elevations. Confirm the kit includes a tripod and compatible pipe attachment before mobilization.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",
@@ -105,7 +105,7 @@
       "pile",
       "pin"
     ],
-    "requirement": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+    "requirement": "User standard: always three complete sets. Confirm pin sizes 2-7/8, 3-7/8 and 4-1/2 inches against the pile system; each required size must be represented in the three sets. EA means one complete set of pile pins; do not add backup attachment pins.",
     "categories": [
       "Structural Foundations",
       "Structural Framing",

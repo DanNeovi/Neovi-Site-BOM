@@ -6,6 +6,7 @@
   "description": "Configurable native Google Sheets Site BOM generated from Revit CSV inputs.",
   "scripts": {
     "build:viewer": "node scripts/build-viewer.mjs",
+    "link:drive-output": "powershell -NoProfile -File scripts/link-drive-output.ps1",
     "export:data": "node scripts/export-data.mjs",
     "verify:data": "node scripts/verify-data-exports.mjs",
     "catalog:sync": "node scripts/sync-catalog-identities.mjs",

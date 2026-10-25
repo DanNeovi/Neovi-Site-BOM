@@ -1,5 +1,11 @@
 # Neovi Site BOM
 
+## Canonical location
+
+The Git source checkout remains connected to `https://github.com/DanNeovi/Neovi-Site-BOM.git`. On this workstation, `outputs/NeoviBOM` is a directory junction to `G:\My Drive\SiteBOM`, so every normal build writes the current deliverables directly to My Drive. There is no separate active output copy in Documents. Run `npm.cmd run link:drive-output` after a fresh checkout to recreate the junction; the command stops if an existing output directory needs reconciliation. Google Drive must be mounted as `G:` before building.
+
+The HTML viewer is a local catalog with browser-only progress edits. It is not a shared Google Drive editing application; the native Google Sheet workflow below is the editable multiuser option.
+
 ## Current Files
 
 For a simple visual overview, open [Site Bill of Material](outputs/NeoviBOM/NeoviBOM.html) in a browser. Two views are available: a combined ordering list and a phase checklist. Site Setup is separate; Foundation has shared equipment/supplemental items and Helical Piles/Bedframe packages with Materials, Tools, and Consumables columns. Click items for details. Use Print / Save PDF for a complete phase or combined list.

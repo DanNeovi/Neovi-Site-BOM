@@ -558,8 +558,8 @@
     },
     "FND-001": {
       "driver": "project",
-      "rate": 4,
-      "assumption": "Budget four mud mats; access layout pending"
+      "rate": 20,
+      "assumption": "Twenty mud mats per site from the supplied helical/foundation field list; confirm access layout"
     },
     "FND-011": {
       "driver": "project",

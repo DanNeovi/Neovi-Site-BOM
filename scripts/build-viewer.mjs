@@ -71,7 +71,7 @@ export async function buildViewer(snapshot) {
     for (const entry of await fs.readdir(path.join(output, dir), { withFileTypes: true })) {
       const relative = path.posix.join(dir, entry.name);
       if (entry.isDirectory()) await walk(relative);
-      else documents.push({ path: relative, name: entry.name, group: dir.split('/')[0] });
+      else if (entry.name.toLowerCase() !== 'desktop.ini') documents.push({ path: relative, name: entry.name, group: dir.split('/')[0] });
     }
   }
   for (const dir of ['01-Catalog', '02-Projects', '03-Categories', '04-Audits', '05-Google-Sheet']) await walk(dir);

@@ -83,11 +83,22 @@
       "specification": null
     },
     {
+      "id": "SHEET-036",
+      "stage": "Site Setup",
+      "group": "Site services",
+      "description": "Survey monuments",
+      "quantity": null,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": "Confirm monument type and required count from site survey"
+    },
+    {
       "id": "SHEET-008",
       "stage": "Shared Foundation Support",
       "group": "Supplemental",
       "description": "Mud mats (winter)",
-      "quantity": null,
+      "quantity": 20,
       "unit": "EA",
       "reference": "FND-001",
       "purchaseType": null,
@@ -185,7 +196,7 @@
       "id": "SHEET-018",
       "stage": "Helical Piles",
       "group": "Materials",
-      "description": "Pile caps",
+      "description": "Pile caps (sizes to confirm)",
       "quantity": 75,
       "unit": "EA",
       "reference": null,
@@ -219,11 +230,11 @@
       "stage": "Helical Piles",
       "group": "Tools",
       "description": "Magnetic drill",
-      "quantity": 3,
+      "quantity": 4,
       "unit": "EA",
       "reference": "FND-046",
       "purchaseType": null,
-      "specification": null
+      "specification": "Four magnetic-drill sets per site; record set numbers"
     },
     {
       "id": "SHEET-022",
@@ -270,26 +281,70 @@
       "specification": null
     },
     {
+      "id": "SHEET-038",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Small band saw",
+      "quantity": 1,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": "One per site; record set number and confirm cutting capacity and power source"
+    },
+    {
+      "id": "SHEET-039",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Large band saw",
+      "quantity": 1,
+      "unit": "EA",
+      "reference": null,
+      "purchaseType": null,
+      "specification": "One per site; record set number and confirm cutting capacity and power source"
+    },
+    {
       "id": "SHEET-026",
       "stage": "Helical Piles",
       "group": "Consumables",
       "description": "Annular cutter (9/16-inch)",
-      "quantity": 12,
+      "quantity": 20,
       "unit": "EA",
       "reference": "FND-047",
       "purchaseType": "sheet-cutter-9-16",
       "specification": "9/16-inch annular cutter"
     },
     {
+      "id": "SHEET-037",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Annular cutter (11/16-inch)",
+      "quantity": 20,
+      "unit": "EA",
+      "reference": "FND-047",
+      "purchaseType": "sheet-cutter-11-16",
+      "specification": "11/16-inch annular cutter"
+    },
+    {
       "id": "SHEET-027",
       "stage": "Helical Piles",
       "group": "Consumables",
-      "description": "Cutting fluid (16 oz bottle assumed)",
+      "description": "Cutting fluid",
+      "quantity": 2,
+      "unit": "GAL",
+      "reference": "FND-048",
+      "purchaseType": "sheet-cutting-fluid-gallon",
+      "specification": "Two gallons for helical pile work; confirm container sizes"
+    },
+    {
+      "id": "SHEET-042",
+      "stage": "Helical Piles",
+      "group": "Tools",
+      "description": "Squeeze bottles for cutting fluid",
       "quantity": null,
       "unit": "EA",
-      "reference": "FND-048",
-      "purchaseType": "sheet-cutting-fluid",
-      "specification": null
+      "reference": null,
+      "purchaseType": null,
+      "specification": "Quantity and bottle capacity to confirm"
     },
     {
       "id": "SHEET-028",
@@ -312,6 +367,28 @@
       "reference": null,
       "purchaseType": null,
       "specification": null
+    },
+    {
+      "id": "SHEET-040",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Band-saw blades marked 45",
+      "quantity": 6,
+      "unit": "SET",
+      "reference": null,
+      "purchaseType": null,
+      "specification": "Six sets marked 45 in supplied field list; confirm measurement, saw compatibility and cutting material"
+    },
+    {
+      "id": "SHEET-041",
+      "stage": "Helical Piles",
+      "group": "Consumables",
+      "description": "Band-saw blades marked 35",
+      "quantity": 6,
+      "unit": "SET",
+      "reference": null,
+      "purchaseType": null,
+      "specification": "Six sets marked 35 in supplied field list; confirm measurement, saw compatibility and cutting material"
     },
     {
       "id": "SHEET-030",

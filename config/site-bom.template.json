@@ -93,7 +93,7 @@
                   "description": "Total station",
                   "unit": "EA",
                   "system": "Leveling and Double-Checking",
-                  "notes": "Surveying tool for site layout, setting out points, and checking positions and elevations.",
+                  "notes": "Surveying tool for site layout, setting out points, and checking positions and elevations. Confirm the kit includes a tripod and compatible pipe attachment before mobilization.",
                   "inventoryPrefix": "TOOL",
                   "categoryPath": [
                     "Tools",
@@ -221,7 +221,7 @@
                     "fixedQty": 3,
                     "sparePercent": 0
                   },
-                  "notes": "User standard: always three complete sets. EA means one complete set of pile pins; do not add backup attachment pins.",
+                  "notes": "User standard: always three complete sets. Confirm pin sizes 2-7/8, 3-7/8 and 4-1/2 inches against the pile system; each required size must be represented in the three sets. EA means one complete set of pile pins; do not add backup attachment pins.",
                   "inventoryPrefix": "FAST",
                   "categoryPath": [
                     "Fasteners",
