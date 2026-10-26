@@ -37,7 +37,7 @@ page = replaceOnce(page, "state.path.at(-1)||state.phase||'Material catalog'", "
 page = replaceOnce(page, "'Browse category folders or select a phase to see all its materials.'", "'All Monroe Site BOM items across Site Setup, Foundation, Panels, and Finishing. Quantities are labeled by source and are planning values until reviewed.'");
 page = replaceOnce(page, "else if(state.query||state.phase){", "else if(state.query||state.phase||data.siteProject==='Monroe'){");
 page = replaceOnce(page, "else if(!state.phase)state.phase='Foundation';", "else if(data.siteProject!=='Monroe'&&!state.phase)state.phase='Foundation';");
-page = replaceOnce(page, '</script></body></html>', '</script><script src="live-config.js"></script><script src="live-site.js"></script></body></html>');
+page = replaceOnce(page, '</script></body></html>', '</script><script src="live-config.js"></script><script src="live-site.js?v=2"></script></body></html>');
 
 await fs.mkdir(path.join(destination, '05-Monroe'), { recursive: true });
 await fs.writeFile(path.join(destination, 'index.html'), page);
