@@ -148,4 +148,4 @@ $('content').addEventListener('click',e=>{const b=e.target.closest('button');if(
 $('search').oninput=e=>{state.query=e.target.value;render()};$('close').onclick=()=>$('detail').close();
 $('detail').addEventListener('click',e=>{if(e.target!==$('detail'))return;const r=$('detail').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('detail').close()});
 $('version').textContent='Catalog v'+data.catalogVersion;render();
-</script><script src="live-config.js"></script><script src="live-site.js?v=2"></script></body></html>
+</script><script src="live-config.js"></script><script src="live-site.js?v=3"></script></body></html>

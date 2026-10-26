@@ -12,23 +12,22 @@
   editLink.textContent = 'Edit shared BOM';
   editLink.style.cssText = 'display:block;margin:12px 0;color:#fff;font-weight:600';
   document.querySelector('aside nav')?.after(editLink);
-  function jsonp() {
-    return new Promise((resolve,reject) => {
-      const name = 'siteBomCallback_' + Array.from(crypto.getRandomValues(new Uint8Array(12)),x=>x.toString(16).padStart(2,'0')).join('');
-      const script = document.createElement('script');
-      const timer = setTimeout(() => finish(new Error('Shared BOM timed out')),20000);
-      function finish(value) { clearTimeout(timer); delete window[name]; script.remove(); value instanceof Error ? reject(value) : resolve(value); }
-      window[name] = finish;
-      script.onerror = () => finish(new Error('Shared BOM unavailable'));
-      const url = new URL(endpoint);
-      url.searchParams.set('mode','read'); url.searchParams.set('callback',name); url.searchParams.set('_',Date.now());
-      script.src = url.href; document.head.append(script);
-    });
+  async function readOnce() {
+    const url = new URL(endpoint);
+    url.searchParams.set('mode','read');
+    url.searchParams.set('_',Date.now());
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(),20000);
+    try {
+      const response = await fetch(url,{credentials:'omit',cache:'no-store',signal:controller.signal});
+      if (!response.ok) throw new Error('Shared BOM returned HTTP '+response.status);
+      return await response.json();
+    } finally { clearTimeout(timer); }
   }
   async function readShared() {
     let error;
     for (let attempt = 0; attempt < 2; attempt++) {
-      try { return await jsonp(); } catch (e) { error = e; }
+      try { return await readOnce(); } catch (e) { error = e; }
     }
     throw error;
   }

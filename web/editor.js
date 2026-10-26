@@ -8,29 +8,27 @@
   const pathOf=i=>Array.isArray(i.categoryPath)&&i.categoryPath.length?i.categoryPath:['Uncategorized'];
   function status(message,kind=''){$('status').textContent=message;$('status').className='status '+kind}
   function mark(){dirty=true;status('Unsaved changes. Save to update the shared website.');}
-  function jsonpOnce(mode){
-    return new Promise((resolve,reject)=>{
-      if(!endpoint)return reject(new Error('The live Google Sheet is not connected yet.'));
-      const callback='siteBomCallback_'+Array.from(crypto.getRandomValues(new Uint8Array(12)),n=>n.toString(16).padStart(2,'0')).join('');
-      const script=document.createElement('script');
-      const timeout=setTimeout(()=>finish(new Error('Google Sheet did not respond')),25000);
-      function finish(result){clearTimeout(timeout);delete window[callback];script.remove();result instanceof Error?reject(result):resolve(result)}
-      window[callback]=finish;script.onerror=()=>finish(new Error('Could not load the Google Sheet'));
-      const url=new URL(endpoint);url.searchParams.set('mode',mode);url.searchParams.set('callback',callback);url.searchParams.set('_',Date.now());
-      script.src=url.href;document.head.append(script);
-    });
+  async function readOnce(mode){
+    if(!endpoint)throw new Error('The live Google Sheet is not connected yet.');
+    const url=new URL(endpoint);url.searchParams.set('mode',mode);url.searchParams.set('_',Date.now());
+    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),25000);
+    try{
+      const response=await fetch(url,{credentials:'omit',cache:'no-store',signal:controller.signal});
+      if(!response.ok)throw new Error('Google Sheet returned HTTP '+response.status);
+      return await response.json();
+    }finally{clearTimeout(timeout)}
   }
-  async function jsonp(mode='read'){
+  async function getLive(mode='read'){
     let error;
     for(let attempt=0;attempt<2;attempt++){
-      try{return await jsonpOnce(mode)}catch(e){error=e}
+      try{return await readOnce(mode)}catch(e){error=e}
     }
     throw new Error(error.message+' Check your connection and click Reload to try again.');
   }
   async function post(form){
     // Apps Script does not provide CORS headers. The write response is opaque;
     // the revision and random nonce are verified by a fresh public read below.
-    await fetch(endpoint,{method:'POST',mode:'no-cors',body:new URLSearchParams(form)});
+    await fetch(endpoint,{method:'POST',mode:'no-cors',credentials:'omit',body:new URLSearchParams(form)});
   }
   function checkedNumber(id){const text=$(id).value.trim();if(!text)return null;const n=Number(text);if(!Number.isFinite(n)||n<0)throw new Error(id+' must be a nonnegative number');return n}
   function categories(){const paths=new Map();for(const c of live.categories)paths.set(key(c.path),c.path);for(const i of live.items){const path=pathOf(i);for(let n=1;n<=path.length;n++)paths.set(key(path.slice(0,n)),path.slice(0,n))}return [...paths.values()].sort((a,b)=>a.join('/').localeCompare(b.join('/')))}
@@ -40,8 +38,8 @@
   function showItem(){const i=live.items.find(item=>item.lineId===selected);$('form').hidden=!i;$('editingTitle').textContent=i?i.description:'Select an item';if(!i){formDirty=false;jsonDirty=false;return}
     $('name').value=i.description||'';$('phase').value=i.phase||'';$('stage').value=i.stage||'';$('group').value=i.checklistGroup||i.system||'Materials';$('path').value=pathOf(i).join(' > ');$('quantity').value=i.siteQuantity??'';$('listed').value=i.listedQuantity??'';$('unit').value=i.unit||'';$('checked').checked=!!i.siteChecked;$('specification').value=i.specification||'';$('vendor').value=i.vendor||'';$('partNumber').value=i.partNumber||'';$('owner').value=i.owner||'';$('procurementMethod').value=i.procurementMethod||'';$('notes').value=i.itemNotes||'';$('lineNotes').value=i.lineNotes||'';$('rawJson').value=JSON.stringify(i,null,2);$('itemMeta').textContent='ID: '+i.lineId+' · original catalog: '+(i.sourceCatalogId||i.catalogId||'new site item');formDirty=false;jsonDirty=false}
   function render(){showCategories();showItems();showItem();$('save').disabled=saving||!(dirty||formDirty||jsonDirty)}
-  async function reload(force=false){if((dirty||formDirty||jsonDirty)&&!force&&!confirm('Discard unsaved changes and reload the shared version?'))return;try{status('Loading latest shared Site BOM…');live=await jsonp();if(!Array.isArray(live.items)||!Array.isArray(live.categories))throw new Error('Invalid sheet data');dirty=false;formDirty=false;jsonDirty=false;selected=location.hash?decodeURIComponent(location.hash.slice(1)):selected;if(!live.items.some(i=>i.lineId===selected))selected=null;category=null;render();status('Revision '+live.revision+' · '+live.items.length+' items · last saved '+new Date(live.updatedAt).toLocaleString(),'success');loadHistory()}catch(e){status(e.message,'error')}}
-  async function loadHistory(){try{const h=await jsonp('history');$('history').innerHTML=h.revisions.slice(0,20).map(n=>'<button data-restore="'+n+'"'+(n===live.revision?' disabled':'')+'>Revision '+n+(n===live.revision?' (current)':'')+'</button>').join(' ')}catch(e){$('history').textContent='History unavailable: '+e.message}}
+  async function reload(force=false){if((dirty||formDirty||jsonDirty)&&!force&&!confirm('Discard unsaved changes and reload the shared version?'))return;try{status('Loading latest shared Site BOM…');live=await getLive();if(!Array.isArray(live.items)||!Array.isArray(live.categories))throw new Error('Invalid sheet data');dirty=false;formDirty=false;jsonDirty=false;selected=location.hash?decodeURIComponent(location.hash.slice(1)):selected;if(!live.items.some(i=>i.lineId===selected))selected=null;category=null;render();status('Revision '+live.revision+' · '+live.items.length+' items · last saved '+new Date(live.updatedAt).toLocaleString(),'success');loadHistory()}catch(e){status(e.message,'error')}}
+  async function loadHistory(){try{const h=await getLive('history');$('history').innerHTML=h.revisions.slice(0,20).map(n=>'<button data-restore="'+n+'"'+(n===live.revision?' disabled':'')+'>Revision '+n+(n===live.revision?' (current)':'')+'</button>').join(' ')}catch(e){$('history').textContent='History unavailable: '+e.message}}
   function apply(){const i=live.items.find(item=>item.lineId===selected);if(!i||!formDirty)return true;const name=$('name').value.trim(),phase=$('phase').value.trim(),stage=$('stage').value.trim();if(!name||!phase||!stage)throw new Error('Name, phase, and work area are required');const path=$('path').value.split('>').map(s=>s.trim()).filter(Boolean);if(!path.length)throw new Error('Category path is required');const unit=$('unit').value.trim()||'EA';const duplicate=live.items.find(other=>other.lineId!==i.lineId&&other.description.trim().toLowerCase()===name.toLowerCase()&&other.unit===unit&&key(pathOf(other))===key(path));if(duplicate&&!confirm('A similar item already exists ('+duplicate.lineId+'). Save this second item anyway?'))return false;const peer=live.items.find(other=>other.lineId!==i.lineId&&other.phase===phase&&other.stage===stage);const phasePeer=live.items.find(other=>other.lineId!==i.lineId&&other.phase===phase);Object.assign(i,{description:name,phase,stage,phaseOrder:peer?.phaseOrder??phasePeer?.phaseOrder??99,stageOrder:peer?.stageOrder??99,checklistGroup:$('group').value.trim()||'Materials',categoryPath:path,siteQuantity:checkedNumber('quantity'),listedQuantity:checkedNumber('listed'),unit,siteChecked:$('checked').checked,specification:$('specification').value,vendor:$('vendor').value,partNumber:$('partNumber').value,owner:$('owner').value,procurementMethod:$('procurementMethod').value,itemNotes:$('notes').value,lineNotes:$('lineNotes').value});i.manualOrder??=live.items.length;formDirty=false;mark();render();return true}
   function applyJson(){const next=JSON.parse($('rawJson').value),index=live.items.findIndex(i=>i.lineId===selected);if(index<0||!next||typeof next!=='object'||Array.isArray(next)||next.lineId!==selected||!String(next.description||'').trim())throw new Error('Keep the same item ID and provide a name');live.items[index]=next;jsonDirty=false;mark();render();return true}
   function commitDraft(){if(formDirty&&jsonDirty)throw new Error('Both the item form and JSON were edited. Apply one before saving or switching items.');if(jsonDirty)return applyJson();return apply()}
@@ -52,10 +50,10 @@
   function removeCategory(){if(!category)return;const path=JSON.parse(category);if(!confirm('Remove '+path.join(' / ')+'? Items in it will move to the parent category.'))return;const parent=path.slice(0,-1);for(const i of live.items)if(key(pathOf(i).slice(0,path.length))===category)i.categoryPath=[...(parent.length?parent:['Uncategorized']),...pathOf(i).slice(path.length)];live.categories=live.categories.filter(c=>key(c.path.slice(0,path.length))!==category);category=parent.length?key(parent):null;mark();render()}
   async function save(){if(saving)return;try{if(commitDraft()===false)return}catch(e){status(e.message,'error');return}if(!dirty)return;const pin=$('pin').value.trim(),actor=$('actor').value.trim();if(!/^\d{6}$/.test(pin)){status('Enter the six digit PIN before saving','error');$('pin').focus();return}if(!actor){status('Enter your name for the revision history','error');$('actor').focus();return}saving=true;render();status('Saving to Google Sheet…');const nonce=crypto.randomUUID().replaceAll('-','');const expected=live.revision+1;try{
     await post({action:'save',pin,actor,revision:String(live.revision),nonce,payload:JSON.stringify({items:live.items,categories:live.categories})});
-    for(let attempt=0;attempt<12;attempt++){await new Promise(r=>setTimeout(r,1500));const latest=await jsonp();if(latest.nonce===nonce&&latest.revision===expected){live=latest;dirty=false;$('pin').value='';status('Saved revision '+latest.revision+'. The public site now shows these changes.','success');loadHistory();return}if(latest.revision!==expected-1)throw new Error('Another editor saved first. Reload and review their changes before retrying.');}
+    for(let attempt=0;attempt<12;attempt++){await new Promise(r=>setTimeout(r,1500));const latest=await getLive();if(latest.nonce===nonce&&latest.revision===expected){live=latest;dirty=false;$('pin').value='';status('Saved revision '+latest.revision+'. The public site now shows these changes.','success');loadHistory();return}if(latest.revision!==expected-1)throw new Error('Another editor saved first. Reload and review their changes before retrying.');}
     throw new Error('Save was not confirmed. Check the PIN and Sheet deployment, then reload to check the live state.');
   }catch(e){status(e.message,'error')}finally{saving=false;render()}}
-  async function restore(revision){if((dirty||formDirty||jsonDirty)&&!confirm('Discard your unsaved changes and restore an earlier revision?'))return;if(!confirm('Restore revision '+revision+' as a new shared version?'))return;const pin=$('pin').value.trim();if(!/^\d{6}$/.test(pin)){status('Enter the PIN first','error');return}const nonce=crypto.randomUUID().replaceAll('-','');try{await post({action:'restore',pin,actor:$('actor').value.trim()||'PIN editor',revision:String(live.revision),targetRevision:String(revision),nonce});for(let n=0;n<12;n++){await new Promise(r=>setTimeout(r,1500));const next=await jsonp();if(next.nonce===nonce){dirty=false;$('pin').value='';await reload(true);return}}throw new Error('Restore not confirmed; check the PIN.')}catch(e){status(e.message,'error')}}
+  async function restore(revision){if((dirty||formDirty||jsonDirty)&&!confirm('Discard your unsaved changes and restore an earlier revision?'))return;if(!confirm('Restore revision '+revision+' as a new shared version?'))return;const pin=$('pin').value.trim();if(!/^\d{6}$/.test(pin)){status('Enter the PIN first','error');return}const nonce=crypto.randomUUID().replaceAll('-','');try{await post({action:'restore',pin,actor:$('actor').value.trim()||'PIN editor',revision:String(live.revision),targetRevision:String(revision),nonce});for(let n=0;n<12;n++){await new Promise(r=>setTimeout(r,1500));const next=await getLive();if(next.nonce===nonce){dirty=false;$('pin').value='';await reload(true);return}}throw new Error('Restore not confirmed; check the PIN.')}catch(e){status(e.message,'error')}}
   $('categories').onclick=e=>{const b=e.target.closest('[data-category]');if(b)safely(()=>{category=b.dataset.category||null;render()})};
   $('items').onclick=e=>{const b=e.target.closest('[data-id]');if(b)safely(()=>{selected=b.dataset.id;render()})};
   $('items').ondragstart=e=>{const b=e.target.closest('[data-id]');if(b){e.dataTransfer.setData('text/plain',b.dataset.id);b.classList.add('dragging')}};
