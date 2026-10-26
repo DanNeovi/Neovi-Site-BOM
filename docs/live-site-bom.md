@@ -15,11 +15,20 @@ is versioned in `apps-script/LiveSiteBom.gs`.
 
 ## What editors can change
 
-- Rename, add, remove, and drag items; change phases, work areas, categories,
-  units, listed and site quantities, checkoffs, and notes.
-- Add, rename, and remove category paths; move items between them.
-- Edit any item field through the advanced JSON editor. This can change formula
-  and evidence fields, so those edits need review before purchasing.
+- Rename, add, remove, and drag items; change phases, work areas, groups,
+  categories, units, listed and site quantities, checkoffs, specification,
+  vendor, part number, owner, procurement method, and notes. Type category
+  levels with ` > `; a slash inside a category name is ordinary text.
+- Add, rename, and remove category paths; drag an item onto a category or
+  another item. An empty category is stored but appears publicly after it
+  contains an item. Category names display alphabetically.
+- Edit additional item fields through the advanced JSON editor. These fields
+  appear in **All item fields** on the public page. The permanent `lineId`
+  cannot change because it joins source exports and revision history. Formula
+  and evidence edits need review before purchasing.
+- Form changes are applied automatically on Save or when selecting another
+  item. If both the form and JSON have pending edits, apply one first so no
+  edits are silently discarded.
 - Restore a prior revision. Saves use the current revision number to reject
   conflicting edits; refresh and reconcile rather than overwriting another
   person's work.
@@ -35,8 +44,10 @@ any visitor, so do not put secrets in item fields.
 
 The public web app is deployed at
 `https://script.google.com/macros/s/AKfycbwAFM2SkdjoHYeUa_cEXY9WplqhjNyk5qbE1AsjA-mKXjDF2j0IEOYgvTqFOvQxxCbB/exec`.
-The GitHub Pages site reads its revision 1 successfully. A real PIN-gated
-website save and the scheduled G: refresh still need end-to-end verification.
+The GitHub Pages site reads its revision 1 successfully. A disposable local
+server verified browser edits, adds, custom JSON fields, and the rendered
+public page. A real PIN-gated website save and the scheduled G: refresh still
+need end-to-end verification.
 
 1. In the bound Apps Script project, open **Project Settings → Script
    properties**. Add `SITE_BOM_SETUP_PIN` with a new six digit PIN chosen by the

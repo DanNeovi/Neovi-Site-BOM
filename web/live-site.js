@@ -26,6 +26,10 @@
     });
   }
   const originalTable = table;
+  const originalInlineDetails = inlineDetails;
+  inlineDetails = function (items) {
+    return originalInlineDetails(items) + '<details class="all-fields"><summary>All item fields</summary>' + items.map(i => fields(i)).join('') + '</details>';
+  };
   table = function (items,showEmptyMaterials) {
     const known = new Set(['Site services','Equipment','Supplemental','Materials','Tools','Consumables']);
     const extra = [...new Set(items.map(checklistGroup).filter(group=>!known.has(group)))];
