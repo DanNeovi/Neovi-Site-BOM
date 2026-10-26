@@ -8,7 +8,7 @@
   const pathOf=i=>Array.isArray(i.categoryPath)&&i.categoryPath.length?i.categoryPath:['Uncategorized'];
   function status(message,kind=''){$('status').textContent=message;$('status').className='status '+kind}
   function mark(){dirty=true;status('Unsaved changes. Save to update the shared website.');}
-  function jsonp(mode='read'){
+  function jsonpOnce(mode){
     return new Promise((resolve,reject)=>{
       if(!endpoint)return reject(new Error('The live Google Sheet is not connected yet.'));
       const callback='siteBomCallback_'+Array.from(crypto.getRandomValues(new Uint8Array(12)),n=>n.toString(16).padStart(2,'0')).join('');
@@ -19,6 +19,13 @@
       const url=new URL(endpoint);url.searchParams.set('mode',mode);url.searchParams.set('callback',callback);url.searchParams.set('_',Date.now());
       script.src=url.href;document.head.append(script);
     });
+  }
+  async function jsonp(mode='read'){
+    let error;
+    for(let attempt=0;attempt<2;attempt++){
+      try{return await jsonpOnce(mode)}catch(e){error=e}
+    }
+    throw new Error(error.message+' Check your connection and click Reload to try again.');
   }
   async function post(form){
     // Apps Script does not provide CORS headers. The write response is opaque;
