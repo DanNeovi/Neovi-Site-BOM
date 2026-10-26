@@ -37,9 +37,17 @@ page = replaceOnce(page, "state.path.at(-1)||state.phase||'Material catalog'", "
 page = replaceOnce(page, "'Browse category folders or select a phase to see all its materials.'", "'All Monroe Site BOM items across Site Setup, Foundation, Panels, and Finishing. Quantities are labeled by source and are planning values until reviewed.'");
 page = replaceOnce(page, "else if(state.query||state.phase){", "else if(state.query||state.phase||data.siteProject==='Monroe'){");
 page = replaceOnce(page, "else if(!state.phase)state.phase='Foundation';", "else if(data.siteProject!=='Monroe'&&!state.phase)state.phase='Foundation';");
+page = replaceOnce(page, '</script></body></html>', '</script><script src="live-config.js"></script><script src="live-site.js"></script></body></html>');
 
 await fs.mkdir(path.join(destination, '05-Monroe'), { recursive: true });
 await fs.writeFile(path.join(destination, 'index.html'), page);
 await fs.copyFile(path.join(source, report), path.join(destination, report));
+for (const file of ['live-site.js', 'editor.html', 'editor.js']) {
+  await fs.copyFile(path.join(root, 'web', file), path.join(destination, file));
+}
+const liveConfig = JSON.parse(await fs.readFile(path.join(root, 'config', 'live-site-endpoint.json'), 'utf8'));
+if (liveConfig.url && !/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(liveConfig.url))
+  throw new Error('Live Site BOM endpoint must be a deployed Google Apps Script web app URL.');
+await fs.writeFile(path.join(destination, 'live-config.js'), 'window.SITE_BOM_LIVE_URL = ' + JSON.stringify(liveConfig.url) + ';\n');
 await fs.writeFile(path.join(destination, '.nojekyll'), '');
 console.log(`Prepared Monroe GitHub Pages snapshot: ${snapshot.items.length} items across ${new Set(snapshot.items.map(item => item.phase)).size} phases.`);

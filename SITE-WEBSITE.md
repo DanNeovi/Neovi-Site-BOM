@@ -1,6 +1,9 @@
 # Site BOM website
 
 The public, interactive Monroe catalog is published from `site/` with GitHub Pages.
+The shared Google Sheet editor is being connected; see `docs/live-site-bom.md`
+for its setup and deployment state. Until that document's verification steps
+pass, the public website remains a snapshot with browser-only progress edits.
 It starts with all items across Site Setup, Foundation, Panels, and Finishing.
 It is a snapshot of the generated HTML in `G:\My Drive\SiteBOM`; the Drive folder
 remains the source for complete exports. Franklin and Santa Rita project exports
