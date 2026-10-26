@@ -31,7 +31,12 @@ there only as a salted hash. The editor name is a user-entered audit label; it
 does not prove a person's identity. The public site still exposes BOM data to
 any visitor, so do not put secrets in item fields.
 
-## Finish connecting the live editor
+## Deployment and verification
+
+The public web app is deployed at
+`https://script.google.com/macros/s/AKfycbwAFM2SkdjoHYeUa_cEXY9WplqhjNyk5qbE1AsjA-mKXjDF2j0IEOYgvTqFOvQxxCbB/exec`.
+The GitHub Pages site reads its revision 1 successfully. A real PIN-gated
+website save and the scheduled G: refresh still need end-to-end verification.
 
 1. In the bound Apps Script project, open **Project Settings → Script
    properties**. Add `SITE_BOM_SETUP_PIN` with a new six digit PIN chosen by the
@@ -43,7 +48,7 @@ any visitor, so do not put secrets in item fields.
 3. Deploy as a **Web app**: execute as the owner; access **Anyone**. This
    exposes only the scripted public read and PIN-gated write methods, not the
    private Sheet itself. Review Google's requested permissions before granting.
-4. Put the deployment's `/exec` URL in `config/live-site-endpoint.json`.
+4. Keep the deployment's `/exec` URL in `config/live-site-endpoint.json`.
    Rebuild with `node scripts/build-pages-snapshot.mjs`, review `site/`, then
    push to `main`. The GitHub Pages workflow publishes the updated site.
 5. Open the published editor, save one reversible test change, and verify the

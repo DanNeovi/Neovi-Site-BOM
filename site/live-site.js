@@ -47,6 +47,8 @@
     banner.style.background='#e9f6ed'; banner.style.color='#19522e';
     banner.textContent='Shared Site BOM · revision '+live.revision+' · saved '+new Date(live.updatedAt).toLocaleString();
     render();
+    const tag=document.querySelector('.topline .tag');
+    if(tag)tag.textContent='Monroe · shared live BOM';
   }).catch(error => {
     banner.textContent='Shared BOM unavailable. Showing the last published snapshot; editing is paused. '+error.message;
   });
