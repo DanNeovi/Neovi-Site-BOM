@@ -73,7 +73,11 @@ class MonroeEstimatesTest(unittest.TestCase):
         self.assertEqual(self.items['PAN-006']['quantity'], 8 * d['floorPlates']['value'])
         self.assertEqual(self.items['PAN-013']['quantity'], d['holdDowns']['value'])
         self.assertEqual(self.items['PAN-029']['quantity'], 2 * d['holdDowns']['value'])
-        self.assertEqual(self.items['FND-014']['quantity'], 2 * d['pileProxy']['value'])
+        self.assertEqual(d['pileScheduleCount']['value'], 48)
+        self.assertEqual(d['pileProxy']['value'], 50)
+        self.assertEqual(self.items['FND-006']['quantity'], d['pileScheduleCount']['value'])
+        self.assertEqual(self.items['FND-014']['quantity'], 2 * d['pileScheduleCount']['value'])
+        self.assertEqual(self.items['FND-058']['quantity'], 20 * d['pileScheduleCount']['value'])
         self.assertEqual(self.items['PAN-016']['quantity'], 8 * d['trussCount']['value'])
         self.assertEqual(d['floorClipFastenerPositions']['value'], 3858)
 
@@ -192,7 +196,7 @@ class MonroeEstimatesTest(unittest.TestCase):
 
     def test_complete_consumable_packages_are_counted_in_eaches(self):
         expected = {
-            'FND-048': 4, 'PAN-035': 1, 'FIN-143': 1,
+            'FND-048': 16, 'PAN-035': 1, 'FIN-143': 1,
             'FIN-144': 1, 'FIN-151': 1, 'FIN-152': 1,
             'FIN-089': 16, 'FIN-123': 1, 'FIN-125': 1, 'FIN-176': 1,
         }

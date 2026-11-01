@@ -1,0 +1,94 @@
+{
+  "project": "Monroe",
+  "documentType": "helical_pile_schedule",
+  "classification": "verified_table_structure_review_required",
+  "approvalStatus": "not_approved_for_purchase",
+  "sourceDocument": "1-Monroe-SE-sheets.pdf",
+  "sourceSha256": "5de21cd05bb2a81d7907a430d53566c39c8ccc1142143fe918e73c3d159e6e4e",
+  "sourcePage": 3,
+  "sourceCropPoints": [
+    277.98681640625,
+    1110.1358642578125,
+    1450.9659423828125,
+    1534.6329345703125
+  ],
+  "extractionMethod": "Docling local table OCR on PDF schedule crop",
+  "extractedAtUtc": "2026-10-25T18:42:35.545628+00:00",
+  "rows": [
+    {
+      "pileId": "HP-1a",
+      "count": 4,
+      "diameterIn": "3 1/2\""
+    },
+    {
+      "pileId": "HP-1b",
+      "count": 2,
+      "diameterIn": "3 1/2\""
+    },
+    {
+      "pileId": "HP-1c",
+      "count": 3,
+      "diameterIn": "3 1/2\""
+    },
+    {
+      "pileId": "HP-2a",
+      "count": 2,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-2b",
+      "count": 3,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-2c",
+      "count": 6,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-2d",
+      "count": 3,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-2e",
+      "count": 4,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-2f",
+      "count": 4,
+      "diameterIn": "4 1/2\""
+    },
+    {
+      "pileId": "HP-3a",
+      "count": 6,
+      "diameterIn": "2 7/8\""
+    },
+    {
+      "pileId": "HP-3b",
+      "count": 5,
+      "diameterIn": "2 7/8\""
+    },
+    {
+      "pileId": "HP-3c",
+      "count": 6,
+      "diameterIn": "2 7/8\""
+    }
+  ],
+  "totalPiles": 48,
+  "byDiameter": [
+    {
+      "diameterIn": "3 1/2\"",
+      "count": 9
+    },
+    {
+      "diameterIn": "4 1/2\"",
+      "count": 22
+    },
+    {
+      "diameterIn": "2 7/8\"",
+      "count": 17
+    }
+  ]
+}

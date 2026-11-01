@@ -38,6 +38,7 @@ Catalog rows: **276**. Model-linked or fixed catalog quantities: **23**. Plannin
 | roofProxyArea | 2,815.187565 | SUM(host roof sheathing Area SQFT); roof-panel coverage proxy, excluding small generic roof objects |
 | gutterLength | 237.010389 | SUM(typed Length FT of modeled gutter runs); fascia and soffit lengths are not identified |
 | floorClipFastenerPositions | 3,858 | SUM(typed leg fastener positions on linked floor clips); fastener type and site/factory scope unknown |
+| pileScheduleCount | 48 | SUM(helical pile schedule rows by pile ID and shaft diameter); extracted structural schedule, review before purchase |
 | pileProxy | 50 | COUNT(linked U saddles hosted on PILE CAP); proxy positions, not confirmed piles |
 | pileAreaBenchmark | 18 | CEILING(first-story gross footprint / 125 SQFT per pile); comparison assumption only |
 | trussCount | 50 | COUNT(linked TrussLabel instances); proxy for truss assemblies |
@@ -74,6 +75,20 @@ Catalog rows: **276**. Model-linked or fixed catalog quantities: **23**. Plannin
 | solarPanels | 30 | Risen Solar Pack Solar Panel |
 | hssBeams | 29 | Foundation-level hollow beams; structural link authority, upper steel and host copies excluded |
 
+## Structural helical pile schedule
+
+Source: 1-Monroe-SE-sheets.pdf, PDF page 3; SHA-256 5de21cd05bb2a81d7907a430d53566c39c8ccc1142143fe918e73c3d159e6e4e. The extracted table needs drawing-revision and purchasing review.
+
+| Shaft diameter | Scheduled piles |
+|---|---:|
+| 3 1/2" | 9 |
+| 4 1/2" | 22 |
+| 2 7/8" | 17 |
+| **Total** | **48** |
+
+The model has 50 linked U-saddle positions. That is a separate model proxy and does not replace the 48-row-count schedule. The legacy Site BOM labels of 6-inch and 4-inch piles do not match these three shaft diameters.
+
+
 The two first-story takeoff meshes overlap by 1,262.968229 SQFT. Their XY union is 2,202.903896 SQFT; 165.499212 SQFT also overlaps the modeled garage room. The first-story livable driver is therefore 2,037.404684 SQFT. The second-story mesh is independent. Using the raw sum would count overlapping floor area twice.
 
 The roof sheathing area is measured from typed roof elements but serves as a planning proxy for panel coverage. Linked U saddles provide pile-position proxies; the retired pile-cap family does not confirm the helical pile schedule. Sink and AC drivers also rely on specified model families. Independent estimates for components in one assembly can overlap; reconcile them before buying.
@@ -102,7 +117,7 @@ PAN-036 site wall CB = ceil(2,995.784698 net exterior-wall SQFT x 10% assumed si
 
 ## Decisions that change the estimate most
 
-- Foundation: 50 linked U saddles are used as pile-position proxies. An independent area-density benchmark is 18. Confirm the pile and bracket schedule before using either for procurement; bedframe hardware follows the catalog pile-based rule.
+- Foundation: the structural table totals 48 piles versus 50 linked U-saddle positions. Pile quantity now follows the schedule; extensions, brackets, nuts, bolts and washers still use assumed per-pile rates. Confirm the connections and drawing revision before procurement.
 - Floor connections: 236 model plates are selected. The catalog currently rounds their base kit to a minimum of 250, while its rule note says 100 versus 250 needs confirmation. The linked floor clips also contain 3,858 typed fastener positions whose screw type and site/factory scope are unspecified; they are not silently added to PAN-006.
 - Roof: 2,815.187565 SQFT of typed sheathing is the panel-area proxy. Truss screws use 50 linked truss labels x 8 assumed bearing screws, separate from roof-panel screws. Truss-stage board screws assume 10% site board coverage of roof area and ten screws per covered SQFT. Confirm the roof-panel assembly, purlin layout, slopes and fastening schedules.
 - LED profiles: the raw family sum is 1,715.846715 FT and the spatially reconciled estimate is 1,251.137745 FT. Confirm profile types and any remaining separate parallel runs.
@@ -175,10 +190,10 @@ Model quantities retain measured precision. Planning quantities and base kits us
 | 1.1 | FND-021 Laser total station | PLANNING_ESTIMATE | 1 EA | 0 / 1 EA | project allowance | 0.000288 EA/SQFT | ceil_to_1(1 project x 1 EA/project) = 1 EA; One shared tool or equipment set for the project; check existing crew inventory before procurement. |
 | 1.1 | FND-035 Sump pump for flooded trenches | PLANNING_ESTIMATE | 1 EA | 0 / 1 EA | project allowance | 0.000288 EA/SQFT | ceil_to_1(1 project x 1 EA/project) = 1 EA; One contingency pump only if trench water is encountered; conditional budget allowance. |
 | 1.1 | FND-061 Orange-handle magnets | PLANNING_ESTIMATE | 10 EA | 0 / 10 EA | project allowance | 0.002877 EA/SQFT | ceil_to_1(1 project x 10 EA/project) = 10 EA; Ten orange-handle holding magnets per user direction; confirm pull rating, exact product and reusable crew stock |
-| 1.2 | FND-006 Helical piles | PLANNING_ESTIMATE | 50 EA | 0 / 50 EA | 1 EA / pileProxy | 0.014385 EA/SQFT | ceil_to_1(50 pileProxy x 1 EA/pileProxy) = 50 EA; One pile or bracket per linked U-saddle pile-cap position. The saddle family is model evidence, not a confirmed pile or bracket schedule; verify the foundation design. |
-| 1.2 | FND-007 Pile extensions | PLANNING_ESTIMATE | 13 EA | 0 / 13 EA | 0.26 EA / pileProxy | 0.003740 EA/SQFT | ceil_to_1(50 pileProxy x 0.25 EA/pileProxy) = 13 EA; Assume one extension at 25% of pile positions; depth and geotechnical design pending. |
+| 1.2 | FND-006 Helical piles | PLANNING_ESTIMATE | 48 EA | 0 / 48 EA | 1 EA / pileScheduleCount | 0.013810 EA/SQFT | ceil_to_1(48 pileScheduleCount x 1 EA/pileScheduleCount) = 48 EA; One pile per row count in Monroe structural sheet page 3: 48 total across three shaft diameters. Extracted schedule requires drawing-revision and purchasing review. |
+| 1.2 | FND-007 Pile extensions | PLANNING_ESTIMATE | 12 EA | 0 / 12 EA | 0.25 EA / pileScheduleCount | 0.003452 EA/SQFT | ceil_to_1(48 pileScheduleCount x 0.25 EA/pileScheduleCount) = 12 EA; Assume one extension for 25% of scheduled piles; the structural schedule does not specify extension quantity. Verify actual depth and pile sections. |
 | 1.2 | FND-009 Pile pins - complete sets | CONFIRMED_STANDARD | 3 EA | 0 / 3 EA | N/A | 0.000863 EA/SQFT | 3 EA per project; User-confirmed standard: three complete sets of pile pins; EA means one set. |
-| 1.2 | FND-010 Pile brackets | PLANNING_ESTIMATE | 50 EA | 0 / 50 EA | 1 EA / pileProxy | 0.014385 EA/SQFT | ceil_to_1(50 pileProxy x 1 EA/pileProxy) = 50 EA; One pile or bracket per linked U-saddle pile-cap position. The saddle family is model evidence, not a confirmed pile or bracket schedule; verify the foundation design. |
+| 1.2 | FND-010 Pile brackets | PLANNING_ESTIMATE | 48 EA | 0 / 48 EA | 1 EA / pileScheduleCount | 0.013810 EA/SQFT | ceil_to_1(48 pileScheduleCount x 1 EA/pileScheduleCount) = 48 EA; Planning assumption of one bracket per scheduled pile; verify cap/head and bracket details before ordering. |
 | 1.2 | FND-011 Helical pile and substructure machine rental - John Deere 50P / 50G | PLANNING_ESTIMATE | 14 DAY | 0 / 14 DAY | project allowance | 0.004028 DAY/SQFT | ceil_to_1(1 project x 14 DAY/project) = 14 DAY; Two-week machine rental for helical pile and substructure work = 14 calendar days; confirm rental billing, mobilization and installation schedule |
 | 1.2 | FND-060 Digger motor | PLANNING_ESTIMATE | 1 EA | 0 / 1 EA | project allowance | 0.000288 EA/SQFT | ceil_to_1(1 project x 1 EA/project) = 1 EA; One pile-installation digger motor or drive attachment per user direction; verify whether included with the machine rental or owned equipment |
 | 1.2 | FND-040 Machine lifting chains | PLANNING_ESTIMATE | 4 EA | 0 / 4 EA | project allowance | 0.001151 EA/SQFT | ceil_to_1(1 project x 4 EA/project) = 4 EA; Four rigging units for one installation crew; lifting plan and certified capacities pending. |
@@ -211,10 +226,10 @@ Model quantities retain measured precision. Planning quantities and base kits us
 | 1.2 | FND-036 Extension cord | PLANNING_ESTIMATE | 4 EA | 0 / 4 EA | project allowance | 0.001151 EA/SQFT | ceil_to_1(1 project x 4 EA/project) = 4 EA; Four shared crew-use units for the project; check existing inventory. |
 | 1.2 | FND-037 Site water hose (100 ft assumed) | PLANNING_ESTIMATE | 1 EA | 0 / 1 EA | project allowance | 0.000288 EA/SQFT | ceil_to_1(1 project x 1 EA/project) = 1 EA; One complete 100-ft hose per listed work stage as a planning allowance. Check site reach, diameter, pressure rating, connectors and whether the two stages can share one hose. |
 | 1.3 | FND-012 HSS beams | MODEL_SCOPE_RULE | 29 EA | 0 / 29 EA | N/A | 0.008343 EA/SQFT | COUNT(linked hollow beams with top/reference elevation <= 0 FT) = 29 EA; Foundation-level hollow beams; structural link authority, upper steel and host copies excluded; verify installation scope and product inclusion |
-| 1.3 | FND-014 Steel bedframe nuts | PLANNING_ESTIMATE | 100 EA | 10 / 110 EA | 2 EA / pileProxy | 0.028770 EA/SQFT | ceil_to_1(50 pileProxy x 2 EA/pileProxy) = 100 EA; Catalog rule: two bedframe nuts or bolts per assumed pile position; verify the pile-to-bedframe connection schedule. |
-| 1.3 | FND-015 Steel bedframe bolts | PLANNING_ESTIMATE | 100 EA | 10 / 110 EA | 2 EA / pileProxy | 0.028770 EA/SQFT | ceil_to_1(50 pileProxy x 2 EA/pileProxy) = 100 EA; Catalog rule: two bedframe nuts or bolts per assumed pile position; verify the pile-to-bedframe connection schedule. |
+| 1.3 | FND-014 Steel bedframe nuts | PLANNING_ESTIMATE | 96 EA | 10 / 106 EA | 2 EA / pileScheduleCount | 0.027619 EA/SQFT | ceil_to_1(48 pileScheduleCount x 2 EA/pileScheduleCount) = 96 EA; Planning rule of two bedframe nuts or bolts per scheduled pile; verify actual connection details and supplied hardware. |
+| 1.3 | FND-015 Steel bedframe bolts | PLANNING_ESTIMATE | 96 EA | 10 / 106 EA | 2 EA / pileScheduleCount | 0.027619 EA/SQFT | ceil_to_1(48 pileScheduleCount x 2 EA/pileScheduleCount) = 96 EA; Planning rule of two bedframe nuts or bolts per scheduled pile; verify actual connection details and supplied hardware. |
 | 1.3 | FND-016 Steel bedframe threaded rod | PLANNING_ESTIMATE | 58 FT | 0 / 58 FT | 2 FT / hssBeams | 0.016687 FT/SQFT | ceil_to_1(29 hssBeams x 2 FT/hssBeams) = 58 FT; Two FT threaded rod per modeled foundation HSS beam; connection lengths pending. |
-| 1.3 | FND-058 Steel bedframe washers | PLANNING_ESTIMATE | 1,000 EA | 100 / 1,100 EA | 20 EA / pileProxy | 0.287699 EA/SQFT | ceil_to_1(50 pileProxy x 20 EA/pileProxy) = 1,000 EA; Two bedframe bolt pairs per assumed pile, with ten washers per pair (20 washers per pile); catalog allows a different washer count, so confirm detail. |
+| 1.3 | FND-058 Steel bedframe washers | PLANNING_ESTIMATE | 960 EA | 96 / 1,056 EA | 20 EA / pileScheduleCount | 0.276191 EA/SQFT | ceil_to_1(48 pileScheduleCount x 20 EA/pileScheduleCount) = 960 EA; Planning rule of 20 bedframe washers per scheduled pile; whether the detail calls for 20 or 40 remains unresolved. Do not order from this allowance. |
 | 1.3 | FND-017 1/2-inch HSS gap spacers | PLANNING_ESTIMATE | 58 EA | 0 / 58 EA | 2 EA / hssBeams | 0.016687 EA/SQFT | ceil_to_1(29 hssBeams x 2 EA/hssBeams) = 58 EA; Two gap spacers per modeled foundation HSS beam; bearing layout pending. |
 | 1.3 | FND-018 Steel shims - roll-former die cutouts | PLANNING_ESTIMATE | 116 EA | 0 / 116 EA | 4 EA / hssBeams | 0.033373 EA/SQFT | ceil_to_1(29 hssBeams x 4 EA/hssBeams) = 116 EA; Budget four shims per foundation beam; levels and bearing details pending |
 | 1.3 | FND-019 Crawl-space moisture vapor barrier | PLANNING_ESTIMATE | 2,242 SQFT | 0 / 2,242 SQFT | 1.10042 SQFT / first-story SQFT | 0.645021 SQFT/SQFT | ceil_to_1(2,037.404684 firstStoryArea x 1.1 SQFT/firstStoryArea) = 2,242 SQFT; Crawl-space membrane proxy: first-story livable XY footprint x 1.10 for laps and upturns; confirm actual crawl coverage and membrane roll width. |

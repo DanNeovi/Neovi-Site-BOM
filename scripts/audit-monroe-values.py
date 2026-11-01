@@ -40,12 +40,12 @@ def template_lines(value):
 
 
 REVIEW = {
-    'FND-006': '50 linked pile-cap saddles are a position proxy; the independent footprint benchmark is 18. Confirm the engineered pile schedule.',
-    'FND-007': 'One extension at 25% of assumed pile positions is a depth allowance; no geotechnical pile length is modeled.',
-    'FND-010': 'Bracket quantity follows the 50 saddle-position proxy; confirm pile-to-bracket detail.',
-    'FND-014': 'Two nuts per assumed pile follow the catalog rule; verify the bearing connection.',
-    'FND-015': 'Two bolts per assumed pile follow the catalog rule; verify the bearing connection.',
-    'FND-058': 'Twenty washers per assumed pile is the current interpretation; the catalog explicitly leaves 10 versus 20 unresolved.',
+    'FND-006': 'The extracted structural schedule totals 48 piles across three shaft diameters; confirm drawing revision and purchasing status.',
+    'FND-007': 'One extension for 25% of scheduled piles is still only a depth allowance; no extension schedule is available.',
+    'FND-010': 'One bracket per scheduled pile is an assumption; confirm the pile head and bracket detail.',
+    'FND-014': 'Two nuts per scheduled pile follow the catalog rule; verify the bearing connection.',
+    'FND-015': 'Two bolts per scheduled pile follow the catalog rule; verify the bearing connection.',
+    'FND-058': 'Twenty washers per scheduled pile is an unresolved interpretation; do not release an order.',
     'PAN-002': '236 plates are selected in the model, but the catalog base kit becomes 250; its 100-versus-250 minimum note is unresolved.',
     'PAN-006': 'The 8-screw/plate allowance does not assign 3,858 typed floor-clip fastener positions because fastener type and site/factory scope are missing.',
     'PAN-016': 'Eight screws per linked truss label means two bearings times four screws. The engineer must confirm the connection schedule.',
@@ -99,7 +99,10 @@ def main():
     confirmed = json.loads((ROOT / 'config/confirmed-site-standards.json').read_text())
     rules = builder.load_rules()
     mapped, openings = map_model(rows)
-    drivers = builder.monroe_drivers(rows, mapped, openings, manifest['storyAreas'])
+    pile_schedule = builder.load_pile_schedule()
+    drivers = builder.monroe_drivers(rows, mapped, openings, manifest['storyAreas'], pile_schedule)
+    if report.get('pileSchedule') != pile_schedule:
+        raise ValueError('Monroe pile schedule changed after quantity report build')
     source = Path(manifest['source'])
     stat = source.stat()
     if (stat.st_size, stat.st_mtime_ns) != (manifest['sourceBytes'], manifest['sourceMtimeNs']):
@@ -223,12 +226,12 @@ def main():
             d['floorClipFastenerPositions']['value'] != 3858):
         raise ValueError('Critical source family reconciliation changed')
     findings = [
-        {'priority': 1, 'topic': 'Foundation position count',
+        {'priority': 1, 'topic': 'Structural pile count versus model positions',
          'lineIds': ['FND-006', 'FND-007', 'FND-010', 'FND-014', 'FND-015', 'FND-058'],
-         'evidence': f"{d['pileProxy']['value']:.0f} linked U saddles drive 50 piles/brackets, 13 extensions and 1,000 washers. "
-                     f"The separate one-per-125-SQFT footprint comparison is {d['pileAreaBenchmark']['value']:.0f} positions; "
-                     'at that count the same rules yield 18 piles/brackets, 5 extensions and 360 washers.',
-         'decision': 'Use the engineered pile and connection schedule to choose the count; neither proxy establishes pile locations.'},
+         'evidence': f"Structural schedule rows total {d['pileScheduleCount']['value']:.0f} piles; "
+                     f"the model has {d['pileProxy']['value']:.0f} linked U-saddle positions. "
+                     'The pile count uses the schedule; extensions and connection hardware still use unverified rates.',
+         'decision': 'Confirm drawing revision, pile-head details, extension lengths and hardware multipliers before ordering.'},
         {'priority': 1, 'topic': 'Board coverage and fastener scope',
          'lineIds': ['PAN-036', 'PAN-040', 'FIN-107', 'FIN-108'],
          'evidence': 'The independent assumptions yield 300 SQFT site wall CB, 2,816 truss-stage board screws, '

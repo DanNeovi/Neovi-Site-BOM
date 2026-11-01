@@ -5,6 +5,7 @@ from collections import Counter
 from pathlib import Path
 
 from model_takeoff_rules import parameter, select_unique
+from monroe_structural_schedule import load_pile_schedule
 from planning_estimates import planning_drivers
 from project_model_mapper import map_model
 
@@ -49,7 +50,7 @@ def driver(value, references, description):
     return {'value': value, 'references': references, 'description': description}
 
 
-def monroe_drivers(rows, mapped, openings, story_areas):
+def monroe_drivers(rows, mapped, openings, story_areas, pile_schedule):
     result = planning_drivers(rows, mapped, openings)
     unique = select_unique(rows)
     host = [e for e in unique if e.get('sourceKey') == 'host']
@@ -274,6 +275,11 @@ def monroe_drivers(rows, mapped, openings, story_areas):
         raise ValueError('No linked pile-cap saddle positions found')
     result['pileProxy'] = driver(len(saddles), [e['key'] for e in saddles],
         'COUNT(linked U saddles hosted on PILE CAP); proxy positions, not confirmed piles')
+    schedule_ref = (f"{pile_schedule['sourceDocument']}#page={pile_schedule['sourcePage']}"
+                    f"#sha256={pile_schedule['sourceSha256']}")
+    result['pileScheduleCount'] = driver(pile_schedule['totalPiles'],
+        [schedule_ref + '#pile=' + row['pileId'] for row in pile_schedule['rows']],
+        'SUM(helical pile schedule rows by pile ID and shaft diameter); extracted structural schedule, review before purchase')
     result['pileAreaBenchmark'] = driver(math.ceil(result['firstStoryGrossArea']['value'] / 125),
         result['firstStoryGrossArea']['references'],
         'CEILING(first-story gross footprint / 125 SQFT per pile); comparison assumption only')
@@ -505,7 +511,7 @@ def markdown(report):
                  'garageArea', 'garageRoomPerimeter', 'wetRoomArea', 'dryFloorArea',
                  'roofProxyArea', 'gutterLength',
                  'floorClipFastenerPositions',
-                 'pileProxy', 'pileAreaBenchmark', 'trussCount', 'floorPlates', 'holdDowns',
+                 'pileScheduleCount', 'pileProxy', 'pileAreaBenchmark', 'trussCount', 'floorPlates', 'holdDowns',
                  'wallLength', 'exteriorLength', 'windows', 'firstStoryWindows', 'secondStoryWindows',
                  'doors', 'firstStoryDoors', 'secondStoryDoors', 'exteriorDoors',
                  'sinks', 'bathroomSinks', 'toilets', 'toiletCutouts', 'indoorUnits', 'fanCount', 'shadeCount',
@@ -517,6 +523,18 @@ def markdown(report):
         value = d.get(name)
         if value:
             lines.append(f"| {name} | {format_number(value['value'])} | {value.get('description', 'Model-derived planning driver; see source element keys in JSON')} |")
+    pile_schedule = report['pileSchedule']
+    lines += ['', '## Structural helical pile schedule', '',
+              f"Source: {pile_schedule['sourceDocument']}, PDF page {pile_schedule['sourcePage']}; "
+              f"SHA-256 {pile_schedule['sourceSha256']}. The extracted table needs drawing-revision "
+              'and purchasing review.', '',
+              '| Shaft diameter | Scheduled piles |', '|---|---:|']
+    for group in pile_schedule['byDiameter']:
+        lines.append(f"| {group['diameterIn']} | {group['count']} |")
+    lines += [f"| **Total** | **{pile_schedule['totalPiles']}** |", '',
+              f"The model has {format_number(d['pileProxy']['value'])} linked U-saddle positions. "
+              'That is a separate model proxy and does not replace the 48-row-count schedule. '
+              'The legacy Site BOM labels of 6-inch and 4-inch piles do not match these three shaft diameters.', '']
     first_audit = report['storyAreaAudit']['FIRST FLOOR']
     lines += ['',
               f"The two first-story takeoff meshes overlap by {format_number(first_audit['overlapSqft'])} SQFT. "
@@ -581,9 +599,10 @@ def markdown(report):
               f"= {format_number(by_id['FIN-108']['quantity'])} screws. "
               'These scopes may overlap and need a board schedule. PAN-040 is a truss-stage roof-board screw allowance.', '',
               '## Decisions that change the estimate most', '',
-              f"- Foundation: {format_number(d['pileProxy']['value'])} linked U saddles are used as pile-position proxies. "
-              f"An independent area-density benchmark is {format_number(d['pileAreaBenchmark']['value'])}. "
-              'Confirm the pile and bracket schedule before using either for procurement; bedframe hardware follows the catalog pile-based rule.',
+              f"- Foundation: the structural table totals {format_number(d['pileScheduleCount']['value'])} piles "
+              f"versus {format_number(d['pileProxy']['value'])} linked U-saddle positions. "
+              'Pile quantity now follows the schedule; extensions, brackets, nuts, bolts and washers still use assumed per-pile rates. '
+              'Confirm the connections and drawing revision before procurement.',
               f"- Floor connections: {format_number(d['floorPlates']['value'])} model plates are selected. "
               'The catalog currently rounds their base kit to a minimum of 250, while its rule note says 100 versus 250 needs confirmation. '
               f"The linked floor clips also contain {format_number(d['floorClipFastenerPositions']['value'])} typed fastener positions "
@@ -713,7 +732,8 @@ def main():
     rules = load_rules()
     if manifest.get('schema') != 'monroe-scan-5':
         raise ValueError('Rescan Monroe source with the current geometry audit')
-    drivers = monroe_drivers(rows, mapped, openings, manifest['storyAreas'])
+    pile_schedule = load_pile_schedule()
+    drivers = monroe_drivers(rows, mapped, openings, manifest['storyAreas'], pile_schedule)
     known = {line['lineId'] for line in catalog}
     if set(rules) - known:
         raise ValueError('Planning rule for unknown catalog line: ' + str(set(rules) - known))
@@ -790,7 +810,7 @@ def main():
                'placeholderZero': count['PLANNING_PLACEHOLDER']}
     report = {'source': str(source), 'sourceBytes': stat.st_size,
               'sourceMtimeNs': stat.st_mtime_ns, 'elementsScanned': manifest['elementsScanned'],
-              'drivers': drivers, 'storyAreaAudit': manifest['storyAreas'],
+              'drivers': drivers, 'pileSchedule': pile_schedule, 'storyAreaAudit': manifest['storyAreas'],
               'summary': summary, 'items': items}
     DEST.mkdir(parents=True, exist_ok=True)
     (DEST / 'Monroe-Item-Formulas.json').write_text(json.dumps(report, indent=2))
