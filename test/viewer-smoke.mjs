@@ -12,6 +12,9 @@ const run=code=>vm.runInContext(code,context);
 
 
 assert.match(html, /<title>Site Bill of Material<\/title>/);
+assert.equal(run('data.pileSchedule.totalPiles'),48);
+assert.match(node('pileScheduleNotice').textContent,/48 piles/);
+assert.match(node('pileScheduleNotice').textContent,/3 1\/2/);
 assert.doesNotMatch(node('navigation').innerHTML,/Franklin|Santa Rita|Projects|neovi/i);
 assert.equal((node('viewModes').innerHTML.match(/data-presentation=/g)||[]).length,2);
 assert.doesNotMatch(node('viewModes').innerHTML,/Detailed catalog/);

@@ -15,6 +15,7 @@ export async function buildViewer(snapshot) {
     averageMetrics: item.averageMetrics, storyAllocation: item.storyAllocation || null,
   }]));
   const checklist = JSON.parse(await fs.readFile(path.join(root, 'config/site-bom-checklist.json'), 'utf8'));
+  const schedule = JSON.parse(await fs.readFile(path.join(root, 'config/monroe-helical-pile-schedule.json'), 'utf8'));
   const originals = new Map(snapshot.items.map(item => [item.lineId, item]));
   const allowedStages = new Set(['Site Setup','Shared Foundation Support','Helical Piles','Bedframe']);
   const allowedGroups = new Set(['Site services','Equipment','Supplemental','Materials','Tools','Consumables']);
@@ -90,7 +91,10 @@ export async function buildViewer(snapshot) {
   for (const dir of ['01-Catalog', '02-Projects', '03-Categories', '04-Audits', '05-Google-Sheet']) await walk(dir);
   if (await fs.stat(path.join(output, '05-Monroe')).catch(() => null)) await walk('05-Monroe');
   const template = await fs.readFile(path.join(root, 'viewer/index.html'), 'utf8');
-  const payload = JSON.stringify({ ...snapshot, items: viewerItems, checklist, viewerGeneratedAt: new Date().toISOString(), documents }).replaceAll('<', '\\u003c');
+  const pileSchedule = { totalPiles: schedule.totalPiles, byDiameter: schedule.byDiameter,
+    sourceDocument: schedule.sourceDocument, sourcePage: schedule.sourcePage, approvalStatus: schedule.approvalStatus };
+  const payload = JSON.stringify({ ...snapshot, items: viewerItems, checklist, pileSchedule,
+    viewerGeneratedAt: new Date().toISOString(), documents }).replaceAll('<', '\\u003c');
   await fs.writeFile(path.join(output, 'NeoviBOM.html'), template.replace('/*__SNAPSHOT__*/', () => payload));
   console.log(`Built offline viewer: ${viewerItems.length} checklist/catalog entries, ${snapshot.projects.length} projects, ${documents.length} documents.`);
 }
