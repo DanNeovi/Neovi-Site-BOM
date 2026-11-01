@@ -3,7 +3,7 @@
 import csv
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from monroe_ai_sources import DEFAULT_OUTPUT
@@ -89,11 +89,18 @@ def build_report(output_root=DEFAULT_OUTPUT):
             disagreements.append({'source': name, 'page': page,
                                   'repeats': [run['repeat'] for run in runs],
                                   'findingCounts': [len(run['result']['findings']) for run in runs]})
+    coverage = {name: {'pages': item['pages'], 'readAtLeastOnce': sum(
+        (name, page) in page_runs for page in range(1, item['pages'] + 1))}
+        for name, item in source.items()}
     report = {'schema': 'monroe-ai-review-1', 'project': 'Monroe',
               'status': 'candidate_only_no_live_bom_write',
               'sourceFiles': len(source), 'plannedPagesPerPass': plan['pagesPerPass'],
               'pagesReadAtLeastOnce': len(page_runs), 'completedRequests': len(documents),
               'plannedRequests': plan['plannedRequests'], 'candidateFindings': len(rows),
+              'sourceCoverage': coverage,
+              'findingsWithQuantity': sum(row['quantity'] is not None for row in rows),
+              'findingsWithoutQuantity': sum(row['quantity'] is None for row in rows),
+              'installationScopeCounts': dict(Counter(row['installationScope'] for row in rows)),
               'pileScheduleChecks': sorted(pile_checks, key=lambda check: check['repeat']),
               'pagePassDisagreements': disagreements,
               'reviewInstructions': 'Verify source page, revision, scope, and quantities before any BOM change. Do not sum repeated views or AI passes.'}

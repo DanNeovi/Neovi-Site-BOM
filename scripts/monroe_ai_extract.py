@@ -101,7 +101,7 @@ def request_gemini(images, job, model, key, timeout=120):
                                  'data': base64.b64encode(image).decode('ascii')}} for image in images)
     payload = {'contents': [{'role': 'user', 'parts': parts}],
         'generationConfig': {'temperature': 0, 'responseMimeType': 'application/json',
-                             'maxOutputTokens': 8192}}
+                             'maxOutputTokens': 16384}}
     request = urllib.request.Request(
         f'{API_ROOT}{model}:generateContent',
         json.dumps(payload).encode('utf-8'),
@@ -160,7 +160,8 @@ def atomic_json(path, value):
     temporary.replace(path)
 
 
-def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None):
+def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
+        min_start_interval=6):
     source_root = Path(source_root).resolve()
     output_root = Path(output_root)
     results = output_root / 'extractions'
@@ -172,6 +173,7 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None)
     sent = succeeded = skipped = failures = 0
     verified_hashes = {}
     key = None
+    last_start = None
     for job in planned_jobs(plan):
         if only_page and (Path(job['path']).name, job['page']) != only_page:
             continue
@@ -191,13 +193,19 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None)
         image = render_page(path, job['page'])
         if key is None:
             key = api_key()
+        if last_start is not None:
+            pause = min_start_interval - (time.monotonic() - last_start)
+            if pause > 0:
+                time.sleep(pause)
         now = datetime.now(PACIFIC)
+        last_start = time.monotonic()
         append_ledger(ledger, {'event': 'attempt', 'at': now.isoformat(),
                                'datePacific': now.date().isoformat(), 'model': model,
                                'jobId': job_id(job, model), 'source': job['path'],
                                'page': job['page'], 'repeat': job['repeat']})
         attempts_today += 1
         sent += 1
+        response = None
         try:
             response = request_gemini(image, job, model, key)
             parsed = parse_findings(response)
@@ -215,6 +223,10 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None)
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError, json.JSONDecodeError) as error:
             # The API key is sent in a header, never the URL or this ledger.
             status = error.code if isinstance(error, urllib.error.HTTPError) else None
+            if response is not None:
+                failure_dir = results / 'failed-responses'
+                failure_dir.mkdir(exist_ok=True)
+                atomic_json(failure_dir / (job_id(job, model) + '.json'), response)
             append_ledger(ledger, {'event': 'error', 'jobId': job_id(job, model),
                                    'status': status, 'kind': type(error).__name__})
             failures += 1
@@ -233,10 +245,12 @@ def main():
     parser.add_argument('--output-root', type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument('--max-requests', type=int, default=3)
     parser.add_argument('--daily-cap', type=int, default=20)
+    parser.add_argument('--min-start-interval', type=float, default=6,
+                        help='Seconds between API request starts, to avoid RPM bursts')
     parser.add_argument('--only-page', help='Target a PDF by basename:page, for a pilot')
     args = parser.parse_args()
-    if args.max_requests < 0 or args.daily_cap < 1:
-        parser.error('max requests must be nonnegative and daily cap positive')
+    if args.max_requests < 0 or args.daily_cap < 1 or args.min_start_interval < 0:
+        parser.error('max requests must be nonnegative, daily cap positive, interval nonnegative')
     only_page = None
     if args.only_page:
         name, sep, page = args.only_page.rpartition(':')
@@ -245,7 +259,7 @@ def main():
         only_page = (name, int(page))
     plan = json.loads((args.output_root / 'page-plan.json').read_text(encoding='utf-8'))
     outcome = run(plan, args.source_root, args.output_root,
-                  args.max_requests, args.daily_cap, only_page)
+                  args.max_requests, args.daily_cap, only_page, args.min_start_interval)
     print(json.dumps(outcome, indent=2))
     if outcome['failed']:
         raise SystemExit(1)

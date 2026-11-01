@@ -72,6 +72,13 @@ The report checks each pile-schedule pass against the 12 stored source rows;
 it also flags different results across passes. No candidate writes to the
 live Google Sheet or GitHub Pages.
 
+As of 2026-11-01, the first pass covers all 133 current PDF pages. It saved
+135 successful page responses (including two extra schedule/wall checks),
+yielding 905 raw findings: 768 with a number and 137 without. Many numbered
+findings describe factory work or typical details, so this is a review queue,
+not 905 distinct purchase items. One malformed response was retried and
+succeeded; the request ledger records both attempts.
+
 In the first pilot, a single full-page image misread HP-2a and HP-2d and
 totaled 51 piles; the cropped-page second pass read 48. A wall sheet first
 returned zero findings and then nine connection notes with the higher-resolution
