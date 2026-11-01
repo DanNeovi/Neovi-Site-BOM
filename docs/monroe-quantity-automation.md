@@ -107,6 +107,39 @@ candidate against its drawing page, revision, site/factory scope and model
 location. The Export Everything JSON is parsed locally; it is not uploaded as
 a 1.97 GB Gemini prompt.
 
+## Full live quantity audit and instructions
+
+Run `python scripts/audit-monroe-values.py` to independently recompute the
+catalog formulas from the current Export Everything cache. Then run
+`python scripts/monroe_full_quantity_audit.py`. The second command fetches
+the current live Google Sheet revision and writes a read-only audit to
+`G:\My Drive\SiteBOM\04-Audits\Monroe-Full-Quantity-Audit`.
+
+`audit-summary.md` has distinct **How each value was obtained**, **AI
+instructions**, and **Math instructions** sections. `per-item-audit.csv` has
+those same three explanations for every live row, plus its listed quantity,
+planning quantity, formula, driver values, rounding, spares, source-reference
+sample, drawing evidence and unresolved review note. `per-item-audit.json`
+contains the full model or schedule reference list. `panel-device-ledger.csv`
+and `opening-schedule-ledger.csv` record the E4.1 device circuits and A7.1
+opening marks used for direct checks.
+
+The AI instructions require a source file/revision/page or element key, exact
+unit and size, installation scope, and a visible evidence snippet. Missing
+values stay unknown. The math instructions recompute net demand from the
+reviewed driver and rate, then calculate spares, minimum kit and vendor packs
+separately. A correct formula does not prove that its driver, rate or product
+scope is approved. The audit does not publish changed quantities to the live
+Sheet.
+
+The A7.1 review found 19 tilt-and-turn and five fixed windows in 24 rows.
+Model window mark 204 is classified as operable by a family name containing
+`Hung`, while A7.1 calls it fixed. A7.1 also calls door mark 110 interior,
+although the model's host-wall selector includes it among exterior doors.
+These differences affect screen/handle and door sill/flashing estimates and
+remain review items until the relevant drawing revision and installation
+scope are confirmed.
+
 ## Publishing path
 
 The generated report and viewer live under `G:\My Drive\SiteBOM`. The GitHub
