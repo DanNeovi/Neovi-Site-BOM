@@ -34,6 +34,59 @@ published until those identities and diameters are extracted and reviewed.
 
 ## Optional Gemini drawing pass
 
+### Monroe source index and repeatable page review
+
+The Monroe AI pipeline inventories all 59 collected files in
+`Downloads/Data for SiteBOM`, including 34 PDFs (751 pages), ZIP member lists,
+STEP headers, and the Export Everything model identity. The four current
+`AI Core` PDFs contain 133 pages. Their fifth companion is the 1.97 GB model,
+which is processed locally by `scan-monroe-model.py`; it is not sent to Gemini.
+The existing scan cache matches the AI Core model SHA-256 and records 184,682
+elements scanned and 7,903 retained.
+Older revisions and duplicate PDF copies stay in the index for conflict review.
+
+```powershell
+python scripts/monroe_ai_sources.py index
+python scripts/monroe_ai_sources.py plan --repeats 20 --daily-cap 20
+python scripts/monroe_ai_extract.py --max-requests 20
+python scripts/monroe_ai_review.py
+```
+
+`--daily-cap` is a local throttle, **not** Google's actual quota. Check the
+project/model's active RPM, TPM, and RPD in Google AI Studio. The default
+20-pass core plan is 133 x 20 = 2,660 requests; use `--include-prior` to plan
+all 751 PDF pages (15,020 requests) only when older revisions are needed for
+an explicit comparison. Each run resumes from saved results and records every
+attempt before contacting Gemini. A source hash mismatch stops extraction.
+Use `--only-page 'Monroe SE sheets.pdf:3' --max-requests 1` for a page pilot.
+The key is read from `GEMINI_API_KEY` in the process or Windows User
+environment and is never written to the report.
+
+The extractor renders engineering sheets as a full-page preview plus four
+higher-resolution quadrants. This is necessary because the structural PDF's
+text layer has broken font encoding and large-sheet text is unreadable when
+shrunk to one image. Gemini returns source-linked candidate items, including
+unknown quantities. The review script emits `candidate-findings.csv` and
+`review-report.json` under `G:\My Drive\SiteBOM\04-Audits\Monroe-AI`.
+The report checks each pile-schedule pass against the 12 stored source rows;
+it also flags different results across passes. No candidate writes to the
+live Google Sheet or GitHub Pages.
+
+In the first pilot, a single full-page image misread HP-2a and HP-2d and
+totaled 51 piles; the cropped-page second pass read 48. A wall sheet first
+returned zero findings and then nine connection notes with the higher-resolution
+tiles. These results show why a successful API response is not a verified
+quantity. Review drawing revisions, repeated views, site/factory scope, and
+each item's basis before publishing. The 21-inch rod rule must still be
+applied only after each hold-down or L-angle has a verified type and diameter.
+
+The collected drawings are sent to Google's free-tier Gemini service when
+this extractor runs. Google states free-tier content may be used to improve
+its products. Keep the AI outputs in the private Drive audit folder and do
+not commit the key or raw customer drawings.
+
+### Earlier whole-PDF experiment
+
 After setting `GEMINI_API_KEY` locally, install the optional official SDK with
 `python -m pip install google-genai`. Extract one PDF and scope at a time:
 

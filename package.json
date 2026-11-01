@@ -22,7 +22,11 @@
     "build:no-quantity-inputs": "node scripts/build-no-quantity-inputs.mjs",
     "readiness": "node scripts/validate-release-readiness.mjs",
     "sync:revit": "node scripts/sync-revit-site-bom.mjs",
-    "audit:viewer": "npm run build:viewer && node test/viewer-smoke.mjs && node scripts/audit-viewer.mjs"
+    "audit:viewer": "npm run build:viewer && node test/viewer-smoke.mjs && node scripts/audit-viewer.mjs",
+    "ai:monroe:index": "python scripts/monroe_ai_sources.py index",
+    "ai:monroe:plan": "python scripts/monroe_ai_sources.py plan",
+    "ai:monroe:extract": "python scripts/monroe_ai_extract.py",
+    "ai:monroe:review": "python scripts/monroe_ai_review.py"
   },
   "engines": {
     "node": ">=20"
