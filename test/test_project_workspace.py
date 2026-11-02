@@ -133,6 +133,13 @@ class ProjectHttpTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary, \
                 patch.object(server_module, 'SITE_ROOT', Path(temporary)), \
                 patch.object(server_module, 'process_once', return_value=True) as trigger:
+            ai_folder = Path(temporary) / '04-Audits/Monroe-AI'
+            ai_folder.mkdir(parents=True)
+            (ai_folder / 'page-plan.json').write_text(json.dumps({'model': 'test-gemini',
+                'pagesPerPass': 2}), encoding='utf-8')
+            (ai_folder / 'review-report.json').write_text(json.dumps({'pagesReadAtLeastOnce': 2,
+                'completedRequests': 2, 'candidateFindings': 4}), encoding='utf-8')
+            (ai_folder / 'candidate-findings.csv').write_text('item\nTest\n', encoding='utf-8')
             server = server_module.ThreadingHTTPServer(('127.0.0.1', 0), server_module.Handler)
             thread = threading.Thread(target=server.serve_forever, daemon=True)
             thread.start()
@@ -151,6 +158,12 @@ class ProjectHttpTests(unittest.TestCase):
                 code, payload = request('GET', '/api/projects')
                 self.assertEqual(code, 200)
                 self.assertEqual(len(json.loads(payload)['projects']), 3)
+                monroe = json.loads(payload)['projects'][0]
+                self.assertEqual(monroe['gemini']['pagesReadAtLeastOnce'], 2)
+                self.assertEqual(monroe['gemini']['candidateFindings'], 4)
+                self.assertEqual(request('GET', '/projects/monroe/gemini/review-report.json')[0], 200)
+                self.assertEqual(request('GET', '/projects/monroe/gemini/candidate-findings.csv')[0], 200)
+                self.assertEqual(request('GET', '/projects/monroe/gemini/page-plan.json')[0], 404)
                 data = json.dumps({'name': 'Test House'}).encode()
                 headers = {'Origin': origin, 'Content-Type': 'application/json'}
                 code, payload = request('POST', '/api/projects', data, headers)

@@ -51,12 +51,18 @@ new Autodesk export or read the temporary APS bucket by itself. The local
 website links to the private Drive folder; Google requires access as
 `danielb@neovi.co` to open it. GitHub Pages does not receive these raw files.
 
-The four PDFs in the private Drive `AI Core` folder are the current retained
+The four PDFs in the private Drive `AI Core` folder are the current Gemini
 extraction set. The local Downloads set remains the input to the older-file
-revision/conflict index. Source indexing creates a review-only page plan for 20 passes
-over the four current PDFs, capped locally at 20 planned Gemini requests per
-day. This local server **does not call Gemini**. AI extraction can be enabled
-later after the local file and quantity path is accepted.
+revision/conflict index. Source indexing creates a review-only page plan for
+20 passes over the four current PDFs, capped locally at 20 planned Gemini
+requests per day. The separately run Gemini extractor has already read all
+133 current PDF pages once and saved 135 page responses with 905 candidate
+findings under `04-Audits/Monroe-AI`. The local project page now shows this
+status and links the review files. Uploading a source does **not** automatically
+send drawings to Gemini; the extraction command is
+`python scripts/monroe_ai_extract.py --max-requests 20`, followed by
+`python scripts/monroe_ai_review.py`. Candidate findings require drawing review
+and never update the live BOM automatically.
 
 The processed preview reads the newly built G: HTML, while the shared catalog
 and editor still read the existing live Google Sheet. When Monroe processing

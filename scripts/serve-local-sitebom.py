@@ -43,6 +43,32 @@ def details(path):
             'modifiedUtc': datetime.fromtimestamp(stat.st_mtime, timezone.utc).isoformat()}
 
 
+def gemini_status():
+    folder = SITE_ROOT / '04-Audits/Monroe-AI'
+    plan_path = folder / 'page-plan.json'
+    report_path = folder / 'review-report.json'
+    try:
+        plan = json.loads(plan_path.read_text(encoding='utf-8')) if plan_path.is_file() else {}
+        report = json.loads(report_path.read_text(encoding='utf-8')) if report_path.is_file() else {}
+    except (OSError, ValueError):
+        plan, report = {}, {}
+    configured = bool(os.environ.get('GEMINI_API_KEY'))
+    if not configured and sys.platform == 'win32':
+        import winreg
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment') as registry:
+                configured = bool(winreg.QueryValueEx(registry, 'GEMINI_API_KEY')[0])
+        except (FileNotFoundError, OSError):
+            pass
+    return {'apiKeyConfigured': configured, 'model': plan.get('model'),
+            'pagesPerPass': plan.get('pagesPerPass'),
+            'pagesReadAtLeastOnce': report.get('pagesReadAtLeastOnce'),
+            'completedRequests': report.get('completedRequests'),
+            'candidateFindings': report.get('candidateFindings'),
+            'status': 'candidate_only_not_published' if report else 'not_run',
+            'reviewReport': details(report_path)}
+
+
 def status():
     try:
         saved = json.loads(STATE.read_text(encoding='utf-8')) if STATE.is_file() else {}
@@ -84,7 +110,7 @@ def project_status(project):
         intake = {'status': 'error', 'error': 'Intake state could not be read'}
     if project['id'] == 'monroe':
         reports = ['NeoviBOM.html', 'NeoviBOM.json', 'NeoviBOM.xlsx']
-    return {'id': project['id'], 'name': project['name'], 'processor': project['processor'],
+    result = {'id': project['id'], 'name': project['name'], 'processor': project['processor'],
             'modelProjectName': project.get('modelProjectName') or None,
             'projectNumber': project.get('projectNumber') or None,
             'createdAtUtc': project.get('createdAtUtc'),
@@ -95,6 +121,9 @@ def project_status(project):
             'summary': summary, 'intake': intake,
             'quantityStatus': 'monroe_review_pipeline' if project['id'] == 'monroe' else
                               'project_rules_not_configured'}
+    if project['id'] == 'monroe':
+        result['gemini'] = gemini_status()
+    return result
 
 
 def process_once():
@@ -235,6 +264,12 @@ class Handler(SimpleHTTPRequestHandler):
                 self.directory = str(output_dir(SITE_ROOT, project))
                 self.path = '/' + name
                 super().do_GET()
+            return
+        ai_report = re.fullmatch(r'/projects/monroe/gemini/(review-report\.json|candidate-findings\.csv)', path)
+        if ai_report:
+            self.directory = str(SITE_ROOT / '04-Audits/Monroe-AI')
+            self.path = '/' + ai_report.group(1)
+            super().do_GET()
             return
         if path.startswith('/bom/'):
             self.path = path[4:] or '/'
