@@ -64,6 +64,14 @@ send drawings to Gemini; the extraction command is
 `python scripts/monroe_ai_review.py`. Candidate findings require drawing review
 and never update the live BOM automatically.
 
+Gemini accepts one local `GEMINI_API_KEY` or several keys in the user-level
+`GEMINI_API_KEYS` setting, separated by commas or semicolons. On Windows,
+`GEMINI_API_KEY_2`, `GEMINI_API_KEY_3`, etc. through `_20` also work. The
+extractor alternates configured keys for successive page requests. Its daily
+cap applies to **all keys together**, and keys from the same Google project
+may share Google's project quota. The page displays only the number of keys;
+their values are never put in the site response, results, or request ledger.
+
 The processed preview reads the newly built G: HTML, while the shared catalog
 and editor still read the existing live Google Sheet. When Monroe processing
 produces a changed export, SiteBOM can sync the new source rows to that

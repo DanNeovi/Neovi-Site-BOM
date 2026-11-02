@@ -11,12 +11,41 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from monroe_ai_extract import parse_findings, run  # noqa: E402
+from gemini_keys import api_keys  # noqa: E402
 from monroe_ai_review import build_report, pile_check  # noqa: E402
 import monroe_ai_sources  # noqa: E402
 from monroe_ai_sources import index_sources, make_plan, planned_jobs  # noqa: E402
 
 
 class PipelineTests(unittest.TestCase):
+    def test_key_settings_deduplicate_without_exposing_values(self):
+        settings = {'GEMINI_API_KEY': 'first',
+                    'GEMINI_API_KEYS': 'second; first, third',
+                    'GEMINI_API_KEY_2': 'fourth'}
+        with patch('gemini_keys.user_setting', side_effect=lambda name: settings.get(name, '')):
+            self.assertEqual(api_keys(), ('first', 'second', 'third', 'fourth'))
+
+    def test_multiple_keys_rotate_under_one_daily_cap(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / 'drawing.pdf').write_bytes(b'drawing')
+            plan = {'model': 'test-model', 'localDailyCap': 2,
+                    'plannedRequests': 3, 'repeatsPerPage': 3,
+                    'sources': [{'path': 'drawing.pdf', 'sha256': 'hash',
+                                 'pages': 1, 'scope': 'test'}]}
+            response = {'candidates': [{'content': {'parts': [{'text': '{"findings": []}'}]}}]}
+            with (patch('monroe_ai_extract.api_keys', return_value=('key-1', 'key-2')),
+                  patch('monroe_ai_extract.digest', return_value='hash'),
+                  patch('monroe_ai_extract.render_page', return_value=[b'image']),
+                  patch('monroe_ai_extract.request_gemini', return_value=response) as request):
+                result = run(plan, root, root / 'output', 3, 3, min_start_interval=0)
+            self.assertEqual([call.args[3] for call in request.call_args_list],
+                             ['key-1', 'key-2'])
+            self.assertEqual((result['sent'], result['configuredKeyCount']), (2, 2))
+            ledger = (root / 'output/extractions/request-ledger.jsonl').read_text()
+            self.assertNotIn('key-1', ledger)
+            self.assertNotIn('key-2', ledger)
+
     def test_current_pdf_indexes_from_private_drive_without_downloads_copy(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

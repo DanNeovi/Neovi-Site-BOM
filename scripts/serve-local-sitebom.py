@@ -15,6 +15,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from auto_process_monroe import CORE_PDFS, DRIVE, STATE
+from gemini_keys import api_keys
 from private_drive_sources import CORE_FOLDER, DRIVE_ROOT, MODEL_FOLDER, MODEL_NAME, PRIVATE_FOLDER_URL
 from project_intake import state_path
 from project_registry import (SITE_DRIVE_URL, SITE_ROOT, assigned_project, connect_model, connect_uploaded_model,
@@ -52,15 +53,9 @@ def gemini_status():
         report = json.loads(report_path.read_text(encoding='utf-8')) if report_path.is_file() else {}
     except (OSError, ValueError):
         plan, report = {}, {}
-    configured = bool(os.environ.get('GEMINI_API_KEY'))
-    if not configured and sys.platform == 'win32':
-        import winreg
-        try:
-            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment') as registry:
-                configured = bool(winreg.QueryValueEx(registry, 'GEMINI_API_KEY')[0])
-        except (FileNotFoundError, OSError):
-            pass
-    return {'apiKeyConfigured': configured, 'model': plan.get('model'),
+    key_count = len(api_keys())
+    return {'apiKeyConfigured': key_count > 0, 'configuredKeyCount': key_count,
+            'model': plan.get('model'),
             'pagesPerPass': plan.get('pagesPerPass'),
             'pagesReadAtLeastOnce': report.get('pagesReadAtLeastOnce'),
             'completedRequests': report.get('completedRequests'),

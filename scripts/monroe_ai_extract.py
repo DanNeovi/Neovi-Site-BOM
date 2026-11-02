@@ -19,6 +19,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import fitz
 
+from gemini_keys import api_keys
 from monroe_ai_sources import DEFAULT_OUTPUT, digest, planned_jobs
 from private_drive_sources import DRIVE_ROOT
 
@@ -51,20 +52,6 @@ null","installationScope":"site_installed|factory_fabricated|tool|consumable|unk
 "evidence":"short exact table/label/note text", "notes":"ambiguity or null"}]}.
 If a quantity is only per assembly or per typical detail, retain that basis in unit
 or notes and do not treat it as a whole-project count.'''
-
-
-def api_key():
-    key = os.environ.get('GEMINI_API_KEY')
-    if not key and sys.platform == 'win32':
-        import winreg
-        try:
-            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment') as registry:
-                key = winreg.QueryValueEx(registry, 'GEMINI_API_KEY')[0]
-        except FileNotFoundError:
-            pass
-    if not key:
-        raise RuntimeError('GEMINI_API_KEY is not configured for this user')
-    return key
 
 
 def job_id(job, model):
@@ -188,7 +175,7 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
     attempts_today = todays_attempts(ledger, model)
     sent = succeeded = skipped = failures = 0
     verified_hashes = {}
-    key = None
+    keys = None
     last_start = None
     for job in planned_jobs(plan):
         if job['page'] < page_min or (page_max is not None and job['page'] > page_max):
@@ -209,8 +196,11 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
         if verified_hashes[path] != job['sourceSha256']:
             raise ValueError(f'Source changed since indexing: {path}')
         image = render_page(path, job['page'])
-        if key is None:
-            key = api_key()
+        if keys is None:
+            keys = api_keys()
+            if not keys:
+                raise RuntimeError('Configure GEMINI_API_KEY or GEMINI_API_KEYS for this user')
+        key_slot = attempts_today % len(keys)
         if last_start is not None:
             pause = min_start_interval - (time.monotonic() - last_start)
             if pause > 0:
@@ -220,12 +210,13 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
         append_ledger(ledger, {'event': 'attempt', 'at': now.isoformat(),
                                'datePacific': now.date().isoformat(), 'model': model,
                                'jobId': job_id(job, model), 'source': job['path'],
-                               'page': job['page'], 'repeat': job['repeat']})
+                               'page': job['page'], 'repeat': job['repeat'],
+                               'keySlot': key_slot + 1})
         attempts_today += 1
         sent += 1
         response = None
         try:
-            response = request_gemini(image, job, model, key)
+            response = request_gemini(image, job, model, keys[key_slot])
             parsed = parse_findings(response)
             atomic_json(target, {'schema': 'monroe-ai-page-extraction-1',
                                  'project': 'Monroe', 'reviewStatus': 'candidate_only',
@@ -254,7 +245,8 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
     return {'sent': sent, 'succeeded': succeeded, 'failed': failures,
             'previouslyCompleted': skipped,
             'todayAttempts': attempts_today, 'localDailyCap': cap,
-            'planned': plan['plannedRequests']}
+            'planned': plan['plannedRequests'],
+            'configuredKeyCount': len(keys) if keys is not None else len(api_keys())}
 
 
 def main():

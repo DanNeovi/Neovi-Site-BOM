@@ -2,15 +2,16 @@
 
 Usage: python scripts/extract-drawing-quantities-gemini.py --pdf drawing.pdf
        --scope "wall hold-down and L-angle rods" --output candidates.json
-Requires: pip install google-genai; GEMINI_API_KEY in the environment.
+Requires: pip install google-genai; GEMINI_API_KEY or GEMINI_API_KEYS locally.
 """
 
 import argparse
 import hashlib
 import json
-import os
 from datetime import datetime, timezone
 from pathlib import Path
+
+from gemini_keys import api_keys
 
 
 PROMPT = """Read this construction drawing PDF for project Monroe. Extract only quantities
@@ -54,9 +55,14 @@ def main():
     parser.add_argument('--scope', required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--model', default='gemini-3.8-flash')
+    parser.add_argument('--key-slot', type=int, default=1,
+                        help='1-based configured key slot (default: 1)')
     args = parser.parse_args()
-    if not (os.environ.get('GEMINI_API_KEY') or os.environ.get('GOOGLE_API_KEY')):
-        parser.error('Set GEMINI_API_KEY locally; do not put it in a command or repository file')
+    keys = api_keys()
+    if not keys:
+        parser.error('Set GEMINI_API_KEY or GEMINI_API_KEYS locally; do not put keys in a command or repository file')
+    if not 1 <= args.key_slot <= len(keys):
+        parser.error(f'key slot must be between 1 and {len(keys)}')
     if args.pdf.suffix.lower() != '.pdf' or not args.pdf.is_file():
         parser.error('Provide an existing PDF')
     if args.output.exists():
@@ -66,7 +72,7 @@ def main():
     except ImportError as exc:
         raise SystemExit('Install the optional SDK with: python -m pip install google-genai') from exc
     source_hash = hashlib.sha256(args.pdf.read_bytes()).hexdigest()
-    client = genai.Client()
+    client = genai.Client(api_key=keys[args.key_slot - 1])
     uploaded = client.files.upload(file=str(args.pdf))
     response = client.models.generate_content(
         model=args.model,
