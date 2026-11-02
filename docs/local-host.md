@@ -25,7 +25,8 @@ http://127.0.0.1:8765/bom/editor.html. The server binds to 127.0.0.1, so
 other computers cannot reach this trial instance.
 
 The Windows task `Neovi-SiteBOM-Local` starts the server at sign-in.
-`scripts/setup-local-sitebom.ps1` installs that task. While it is running,
+`scripts/setup-local-sitebom.ps1` installs that task and allows it to run while
+the laptop is on battery. While it is running,
 the server checks registered project sources every five minutes. The menu's
 **Check all projects now** and each project's **Check sources now** button run
 the same check immediately.
