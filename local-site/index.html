@@ -8,61 +8,56 @@
 </head>
 <body>
   <header class="topbar"><div class="shell topbar-inner">
-    <a class="brand" href="/dashboard" aria-label="SiteBOM projects"><span class="brand-mark">S</span><span class="brand-name">SiteBOM</span><span class="brand-rule"></span><span class="brand-subtitle">Project workspace</span></a>
-    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Running on this computer</span><span class="user-pill">danielb@neovi.co</span></div>
+    <a class="brand" href="/dashboard" aria-label="SiteBOM projects"><span class="brand-name">Site<span>BOM</span></span><span class="brand-divider"></span><span class="brand-subtitle">Workspace</span></a>
+    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Local app</span><span class="account">danielb@neovi.co</span></div>
   </div></header>
 
-  <section class="hero"><div class="shell">
-    <div class="eyebrow">Workspace overview</div>
-    <h1>Every project.<br>One clear view.</h1>
-    <p>Open a job to review its model, drawings, quantity work, and reports. Project sources stay in your private Google Drive.</p>
-    <div class="hero-actions"><a class="button primary" href="#new-project">Create a project <span class="arrow">↗</span></a><button id="check" type="button">Check sources now <span class="arrow">↻</span></button></div>
-    <div class="status-line" id="runtime" role="status">Checking the local processor…</div>
-  </div></section>
-
   <main class="shell workspace-main">
+    <div class="breadcrumb">WORKSPACE <span>/</span> PROJECTS</div>
+    <div class="page-heading"><div><h1>Projects</h1><p>Models, drawings, takeoffs, and reports for every job.</p></div><div class="page-actions"><button id="check" type="button" class="button secondary">Check sources <span aria-hidden="true">↻</span></button><a class="button primary" href="#new-project">New project <span aria-hidden="true">＋</span></a></div></div>
+    <div class="system-status"><span class="status-indicator" aria-hidden="true"></span><span id="runtime" role="status">Checking the local processor…</span><span class="status-extra">SiteBOM processes new uploads when added</span></div>
+
     <div class="overview" aria-label="Workspace at a glance">
-      <div class="overview-item"><div class="eyebrow">Projects</div><div class="overview-value" id="projectCount">—</div><div class="overview-label">Workspaces in Drive</div></div>
-      <div class="overview-item"><div class="eyebrow">Models</div><div class="overview-value" id="modelCount">—</div><div class="overview-label">Connected exports</div></div>
-      <div class="overview-item"><div class="eyebrow">Drawings</div><div class="overview-value" id="pdfCount">—</div><div class="overview-label">Current project PDFs</div></div>
-      <div class="overview-item"><div class="eyebrow">Gemini review</div><div class="overview-value" id="reviewCount">—</div><div class="overview-label">Drawing pages read</div></div>
+      <div class="overview-item"><div class="overview-label">Projects</div><div class="overview-value" id="projectCount">—</div><div class="overview-meta">Total workspaces</div></div>
+      <div class="overview-item"><div class="overview-label">Models</div><div class="overview-value" id="modelCount">—</div><div class="overview-meta">Connected exports</div></div>
+      <div class="overview-item"><div class="overview-label">Drawings</div><div class="overview-value" id="pdfCount">—</div><div class="overview-meta">Current PDFs</div></div>
+      <div class="overview-item"><div class="overview-label">AI review</div><div class="overview-value" id="reviewCount">—</div><div class="overview-meta">Pages read</div></div>
     </div>
 
-    <section aria-labelledby="projects-title">
-      <div class="section-heading"><div><div class="eyebrow">Your jobs</div><h2 id="projects-title">Projects</h2></div><span class="small">Select a project to open its workspace</span></div>
-      <div class="project-grid" id="projects" aria-live="polite"></div>
+    <section aria-labelledby="projects-title" class="project-section">
+      <div class="section-heading"><h2 id="projects-title">All projects</h2><span class="section-note">Select a project to open its workspace</span></div>
+      <div class="project-list"><div class="project-list-head" aria-hidden="true"><span>PROJECT</span><span>STATUS</span><span>SOURCES</span><span>OUTPUT</span><span></span></div><div id="projects" aria-live="polite"></div></div>
     </section>
 
     <section class="new-project" id="new-project" aria-labelledby="new-title">
-      <div><div class="eyebrow">Start a new job</div><h2 id="new-title">Create a project</h2><p>SiteBOM prepares private model, drawing, report, and audit folders in Drive. Connect a NeoviOne export now or add one later.</p></div>
-      <div><form class="new-project-form" id="create"><label>Project name<input id="name" name="name" required minlength="2" maxlength="80" placeholder="e.g. New House Project"></label><label>Existing model export<select id="source"><option value="">No model yet</option></select></label><button class="primary" type="submit">Create project <span class="arrow">↗</span></button></form><p class="form-message" id="message" role="status"></p></div>
+      <div class="new-project-intro"><div class="eyebrow">SETUP</div><h2 id="new-title">Create a project</h2><p>Creates private folders for the model, drawings, reports, and audits in Google Drive.</p></div>
+      <div class="new-project-entry"><form class="new-project-form" id="create"><label>Project name<input id="name" name="name" required minlength="2" maxlength="80" placeholder="e.g. New House Project"></label><label>Connect an existing export<select id="source"><option value="">No model yet</option></select></label><button class="primary" type="submit">Create project</button></form><p class="form-message" id="message" role="status"></p></div>
     </section>
   </main>
-  <footer class="shell page-foot"><span>SiteBOM · private project workspace</span><span>Sources in Google Drive · Processing on this computer</span></footer>
+  <footer class="shell page-foot"><span>SiteBOM</span><span>Private sources in Google Drive · Local processing on this computer</span></footer>
 
 <script>
 const $=id=>document.getElementById(id);
 const size=bytes=>bytes==null?'':bytes>=1073741824?(bytes/1073741824).toFixed(2)+' GB':(bytes/1048576).toFixed(1)+' MB';
 async function api(path,options){const r=await fetch(path,{cache:'no-store',...options});const data=await r.json();if(!r.ok)throw Error(data.error||`Request failed (${r.status})`);return data}
 function el(tag,className,text){const element=document.createElement(tag);if(className)element.className=className;if(text!=null)element.textContent=text;return element}
-function fact(value,label){const box=el('div','project-fact');box.append(el('strong','',value),el('span','',label));return box}
-function card(p){
-  const featured=p.processor==='monroe';
-  const a=el('a','project-card'+(featured?' featured':''));a.href='/projects/'+encodeURIComponent(p.id);
-  const top=el('div','project-top');top.append(el('div','project-code',p.modelProjectName?`${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'New project'),el('span','project-open','↗'));
-  const stage=el('div','stage'+(featured||p.summary?'':' pending'),featured?'Planning takeoff ready':p.summary?'Model indexed':'Setup needed');
-  const facts=el('div','project-facts');facts.append(fact(p.model?size(p.model.bytes):'No model','Model export'),fact(String(p.pdfs.length),'Current drawings'));
-  const foot=el('div','project-footer');foot.append(el('span','',featured?`${p.gemini?.pagesReadAtLeastOnce||0} pages reviewed with Gemini`:p.reports.length?`${p.reports.length} saved reports`:'Open project setup'),el('span','arrow','→'));
-  a.append(top,el('h3','',p.name),stage,facts,foot);return a;
+function cell(primary,secondary){const box=el('div','project-cell');box.append(el('strong','',primary),el('small','',secondary));return box}
+function row(p){
+  const monroe=p.processor==='monroe',a=el('a','project-row'+(monroe?' current':''));a.href='/projects/'+encodeURIComponent(p.id);
+  const name=el('div','project-name');name.append(el('span','project-initial',p.name.slice(0,2).toUpperCase()));const text=el('span','project-identity');text.append(el('strong','',p.name),el('small','',p.modelProjectName?`${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'New project'));name.append(text);
+  const status=el('div','project-cell');status.append(el('span','stage'+(monroe||p.summary?'':' pending'),monroe?'Takeoff ready':p.summary?'Model indexed':'Setup needed'),el('small','',monroe?'Monroe review pipeline':p.summary?'Raw model available':'Add model and drawings'));
+  const sources=cell(p.model?`${size(p.model.bytes)} model`:'No model',`${p.pdfs.length} current drawing${p.pdfs.length===1?'':'s'}`);
+  const output=cell(monroe?`${p.gemini?.pagesReadAtLeastOnce||0} AI pages reviewed`:`${p.reports.length} saved report${p.reports.length===1?'':'s'}`,monroe?`${p.reports.length} BOM exports`:'Ready for project rules');
+  a.append(name,status,sources,output,el('span','row-arrow','→'));return a;
 }
 async function refresh(){try{
-  const data=await api('/api/projects');const projects=data.projects;
-  $('projects').replaceChildren(...projects.map(card));
+  const data=await api('/api/projects'),projects=data.projects;
+  $('projects').replaceChildren(...projects.map(row));
   $('projectCount').textContent=projects.length;
   $('modelCount').textContent=projects.filter(p=>p.model).length;
   $('pdfCount').textContent=projects.reduce((sum,p)=>sum+p.pdfs.length,0);
   $('reviewCount').textContent=projects.reduce((sum,p)=>sum+(p.gemini?.pagesReadAtLeastOnce||0),0);
-  const w=data.worker;$('runtime').textContent=w.running?'Processing project sources…':w.lastError?`Processor needs attention: ${w.lastError}`:'Ready · New uploads start processing automatically';
+  const w=data.worker;$('runtime').textContent=w.running?'Processing project sources…':w.lastError?`Processor needs attention: ${w.lastError}`:'Local processor ready';
 }catch(e){$('runtime').textContent='Private Drive project registry unavailable';$('message').textContent=String(e)}}
 async function exports(){try{const data=await api('/api/model-exports');$('source').replaceChildren(new Option('No model yet',''),...data.exports.filter(x=>!x.assignedProjectId).map(x=>new Option(`${x.projectName} · ${x.projectNumber||'no number'} · ${x.fileName} (${size(x.bytes)})`,x.ref)))}catch(e){$('message').textContent='Could not list local model exports: '+e.message}}
 $('create').addEventListener('submit',async event=>{event.preventDefault();const button=event.submitter;button.disabled=true;$('message').textContent='Creating private folders…';try{const p=await api('/api/projects',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('name').value,sourceRef:$('source').value||null})});location.href='/projects/'+encodeURIComponent(p.id)}catch(e){$('message').textContent=e.message;button.disabled=false}});

@@ -8,8 +8,8 @@
 </head>
 <body>
   <header class="topbar"><div class="shell topbar-inner">
-    <a class="brand" href="/dashboard" aria-label="SiteBOM projects"><span class="brand-mark">S</span><span class="brand-name">SiteBOM</span><span class="brand-rule"></span><span class="brand-subtitle">Project workspace</span></a>
-    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Running on this computer</span><span class="user-pill">danielb@neovi.co</span></div>
+    <a class="brand" href="/dashboard" aria-label="SiteBOM projects"><span class="brand-name">Site<span>BOM</span></span><span class="brand-divider"></span><span class="brand-subtitle">Workspace</span></a>
+    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Local app</span><span class="account">danielb@neovi.co</span></div>
   </div></header>
 
   <section class="project-hero"><div class="shell">
@@ -27,15 +27,15 @@
     </div>
 
     <div class="content-grid">
-      <section class="content-card"><div class="card-accent"></div><div class="card-top"><div><div class="eyebrow">01 / PROCESSING</div><h2>Source processing</h2></div><button id="check" type="button">Check now <span class="arrow">↻</span></button></div><div class="value" id="processing">Checking…</div><p class="small" id="processDetail"></p></section>
-      <section class="content-card"><div class="card-accent"></div><div class="eyebrow">02 / QUANTITIES</div><h2>Bill of materials</h2><div class="value" id="quantity">Checking…</div><p class="small" id="quantityDetail"></p></section>
+      <section class="content-card"><div class="card-top"><div><div class="eyebrow">PROCESSING</div><h2>Source processing</h2></div><button id="check" type="button">Check now <span class="arrow">↻</span></button></div><div class="value" id="processing">Checking…</div><p class="small" id="processDetail"></p></section>
+      <section class="content-card"><div class="eyebrow">QUANTITIES</div><h2>Bill of materials</h2><div class="value" id="quantity">Checking…</div><p class="small" id="quantityDetail"></p></section>
 
-      <section class="content-card"><div class="card-accent"></div><div class="eyebrow">03 / MODEL</div><h2>Raw Revit export</h2><p class="small path-text" id="model"></p><div class="upload-controls" id="modelControls"><label>Connect an existing NeoviOne export<select id="source"><option value="">Choose a model export</option></select></label><button id="connect" type="button">Connect selected model</button><label>Or upload a Neovi model JSON<input id="modelFile" type="file" accept=".json,application/json"></label><button id="uploadModel" type="button">Upload model</button></div></section>
-      <section class="content-card"><div class="card-accent"></div><div class="eyebrow">04 / DRAWINGS</div><h2>Current drawing set</h2><ul class="small" id="pdfs"></ul><div class="upload-controls" id="pdfControls"><label>Add current project PDFs<input id="pdfFiles" type="file" accept=".pdf,application/pdf" multiple></label><button id="uploadPdfs" type="button">Upload PDFs</button></div></section>
+      <section class="content-card"><div class="eyebrow">MODEL</div><h2>Raw Revit export</h2><p class="small path-text" id="model"></p><div class="upload-controls" id="modelControls"><label>Connect an existing NeoviOne export<select id="source"><option value="">Choose a model export</option></select></label><button id="connect" type="button">Connect selected model</button><label>Or upload a Neovi model JSON<input id="modelFile" type="file" accept=".json,application/json"></label><button id="uploadModel" type="button">Upload model</button></div></section>
+      <section class="content-card"><div class="eyebrow">DRAWINGS</div><h2>Current drawing set</h2><ul class="small" id="pdfs"></ul><div class="upload-controls" id="pdfControls"><label>Add current project PDFs<input id="pdfFiles" type="file" accept=".pdf,application/pdf" multiple></label><button id="uploadPdfs" type="button">Upload PDFs</button></div></section>
 
-      <section class="content-card ai full"><div class="card-accent"></div><div class="eyebrow">05 / AI DRAWING REVIEW</div><h2>Gemini extraction</h2><div class="value" id="gemini">Checking…</div><p class="small" id="geminiDetail"></p><div class="nav" id="geminiLinks"></div><p class="small">AI findings are review candidates. They do not change BOM quantities or purchase orders automatically.</p></section>
-      <section class="content-card drive full"><div class="card-accent"></div><div class="eyebrow">06 / PRIVATE STORAGE</div><h2>Google Drive folders</h2><p class="small">Model and drawings: <span class="path-text" id="rawFolder"></span></p><p class="small">Reports: <span class="path-text" id="outputFolder"></span></p><p class="small">Folder access follows Google Drive permissions. Local project files are not published to GitHub.</p></section>
-      <section class="content-card full"><div class="card-accent"></div><div class="eyebrow">07 / OUTPUTS</div><h2>Reports and source coverage</h2><ul class="small" id="reports"></ul><div id="coverage"></div></section>
+      <section class="content-card ai full"><div class="eyebrow">AI DRAWING REVIEW</div><h2>Gemini extraction</h2><div class="value" id="gemini">Checking…</div><p class="small" id="geminiDetail"></p><div class="nav" id="geminiLinks"></div><p class="small">AI findings are review candidates. They do not change BOM quantities or purchase orders automatically.</p></section>
+      <section class="content-card drive full"><div class="eyebrow">PRIVATE STORAGE</div><h2>Google Drive folders</h2><p class="small">Model and drawings: <span class="path-text" id="rawFolder"></span></p><p class="small">Reports: <span class="path-text" id="outputFolder"></span></p><p class="small">Folder access follows Google Drive permissions. Local project files are not published to GitHub.</p></section>
+      <section class="content-card full"><div class="eyebrow">OUTPUTS</div><h2>Reports and source coverage</h2><ul class="small" id="reports"></ul><div id="coverage"></div></section>
     </div>
   </main>
   <footer class="shell page-foot"><span>SiteBOM · private project workspace</span><span>Sources in Google Drive · Processing on this computer</span></footer>
