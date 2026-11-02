@@ -53,8 +53,9 @@ item IDs and planning estimates. The Drive HTML was generated after revision
 `Meta.sourceHash` still uses the prior whole-HTML method, so its difference
 from the current Drive file does not by itself prove a BOM item change. A real PIN-gated website save has not been
 verified in this audit. The current Windows user has no
-`Neovi-SiteBOM-Live-Sync` scheduled task or local encrypted PIN file, so the
-five-minute Drive refresh described below is **not running** on this computer.
+`Neovi-SiteBOM-Live-Sync` scheduled task or local encrypted PIN file. A source
+upload can trigger local processing, but source rows will not reach the Sheet
+until the encrypted PIN is configured.
 
 For an initial deployment or replacement PIN:
 
@@ -91,11 +92,12 @@ marked `sourceMissing` for review. A conflict or unreadable export stops the
 sync; it never silently replaces editor changes.
 
 After deployment, run `scripts/setup-live-sync.ps1` interactively as the
-Windows user who has G: mounted. It asks the owner for the PIN, encrypts it
-with Windows DPAPI under `%LOCALAPPDATA%\Neovi\SiteBomLive\pin.txt`, and
-registers `Neovi-SiteBOM-Live-Sync` every five minutes while that user is
-signed in. `scripts/run-live-sync.ps1` can be run manually for a check. If G:
-is unavailable or the computer is off, the next successful run catches up.
+Windows user who has G: mounted. It asks the owner for the PIN and encrypts it
+with Windows DPAPI under `%LOCALAPPDATA%\Neovi\SiteBomLive\pin.txt`. A changed
+Monroe export then triggers the Sheet sync in the same processing run. There
+is no timed sync task. `scripts/run-live-sync.ps1` can also be run manually.
+If G: is unavailable or the computer is off, upload or connect the source
+again, or use **Check sources now** after it becomes available.
 
 The GitHub Pages files are a fallback snapshot. **Live edits do not create a
 Git commit for each save**; the published page reads the Sheet every time it

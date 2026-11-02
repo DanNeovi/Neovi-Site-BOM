@@ -8,7 +8,6 @@ import re
 import subprocess
 import sys
 import threading
-import time
 import uuid
 from datetime import datetime, timezone
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -28,12 +27,12 @@ SITE = ROOT / 'site'
 DASHBOARD = ROOT / 'local-site/index.html'
 PROJECT_PAGE = ROOT / 'local-site/project.html'
 LOG = STATE.parent / 'automation.log'
-worker_lock = threading.Lock()
+worker_state_lock = threading.Lock()
 registry_lock = threading.Lock()
 upload_guard = threading.Lock()
 uploads_in_progress = set()
 worker = {'running': False, 'lastStartedUtc': None, 'lastFinishedUtc': None,
-          'lastExitCode': None, 'lastError': None}
+          'lastExitCode': None, 'lastError': None, 'rerunRequested': False}
 
 
 def details(path):
@@ -62,7 +61,7 @@ def status():
             'privateRawFolderUrl': PRIVATE_FOLDER_URL,
             'driveExport': details(DRIVE / 'NeoviBOM.html'),
             'aiPlan': details(plan), 'automation': saved,
-            'log': str(LOG), 'checkIntervalSeconds': 300}
+            'log': str(LOG), 'processingTrigger': 'upload_connect_or_manual'}
 
 
 def project_status(project):
@@ -99,11 +98,14 @@ def project_status(project):
 
 
 def process_once():
-    if not worker_lock.acquire(blocking=False):
-        return False
+    with worker_state_lock:
+        if worker['running']:
+            worker['rerunRequested'] = True
+            return False
+        worker['running'] = True
+        worker['rerunRequested'] = False
     def work():
-        worker.update(running=True, lastStartedUtc=datetime.now(timezone.utc).isoformat(),
-                      lastError=None)
+        worker.update(lastStartedUtc=datetime.now(timezone.utc).isoformat(), lastError=None)
         LOG.parent.mkdir(parents=True, exist_ok=True)
         try:
             with LOG.open('a', encoding='utf-8') as log:
@@ -119,9 +121,13 @@ def process_once():
             worker['lastExitCode'] = -1
             worker['lastError'] = str(error)
         finally:
-            worker['running'] = False
             worker['lastFinishedUtc'] = datetime.now(timezone.utc).isoformat()
-            worker_lock.release()
+            with worker_state_lock:
+                rerun = worker['rerunRequested']
+                worker['running'] = False
+                worker['rerunRequested'] = False
+            if rerun:
+                process_once()
     threading.Thread(target=work, daemon=True, name='sitebom-processor').start()
     return True
 
@@ -180,7 +186,7 @@ class Handler(SimpleHTTPRequestHandler):
                 document = load(SITE_ROOT)
                 self.send_json({'schema': document['schema'], 'owner': document['owner'],
                                 'projects': [project_status(p) for p in document['projects']],
-                                'worker': dict(worker), 'checkIntervalSeconds': 300})
+                                'worker': dict(worker), 'processingTrigger': 'upload_connect_or_manual'})
             except (OSError, ValueError, json.JSONDecodeError) as error:
                 self.send_json({'error': str(error)}, 503)
             return
@@ -251,14 +257,15 @@ class Handler(SimpleHTTPRequestHandler):
                 self.send_error(415)
                 return
             started = process_once()
-            self.send_json({'started': started, 'running': worker['running']}, 202 if started else 409)
+            self.send_json({'started': started, 'queued': not started, 'running': worker['running']}, 202)
             return
         if path == '/api/projects':
             try:
                 data = self.read_json()
                 with registry_lock:
                     project = create(SITE_ROOT, data.get('name'), data.get('sourceRef'))
-                process_once()
+                if data.get('sourceRef'):
+                    process_once()
                 self.send_json(project_status(project), 201)
             except (OSError, ValueError, json.JSONDecodeError) as error:
                 self.send_json({'error': str(error)}, 400)
@@ -393,11 +400,6 @@ def main():
         raise FileNotFoundError('Build the SiteBOM site and local project pages first')
     server = ThreadingHTTPServer(('127.0.0.1', args.port), Handler)
     server.daemon_threads = True
-    def poll():
-        while True:
-            process_once()
-            time.sleep(300)
-    threading.Thread(target=poll, daemon=True, name='sitebom-poll').start()
     if sys.stdout:
         print(f'SiteBOM local: http://127.0.0.1:{args.port}/dashboard', flush=True)
     server.serve_forever(poll_interval=0.5)

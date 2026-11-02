@@ -26,10 +26,11 @@ other computers cannot reach this trial instance.
 
 The Windows task `Neovi-SiteBOM-Local` starts the server at sign-in.
 `scripts/setup-local-sitebom.ps1` installs that task and allows it to run while
-the laptop is on battery. While it is running,
-the server checks registered project sources every five minutes. The menu's
-**Check all projects now** and each project's **Check sources now** button run
-the same check immediately.
+the laptop is on battery. Creating a project with a selected model, connecting
+an export, or uploading a model or PDF through SiteBOM starts processing as
+soon as the file is accepted. The server does not scan files on a timer.
+The menu's **Check all projects now** and each project's **Check sources now**
+button handle files placed directly in Drive or Downloads outside the website.
 
 The raw source of truth is the owner-only Google Drive folder
 [SiteBOM / 00-Raw / Monroe](https://drive.google.com/drive/folders/16THLj6mzXs2A1D3Ioq3GBkQN5ML6bQgz),
@@ -58,10 +59,12 @@ day. This local server **does not call Gemini**. AI extraction can be enabled
 later after the local file and quantity path is accepted.
 
 The processed preview reads the newly built G: HTML, while the shared catalog
-and editor still read the existing live Google Sheet. Rebuilding G: files does
-not update that Sheet or GitHub Pages automatically; the current
-live sync deployment and PIN setup remain separate. No local processing output
-is approved as a purchase order.
+and editor still read the existing live Google Sheet. When Monroe processing
+produces a changed export, SiteBOM can sync the new source rows to that
+Sheet immediately if the local encrypted live-sync PIN has been configured.
+This computer does not currently have that PIN file, so its local exports do
+not yet change the shared Sheet. GitHub Pages receives no raw files. No local
+processing output is approved as a purchase order.
 
 Revit's exporter still requires a manual **Export Model** in this trial stage,
 or **Refresh Neovi model** for an authorized NeoviOne cloud model. An automatic

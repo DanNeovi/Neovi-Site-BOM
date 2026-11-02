@@ -1,5 +1,10 @@
 # SiteBOM project workspace audit — 2026-11-01
 
+Update 2026-11-02: The five-minute source scan described in this historical
+audit was removed. Processing now starts when SiteBOM accepts an upload or
+connects a model, or when the user presses a Check button. A queued rerun
+handles files added while processing is already active.
+
 ## Tested setup
 
 - Local website: `http://127.0.0.1:8765/dashboard`, bound to loopback. The Windows task `Neovi-SiteBOM-Local` was running. Its last source check returned exit code 0. The server polls every 300 seconds while the signed-in computer is on.
