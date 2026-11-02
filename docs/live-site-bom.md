@@ -3,9 +3,11 @@
 The live editor keeps the **editable master** in the private native Google Sheet
 [Monroe Site BOM Live](https://docs.google.com/spreadsheets/d/1jzAxrOuChKzcCWCpYyI1FnN-D40pR_G1Pc30s1Cz46c/edit).
 The static export package remains in `G:\My Drive\SiteBOM`; GitHub Pages is the
-view and editing interface. The Sheet is in the private `SiteBOM Live Master
-(private)` Drive folder, because the export folder grants anyone with its link
-edit access. Do not move the live Sheet back to that public folder.
+view and editing interface. The Sheet remains in the separate private `SiteBOM
+Live Master (private)` Drive folder. On 2026-11-01, the connected Drive account
+reported the SiteBOM export folder and the new `00-Raw/Monroe` source folder as
+owner-only for `danielb@neovi.co`. Keep raw model and drawing files out of the
+public GitHub repository and check folder permissions before sharing links.
 
 The Sheet starts with 301 Monroe items and 167 category paths from the October
 25 Drive HTML export. Each save creates a new hidden `State_vN` tab; the visible

@@ -13,20 +13,13 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from private_drive_sources import CORE_FOLDER, CORE_PDFS, DOCUMENTS, DRIVE_ROOT, sync as sync_private_sources
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON = str(Path(sys.executable).with_name('python.exe')) if Path(sys.executable).name.lower() == 'pythonw.exe' else sys.executable
-DRIVE = Path('G:/My Drive/SiteBOM')
+DRIVE = DRIVE_ROOT.parents[1]
 STATE = Path(os.environ.get('LOCALAPPDATA', str(Path.home()))) / 'Neovi/SiteBOM/automation-state.json'
-AUTO_MODEL = STATE.parent / 'Raw/Monroe/Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json'
-LEGACY_MODEL = Path.home() / 'Downloads/Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json'
-DOCUMENTS = Path.home() / 'Downloads/Data for SiteBOM'
-CORE_PDFS = (
-    'Monroe SE sheets.pdf',
-    'Neovi - Monroe_Steel Shop Drawings_REV 1 2025.12.18.pdf',
-    'Neovi - Monroe_Fabrication Shop Drawing Package - Wall Panels 2026-08-26.pdf',
-    'Neovi - Monroe_Fabrication 2000 Series - Floor Cassettes 2026-08-19.pdf',
-)
 PIPELINE_FILES = (
     'config/site-bom.template.json', 'config/site-bom-checklist.json',
     'config/planning-allowances.json', 'config/monroe-planning-overrides.json',
@@ -43,10 +36,10 @@ def signature(path):
     return {'path': str(path.resolve()), 'bytes': stat.st_size, 'mtimeNs': stat.st_mtime_ns}
 
 
-def source_signature(folder):
+def source_signature(folder, require_files=True):
     files = sorted(path for path in folder.rglob('*') if path.is_file() and
                    '__pycache__' not in path.parts)
-    if not files:
+    if not files and require_files:
         raise FileNotFoundError(f'No Monroe source files in {folder}')
     return [{'path': str(path.relative_to(folder)), 'bytes': path.stat().st_size,
              'mtimeNs': path.stat().st_mtime_ns} for path in files]
@@ -83,7 +76,7 @@ def write_state(value):
 def process(model=None, force=False, index_drawings=True):
     if not DRIVE.is_dir():
         raise FileNotFoundError(f'Google Drive output is unavailable: {DRIVE}')
-    source = Path(model) if model else AUTO_MODEL if AUTO_MODEL.is_file() else LEGACY_MODEL
+    source = sync_private_sources(model)
     if not source.is_file():
         raise FileNotFoundError(f'No Monroe raw model export at {source}')
     verify_project(source)
@@ -107,10 +100,11 @@ def process(model=None, force=False, index_drawings=True):
         write_state(status)
         changed.append('model quantities and G: exports')
     if index_drawings:
-        core = DOCUMENTS / 'AI Core'
+        core = CORE_FOLDER
         if {path.name for path in core.glob('*.pdf')} != set(CORE_PDFS):
             raise ValueError('Monroe AI Core PDF set changed; review the source selection')
-        pdf_key = source_signature(DOCUMENTS)
+        pdf_key = {'privateCore': source_signature(core),
+                   'supportingFiles': source_signature(DOCUMENTS, require_files=False)}
         if force or previous.get('drawings') != pdf_key:
             run(PYTHON, 'scripts/monroe_ai_sources.py', 'index')
             run(PYTHON, 'scripts/monroe_ai_sources.py', 'plan',

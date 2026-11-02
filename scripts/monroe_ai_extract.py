@@ -19,7 +19,8 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import fitz
 
-from monroe_ai_sources import DEFAULT_OUTPUT, DEFAULT_SOURCE, digest, planned_jobs
+from monroe_ai_sources import DEFAULT_OUTPUT, digest, planned_jobs
+from private_drive_sources import DRIVE_ROOT
 
 
 API_ROOT = 'https://generativelanguage.googleapis.com/v1beta/models/'
@@ -258,7 +259,7 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source-root', type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument('--source-root', type=Path, default=DRIVE_ROOT)
     parser.add_argument('--output-root', type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument('--max-requests', type=int, default=3)
     parser.add_argument('--daily-cap', type=int, default=20)

@@ -24,15 +24,15 @@
 <header><strong>SiteBOM</strong><p>Local raw-data and processing control</p></header>
 <main>
   <h1>Monroe sources</h1>
-  <p class="intro">This computer checks published raw files every five minutes. Calculated values are review data; this local job does not write to the shared Google Sheet.</p>
-  <nav><a href="/preview/NeoviBOM.html">Open processed preview</a><a href="/bom/index.html">Open shared BOM</a><a href="/bom/editor.html">Open shared editor</a><button class="button primary" id="process">Check and process now</button></nav>
+  <p class="intro">This computer checks NeoviOne and local exports every five minutes, copies verified Monroe inputs to Daniel's private Google Drive, then processes that Drive copy. Calculated values are review data; this local job does not write to the shared Google Sheet.</p>
+  <nav><a href="/preview/NeoviBOM.html">Open Drive-backed BOM</a><a href="/bom/index.html">Open shared Sheet BOM</a><a href="/bom/editor.html">Open shared editor</a><a id="privateSources" href="#" target="_blank" rel="noopener">Open private Monroe sources</a><button class="button primary" id="process">Check and process now</button></nav>
   <div class="grid">
     <section class="card"><div class="label">Processor</div><div class="value" id="processor">Checking…</div><div class="sub" id="processorDetail"></div></section>
     <section class="card"><div class="label">Raw Revit model</div><div class="value" id="model">Checking…</div><div class="sub" id="modelDetail"></div></section>
     <section class="card"><div class="label">Google Drive output</div><div class="value" id="drive">Checking…</div><div class="sub" id="driveDetail"></div></section>
     <section class="card"><div class="label">Drawing index</div><div class="value" id="drawings">Checking…</div><div class="sub" id="drawingsDetail"></div></section>
     <section class="card wide"><h2>Current AI Core PDFs</h2><ul id="pdfs"></ul></section>
-    <section class="card wide"><h2>How this runs</h2><p class="sub">Revit's published model JSON is the raw model input. The processor scans it, recalculates Monroe planning quantities, verifies exports, and writes results to <code>G:\My Drive\SiteBOM</code>. It indexes the four current PDFs and older Monroe files for revision checks. Gemini extraction remains a separate, capped review step.</p><div class="sub" id="log"></div></section>
+    <section class="card wide"><h2>How this runs</h2><p class="sub">NeoviOne downloads cloud exports from Autodesk's temporary storage to this computer. SiteBOM finds a verified Monroe export, copies it and the four current PDFs to <code>G:\My Drive\SiteBOM\00-Raw\Monroe</code>, and processes the Drive model. Verified results are written to <code>G:\My Drive\SiteBOM</code>. Older Monroe files remain indexed for revision checks. Gemini extraction remains a separate, capped review step.</p><div class="sub" id="log"></div></section>
   </div>
 </main>
 <script>
@@ -43,9 +43,10 @@ async function refresh(){
   try{
     const response=await fetch('/api/status',{cache:'no-store'});if(!response.ok)throw Error('Status request failed');
     const s=await response.json(),w=s.worker,a=s.automation||{},m=s.sourceModel,d=s.driveExport;
+    $('privateSources').href=s.privateRawFolderUrl;
     $('processor').textContent=w.running?'Processing raw files…':w.lastError?'Needs attention':a.modelProcessedAtUtc?'Current processing available':'Waiting for first run';
     $('processorDetail').textContent=(w.lastError||'Last model run: '+stamp(a.modelProcessedAtUtc))+' · Last check: '+stamp(w.lastFinishedUtc);
-    $('model').textContent=m.exists?'Model export found':'Model export missing';
+    $('model').textContent=m.exists?'Mounted Drive model ready':'Mounted Drive model missing';
     $('modelDetail').textContent=m.path+(m.exists?' · '+size(m.bytes)+' · '+stamp(m.modifiedUtc):'');
     $('drive').textContent=s.driveAvailable?(d.exists?'Drive export available':'Drive mounted; export missing'):'G: drive unavailable';
     $('driveDetail').textContent=d.path+(d.exists?' · updated '+stamp(d.modifiedUtc):'');

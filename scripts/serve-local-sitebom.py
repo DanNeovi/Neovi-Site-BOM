@@ -11,7 +11,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from auto_process_monroe import AUTO_MODEL, CORE_PDFS, DRIVE, DOCUMENTS, LEGACY_MODEL, STATE
+from auto_process_monroe import CORE_PDFS, DRIVE, STATE
+from private_drive_sources import CORE_FOLDER, DRIVE_ROOT, MODEL_FOLDER, MODEL_NAME, PRIVATE_FOLDER_URL
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,13 +37,17 @@ def status():
         saved = json.loads(STATE.read_text(encoding='utf-8')) if STATE.is_file() else {}
     except (OSError, ValueError):
         saved = {'error': 'Automation state could not be read'}
-    model = AUTO_MODEL if AUTO_MODEL.is_file() else LEGACY_MODEL
-    core = DOCUMENTS / 'AI Core'
+    models = sorted(MODEL_FOLDER.glob('*.neovi-model.json'),
+                    key=lambda path: path.stat().st_mtime_ns, reverse=True) if MODEL_FOLDER.is_dir() else []
+    model = models[0] if models else MODEL_FOLDER / MODEL_NAME
+    core = CORE_FOLDER
     pdfs = [details(core / name) for name in CORE_PDFS]
     plan = DRIVE / '04-Audits/Monroe-AI/page-plan.json'
     return {'schema': 'sitebom-local-status-1', 'worker': dict(worker),
             'sourceModel': details(model), 'corePdfs': pdfs,
             'driveAvailable': DRIVE.is_dir(),
+            'privateRawAvailable': DRIVE_ROOT.is_dir(),
+            'privateRawFolderUrl': PRIVATE_FOLDER_URL,
             'driveExport': details(DRIVE / 'NeoviBOM.html'),
             'aiPlan': details(plan), 'automation': saved,
             'log': str(LOG), 'checkIntervalSeconds': 300}
@@ -84,7 +89,17 @@ class Handler(SimpleHTTPRequestHandler):
         # pythonw.exe has no console stderr when started at Windows sign-in.
         return
 
+    def local_host_only(self):
+        allowed = {f'127.0.0.1:{self.server.server_port}',
+                   f'localhost:{self.server.server_port}'}
+        if self.headers.get('Host') not in allowed:
+            self.send_error(403, 'Use the local SiteBOM address')
+            return False
+        return True
+
     def do_GET(self):
+        if not self.local_host_only():
+            return
         path = urlsplit(self.path).path
         if path == '/favicon.ico':
             self.send_response(204)
@@ -113,13 +128,15 @@ class Handler(SimpleHTTPRequestHandler):
         if path.startswith('/bom/'):
             self.path = path[4:] or '/'
             return super().do_GET()
-        if path.startswith('/preview/'):
+        if path == '/preview/NeoviBOM.html':
             self.directory = str(DRIVE)
-            self.path = path[len('/preview'):] or '/'
+            self.path = '/NeoviBOM.html'
             return super().do_GET()
         self.send_error(404, 'Unknown SiteBOM path')
 
     def do_POST(self):
+        if not self.local_host_only():
+            return
         if urlsplit(self.path).path != '/api/process':
             self.send_error(404)
             return

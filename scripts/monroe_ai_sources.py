@@ -17,6 +17,8 @@ from pathlib import Path
 
 import fitz
 
+from private_drive_sources import CORE_FOLDER
+
 
 DEFAULT_SOURCE = Path.home() / 'Downloads/Data for SiteBOM'
 DEFAULT_OUTPUT = Path('G:/My Drive/SiteBOM/04-Audits/Monroe-AI')
@@ -47,25 +49,31 @@ def file_identity(path):
 
 def index_sources(source_root, output_root):
     source_root = Path(source_root).resolve()
-    if not (source_root / 'AI Core').is_dir():
-        raise FileNotFoundError(f'Monroe AI Core is missing: {source_root}')
+    if not CORE_FOLDER.is_dir():
+        raise FileNotFoundError(f'Private Monroe AI Core is missing: {CORE_FOLDER}')
     output_root = Path(output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     files, pages, hash_cache = [], [], {}
-    for path in sorted(source_root.rglob('*')):
-        if not path.is_file() or '__pycache__' in path.parts:
-            continue
-        relative = path.relative_to(source_root).as_posix()
-        stat = path.stat()
-        identity = file_identity(path)
+    supporting = [(path.relative_to(source_root).as_posix(), path)
+                  for path in sorted(source_root.rglob('*')) if path.is_file() and
+                  '__pycache__' not in path.parts and
+                  path.parent.name != 'AI Core']
+    current = [(f'AI Core/{name}', CORE_FOLDER / name) for name in CORE_SCOPES]
+    for relative, input_path in sorted(supporting + current):
+        path = Path(relative)
+        if not input_path.is_file():
+            raise FileNotFoundError(f'Private Drive source missing: {input_path}')
+        stat = input_path.stat()
+        identity = file_identity(input_path)
         if identity not in hash_cache:
-            hash_cache[identity] = digest(path)
-        entry = {'path': relative, 'bytes': stat.st_size, 'sha256': hash_cache[identity],
+            hash_cache[identity] = digest(input_path)
+        entry = {'path': relative, 'sourcePath': str(input_path.resolve()),
+                 'bytes': stat.st_size, 'sha256': hash_cache[identity],
                  'suffix': path.suffix.lower(), 'role': 'current_core' if path.parent.name == 'AI Core'
                  else 'supporting_or_prior_revision' if path.parent.name in ('Email Structural', 'Local Structural')
                  else 'provenance_or_benchmark'}
         if path.suffix.lower() == '.pdf':
-            with fitz.open(path) as document:
+            with fitz.open(input_path) as document:
                 entry['pages'] = len(document)
                 entry['textLayerUnreliablePages'] = []
                 for number, page in enumerate(document, 1):
@@ -80,15 +88,15 @@ def index_sources(source_root, output_root):
                                   'textLayerReliable': reliable, 'textSha256': hashlib.sha256(content.encode()).hexdigest(),
                                   'text': content})
         elif path.suffix.lower() == '.zip':
-            with zipfile.ZipFile(path) as archive:
+            with zipfile.ZipFile(input_path) as archive:
                 entry['zipMembers'] = [member.filename for member in archive.infolist() if not member.is_dir()]
         elif path.suffix.lower() in ('.step', '.stp'):
-            with path.open('rb') as stream:
+            with input_path.open('rb') as stream:
                 header = stream.read(4096).decode('utf-8', 'replace')
             match = re.search(r"FILE_NAME\s*\(\s*'([^']*)'", header, re.I)
             entry['stepFileName'] = match.group(1) if match else None
         elif path.suffix.lower() == '.json' and stat.st_size > 100_000_000:
-            with path.open('rb') as stream:
+            with input_path.open('rb') as stream:
                 header = stream.read(4096).decode('utf-8', 'replace')
             for name in ('schemaVersion', 'exportedAtUtc', 'projectNumber', 'projectName'):
                 match = re.search(r'"' + name + r'":"([^"]+)"', header)
@@ -100,7 +108,8 @@ def index_sources(source_root, output_root):
         duplicates[entry['sha256']].append(entry['path'])
     manifest = {'schema': 'monroe-ai-source-index-1', 'project': 'Monroe',
                 'generatedAtUtc': datetime.now(timezone.utc).isoformat(),
-                'sourceRoot': str(source_root), 'files': files,
+                'sourceRoot': str(source_root), 'privateCoreRoot': str(CORE_FOLDER.resolve()),
+                'files': files,
                 'pdfCount': sum(entry['suffix'] == '.pdf' for entry in files),
                 'pdfPageCount': sum(entry.get('pages', 0) for entry in files),
                 'duplicateGroups': [paths for paths in duplicates.values() if len(paths) > 1]}

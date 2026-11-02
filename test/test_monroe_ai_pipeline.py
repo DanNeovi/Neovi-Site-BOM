@@ -12,10 +12,29 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from monroe_ai_extract import parse_findings, run  # noqa: E402
 from monroe_ai_review import build_report, pile_check  # noqa: E402
-from monroe_ai_sources import make_plan, planned_jobs  # noqa: E402
+import monroe_ai_sources  # noqa: E402
+from monroe_ai_sources import index_sources, make_plan, planned_jobs  # noqa: E402
 
 
 class PipelineTests(unittest.TestCase):
+    def test_current_pdf_indexes_from_private_drive_without_downloads_copy(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            core = root / 'private' / 'AI Core'
+            core.mkdir(parents=True)
+            import fitz
+            document = fitz.open()
+            document.new_page().insert_text((30, 30), 'Monroe structural schedule')
+            for name in monroe_ai_sources.CORE_SCOPES:
+                document.save(core / name)
+            document.close()
+            with patch.object(monroe_ai_sources, 'CORE_FOLDER', core):
+                result = index_sources(root / 'downloads', root / 'output')
+            self.assertEqual(result['pdfCount'], 4)
+            self.assertEqual({item['path'] for item in result['files']},
+                             {'AI Core/' + name for name in monroe_ai_sources.CORE_SCOPES})
+            self.assertTrue(all(Path(item['sourcePath']).parent == core for item in result['files']))
+
     def test_twenty_passes_cover_each_page_before_next_pass(self):
         manifest = {'files': [{'path': f'AI Core/{name}', 'sha256': 'a' * 64,
                                'suffix': '.pdf', 'role': 'current_core', 'pages': 2}

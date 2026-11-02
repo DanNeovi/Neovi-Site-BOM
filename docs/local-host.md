@@ -12,17 +12,28 @@ The Windows task `Neovi-SiteBOM-Local` starts the server at sign-in.
 the server checks raw files every five minutes. The dashboard's **Check and
 process now** button runs the same check immediately.
 
-The current raw model is the published
-`Downloads/Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json`. If
-`%LOCALAPPDATA%/Neovi/SiteBOM/Raw/Monroe/` contains a newer model file with
-that name, the processor uses that path instead. A changed model or calculation
-rule triggers a Monroe rescan, quantity rebuild, value audit, and verified
-JSON/XLSX/HTML export to `G:\My Drive\SiteBOM`. The first run checks all
-sources; unchanged runs do no heavy work.
+The raw source of truth is the owner-only Google Drive folder
+[SiteBOM / 00-Raw / Monroe](https://drive.google.com/drive/folders/16THLj6mzXs2A1D3Ioq3GBkQN5ML6bQgz),
+mounted locally at `G:\My Drive\SiteBOM\00-Raw\Monroe`. The processor looks
+for the newest verified Monroe model in `%LOCALAPPDATA%\Neovi\One\Models\Exports`
+(NeoviOne's Autodesk download location), `%LOCALAPPDATA%\Neovi\SiteBOM\Raw\Monroe`,
+and the existing Downloads copies. It copies that model and the four current
+AI Core PDFs into the private Drive folder, verifies the copy, then reads the
+Drive model. A changed model or calculation rule triggers a Monroe rescan,
+quantity rebuild, value audit, and verified JSON/XLSX/HTML export to
+`G:\My Drive\SiteBOM`. The first run checks all sources; unchanged runs do no
+heavy work.
 
-The four PDFs under `Downloads/Data for SiteBOM/AI Core` are the current
-extraction set. Other collected Monroe files are indexed for revision and
-conflict checks. Source indexing creates a review-only page plan for 20 passes
+NeoviOne's cloud gateway uses temporary Autodesk APS object storage and a
+time-limited download URL; it does not write to Google Drive. SiteBOM's local
+bridge starts after NeoviOne has downloaded the export. It cannot trigger a
+new Autodesk export or read the temporary APS bucket by itself. The local
+website links to the private Drive folder; Google requires access as
+`danielb@neovi.co` to open it. GitHub Pages does not receive these raw files.
+
+The four PDFs in the private Drive `AI Core` folder are the current retained
+extraction set. The local Downloads set remains the input to the older-file
+revision/conflict index. Source indexing creates a review-only page plan for 20 passes
 over the four current PDFs, capped locally at 20 planned Gemini requests per
 day. This local server **does not call Gemini**. AI extraction can be enabled
 later after the local file and quantity path is accepted.
@@ -33,11 +44,11 @@ not update that Sheet or GitHub Pages automatically; the current
 live sync deployment and PIN setup remain separate. No local processing output
 is approved as a purchase order.
 
-Revit's exporter still requires a manual **Export Model** in this trial stage.
-An automatic export after a successful Revit save is the next integration
-step. Keeping that hook separate lets us confirm that the local processor
-selects the right project, handles a 1.97 GB model, and preserves the current
-Sheet edits before changing Revit behavior.
+Revit's exporter still requires a manual **Export Model** in this trial stage,
+or **Refresh Neovi model** for an authorized NeoviOne cloud model. An automatic
+export after a successful Revit save is a separate integration step. The local
+processor selects the right project and handles the 1.97 GB model, but it does
+not replace website edits in the shared Sheet.
 
 The processor state and log are under
 `%LOCALAPPDATA%/Neovi/SiteBOM/automation-state.json` and `automation.log`.

@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +8,7 @@ from unittest.mock import patch
 
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / 'scripts/auto_process_monroe.py'
+sys.path.insert(0, str(MODULE_PATH.parent))
 spec = importlib.util.spec_from_file_location('auto_process_monroe', MODULE_PATH)
 automation = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(automation)
@@ -17,7 +19,9 @@ class AutoProcessMonroeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             model = Path(temporary) / 'wrong.neovi-model.json'
             model.write_text('{"project":{"projectName":"Fernando"},"elements":[]}')
-            with patch.object(automation, 'DRIVE', Path(temporary)), patch.object(automation, 'run') as run:
+            with patch.object(automation, 'DRIVE', Path(temporary)), \
+                    patch.object(automation, 'sync_private_sources', return_value=model), \
+                    patch.object(automation, 'run') as run:
                 with self.assertRaisesRegex(ValueError, 'not the Monroe export'):
                     automation.process(model, index_drawings=False)
                 run.assert_not_called()
@@ -35,6 +39,8 @@ class AutoProcessMonroeTests(unittest.TestCase):
             state = folder / 'automation-state.json'
             with (patch.object(automation, 'DRIVE', folder),
                   patch.object(automation, 'DOCUMENTS', documents),
+                  patch.object(automation, 'CORE_FOLDER', core),
+                  patch.object(automation, 'sync_private_sources', return_value=model),
                   patch.object(automation, 'STATE', state),
                   patch.object(automation, 'run') as run):
                 first = automation.process(model)
@@ -46,7 +52,7 @@ class AutoProcessMonroeTests(unittest.TestCase):
                 self.assertEqual(['current AI Core and older drawing index'], automation.process(model))
                 self.assertEqual(9, run.call_count)
                 saved = json.loads(state.read_text())
-                self.assertEqual(4, len(saved['drawings']))
+                self.assertEqual({'privateCore', 'supportingFiles'}, set(saved['drawings']))
 
 
 if __name__ == '__main__':
