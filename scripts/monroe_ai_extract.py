@@ -25,6 +25,7 @@ from private_drive_sources import DRIVE_ROOT
 
 
 API_ROOT = 'https://generativelanguage.googleapis.com/v1beta/models/'
+PROMPT_VERSION = 2
 try:
     PACIFIC = ZoneInfo('America/Los_Angeles')
 except ZoneInfoNotFoundError:
@@ -218,6 +219,7 @@ def run(plan, source_root, output_root, max_requests, daily_cap, only_page=None,
             parsed = parse_findings(response)
             atomic_json(target, {'schema': 'monroe-ai-page-extraction-1',
                                  'project': 'Monroe', 'reviewStatus': 'candidate_only',
+                                 'promptVersion': PROMPT_VERSION,
                                  'source': job['path'], 'sourceSha256': job['sourceSha256'],
                                  'page': job['page'], 'repeat': job['repeat'],
                                  'model': model, 'extractedAt': datetime.now(PACIFIC).isoformat(),

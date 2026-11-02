@@ -32,7 +32,9 @@ still applies across all configured keys.
 4. **Use a shorter extraction instruction.** The request still requires
    source evidence, exact sizes and units, site/factory classification, and
    no inferred whole-project totals. This change has not been benchmarked
-   against the previous prompt, so no token saving is claimed yet.
+   against the previous prompt, so no token saving is claimed yet. New
+   responses carry `promptVersion: 2`; older saved responses are version 1
+   in the review report.
 5. **Track real usage.** `python scripts/monroe_ai_review.py` adds a
    `tokenUsage` section to the private `review-report.json` using saved
    responses. It sends no API requests.

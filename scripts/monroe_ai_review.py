@@ -87,6 +87,7 @@ def build_report(output_root=DEFAULT_OUTPUT):
         for finding in document['result']['findings']:
             rows.append({'project': 'Monroe', 'source': document['source'],
                          'sourceSha256': document['sourceSha256'], 'page': document['page'],
+                         'promptVersion': document.get('promptVersion', 1),
                          'sheet': document['result'].get('sheet'), 'revision': document['result'].get('revision'),
                          'repeat': document['repeat'], 'model': document['model'],
                          'item': finding['item'], 'category': finding['category'],
@@ -103,6 +104,7 @@ def build_report(output_root=DEFAULT_OUTPUT):
         if len(runs) > 1 and any(fingerprint != fingerprints[0] for fingerprint in fingerprints[1:]):
             disagreements.append({'source': name, 'page': page,
                                   'repeats': [run['repeat'] for run in runs],
+                                  'promptVersions': [run.get('promptVersion', 1) for run in runs],
                                   'findingCounts': [len(run['result']['findings']) for run in runs]})
     coverage = {name: {'pages': item['pages'], 'readAtLeastOnce': sum(
         (name, page) in page_runs for page in range(1, item['pages'] + 1))}
@@ -116,6 +118,7 @@ def build_report(output_root=DEFAULT_OUTPUT):
               'routinePassRemaining': max(0, plan['pagesPerPass'] - len(page_runs)),
               'sourceCoverage': coverage,
               'tokenUsage': dict(token_totals),
+              'promptVersions': dict(Counter(str(doc.get('promptVersion', 1)) for doc in documents)),
               'findingsWithQuantity': sum(row['quantity'] is not None for row in rows),
               'findingsWithoutQuantity': sum(row['quantity'] is None for row in rows),
               'installationScopeCounts': dict(Counter(row['installationScope'] for row in rows)),
@@ -124,7 +127,7 @@ def build_report(output_root=DEFAULT_OUTPUT):
               'reviewInstructions': 'Verify source page, revision, scope, and quantities before any BOM change. Do not sum repeated views or AI passes.'}
     (output_root / 'review-report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     with (output_root / 'candidate-findings.csv').open('w', newline='', encoding='utf-8-sig') as stream:
-        writer = csv.DictWriter(stream, fieldnames=('project', 'source', 'sourceSha256', 'page', 'sheet',
+        writer = csv.DictWriter(stream, fieldnames=('project', 'source', 'sourceSha256', 'page', 'promptVersion', 'sheet',
             'revision', 'repeat', 'model', 'item', 'category', 'quantity', 'unit', 'size',
             'installationScope', 'evidence', 'notes', 'reviewStatus'))
         writer.writeheader()

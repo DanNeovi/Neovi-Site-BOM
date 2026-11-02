@@ -164,6 +164,7 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(len(report['pagePassDisagreements']), 1)
             self.assertEqual(report['tokenUsage']['totalTokens'], 240)
             self.assertEqual(report['tokenUsage']['imageInputTokens'], 160)
+            self.assertEqual(report['promptVersions'], {'1': 2})
 
 
 if __name__ == '__main__':
