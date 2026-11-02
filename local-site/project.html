@@ -13,19 +13,12 @@
   </div></header>
 
   <section class="project-hero"><div class="shell">
-    <div class="breadcrumb"><a href="/dashboard">All projects</a><span>›</span><span id="crumb">Project</span></div>
-    <div class="project-hero-grid"><div><div class="eyebrow">Project workspace</div><h1 id="title">Loading project…</h1><p id="identity"></p></div><nav class="project-hero-actions" id="links" aria-label="Project links"></nav></div>
+    <a class="back-button" href="/dashboard"><span aria-hidden="true">←</span> Back to projects</a>
+    <div class="project-hero-grid"><div><div class="eyebrow">Project workspace</div><h1 id="title">Loading project…</h1><p id="identity"></p><p class="project-summary" id="projectSummary"></p></div><nav class="project-hero-actions" id="links" aria-label="Project links"></nav></div>
   </div></section>
 
   <main class="shell project-page-main">
     <div class="notice" id="notice" role="status"></div>
-    <div class="project-metrics" aria-label="Project at a glance">
-      <div class="metric-card"><div class="eyebrow">Model</div><strong id="metricModel">—</strong><small>Current export</small></div>
-      <div class="metric-card"><div class="eyebrow">Drawings</div><strong id="metricDrawing">—</strong><small>Current PDFs</small></div>
-      <div class="metric-card"><div class="eyebrow">Gemini review</div><strong id="metricGemini">—</strong><small>Pages read</small></div>
-      <div class="metric-card"><div class="eyebrow">Reports</div><strong id="metricReports">—</strong><small>Available outputs</small></div>
-    </div>
-
     <div class="content-grid">
       <section class="content-card"><div class="card-top"><div><div class="eyebrow">PROCESSING</div><h2>Source processing</h2></div><button id="check" type="button">Check now <span class="arrow">↻</span></button></div><div class="value" id="processing">Checking…</div><p class="small" id="processDetail"></p></section>
       <section class="content-card"><div class="eyebrow">QUANTITIES</div><h2>Bill of materials</h2><div class="value" id="quantity">Checking…</div><p class="small" id="quantityDetail"></p></section>
@@ -45,11 +38,10 @@ const id=decodeURIComponent(location.pathname.split('/').pop()),$=name=>document
 const size=bytes=>bytes>=1073741824?(bytes/1073741824).toFixed(2)+' GB':(bytes/1048576).toFixed(1)+' MB';
 const stamp=value=>value?new Date(value).toLocaleString():'never';
 async function api(path,options){const response=await fetch(path,{cache:'no-store',...options});const data=await response.json();if(!response.ok)throw Error(data.error||`Request failed (${response.status})`);return data}
-function link(text,href){const a=document.createElement('a');a.className='button';a.textContent=text;a.href=href;return a}
+function link(text,href,primary=false){const a=document.createElement('a');a.className='button'+(primary?' primary':'');a.textContent=text;a.href=href;return a}
 function list(items,container,format){container.replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=format(item);return li}))}
-async function refresh(){try{const p=await api('/api/projects/'+encodeURIComponent(id));document.title='SiteBOM · '+p.name;$('title').textContent=p.name;$('crumb').textContent=p.name;$('identity').textContent=p.modelProjectName?`Revit project: ${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'No model connected yet';$('rawFolder').textContent=p.rawFolder;$('outputFolder').textContent=p.outputFolder;
-    const monroe=p.processor==='monroe';$('modelControls').hidden=monroe;$('pdfControls').hidden=monroe;$('links').replaceChildren();if(monroe){$('links').append(link('Drive-backed BOM','/preview/NeoviBOM.html'),link('Shared Sheet BOM','/bom/index.html'),link('Shared editor','/bom/editor.html'))}if(p.driveFolderUrl)$('links').append(link('Private Drive sources',p.driveFolderUrl));else $('links').append(link('SiteBOM Google Drive',p.siteDriveUrl));
-    $('metricModel').textContent=p.model?size(p.model.bytes):'Not connected';$('metricDrawing').textContent=p.pdfs.length;$('metricGemini').textContent=p.gemini?.pagesReadAtLeastOnce||0;$('metricReports').textContent=p.reports.length;
+async function refresh(){try{const p=await api('/api/projects/'+encodeURIComponent(id));document.title='SiteBOM · '+p.name;$('title').textContent=p.name;$('identity').textContent=p.modelProjectName?`Revit project: ${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'No model connected yet';$('projectSummary').textContent=`${p.model?size(p.model.bytes)+' model':'No model'} · ${p.pdfs.length} drawings · ${p.reports.length} reports${p.gemini?.pagesReadAtLeastOnce?' · '+p.gemini.pagesReadAtLeastOnce+' AI pages reviewed':''}`;$('rawFolder').textContent=p.rawFolder;$('outputFolder').textContent=p.outputFolder;
+    const monroe=p.processor==='monroe';$('modelControls').hidden=monroe;$('pdfControls').hidden=monroe;$('links').replaceChildren();if(monroe){$('links').append(link('Open BOM','/preview/NeoviBOM.html',true),link('Shared Sheet BOM','/bom/index.html'),link('Shared editor','/bom/editor.html'))}if(p.driveFolderUrl)$('links').append(link('Private Drive sources',p.driveFolderUrl));else $('links').append(link('SiteBOM Google Drive',p.siteDriveUrl));
     $('model').textContent=p.model?`${p.model.path} · ${size(p.model.bytes)} · ${stamp(p.model.modifiedUtc)}`:'No verified model in this project’s private Drive folder.';
     list(p.pdfs,$('pdfs'),x=>`${x.path.split(/[\\/]/).pop()} · ${size(x.bytes)}`);if(!p.pdfs.length)$('pdfs').textContent='No current PDFs added yet.';
     if(monroe){const m=p.monroe,w=m.worker,a=m.automation||{},g=p.gemini||{};$('processing').textContent=w.running?'Processing…':w.lastError?'Needs attention':'Pipeline ready';$('processDetail').textContent=(w.lastError||`Last model calculation: ${stamp(a.modelProcessedAtUtc)}`)+` · Last check: ${stamp(w.lastFinishedUtc)}`;$('quantity').textContent='Monroe planning takeoff';$('quantityDetail').textContent='Verified model and drawing inputs feed a review-only BOM. The shared Google Sheet remains a separate editor.';$('gemini').textContent=g.completedRequests?`${g.pagesReadAtLeastOnce||0} of ${g.pagesPerPass||0} pages read`:'No review results yet';$('geminiDetail').textContent=`${g.configuredKeyCount||0} Gemini API key${g.configuredKeyCount===1?'':'s'} configured · ${g.completedRequests||0} saved page responses · ${g.candidateFindings||0} candidate findings. Gemini runs separately after indexing; uploads do not automatically send drawings to Google.`;$('geminiLinks').replaceChildren(...(g.reviewReport?.exists?[link('Review report','/projects/monroe/gemini/review-report.json'),link('Candidate findings CSV','/projects/monroe/gemini/candidate-findings.csv')]:[]))}
