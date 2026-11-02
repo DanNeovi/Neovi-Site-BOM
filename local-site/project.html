@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SiteBOM · Project</title>
+  <style>
+    :root{font:15px/1.5 Segoe UI,Arial,sans-serif;color:#172740;background:#f3f6fb}*{box-sizing:border-box}body{margin:0}
+    header{background:#152942;color:white;padding:24px max(24px,calc((100vw - 1160px)/2))}header strong{font-size:24px}header span{float:right;color:#bfd0e9;font-size:13px;margin-top:8px}
+    main{max-width:1160px;margin:auto;padding:30px 24px 70px}h1{font-size:34px;margin:13px 0 4px}h2{font-size:20px;margin:0 0 12px}h3{font-size:16px;margin:20px 0 8px}
+    p{margin:0 0 14px}.muted{color:#5a6980}.small{font-size:13px;color:#52637a;word-break:break-word}.eyebrow{font-size:12px;letter-spacing:.08em;color:#587199;text-transform:uppercase;font-weight:700}
+    a.button,button{display:inline-block;border:1px solid #aebed4;border-radius:8px;background:white;color:#164895;padding:9px 14px;font:inherit;text-decoration:none;cursor:pointer}
+    a.button:hover,button:hover{background:#edf4ff}button.primary{background:#174dcc;color:white;border-color:#174dcc}button:disabled{opacity:.6;cursor:wait}
+    .nav{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 26px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .card{background:white;border:1px solid #ced9e9;border-radius:12px;padding:21px;min-width:0}.wide{grid-column:1/-1}.value{font-size:21px;font-weight:650;margin:4px 0}
+    .pill{display:inline-block;border-radius:99px;background:#e8f1ff;color:#184c9c;padding:4px 9px;font-size:12px;font-weight:650}.pill.warn{background:#fff0d5;color:#83520e}
+    input,select{width:100%;border:1px solid #b5c3d8;border-radius:8px;padding:10px;font:inherit;color:#172740;background:white;margin-top:5px}
+    label{display:block;font-weight:650;font-size:13px;margin:13px 0 8px}.row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.row select{min-width:260px;flex:1}.row button{white-space:nowrap}
+    ul{margin:8px 0;padding-left:21px}li{margin:6px 0}table{border-collapse:collapse;width:100%;font-size:13px}td,th{text-align:left;border-bottom:1px solid #e2e9f2;padding:6px}
+    #notice{min-height:22px;color:#9d372f;margin:12px 0}@media(max-width:740px){header span{float:none;display:block}.grid{grid-template-columns:1fr}.wide{grid-column:auto}h1{font-size:28px}}
+  </style>
+</head>
+<body>
+<header><strong>SiteBOM</strong><span>Private project workspace · danielb@neovi.co</span></header>
+<main>
+  <a href="/dashboard">← All projects</a><div class="eyebrow" style="margin-top:20px">Project workspace</div><h1 id="title">Loading project…</h1><p class="muted" id="identity"></p><div id="notice" role="status"></div>
+  <nav class="nav" id="links"></nav>
+  <div class="grid">
+    <section class="card"><div class="eyebrow">Processing</div><div class="value" id="processing">Checking…</div><p class="small" id="processDetail"></p><button id="check">Check sources now</button></section>
+    <section class="card"><div class="eyebrow">Bill of materials</div><div class="value" id="quantity">Checking…</div><p class="small" id="quantityDetail"></p></section>
+    <section class="card"><h2>Raw Revit model</h2><p class="small" id="model"></p><div id="modelControls"><label>Connect an existing NeoviOne export<select id="source"><option value="">Choose a model export</option></select></label><button id="connect">Connect selected model</button><label>Or upload a Neovi model JSON<input id="modelFile" type="file" accept=".json,application/json"></label><button id="uploadModel">Upload model</button></div></section>
+    <section class="card"><h2>Current drawings</h2><ul class="small" id="pdfs"></ul><div id="pdfControls"><label>Add current project PDFs<input id="pdfFiles" type="file" accept=".pdf,application/pdf" multiple></label><button id="uploadPdfs">Upload PDFs</button></div></section>
+    <section class="card wide"><h2>Private Drive folders</h2><p class="small">Model and drawings: <span id="rawFolder"></span></p><p class="small">Reports: <span id="outputFolder"></span></p><p class="small">Drive access is limited to the folder's Google permissions. The local website does not publish these files to GitHub.</p></section>
+    <section class="card wide"><h2>Reports and source coverage</h2><ul id="reports"></ul><div id="coverage"></div></section>
+  </div>
+</main>
+<script>
+const id=decodeURIComponent(location.pathname.split('/').pop()),$=name=>document.getElementById(name);
+const size=bytes=>bytes>=1073741824?(bytes/1073741824).toFixed(2)+' GB':(bytes/1048576).toFixed(1)+' MB';
+const stamp=value=>value?new Date(value).toLocaleString():'never';
+async function api(path,options){const response=await fetch(path,{cache:'no-store',...options});const data=await response.json();if(!response.ok)throw Error(data.error||`Request failed (${response.status})`);return data}
+function link(text,href){const a=document.createElement('a');a.className='button';a.textContent=text;a.href=href;return a}
+function list(items,container,format){container.replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=format(item);return li}))}
+async function refresh(){try{const p=await api('/api/projects/'+encodeURIComponent(id));document.title='SiteBOM · '+p.name;$('title').textContent=p.name;$('identity').textContent=p.modelProjectName?`Revit project: ${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'No model connected yet';$('rawFolder').textContent=p.rawFolder;$('outputFolder').textContent=p.outputFolder;
+    const monroe=p.processor==='monroe';$('modelControls').hidden=monroe;$('pdfControls').hidden=monroe;$('links').replaceChildren();if(monroe){$('links').append(link('Open Drive-backed BOM','/preview/NeoviBOM.html'),link('Shared Sheet BOM','/bom/index.html'),link('Shared editor','/bom/editor.html'))}if(p.driveFolderUrl)$('links').append(link('Open private Drive sources',p.driveFolderUrl));else $('links').append(link('Open SiteBOM Google Drive',p.siteDriveUrl));
+    $('model').textContent=p.model?`${p.model.path} · ${size(p.model.bytes)} · ${stamp(p.model.modifiedUtc)}`:'No verified model in this project’s private Drive folder.';
+    list(p.pdfs,$('pdfs'),x=>`${x.path.split(/[\\/]/).pop()} · ${size(x.bytes)}`);if(!p.pdfs.length)$('pdfs').textContent='No current PDFs added yet.';
+    if(monroe){const m=p.monroe,w=m.worker,a=m.automation||{};$('processing').textContent=w.running?'Processing…':w.lastError?'Needs attention':'Monroe pipeline ready';$('processDetail').textContent=(w.lastError||`Last model calculation: ${stamp(a.modelProcessedAtUtc)}`)+` · Last check: ${stamp(w.lastFinishedUtc)}`;$('quantity').textContent='Monroe planning takeoff';$('quantityDetail').textContent='Verified model and drawing inputs feed a review-only BOM. The shared Google Sheet remains a separate editor.'}
+    else{const state=p.intake||{};$('processing').textContent=state.status==='error'?'Needs attention':state.status==='model_indexed'?'Raw model indexed':'Waiting for model';$('processDetail').textContent=(state.error||`Last check: ${stamp(state.checkedAtUtc)}`);$('quantity').textContent='Project rules needed';$('quantityDetail').textContent='Connect a model and current PDFs to start this project. Item mappings and quantity formulas need project review before a calculated BOM can appear. Existing saved reports are separate snapshots.'}
+    $('reports').replaceChildren(...p.reports.map(name=>{const li=document.createElement('li');if(monroe){li.textContent=name+' · Drive-backed Monroe export'}else{const a=document.createElement('a');a.href='/projects/'+encodeURIComponent(id)+'/reports/'+encodeURIComponent(name);a.textContent=name;li.append(a)}return li}));if(!p.reports.length)$('reports').textContent='No reports yet.';
+    const coverage=$('coverage');coverage.replaceChildren();if(p.summary){const heading=document.createElement('h3');heading.textContent=`Raw model coverage · ${p.summary.elements.toLocaleString()} elements`;const table=document.createElement('table');const body=document.createElement('tbody');for(const [category,count] of Object.entries(p.summary.categories).sort((a,b)=>b[1]-a[1]).slice(0,15)){const tr=document.createElement('tr');const a=document.createElement('td'),b=document.createElement('td');a.textContent=category;b.textContent=count.toLocaleString();tr.append(a,b);body.append(tr)}table.append(body);const note=document.createElement('p');note.className='small';note.textContent='Category counts describe raw Revit elements, not purchase quantities.';coverage.append(heading,table,note)}
+  }catch(e){$('notice').textContent=e.message}}
+async function loadExports(){try{const [data,project]=await Promise.all([api('/api/model-exports'),api('/api/projects/'+encodeURIComponent(id))]);const matches=data.exports.filter(x=>(!x.assignedProjectId||x.assignedProjectId===id)&&(!project.modelProjectName||(x.projectName.toLowerCase()===project.modelProjectName.toLowerCase()&&x.projectNumber===project.projectNumber)));$('source').replaceChildren(new Option('Choose a model export',''),...matches.map(x=>new Option(`${x.projectName} · ${x.projectNumber||'no number'} · ${x.fileName} (${size(x.bytes)})`,x.ref)))}catch(e){$('notice').textContent=e.message}}
+$('check').addEventListener('click',async()=>{const b=$('check');b.disabled=true;try{await api('/api/process',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await refresh()}catch(e){$('notice').textContent=e.message}finally{b.disabled=false}});
+$('connect').addEventListener('click',async()=>{const ref=$('source').value;if(!ref){$('notice').textContent='Choose a model export first.';return}const b=$('connect');b.disabled=true;try{await api('/api/projects/'+encodeURIComponent(id)+'/model',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sourceRef:ref})});$('notice').textContent='Model connected. The processor is copying and indexing it in Drive.';await refresh()}catch(e){$('notice').textContent=e.message}finally{b.disabled=false}});
+async function upload(file,kind){if(!file)throw Error('Choose a file first.');const query=new URLSearchParams({kind,name:file.name});const response=await fetch('/api/projects/'+encodeURIComponent(id)+'/upload?'+query,{method:'POST',body:file});const data=await response.json();if(!response.ok)throw Error(data.error||`Upload failed (${response.status})`);return data}
+$('uploadModel').addEventListener('click',async()=>{const b=$('uploadModel');b.disabled=true;$('notice').textContent='Uploading model into private Drive…';try{const result=await upload($('modelFile').files[0],'model');$('notice').textContent=`Uploaded ${result.fileName}. Indexing will continue in the background.`;await refresh()}catch(e){$('notice').textContent=e.message}finally{b.disabled=false}});
+$('uploadPdfs').addEventListener('click',async()=>{const b=$('uploadPdfs');b.disabled=true;try{const files=[...$('pdfFiles').files];if(!files.length)throw Error('Choose one or more PDFs first.');for(const file of files){$('notice').textContent='Uploading '+file.name+'…';await upload(file,'pdf')}$('notice').textContent=`Added ${files.length} PDF${files.length===1?'':'s'} to private Drive.`;await refresh()}catch(e){$('notice').textContent=e.message}finally{b.disabled=false}});
+refresh();loadExports();setInterval(refresh,15000);
+</script>
+</body>
+</html>

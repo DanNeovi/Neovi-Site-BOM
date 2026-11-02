@@ -30,7 +30,7 @@ class AutoProcessMonroeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             folder = Path(temporary)
             model = folder / 'monroe.neovi-model.json'
-            model.write_text('{"project":{"projectName":"206 Monroe Drive"},"elements":[]}')
+            model.write_text('{"project":{"projectName":"206 Monroe Drive","projectNumber":"00004"},"elements":[]}')
             documents = folder / 'documents'
             core = documents / 'AI Core'
             core.mkdir(parents=True)

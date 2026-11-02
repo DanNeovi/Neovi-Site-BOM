@@ -13,7 +13,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from private_drive_sources import CORE_FOLDER, CORE_PDFS, DOCUMENTS, DRIVE_ROOT, sync as sync_private_sources
+from private_drive_sources import CORE_FOLDER, CORE_PDFS, DOCUMENTS, DRIVE_ROOT, is_monroe_model, sync as sync_private_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,10 +54,7 @@ def pipeline_digest():
 
 
 def verify_project(path):
-    # The project header precedes the 1.97 GB element array.
-    with path.open('rb') as stream:
-        header = stream.read(16384).decode('utf-8', 'replace')
-    if '"project":' not in header or '"projectName":"206 Monroe Drive"' not in header:
+    if not is_monroe_model(path):
         raise ValueError(f'The selected raw model is not the Monroe export: {path}')
 
 

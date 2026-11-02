@@ -1,4 +1,21 @@
-# Local SiteBOM trial
+# Local SiteBOM project workspace
+
+## Project menu
+
+Open http://127.0.0.1:8765/dashboard to choose Monroe, Franklin, or Santa Rita,
+or to create another project. Creating a project writes its registry record to
+`G:\My Drive\SiteBOM\_Internal\project-registry.json` and creates private
+`00-Raw/<project>/Model`, `00-Raw/<project>/AI Core`, `02-Projects/<project>`,
+and `04-Audits/<project>` folders. Choose an existing NeoviOne model export at
+creation, or connect/upload it from the new project page. Current PDFs can be
+uploaded there too. The model must match the workspace's Revit identity.
+
+For new projects, the first automatic result is a source census: element
+counts by Revit category. These are not material purchase quantities. Each
+project still needs reviewed item mappings and calculation rules. Creating a
+project does not create a Google Sheet or publish it on GitHub Pages.
+
+## Monroe processing
 
 The standalone SiteBOM website is running on this computer at
 http://127.0.0.1:8765/dashboard. The current processed G: preview is at
@@ -9,8 +26,9 @@ other computers cannot reach this trial instance.
 
 The Windows task `Neovi-SiteBOM-Local` starts the server at sign-in.
 `scripts/setup-local-sitebom.ps1` installs that task. While it is running,
-the server checks raw files every five minutes. The dashboard's **Check and
-process now** button runs the same check immediately.
+the server checks registered project sources every five minutes. The menu's
+**Check all projects now** and each project's **Check sources now** button run
+the same check immediately.
 
 The raw source of truth is the owner-only Google Drive folder
 [SiteBOM / 00-Raw / Monroe](https://drive.google.com/drive/folders/16THLj6mzXs2A1D3Ioq3GBkQN5ML6bQgz),

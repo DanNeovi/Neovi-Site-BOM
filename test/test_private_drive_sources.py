@@ -30,5 +30,5 @@ class PrivateDriveSourcesTests(unittest.TestCase):
             model = Path(temporary) / 'model.json'
             model.write_text('{"project":{"projectName":"Fernando"}}')
             self.assertFalse(is_monroe_model(model))
-            model.write_text('{"project":{"projectName":"206 Monroe Drive"}}')
+            model.write_text('{"project":{"projectName":"206 Monroe Drive","projectNumber":"00004"}}')
             self.assertTrue(is_monroe_model(model))

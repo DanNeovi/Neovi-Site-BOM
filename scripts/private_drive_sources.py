@@ -10,6 +10,8 @@ import os
 import shutil
 from pathlib import Path
 
+from project_registry import model_header
+
 
 DRIVE_ROOT = Path('G:/My Drive/SiteBOM/00-Raw/Monroe')
 PRIVATE_FOLDER_URL = 'https://drive.google.com/drive/folders/16THLj6mzXs2A1D3Ioq3GBkQN5ML6bQgz'
@@ -29,12 +31,9 @@ CORE_PDFS = (
 
 
 def is_monroe_model(path):
-    try:
-        with path.open('rb') as stream:
-            header = stream.read(16384)
-        return b'"projectName":"206 Monroe Drive"' in header
-    except OSError:
-        return False
+    header = model_header(path)
+    return bool(header and header['projectName'] == '206 Monroe Drive' and
+                header['projectNumber'] == '00004')
 
 
 def local_model_candidates():
