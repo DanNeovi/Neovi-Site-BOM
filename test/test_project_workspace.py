@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 import project_intake  # noqa: E402
 import project_registry  # noqa: E402
 import auto_process_projects  # noqa: E402
+from local_google_auth import cookie_value  # noqa: E402
 
 
 def model(name='Test House', number='T1'):
@@ -28,6 +29,11 @@ def model(name='Test House', number='T1'):
 
 
 class ProjectRegistryTests(unittest.TestCase):
+    def test_session_cookie_survives_unrelated_browser_cookies(self):
+        header = 'sitebom_oauth=old-state; other="unterminated; sitebom_session=valid_token-2'
+        self.assertEqual(cookie_value(header, 'sitebom_session'), 'valid_token-2')
+        self.assertEqual(cookie_value(header, 'missing'), '')
+
     def test_live_sheet_sync_runs_only_after_changed_export_and_pin_setup(self):
         with tempfile.TemporaryDirectory() as temporary:
             pin = Path(temporary) / 'pin.txt'
@@ -132,6 +138,8 @@ class ProjectHttpTests(unittest.TestCase):
         spec.loader.exec_module(server_module)
         with tempfile.TemporaryDirectory() as temporary, \
                 patch.object(server_module, 'SITE_ROOT', Path(temporary)), \
+                patch.object(server_module, 'session_user', return_value={
+                    'sub': 'test-user', 'email': 'danielb@neovi.co'}), \
                 patch.object(server_module, 'process_once', return_value=True) as trigger:
             ai_folder = Path(temporary) / '04-Audits/Monroe-AI'
             ai_folder.mkdir(parents=True)
@@ -160,6 +168,8 @@ class ProjectHttpTests(unittest.TestCase):
                 self.assertEqual(code, 200)
                 self.assertIn(b'Back to projects', project_html)
                 self.assertIn(b'class="back-button" href="/dashboard"', project_html)
+                self.assertIn(b'danielb@neovi.co', project_html)
+                self.assertNotIn(b'{{CURRENT_EMAIL}}', project_html)
                 code, css = request('GET', '/app.css')
                 self.assertEqual(code, 200)
                 self.assertIn(b'.project-card', css)
@@ -211,3 +221,54 @@ class ProjectHttpTests(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 thread.join(timeout=5)
+
+    def test_google_sign_in_gates_project_data_and_logout_revokes_session(self):
+        spec = importlib.util.spec_from_file_location('sitebom_server_auth', ROOT / 'scripts/serve-local-sitebom.py')
+        server_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(server_module)
+        server = server_module.ThreadingHTTPServer(('127.0.0.1', 0), server_module.Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        host = f'127.0.0.1:{server.server_port}'
+        def request(method, path, body=None, headers=None):
+            connection = http.client.HTTPConnection('127.0.0.1', server.server_port, timeout=10)
+            connection.request(method, path, body=body, headers=headers or {})
+            response = connection.getresponse()
+            result = response.status, dict(response.getheaders()), response.read()
+            connection.close()
+            return result
+        try:
+            code, headers, _ = request('GET', '/dashboard')
+            self.assertEqual((code, headers.get('Location')), (303, '/login'))
+            self.assertEqual(request('GET', '/api/projects')[0], 401)
+            self.assertEqual(request('GET', '/preview/NeoviBOM.html')[0], 303)
+            self.assertEqual(request('GET', '/login')[1].get('Location'),
+                             f'http://localhost:{server.server_port}/login')
+            self.assertEqual(request('GET', '/auth/google?code=fake&state=test-state')[0], 403)
+            with patch.object(server_module, 'start_google_login', return_value=(
+                    'https://accounts.google.com/test', 'test-state')):
+                code, headers, _ = request('GET', '/auth/start', headers={'Host': f'localhost:{server.server_port}'})
+            self.assertEqual((code, headers.get('Location')), (303, 'https://accounts.google.com/test'))
+            self.assertIn('sitebom_oauth=test-state', headers['Set-Cookie'])
+            with patch.object(server_module, 'consume_google_state', return_value={
+                    'verifier': 'test-verifier', 'nonce': 'test-nonce'}), \
+                    patch.object(server_module, 'exchange_google_code', return_value='fake-token'), \
+                    patch.object(server_module, 'verify_google_credential', return_value={
+                        'sub': 'test-user', 'email': 'danielb@neovi.co'}):
+                code, headers, _ = request('GET', '/auth/google?code=fake&state=test-state',
+                                           headers={'Host': f'localhost:{server.server_port}',
+                                                    'Cookie': 'sitebom_oauth=test-state'})
+            self.assertEqual((code, headers.get('Location')), (303, '/dashboard'))
+            cookie = headers['Set-Cookie'].split(';', 1)[0]
+            self.assertIn('HttpOnly', headers['Set-Cookie'])
+            code, _, page = request('GET', '/dashboard', headers={'Cookie': cookie})
+            self.assertEqual(code, 200)
+            self.assertIn(b'danielb@neovi.co', page)
+            code, headers, _ = request('POST', '/auth/logout', b'',
+                                       {'Cookie': cookie, 'Origin': 'http://' + host})
+            self.assertEqual((code, headers.get('Location')), (303, '/login'))
+            self.assertEqual(request('GET', '/api/projects', headers={'Cookie': cookie})[0], 401)
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)

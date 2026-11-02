@@ -1,5 +1,28 @@
 # Local SiteBOM project workspace
 
+## Sign-in
+
+The local website now requires Google sign-in before it serves project pages,
+private reports, previews, or APIs. The configured OAuth app is **Neovi SiteBOM**
+in the Google Cloud project **Default Gemini Project**, with an internal Neovi
+audience and browser origins for `http://127.0.0.1:8765` and
+`http://localhost:8765`. The browser uses Google's authorization-code flow
+with PKCE and a one-time state value. The server exchanges the code and
+verifies Google's signed ID token, then
+checks the verified Neovi Workspace domain and local email allowlist. It keeps
+only a short-lived, HTTP-only local session cookie. **Sign out** revokes it.
+This identity-only flow does not request Google Drive access tokens.
+
+The Web OAuth client ID and secret are stored outside Git at
+`%LOCALAPPDATA%\Neovi\SiteBOM\google-client-id.txt` and
+`%LOCALAPPDATA%\Neovi\SiteBOM\google-client-secret.txt`. Approved accounts are
+listed one email per line in `%LOCALAPPDATA%\Neovi\SiteBOM\allowed-emails.txt`;
+until that file exists, only `danielb@neovi.co` is allowed. Add a coworker only
+after their Google Drive permissions are separately reviewed. Install the
+server dependency with `python -m pip install -r requirements-local.txt`.
+The server remains bound to this computer; sign-in alone does not make the
+local website remotely reachable.
+
 ## Project menu
 
 Open http://127.0.0.1:8765/dashboard to choose Monroe, Franklin, or Santa Rita,

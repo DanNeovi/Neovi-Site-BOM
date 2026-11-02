@@ -9,7 +9,7 @@
 <body>
   <header class="topbar"><div class="shell topbar-inner">
     <a class="brand" href="/dashboard" aria-label="SiteBOM projects"><span class="brand-name">Site<span>BOM</span></span><span class="brand-divider"></span><span class="brand-subtitle">Workspace</span></a>
-    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Local app</span><span class="account">danielb@neovi.co</span></div>
+    <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span>Local app</span><span class="account">{{CURRENT_EMAIL}}</span><form action="/auth/logout" method="post"><button class="sign-out" type="submit">Sign out</button></form></div>
   </div></header>
 
   <section class="project-hero"><div class="shell">

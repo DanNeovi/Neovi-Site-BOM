@@ -31,12 +31,13 @@ run("state.phase='Foundation';render()");
 assert.match(node('content').innerHTML,/Total station surveying/);
 assert.match(node('content').innerHTML,/Surveying tool for site layout/);
 assert.equal(run('usedFor({})'),'N/A');
-assert.equal(run('new Set(data.items.filter(i=>i.monroeEstimate).map(i=>i.originalLineId||i.lineId)).size'),271);
-for(const id of ['SHEET-016','SHEET-017','SHEET-026','SHEET-037','SHEET-033','SHEET-027']){
+assert.equal(run('new Set(data.items.filter(i=>i.monroeEstimate).map(i=>i.originalLineId||i.lineId)).size'),272);
+for(const id of ['SHEET-026','SHEET-037','SHEET-033','SHEET-027']){
  assert.equal(run(`data.items.find(i=>i.lineId===${JSON.stringify(id)}).monroeEstimate`),null);
  assert.match(run(`data.items.find(i=>i.lineId===${JSON.stringify(id)}).itemNotes`),/not this specific row/);
 }
-assert.match(run("data.items.find(i=>i.lineId==='SHEET-016').itemNotes"),/48 piles/);
+assert.equal(run("data.items.find(i=>i.lineId==='FND-006').monroeEstimate.quantity"),48);
+assert.equal(run("data.items.some(i=>i.lineId==='SHEET-016'||i.lineId==='SHEET-017')"),false);
 assert.equal(run("data.items.some(i=>i.lineId==='FND-021')"),false); // Deliberately represented by the total-station sheet row.
 assert.equal(run("data.items.find(i=>i.lineId==='PAN-016').monroeEstimate.quantity"),400);
 assert.match(run("monroeDetails(data.items.find(i=>i.lineId==='PAN-016'))"),/50 trusses × 8 EA per truss = 400 EA/);
@@ -77,11 +78,8 @@ for(const code of ['EQUIP','SUP','TOOL','MAT','FIX','FAST','RIG'])assert.ok(node
 run("state.view='documents';render()");assert.match(node('docList').innerHTML,/data-doc-folder/);
 console.log('PASS: two views, every phase item, stage ordering, Total station, expandable details, cross-category purchasing matches, unknown specification separation, print reports and code index.');
 
-assert.equal(run("data.items.filter(i=>i.checklistSource).length"),41);
-assert.equal(run("data.items.find(i=>i.lineId==='SHEET-016').listedQuantity"),50);
-assert.equal(run("data.items.find(i=>i.lineId==='SHEET-017').listedQuantity"),25);
-assert.match(run("data.items.find(i=>i.lineId==='SHEET-016').description"),/Legacy list/);
-assert.equal(run("rowQuantity(data.items.find(i=>i.lineId==='SHEET-016')).source"),'legacy list - review');
+assert.equal(run("data.items.filter(i=>i.checklistSource).length"),39);
+assert.doesNotMatch(node('pileScheduleNotice').textContent,/older 6-inch|older 4-inch/);
 assert.equal(run("data.items.find(i=>i.description==='Pile caps (sizes to confirm)').listedQuantity"),75);
 assert.equal(run("data.items.find(i=>i.lineId==='SHEET-036').stage"),'Site Setup');
 assert.equal(run("data.items.find(i=>i.lineId==='SHEET-037').listedQuantity"),20);
@@ -115,12 +113,13 @@ assert.equal(run("orderingList(data.items).includes('Monroe estimate')"),true);
 const unknownOrderingGroups=run("purchaseGroups(data.items.filter(i=>!i.description.startsWith('Define '))).filter(rows=>shownQuantity(rows).text.includes('N/A')).length");
 assert.ok(unknownOrderingGroups<20,`${unknownOrderingGroups} ordering groups still lack a complete quantity`);
 console.log(`Quantity display: ${unknownOrderingGroups} ordering groups retain N/A for an unresolved use.`);
-assert.equal(run("purchaseGroups(data.items).filter(rows=>rows.some(i=>i.description.includes('Helical piles ('))).length"),2);
+assert.equal(run("purchaseGroups(data.items).filter(rows=>rows.some(i=>i.lineId==='FND-006')).length"),1);
+assert.equal(run('data.pileSchedule.byDiameter.length'),3);
 assert.equal(run("data.items.filter(i=>/total station/i.test(i.description)).length"),1);
 run("state.view='catalog';state.presentation='phase';state.phase='Site Setup';state.query='';state.path=[];render()");
 assert.match(node('content').innerHTML,/Temporary power/);
 assert.doesNotMatch(node('content').innerHTML,/Mud mats \(winter\)/);
-console.log('PASS: user-provided quantities, separate pile sizes, combined cutters, Site Setup and no duplicate total station.');
+console.log('PASS: user-provided quantities, one scheduled pile item with three sizes, combined cutters, Site Setup and no duplicate total station.');
 
 assert.equal(node('printReport').innerHTML,'');
 assert.equal(run('new Set(data.items.map(i=>i.catalogId)).size'),run('data.items.length'));

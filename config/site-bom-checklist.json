@@ -171,28 +171,6 @@
       "specification": null
     },
     {
-      "id": "SHEET-016",
-      "stage": "Helical Piles",
-      "group": "Materials",
-      "description": "Helical piles (6-inch)",
-      "quantity": 50,
-      "unit": "EA",
-      "reference": "FND-006",
-      "purchaseType": null,
-      "specification": "6-inch helical piles, as listed in supplied sheet"
-    },
-    {
-      "id": "SHEET-017",
-      "stage": "Helical Piles",
-      "group": "Materials",
-      "description": "Helical piles (4-inch)",
-      "quantity": 25,
-      "unit": "EA",
-      "reference": "FND-006",
-      "purchaseType": null,
-      "specification": "4-inch helical piles, as listed in supplied sheet"
-    },
-    {
       "id": "SHEET-018",
       "stage": "Helical Piles",
       "group": "Materials",

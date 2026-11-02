@@ -47,12 +47,8 @@ export async function buildViewer(snapshot) {
     const reviewNote = ambiguousEstimate
       ? `The ${sharedEstimate.quantity} ${sharedEstimate.unit} Monroe estimate covers source item ${row.reference}, not this specific row. Allocate by size, stage and unit before using it here.`
       : '';
-    const legacyPile = ['SHEET-016', 'SHEET-017'].includes(row.id);
-    const pileNote = legacyPile
-      ? 'The Monroe structural pile schedule lists 48 piles: 9 at 3-1/2-inch, 22 at 4-1/2-inch and 17 at 2-7/8-inch shaft diameter. These legacy 6-inch/4-inch labels and listed quantities do not match that schedule.'
-      : '';
     return {...base, lineId: row.id, itemId: row.id, catalogId: row.id, sourceCatalogId: base.catalogId || null,
-      description: legacyPile ? `Legacy list: ${row.description}` : row.description, phase, phaseOrder: phase === 'Site Setup' ? 0 : 1,
+      description: row.description, phase, phaseOrder: phase === 'Site Setup' ? 0 : 1,
       stage: row.stage, stageOrder, categoryOrder: index, sourceOrdinal: [phase === 'Site Setup' ? 0 : 1, stageOrder, index, 0],
       categoryPath: base.categoryPath || [row.group, row.stage],
       inventoryPrefix: base.inventoryPrefix || ({Equipment:'EQUIP', Tools:'TOOL', Consumables:'SUP', Supplemental:'TOOL'})[row.group] || 'MAT',
@@ -62,9 +58,8 @@ export async function buildViewer(snapshot) {
       checklistSource: checklist.source, quantityMeaning: checklist.quantityMeaning,
       originalLineId: row.reference || null, kitId: 'N/A', sourceKitId: base.kitId || null,
       monroeEstimate: ambiguousEstimate ? null : sharedEstimate || null,
-      legacyQuantity: legacyPile,
       estimateReview: reviewNote || null,
-      itemNotes: [base.itemNotes, reviewNote, pileNote].filter(Boolean).join(' '), lineNotes: base.lineNotes || ''};
+      itemNotes: [base.itemNotes, reviewNote].filter(Boolean).join(' '), lineNotes: base.lineNotes || ''};
   });
   // The sheet provides a layout and reference entries, not an exhaustive phase inventory.
   // Keep every other catalog item in its active work package.

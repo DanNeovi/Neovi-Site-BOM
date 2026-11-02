@@ -1,6 +1,6 @@
 # Monroe Site BOM | Model quantities and planning formulas
 
-Source: `C:\Users\danie\Downloads\Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json`
+Source: `G:\My Drive\SiteBOM\00-Raw\Monroe\Model\Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json`
 
 Catalog rows: **276**. Model-linked or fixed catalog quantities: **23**. Planning estimate: **246**. Conditional zero: **3**. Undefined placeholders: **4**.
 
@@ -52,7 +52,7 @@ Catalog rows: **276**. Model-linked or fixed catalog quantities: **23**. Plannin
 | doors | 24 | doors |
 | firstStoryDoors | 11 | COUNT(modeled doors hosted on FIRST FLOOR); exact story allocation for frame screws |
 | secondStoryDoors | 13 | COUNT(modeled doors hosted on SECOND FLOOR); exact story allocation for frame screws |
-| exteriorDoors | 5 | Host wall Function defines exterior; garage vehicle doors excluded |
+| exteriorDoors | 4 | Exterior host wall and door family define scope; garage vehicle doors excluded |
 | sinks | 4 | COUNT(kitchen sink fixtures + bathroom sink cutouts); planning fixture proxy |
 | bathroomSinks | 3 | COUNT(bathroom sink cutouts); planning fixture proxy |
 | toilets | 4 | Neovi_PF_Toilets |
@@ -60,8 +60,8 @@ Catalog rows: **276**. Model-linked or fixed catalog quantities: **23**. Plannin
 | indoorUnits | 9 | COUNT(Prouall wall-mounted mechanical units); model-specific proxy for indoor AC positions |
 | fanCount | 11 | COUNT(AeroPure and exhaust-only fan instances); covers may be included |
 | shadeCount | 16 | COUNT(wall-based window-shade assemblies); electrical controls excluded |
-| operableWindows | 20 | COUNT(tilt-and-turn plus hung windows); fixed windows excluded from screen/handle allowance |
-| fixedWindows | 4 | COUNT(Neovi_WD_Fixed); no operable screen or handle assumed |
+| operableWindows | 19 | COUNT(A7.1 TILT & TURN Marks matched to host model; fixed windows excluded from screen/handle allowance) |
+| fixedWindows | 5 | COUNT(A7.1 FIXED Marks matched to host model; no operable screen or handle assumed) |
 | smartControls | 26 | COUNT(modeled Smart Button and Smart Touch Panel positions); low-voltage routing proxy |
 | ledProfileLength | 1,251.137745 | SUM(typed Neovi_Length FT of 66 face-based + 9 distinct wall-based runs); 39 spatial duplicates excluded |
 | ledProfileRawSum | 1,715.846715 | Raw LED family length before spatial duplicate exclusion; comparison only |
@@ -123,7 +123,7 @@ PAN-036 site wall CB = ceil(2,995.784698 net exterior-wall SQFT x 10% assumed si
 - LED profiles: the raw family sum is 1,715.846715 FT and the spatially reconciled estimate is 1,251.137745 FT. Confirm profile types and any remaining separate parallel runs.
 - HVAC: 9 wall-mounted all-in-one units are modeled. Branch box, refrigerant lines and outdoor-unit power are conditional zero in this scenario; their rows state the split-system fallback.
 - Electrical: 149 modeled outlet-cover equivalents include quad and stacked boxes. The six high-amperage positions split into three 30-AMP and three 50-AMP outlets. The breaker count groups modeled outlets, lighting/fans, AC, water heater, battery and solar as a planning circuit proxy; no circuit schedule is modeled. Cable and fitting lengths are budget routes, and the 50-AMP connector product is undefined.
-- Openings and plumbing: 20 operable and 4 fixed windows are modeled; only operable windows drive screen/handle allowances. 5 toilet rough-in cutouts versus 4 toilet fixtures require location reconciliation.
+- Openings and plumbing: 19 operable and 5 fixed windows are modeled; only operable windows drive screen/handle allowances. 5 toilet rough-in cutouts versus 4 toilet fixtures require location reconciliation.
 - Gutter and fire protection: 237.010389 FT of gutter is modeled; the 400.643339 FT exterior-wall run is only a fascia/soffit and fastener proxy. No sprinkler-head instances are modeled, so sprinkler quantities are planning allowances pending a fire-protection design.
 - Assemblies and tools: the fire riser and fire-riser assembly may be one purchase; sand/leveling and self-leveling compound may be alternate methods. Reusable tools need an inventory check.
 
@@ -391,17 +391,17 @@ Model quantities retain measured precision. Planning quantities and base kits us
 | 3.3 | FIN-155 Toilet mounting rods | PLANNING_ESTIMATE | 8 EA | 0 / 8 EA | 2 EA / toilets | 0.002302 EA/SQFT | ceil_to_1(4 toilets x 2 EA/toilets) = 8 EA; Two mounting rods per modeled toilet; connection detail pending. |
 | 3.3 | FIN-156 Toilet connection fittings | PLANNING_ESTIMATE | 8 EA | 0 / 8 EA | 2 EA / toilets | 0.002302 EA/SQFT | ceil_to_1(4 toilets x 2 EA/toilets) = 8 EA; Two connection fittings per modeled toilet; verify fixture package. |
 | 3.15 | FIN-158 Fan cover | PLANNING_ESTIMATE | 11 EA | 0 / 11 EA | 1 EA / fanCount | 0.003165 EA/SQFT | ceil_to_1(11 fanCount x 1 EA/fanCount) = 11 EA; One cover per modeled AeroPure or exhaust-only fan; confirm whether the fan already includes its cover. |
-| 3.4 | FIN-082 Exterior door sill pans | DERIVED_ALLOWANCE | 5 EA | 0 / 5 EA | N/A | 0.001438 EA/SQFT | COUNT(doors hosted by Exterior walls) x 1 sill pan = 5 EA; Host wall Function defines exterior; garage vehicle doors excluded; verify installation scope and product inclusion |
-| 3.4 | FIN-083 Exterior door flashing | USER_GEOMETRY_RULE | 124.166667 FT | 0 / 125 FT | N/A | 0.035723 FT/SQFT | SUM(exterior door count by size x (2H + W)) = 124.166667 FT; One head and two jambs per exterior opening; threshold handled separately by sill pan; no lap/waste allowance; verify installation scope and product inclusion |
+| 3.4 | FIN-082 Exterior door sill pans | DERIVED_ALLOWANCE | 4 EA | 0 / 4 EA | N/A | 0.001151 EA/SQFT | COUNT(exterior-hosted non-garage doors excluding explicitly interior door families) x 1 sill pan = 4 EA; Exterior host wall and door family define scope; garage vehicle doors excluded; verify installation scope and product inclusion |
+| 3.4 | FIN-083 Exterior door flashing | USER_GEOMETRY_RULE | 103.5 FT | 0 / 104 FT | N/A | 0.029777 FT/SQFT | SUM(exterior door count by size x (2H + W)) = 103.5 FT; One head and two jambs per exterior opening; threshold handled separately by sill pan; no lap/waste allowance; verify installation scope and product inclusion |
 | 3.4 | FIN-084 Door-frame screws | PLANNING_ESTIMATE | 192 EA | 0 / 192 EA | 8 EA / door | 0.055238 EA/SQFT | ceil_to_1(24 doors x 8 EA/doors) = 192 EA; Budget eight frame screws per modeled door |
-| 3.4 | FIN-085 Door gap foam | PLANNING_ESTIMATE | 1 CUFT | 0 / 1 CUFT | 0.008054 CUFT / doorJoint | 0.000288 CUFT/SQFT | ceil_to_1(124.166667 doorJoint x 0.006944 CUFT/doorJoint) = 1 CUFT; Budget 1/2-inch gap x 2-inch fill depth; FT x 0.5 x 2 / 144 = CUFT |
+| 3.4 | FIN-085 Door gap foam | PLANNING_ESTIMATE | 1 CUFT | 0 / 1 CUFT | 0.009662 CUFT / doorJoint | 0.000288 CUFT/SQFT | ceil_to_1(103.5 doorJoint x 0.006944 CUFT/doorJoint) = 1 CUFT; Budget 1/2-inch gap x 2-inch fill depth; FT x 0.5 x 2 / 144 = CUFT |
 | 3.4 | FIN-086 Define interior door installation materials | PLANNING_PLACEHOLDER | 0 EA | 0 / 0 EA | N/A | N/A | ceil_to_1(1 project x 0 EA/project) = 0 EA; Undefined placeholder or unidentified product: zero is a planning placeholder until the scope and exact item are defined. |
 | 3.4 | FIN-087 Window trim | USER_GEOMETRY_RULE | 468.5 FT | 0 / 469 FT | N/A | 0.134787 FT/SQFT | SUM(2(W+H) x sides); interior=2, exterior=1 = 468.5 FT; User trim rule: four-sided opening trim, two faces on interior walls and one on exterior walls; skylights excluded; verify installation scope and product inclusion |
 | 3.4 | FIN-088 Window screws | PLANNING_ESTIMATE | 192 EA | 0 / 192 EA | 8 EA / window | 0.055238 EA/SQFT | ceil_to_1(24 windows x 8 EA/windows) = 192 EA; Budget eight screws per modeled window |
 | 3.4 | FIN-089 Window silicone (10 oz cartridge assumed) | PLANNING_ESTIMATE | 16 EA | 0 / 16 EA | 0.034152 EA / windowPerimeter | 0.004603 EA/SQFT | ceil_to_1(468.5 windowPerimeter x 0.03264 EA/windowPerimeter) = 16 EA; Budget round 1/4-inch sealant bead: FT x pi x 0.25^2 / 4 x 12 / 1.8046875 = fluid OZ; divide by assumed 10-fluid-OZ cartridge and round up to EA |
 | 3.4 | FIN-090 Window gap filler | PLANNING_ESTIMATE | 4 CUFT | 0 / 4 CUFT | 0.008538 CUFT / windowPerimeter | 0.001151 CUFT/SQFT | ceil_to_1(468.5 windowPerimeter x 0.006944 CUFT/windowPerimeter) = 4 CUFT; Budget 1/2-inch gap x 2-inch fill depth; FT x 0.5 x 2 / 144 = CUFT |
-| 3.4 | FIN-159 Window screen | PLANNING_ESTIMATE | 20 EA | 0 / 20 EA | 1 EA / operableWindows | 0.005754 EA/SQFT | ceil_to_1(20 operableWindows x 1 EA/operableWindows) = 20 EA; One screen or operating-hardware set per modeled tilt-and-turn or hung window; four fixed windows excluded. Confirm screens and hardware supplied with units. |
-| 3.4 | FIN-160 Window hardware and handle set | PLANNING_ESTIMATE | 20 EA | 0 / 20 EA | 1 EA / operableWindows | 0.005754 EA/SQFT | ceil_to_1(20 operableWindows x 1 EA/operableWindows) = 20 EA; One screen or operating-hardware set per modeled tilt-and-turn or hung window; four fixed windows excluded. Confirm screens and hardware supplied with units. |
+| 3.4 | FIN-159 Window screen | PLANNING_ESTIMATE | 19 EA | 0 / 19 EA | 1 EA / operableWindows | 0.005466 EA/SQFT | ceil_to_1(19 operableWindows x 1 EA/operableWindows) = 19 EA; One screen or operating-hardware set per A7.1 tilt-and-turn Mark matched to the model; A7.1 fixed windows excluded. Confirm the approved drawing revision and whether screens and hardware are supplied with units. |
+| 3.4 | FIN-160 Window hardware and handle set | PLANNING_ESTIMATE | 19 EA | 0 / 19 EA | 1 EA / operableWindows | 0.005466 EA/SQFT | ceil_to_1(19 operableWindows x 1 EA/operableWindows) = 19 EA; One screen or operating-hardware set per A7.1 tilt-and-turn Mark matched to the model; A7.1 fixed windows excluded. Confirm the approved drawing revision and whether screens and hardware are supplied with units. |
 | 3.4 | FIN-161 Window-trim attachment hardware | PLANNING_ESTIMATE | 469 EA | 0 / 469 EA | 1.001067 EA / windowTrimLength | 0.134931 EA/SQFT | ceil_to_1(468.5 windowTrimLength x 1 EA/windowTrimLength) = 469 EA; One trim attachment per FT of model-derived installed window-trim run; clip or screw spacing pending. |
 | 3.4 | FIN-162 Window shade | PLANNING_ESTIMATE | 16 EA | 0 / 16 EA | 1 EA / shadeCount | 0.004603 EA/SQFT | ceil_to_1(16 shadeCount x 1 EA/shadeCount) = 16 EA; One shade per modeled wall-based window-shade assembly; reconcile with electrical shade controls before ordering. |
 | 3.5 | FIN-091 Bathroom vanity | PLANNING_ESTIMATE | 3 EA | 0 / 3 EA | 1 EA / bathroomSinks | 0.000863 EA/SQFT | ceil_to_1(3 bathroomSinks x 1 EA/bathroomSinks) = 3 EA; Budget one vanity per modeled bathroom sink module; included components pending |

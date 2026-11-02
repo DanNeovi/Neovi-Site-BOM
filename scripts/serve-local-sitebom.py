@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import html
 import json
 import os
 import re
@@ -16,6 +17,9 @@ from urllib.parse import parse_qs, unquote, urlsplit
 
 from auto_process_monroe import CORE_PDFS, DRIVE, STATE
 from gemini_keys import api_keys
+from local_google_auth import (client_id, client_secret, consume_google_state, create_session,
+                               exchange_google_code, expired_session_header, oauth_cookie_header, revoke_session,
+                               session_header, session_user, start_google_login, verify_google_credential)
 from private_drive_sources import CORE_FOLDER, DRIVE_ROOT, MODEL_FOLDER, MODEL_NAME, PRIVATE_FOLDER_URL
 from project_intake import state_path
 from project_registry import (SITE_DRIVE_URL, SITE_ROOT, assigned_project, connect_model, connect_uploaded_model,
@@ -28,6 +32,7 @@ SITE = ROOT / 'site'
 DASHBOARD = ROOT / 'local-site/index.html'
 PROJECT_PAGE = ROOT / 'local-site/project.html'
 APP_CSS = ROOT / 'local-site/app.css'
+LOGIN_PAGE = ROOT / 'local-site/login.html'
 LOG = STATE.parent / 'automation.log'
 worker_state_lock = threading.Lock()
 registry_lock = threading.Lock()
@@ -183,13 +188,44 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def send_page(self, page):
-        body = page.read_bytes()
+        user = session_user(self.headers.get('Cookie'))
+        body = page.read_text(encoding='utf-8').replace(
+            '{{CURRENT_EMAIL}}', html.escape(user['email']) if user else '').encode('utf-8')
         self.send_response(200)
         self.send_header('Content-Type', 'text/html; charset=utf-8')
         self.send_header('Cache-Control', 'no-store')
+        self.send_header('Referrer-Policy', 'no-referrer-when-downgrade')
         self.send_header('Content-Length', str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def send_login(self):
+        if client_id() and client_secret():
+            button = '<a class="button primary" href="/auth/start">Sign in with Google</a>'
+        else:
+            button = ('<p class="login-setup">Google sign-in needs a Web OAuth client ID and secret '
+                      'in the local SiteBOM settings folder.</p>')
+        body = LOGIN_PAGE.read_text(encoding='utf-8').replace('{{GOOGLE_BUTTON}}', button).encode('utf-8')
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Referrer-Policy', 'no-referrer-when-downgrade')
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def require_user(self, path):
+        user = session_user(self.headers.get('Cookie'))
+        if user:
+            return True
+        if path.startswith('/api/'):
+            self.send_json({'error': 'Sign in with Google to use SiteBOM'}, 401)
+        else:
+            self.send_response(303)
+            self.send_header('Location', '/login')
+            self.send_header('Cache-Control', 'no-store')
+            self.end_headers()
+        return False
 
     def send_stylesheet(self, path):
         body = path.read_bytes()
@@ -211,6 +247,44 @@ class Handler(SimpleHTTPRequestHandler):
         if path == '/favicon.ico':
             self.send_response(204)
             self.end_headers()
+            return
+        if path == '/app.css':
+            self.send_stylesheet(APP_CSS)
+            return
+        if path == '/login':
+            if self.headers.get('Host', '').startswith('127.0.0.1:'):
+                self.send_response(303)
+                self.send_header('Location', f'http://localhost:{self.server.server_port}/login')
+                self.send_header('Cache-Control', 'no-store')
+                self.end_headers()
+                return
+            if session_user(self.headers.get('Cookie')):
+                self.send_response(303)
+                self.send_header('Location', '/dashboard')
+                self.end_headers()
+            else:
+                self.send_login()
+            return
+        if path == '/auth/start':
+            if not self.headers.get('Host', '').startswith('localhost:'):
+                self.send_error(403, 'Use the localhost SiteBOM address')
+                return
+            try:
+                redirect_uri = f'http://localhost:{self.server.server_port}/auth/google'
+                authorization_url, state = start_google_login(redirect_uri)
+            except ValueError as error:
+                self.send_error(503, str(error))
+                return
+            self.send_response(303)
+            self.send_header('Location', authorization_url)
+            self.send_header('Set-Cookie', oauth_cookie_header(state))
+            self.send_header('Cache-Control', 'no-store')
+            self.end_headers()
+            return
+        if path == '/auth/google':
+            self.google_callback()
+            return
+        if not self.require_user(path):
             return
         if path == '/api/status':
             self.send_json(status())
@@ -252,9 +326,6 @@ class Handler(SimpleHTTPRequestHandler):
         if path == '/dashboard':
             self.send_page(DASHBOARD)
             return
-        if path == '/app.css':
-            self.send_stylesheet(APP_CSS)
-            return
         if re.fullmatch(r'/projects/[a-z0-9][a-z0-9-]{0,63}', path):
             if get(SITE_ROOT, path.rsplit('/', 1)[1]) is None:
                 self.send_error(404, 'Unknown project')
@@ -291,10 +362,20 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if not self.local_host_only():
             return
+        path = unquote(urlsplit(self.path).path)
         if not self.same_origin():
             self.send_error(403, 'Use the local SiteBOM website')
             return
-        path = unquote(urlsplit(self.path).path)
+        if path == '/auth/logout':
+            revoke_session(self.headers.get('Cookie'))
+            self.send_response(303)
+            self.send_header('Location', '/login')
+            self.send_header('Set-Cookie', expired_session_header())
+            self.send_header('Cache-Control', 'no-store')
+            self.end_headers()
+            return
+        if not self.require_user(path):
+            return
         if path == '/api/process':
             if self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
                 self.send_error(415)
@@ -329,6 +410,37 @@ class Handler(SimpleHTTPRequestHandler):
             self.upload(match.group(1))
             return
         self.send_error(404, 'Unknown SiteBOM action')
+
+    def google_callback(self):
+        stage = 'start'
+        try:
+            if not self.headers.get('Host', '').startswith('localhost:'):
+                raise ValueError('Use the localhost SiteBOM address')
+            query = parse_qs(urlsplit(self.path).query)
+            if 'error' in query:
+                raise ValueError('Google sign-in was cancelled')
+            state = (query.get('state') or [''])[0]
+            code = (query.get('code') or [''])[0]
+            if not code:
+                raise ValueError('Missing Google authorization code')
+            stage = 'state'
+            pending = consume_google_state(self.headers.get('Cookie'), state)
+            redirect_uri = f'http://localhost:{self.server.server_port}/auth/google'
+            stage = 'exchange'
+            credential = exchange_google_code(code, pending['verifier'], redirect_uri)
+            stage = 'verification'
+            user = verify_google_credential(credential, pending['nonce'])
+            stage = 'session'
+            token = create_session(user)
+        except (ValueError, UnicodeError, ImportError, OSError) as error:
+            print(f'SiteBOM Google sign-in rejected at {stage}: {type(error).__name__}', file=sys.stderr)
+            self.send_error(403, 'Google sign-in failed. Return to /login and try again.')
+            return
+        self.send_response(303)
+        self.send_header('Location', '/dashboard')
+        self.send_header('Set-Cookie', session_header(token))
+        self.send_header('Cache-Control', 'no-store')
+        self.end_headers()
 
     def read_json(self):
         if self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
