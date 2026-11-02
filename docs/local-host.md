@@ -54,8 +54,10 @@ website links to the private Drive folder; Google requires access as
 The four PDFs in the private Drive `AI Core` folder are the current Gemini
 extraction set. The local Downloads set remains the input to the older-file
 revision/conflict index. Source indexing creates a review-only page plan for
-20 passes over the four current PDFs, capped locally at 20 planned Gemini
-requests per day. The separately run Gemini extractor has already read all
+one pass over the four current PDFs by default. The stored Monroe plan retains
+the earlier 20-pass audit proposal, but the extractor stops after one pass
+unless a page is explicitly selected for more review. The separately run
+Gemini extractor has already read all
 133 current PDF pages once and saved 135 page responses with 905 candidate
 findings under `04-Audits/Monroe-AI`. The local project page now shows this
 status and links the review files. Uploading a source does **not** automatically

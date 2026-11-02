@@ -155,7 +155,8 @@ def main():
     parser.add_argument('--source-root', type=Path, default=DEFAULT_SOURCE)
     parser.add_argument('--output-root', type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument('--model', default='gemini-3.5-flash-lite')
-    parser.add_argument('--repeats', type=int, default=20)
+    parser.add_argument('--repeats', type=int, default=1,
+                        help='One page pass by default; plan extra passes only for a specific audit')
     parser.add_argument('--daily-cap', type=int, default=20,
                         help='Conservative local safety cap, not a claim about Google quota')
     parser.add_argument('--include-prior', action='store_true', help='Include older revisions and duplicates')

@@ -56,6 +56,7 @@ def build_report(output_root=DEFAULT_OUTPUT):
     schedule = json.loads(SCHEDULE.read_text(encoding='utf-8'))
     source = {item['path']: item for item in plan['sources']}
     rows, documents, pile_checks = [], [], []
+    token_totals = Counter()
     page_runs = defaultdict(list)
     for path in sorted((output_root / 'extractions').glob('*.json')):
         document = json.loads(path.read_text(encoding='utf-8'))
@@ -64,6 +65,20 @@ def build_report(output_root=DEFAULT_OUTPUT):
                 document.get('sourceSha256') != source[document['source']]['sha256']):
             raise ValueError(f'Extraction is outside the current source plan: {path}')
         documents.append(document)
+        usage = document.get('usageMetadata') or {}
+        for source_key, target_key in (('promptTokenCount', 'promptTokens'),
+                                       ('candidatesTokenCount', 'outputTokens'),
+                                       ('totalTokenCount', 'totalTokens')):
+            count = usage.get(source_key)
+            if isinstance(count, int) and count >= 0:
+                token_totals[target_key] += count
+        for detail in usage.get('promptTokensDetails', []):
+            count = detail.get('tokenCount')
+            if isinstance(count, int) and count >= 0:
+                if detail.get('modality') == 'IMAGE':
+                    token_totals['imageInputTokens'] += count
+                elif detail.get('modality') == 'TEXT':
+                    token_totals['textInputTokens'] += count
         page_runs[(document['source'], document['page'])].append(document)
         if document['source'].endswith('/Monroe SE sheets.pdf') and document['page'] == schedule['sourcePage']:
             check = pile_check(document, schedule)
@@ -97,7 +112,10 @@ def build_report(output_root=DEFAULT_OUTPUT):
               'sourceFiles': len(source), 'plannedPagesPerPass': plan['pagesPerPass'],
               'pagesReadAtLeastOnce': len(page_runs), 'completedRequests': len(documents),
               'plannedRequests': plan['plannedRequests'], 'candidateFindings': len(rows),
+              'routinePassRequests': plan['pagesPerPass'],
+              'routinePassRemaining': max(0, plan['pagesPerPass'] - len(page_runs)),
               'sourceCoverage': coverage,
+              'tokenUsage': dict(token_totals),
               'findingsWithQuantity': sum(row['quantity'] is not None for row in rows),
               'findingsWithoutQuantity': sum(row['quantity'] is None for row in rows),
               'installationScopeCounts': dict(Counter(row['installationScope'] for row in rows)),

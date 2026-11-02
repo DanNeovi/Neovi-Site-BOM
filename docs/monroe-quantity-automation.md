@@ -47,20 +47,24 @@ Older revisions and duplicate PDF copies stay in the index for conflict review.
 
 ```powershell
 python scripts/monroe_ai_sources.py index
-python scripts/monroe_ai_sources.py plan --repeats 20 --daily-cap 20
+python scripts/monroe_ai_sources.py plan --daily-cap 20
 python scripts/monroe_ai_extract.py --max-requests 20
 python scripts/monroe_ai_review.py
 ```
 
 `--daily-cap` is a local throttle, **not** Google's actual quota. Check the
 project/model's active RPM, TPM, and RPD in Google AI Studio. The default
-20-pass core plan is 133 x 20 = 2,660 requests; use `--include-prior` to plan
-all 751 PDF pages (15,020 requests) only when older revisions are needed for
-an explicit comparison. Each run resumes from saved results and records every
+The new plan default is one pass over 133 pages. The existing Monroe audit
+plan still records the earlier 20-pass proposal (2,660 requests), but the
+extractor now stops after pass one by default even when reading that plan.
+For a disputed page, use `--only-page 'Monroe SE sheets.pdf:3' --repeat-limit 2
+--max-requests 1` to request one additional pass. Use `--include-prior` only
+when older revisions are needed for an explicit comparison. Each run resumes
+from saved results and records every
 attempt before contacting Gemini. A source hash mismatch stops extraction.
 Use `--only-page 'Monroe SE sheets.pdf:3' --max-requests 1` for a page pilot.
-The key is read from `GEMINI_API_KEY` in the process or Windows User
-environment and is never written to the report.
+Keys are read from the local `GEMINI_API_KEY` or `GEMINI_API_KEYS` settings and
+are never written to the report. The daily cap applies to all keys together.
 
 The extractor renders engineering sheets as a full-page preview plus four
 higher-resolution quadrants. This is necessary because the structural PDF's
@@ -78,6 +82,11 @@ yielding 905 raw findings: 768 with a number and 137 without. Many numbered
 findings describe factory work or typical details, so this is a review queue,
 not 905 distinct purchase items. One malformed response was retried and
 succeeded; the request ledger records both attempts.
+
+The review report includes saved Gemini token usage by image input, text input,
+output, and total. Run `python scripts/monroe_ai_review.py` to refresh it
+without calling Gemini. See [Gemini token efficiency](gemini-token-efficiency.md)
+for the measured usage and open source extraction options.
 
 In the first pilot, a single full-page image misread HP-2a and HP-2d and
 totaled 51 piles; the cropped-page second pass read 48. A wall sheet first

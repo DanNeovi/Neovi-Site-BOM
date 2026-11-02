@@ -30,6 +30,7 @@ class PipelineTests(unittest.TestCase):
             root = Path(temp)
             (root / 'drawing.pdf').write_bytes(b'drawing')
             plan = {'model': 'test-model', 'localDailyCap': 2,
+                    'pagesPerPass': 1,
                     'plannedRequests': 3, 'repeatsPerPage': 3,
                     'sources': [{'path': 'drawing.pdf', 'sha256': 'hash',
                                  'pages': 1, 'scope': 'test'}]}
@@ -38,13 +39,32 @@ class PipelineTests(unittest.TestCase):
                   patch('monroe_ai_extract.digest', return_value='hash'),
                   patch('monroe_ai_extract.render_page', return_value=[b'image']),
                   patch('monroe_ai_extract.request_gemini', return_value=response) as request):
-                result = run(plan, root, root / 'output', 3, 3, min_start_interval=0)
+                result = run(plan, root, root / 'output', 3, 3,
+                             min_start_interval=0, repeat_limit=3)
             self.assertEqual([call.args[3] for call in request.call_args_list],
                              ['key-1', 'key-2'])
             self.assertEqual((result['sent'], result['configuredKeyCount']), (2, 2))
             ledger = (root / 'output/extractions/request-ledger.jsonl').read_text()
             self.assertNotIn('key-1', ledger)
             self.assertNotIn('key-2', ledger)
+
+    def test_default_run_stops_after_one_page_pass(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / 'drawing.pdf').write_bytes(b'drawing')
+            plan = {'model': 'test-model', 'localDailyCap': 20,
+                    'plannedRequests': 20, 'pagesPerPass': 1, 'repeatsPerPage': 20,
+                    'sources': [{'path': 'drawing.pdf', 'sha256': 'hash',
+                                 'pages': 1, 'scope': 'test'}]}
+            response = {'candidates': [{'content': {'parts': [{'text': '{"findings": []}'}]}}]}
+            with (patch('monroe_ai_extract.api_keys', return_value=('key',)),
+                  patch('monroe_ai_extract.digest', return_value='hash'),
+                  patch('monroe_ai_extract.render_page', return_value=[b'image']),
+                  patch('monroe_ai_extract.request_gemini', return_value=response) as request):
+                result = run(plan, root, root / 'output', 20, 20, min_start_interval=0)
+            self.assertEqual(request.call_count, 1)
+            self.assertEqual((result['planned'], result['fullPlanRequests'], result['repeatLimit']),
+                             (1, 20, 1))
 
     def test_current_pdf_indexes_from_private_drive_without_downloads_copy(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -126,6 +146,12 @@ class PipelineTests(unittest.TestCase):
                 document = {'project': 'Monroe', 'reviewStatus': 'candidate_only',
                             'source': source, 'sourceSha256': 'a' * 64,
                             'model': plan['model'], 'page': 1, 'repeat': repeat,
+                            'usageMetadata': {'promptTokenCount': 100,
+                                              'candidatesTokenCount': 20,
+                                              'totalTokenCount': 120,
+                                              'promptTokensDetails': [
+                                                  {'modality': 'IMAGE', 'tokenCount': 80},
+                                                  {'modality': 'TEXT', 'tokenCount': 20}]},
                             'result': {'findings': [
                                 {'item': 'Bolt', 'category': 'bedframe', 'quantity': None,
                                  'installationScope': 'unknown', 'evidence': 'Bolt'},
@@ -134,7 +160,10 @@ class PipelineTests(unittest.TestCase):
                 (folder / f'{repeat}.json').write_text(json.dumps(document))
             report = build_report(root)
             self.assertEqual(report['completedRequests'], 2)
+            self.assertEqual(report['routinePassRemaining'], 0)
             self.assertEqual(len(report['pagePassDisagreements']), 1)
+            self.assertEqual(report['tokenUsage']['totalTokens'], 240)
+            self.assertEqual(report['tokenUsage']['imageInputTokens'], 160)
 
 
 if __name__ == '__main__':
