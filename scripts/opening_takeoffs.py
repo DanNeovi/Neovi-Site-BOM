@@ -18,14 +18,19 @@ def add_opening_rules(rows,out):
         wall=index.get(e.get('hostUniqueId'),{})
         return parameter(wall,'Function',scope='type') if wall.get('category')=='Walls' else None
     doors=[e for e in host if e['category']=='Doors' and 'garage' not in e.get('family','').lower()]
-    exterior=[e for e in doors if wall_function(e)==1]
+    # A host wall may be exterior while an opening itself is explicitly an
+    # interior door (Monroe A7.1 mark 110). Do not let host geometry alone
+    # turn that opening into a sill-pan/flashing purchase.
+    exterior=[e for e in doors if wall_function(e)==1 and
+              not e.get('family','').startswith('Neovi_DR_Int')]
     def jamb_head(e):
         w,h=opening_size(e)
         return None if w is None or h is None else 2*h+w
     # Host wall resolves mislabeled door-family Function fields.
     if doors and all(wall_function(e) in (0,1) for e in doors):
-        measured(out,'FIN-082',exterior,lambda e:1,'COUNT(doors hosted by Exterior walls) x 1 sill pan',
-                 'Host wall Function defines exterior; garage vehicle doors excluded','DERIVED_ALLOWANCE')
+        measured(out,'FIN-082',exterior,lambda e:1,
+                 'COUNT(exterior-hosted non-garage doors excluding explicitly interior door families) x 1 sill pan',
+                 'Exterior host wall and door family define scope; garage vehicle doors excluded','DERIVED_ALLOWANCE')
         measured(out,'FIN-083',exterior,jamb_head,'SUM(exterior door count by size x (2H + W))',
                  'One head and two jambs per exterior opening; threshold handled separately by sill pan; no lap/waste allowance','USER_GEOMETRY_RULE')
     windows=[e for e in host if e['category']=='Windows' and not any(x in (e.get('family','')+' '+e.get('type','')).lower() for x in ('skylight','suntunnel','sun_tunnel','sun tunnel'))]

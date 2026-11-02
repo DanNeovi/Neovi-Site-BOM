@@ -129,8 +129,12 @@ class MonroeEstimatesTest(unittest.TestCase):
         self.assertEqual(self.items['FIN-161']['quantity'], math.ceil(d['windowTrimLength']['value']))
         self.assertEqual(self.items['FIN-112']['quantity'], 4 * d['solarPanels']['value'])
         self.assertEqual(d['operableWindows']['value'] + d['fixedWindows']['value'], d['windows']['value'])
+        self.assertEqual((d['operableWindows']['value'], d['fixedWindows']['value']), (19, 5))
+        self.assertIn('#page=27#sha256=', d['operableWindows']['references'][-1])
         self.assertEqual(self.items['FIN-159']['quantity'], d['operableWindows']['value'])
         self.assertEqual(self.items['FIN-160']['quantity'], d['operableWindows']['value'])
+        self.assertEqual(self.items['FIN-082']['quantity'], 4)
+        self.assertTrue(math.isclose(self.items['FIN-083']['quantity'], 103.5))
         for lid, plural in [('FIN-084', 'Doors'), ('FIN-088', 'Windows')]:
             item = self.items[lid]
             self.assertEqual(item['storyAllocation']['FIRST FLOOR']['quantity'],

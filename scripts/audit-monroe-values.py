@@ -80,8 +80,8 @@ REVIEW = {
     'FIN-105': 'Dry-room area is a finish proxy; confirm floor schedule, waste and whether wet rooms use another finish.',
     'FIN-119': 'Summed ceiling perimeters may include shared boundaries or LED replacement sections.',
     'FIN-120': '39 spatially overlapping LED profile representations were excluded; confirm any remaining parallel runs.',
-    'FIN-159': 'Only 20 operable windows are counted; four fixed windows are excluded. Confirm screen inclusion in the window package.',
-    'FIN-160': 'Only 20 operable windows are counted; four fixed windows are excluded. Confirm handle inclusion in the window package.',
+    'FIN-159': 'A7.1 has 19 tilt-and-turn and five fixed window Marks; screens are planned for operable units only. Confirm current revision and package inclusion.',
+    'FIN-160': 'A7.1 has 19 tilt-and-turn and five fixed window Marks; handle sets are planned for operable units only. Confirm current revision and package inclusion.',
 }
 
 for lid in ('FIN-015', 'FIN-016', 'FIN-017', 'FIN-018', 'FIN-021', 'FIN-022', 'FIN-069', 'FIN-122'):
@@ -221,8 +221,8 @@ def main():
         })
     counts = dict(Counter(row['auditKind'] for row in audits))
     d = report['drivers']
-    if (d['outlets']['value'] != 149 or d['operableWindows']['value'] != 20 or
-            d['fixedWindows']['value'] != 4 or d['trussCount']['value'] != 50 or
+    if (d['outlets']['value'] != 149 or d['operableWindows']['value'] != 19 or
+            d['fixedWindows']['value'] != 5 or d['trussCount']['value'] != 50 or
             d['floorClipFastenerPositions']['value'] != 3858):
         raise ValueError('Critical source family reconciliation changed')
     findings = [

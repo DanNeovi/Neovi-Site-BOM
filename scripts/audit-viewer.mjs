@@ -20,7 +20,7 @@ assert.equal(new Set(data.items.map(i=>i.catalogId)).size,data.items.length);
 const represented=new Set([...data.items.map(i=>i.lineId),...data.items.map(i=>i.originalLineId),...data.checklist.additionalRepresentedReferences]);
 assert.ok(source.items.every(i=>represented.has(i.lineId)),'Source entry lost');
 assert.equal(data.items.filter(i=>i.checklistSource).length,data.checklist.rows.length);
-for(const row of data.checklist.rows){const item=data.items.find(i=>i.lineId===row.id);assert.equal(item.listedQuantity,row.quantity);assert.equal(item.description,row.description);assert.equal(item.checklistGroup,row.group)}
+for(const row of data.checklist.rows){const item=data.items.find(i=>i.lineId===row.id);assert.equal(item.listedQuantity,row.quantity);assert.equal(item.description,item.legacyQuantity?`Legacy list: ${row.description}`:row.description);assert.equal(item.checklistGroup,row.group)}
 for(const phase of new Set(data.items.map(i=>i.phase))){run(`state.view='catalog';state.presentation='phase';state.phase=${JSON.stringify(phase)};state.query='';state.path=[];render()`);assert.equal((node('content').innerHTML.match(/class="material-entry"/g)||[]).length,data.items.filter(i=>i.phase===phase).length)}
 const groups=JSON.parse(run('JSON.stringify(purchaseGroups(data.items))'));
 assert.equal(groups.flat().length,data.items.length);

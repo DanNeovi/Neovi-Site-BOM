@@ -101,6 +101,17 @@ class MappingTests(unittest.TestCase):
         self.assertEqual(out['FIN-083']['value'],17)
         self.assertEqual(out['FIN-082']['value'],1)
 
+    def test_explicit_interior_door_on_exterior_host_is_not_exterior_hardware(self):
+        wall,door=self.opening_fixture(1)
+        door['family']='Neovi_DR_Int Single Swing Door W Ca'
+        out={};add_opening_rules([wall,door],out)
+        self.assertNotIn('FIN-082',out)
+        self.assertNotIn('FIN-083',out)
+        door['family']='Neovi_DR_Sliding Patio'
+        out={};add_opening_rules([wall,door],out)
+        self.assertEqual(out['FIN-082']['value'],1)
+        self.assertEqual(out['FIN-083']['value'],17)
+
     def test_trim_counts_interior_twice_exterior_once(self):
         wall,door=self.opening_fixture(0);out={}
         extra=add_opening_rules([wall,door],out)

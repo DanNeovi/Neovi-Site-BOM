@@ -302,7 +302,7 @@ Refreshing Project Inputs does not overwrite project adjustments, inventory, sta
 
 ## Customizing the Master
 
-`config/site-bom.contract.json` is the canonical interchange contract for schemas, numeric stages, Site Teams, Team Scopes, categories, units, sources, and input definitions. `config/site-bom.template.json` is the canonical catalog seed. The native Google Sheet is the fast operational editor. After changing master Items, BOM Lines, Rules, or list values in Google Sheets, use **Site BOM > Download master snapshot** and save the downloaded JSON with the project/release records. Snapshot format 2 retains System and Delivery Stage; team assignments are rehydrated from the current contract. Format 1 snapshots remain readable through the legacy migration path.
+`config/site-bom.contract.json` is the canonical interchange contract for schemas, numeric stages, Site Teams, Team Scopes, categories, units, sources, and input definitions. `config/site-bom.template.json` is the canonical catalog seed. The native Google Sheet is the fast operational editor. After changing master Items, BOM Lines, Rules, or list values in Google Sheets, use **Site BOM > Download master snapshot** and save the downloaded JSON with the project/release records. Snapshot format 2 retains System and Delivery Stage; team assignments are rehydrated from the current contract. The importer requires format 2 so it never guesses a legacy row's System or Delivery Stage.
 
 ```powershell
 npm.cmd run build:template -- --snapshot path\to\neovi-site-bom-master-0.4.0.json

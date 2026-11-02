@@ -64,11 +64,19 @@ test("downloaded flat master snapshots rebuild the same line model", async () =>
 test("master snapshots reject duplicate identities", () => {
   const snapshot = {
     format: "neovi-site-bom-master-snapshot",
-    formatVersion: 1,
+    formatVersion: MASTER_SNAPSHOT_VERSION,
     settings: {},
     items: [{ itemId: "I" }, { itemId: "I" }],
     bomLines: [{ lineId: "L", itemId: "I", phase: "Foundation", stage: "S", category: "C" }],
     rules: [{ lineId: "L" }],
   };
   assert.throws(() => masterSnapshotToConfig(snapshot), /Duplicate Item ID/);
+});
+
+test("format 1 snapshots are rejected instead of guessing delivery stage", () => {
+  assert.throws(() => masterSnapshotToConfig({
+    format: "neovi-site-bom-master-snapshot",
+    formatVersion: 1,
+    items: [], bomLines: [], rules: [],
+  }), /version 2/);
 });

@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import fitz
+from model_takeoff_rules import parameter
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,7 +35,7 @@ DIRECT_PLAN = {
     'SHEET-017': 'Structural schedule, PDF page 30 / SE page 3: 48 piles; no 4-in shaft size scheduled.',
     'SHEET-018': 'Structural schedule, PDF page 30 / SE page 3: 48 pile head codes: GTC03723 x9, GTC03796 x22, GTC03795 x17; separate cap scope unverified.',
     'FIN-082': 'A7.1, PDF page 27: four non-garage exterior doors (marks 101, 107, 111, 206); mark 110 is INTERIOR HINGED.',
-    'FIN-083': 'A7.1, PDF page 27: mark 110 is INTERIOR HINGED, while the model exterior-flashing selector includes it.',
+    'FIN-083': 'A7.1, PDF page 27: mark 110 is INTERIOR HINGED. The old host-wall-only selector included it; current rebuilt selector excludes it.',
     'FIN-084': 'A7.1, PDF page 27: 25 total doors including one garage door, or 24 non-garage doors; 8 screws/door is a separate assumption.',
     'FIN-087': 'A7.1, PDF page 27: 24 window rows sum to 468.5 FT one-side nominal frame perimeter; matches model window trim length.',
     'FIN-088': 'A7.1, PDF page 27: 24 window rows; 8 screws/window is a separate assumption.',
@@ -85,8 +86,8 @@ HIGH_PRIORITY = {
     'SHEET-030': 'Six listed 8x6 beams at 8 ft are not equivalent to 29 model-selected foundation HSS members. Reconcile member size and length schedule by beam key before ordering.',
     'SHEET-026': '9/16-inch annular cutters appear here as 20 and again on SHEET-033 as 12. Check whether these are shared stock or separate crews before summing.',
     'SHEET-033': '9/16-inch annular cutters appear here as 12 and again on SHEET-026 as 20. Check whether these are shared stock or separate crews before summing.',
-    'FIN-082': 'Five exterior sill pans include model door mark 110, but A7.1 calls mark 110 INTERIOR HINGED. A7.1 has four non-garage exterior doors; verify threshold details and exclude the false-positive host-wall classification.',
-    'FIN-083': '124.167 FT exterior flashing includes mark 110, which A7.1 calls interior. Remove that 20.667-FT model segment if the schedule controls, then remeasure the four true exterior openings and laps.',
+    'FIN-082': 'The live estimate is five sill pans. Current source-reviewed model math excludes interior door mark 110 and yields four; review drawing authority and threshold details before updating live.',
+    'FIN-083': 'The live estimate is 124.167 FT. Current source-reviewed model math excludes interior door mark 110 (20.667 FT) and yields 103.5 FT before laps; review drawing authority and flashing detail before updating live.',
     'FND-007': '12 extensions are a 25% allowance on 48 piles. Use required installed depth minus stock shaft length, by pile ID and actual available extension lengths.',
     'FND-010': '48 brackets use one per pile. Compare cap/head codes and steel details before deciding whether bracket is separate from the scheduled head.',
     'FND-014': '96 nuts use 2 per pile. Count by connection type and approved fastener detail, then multiply by occurrences.',
@@ -124,8 +125,8 @@ HIGH_PRIORITY = {
     'FIN-108': '6,411 truss-area finish screws = assumed 802 SQFT board x 8/SQFT. Confirm board area and fastening schedule; check overlap with PAN-040.',
     'FIN-119': '1,168 FT stretch-ceiling profiles sum room perimeters; shared boundaries and LED replacement runs may be double counted. Measure unique actual runs.',
     'FIN-120': '1,252 FT LED profiles follow model geometry after excluding 39 overlaps; compare against FIN-119 unique boundary runs and actual installation scope.',
-    'FIN-159': '20 screens follow the model family-name classifier, but A7.1 has 19 tilt-and-turn and five fixed windows. Mark 204 is FIXED on A7.1 yet its model family contains Hung. Use reviewed operation per mark and check package inclusion.',
-    'FIN-160': '20 handle sets follow the model family-name classifier, but A7.1 has 19 tilt-and-turn and five fixed windows. Mark 204 is FIXED on A7.1 yet its model family contains Hung. Use reviewed operation per mark and check package inclusion.',
+    'FIN-159': 'The live estimate is 20 screens; current A7.1 Mark-based calculation gives 19 operable windows. Mark 204 is fixed on the plan although its model family contains Hung. Review drawing authority and package inclusion before updating live.',
+    'FIN-160': 'The live estimate is 20 handle sets; current A7.1 Mark-based calculation gives 19 operable windows. Mark 204 is fixed on the plan although its model family contains Hung. Review drawing authority and package inclusion before updating live.',
 }
 DUPLICATE_REVIEW = {
     'Impact tools': ('SHEET-024', 'SHEET-031'),
@@ -249,7 +250,7 @@ def verify_source_counts():
     return elements
 
 
-def reconcile_opening_schedule(page_text, elements, formula_rows):
+def reconcile_opening_schedule(page_text, elements, formula_rows, drivers):
     """Parse A7.1 schedule rows and compare their marks with exported model families."""
     if 'A7.1 - DOOR SCHEDULE' not in page_text or 'A7.1 - WINDOW SCHEDULE' not in page_text:
         raise ValueError('A7.1 schedule headings not found on plan page 27')
@@ -271,24 +272,32 @@ def reconcile_opening_schedule(page_text, elements, formula_rows):
     host = [element for element in elements if element.get('sourceKey') == 'host']
     model_windows = {param(element, 'Mark'): element for element in host if element.get('category') == 'Windows'}
     model_doors = {element['key']: element for element in host if element.get('category') == 'Doors'}
-    window_ledger, operation_conflicts = [], []
+    walls_by_unique = {element.get('uniqueId'): element for element in host if element.get('category') == 'Walls'}
+    current_fixed = set(drivers['fixedWindows']['references'])
+    current_operable = set(drivers['operableWindows']['references'])
+    window_ledger, family_name_conflicts, current_conflicts = [], [], []
     for mark, type_mark, count, operation, wf, wi, hf, hi in window_rows:
         element = model_windows.get(mark)
         model_family = element.get('family', '') if element else ''
-        model_operation = ('fixed' if model_family == 'Neovi_WD_Fixed' else
-                           'operable' if model_family.startswith('Neovi_WD_Tilt&Turn') or 'Hung' in model_family
-                           else 'unknown')
+        family_name_operation = ('fixed' if model_family == 'Neovi_WD_Fixed' else
+                                 'operable' if model_family.startswith('Neovi_WD_Tilt&Turn') or 'Hung' in model_family
+                                 else 'unknown')
+        current_operation = ('fixed' if element and element['key'] in current_fixed else
+                             'operable' if element and element['key'] in current_operable else 'unknown')
         plan_operation = 'fixed' if operation == 'FIXED' else 'operable'
         perimeter = int(count) * 2 * (int(wf) * 12 + int(wi) + int(hf) * 12 + int(hi)) / 12
         row = {'source': 'State Set PDF p27 / A7.1', 'kind': 'window', 'mark': mark,
                'typeMark': type_mark, 'count': int(count), 'planOperation': plan_operation,
-               'modelOperation': model_operation, 'modelFamily': model_family,
+               'legacyFamilyNameOperation': family_name_operation,
+               'currentRecomputedOperation': current_operation, 'modelFamily': model_family,
                'modelElementKey': element.get('key') if element else None,
                'widthFt': int(wf) + int(wi) / 12, 'heightFt': int(hf) + int(hi) / 12,
                'oneSidePerimeterFt': perimeter}
         window_ledger.append(row)
-        if plan_operation != model_operation:
-            operation_conflicts.append(row)
+        if plan_operation != family_name_operation:
+            family_name_conflicts.append(row)
+        if plan_operation != current_operation:
+            current_conflicts.append(row)
 
     door_ledger = [{'source': 'State Set PDF p27 / A7.1', 'kind': 'door', 'mark': mark,
                     'typeMark': type_mark, 'planOperation': operation, 'count': int(count)}
@@ -296,7 +305,11 @@ def reconcile_opening_schedule(page_text, elements, formula_rows):
     plan_exterior = {row['mark'] for row in door_ledger if row['planOperation'].startswith('EXTERIOR')}
     model_exterior = {param(model_doors[key], 'Mark') for key in formula_rows['FIN-082']['references']
                       if key in model_doors}
-    extra_marks = model_exterior - plan_exterior
+    legacy_host_only_exterior = {param(element, 'Mark') for element in model_doors.values()
+                                 if 'garage' not in element.get('family', '').lower() and
+                                 (wall := walls_by_unique.get(element.get('hostUniqueId'))) and
+                                 parameter(wall, 'Function', scope='type') == 1}
+    extra_marks = legacy_host_only_exterior - plan_exterior
     model_door_by_mark = {param(element, 'Mark'): element for element in model_doors.values()}
 
     def feet(value):
@@ -312,20 +325,29 @@ def reconcile_opening_schedule(page_text, elements, formula_rows):
                'windows': {'total': sum(row['count'] for row in window_ledger),
                            'planOperable': sum(row['count'] for row in window_ledger if row['planOperation'] == 'operable'),
                            'planFixed': sum(row['count'] for row in window_ledger if row['planOperation'] == 'fixed'),
-                           'modelOperable': sum(row['modelOperation'] == 'operable' for row in window_ledger),
-                           'modelFixed': sum(row['modelOperation'] == 'fixed' for row in window_ledger),
-                           'operationConflicts': [{'mark': row['mark'], 'plan': row['planOperation'],
-                                                   'model': row['modelOperation'], 'modelFamily': row['modelFamily']}
-                                                  for row in operation_conflicts],
+                           'currentRecomputedOperable': sum(row['currentRecomputedOperation'] == 'operable' for row in window_ledger),
+                           'currentRecomputedFixed': sum(row['currentRecomputedOperation'] == 'fixed' for row in window_ledger),
+                           'legacyFamilyNameOperable': sum(row['legacyFamilyNameOperation'] == 'operable' for row in window_ledger),
+                           'legacyFamilyNameFixed': sum(row['legacyFamilyNameOperation'] == 'fixed' for row in window_ledger),
+                           'familyNameConflicts': [{'mark': row['mark'], 'plan': row['planOperation'],
+                                                    'legacyFamilyName': row['legacyFamilyNameOperation'],
+                                                    'modelFamily': row['modelFamily']}
+                                                   for row in family_name_conflicts],
+                           'currentRecomputedConflicts': [{'mark': row['mark'], 'plan': row['planOperation'],
+                                                           'current': row['currentRecomputedOperation']}
+                                                          for row in current_conflicts],
                            'oneSideNominalPerimeterFt': sum(row['oneSidePerimeterFt'] for row in window_ledger)},
                'doors': {'total': sum(row['count'] for row in door_ledger),
                          'planExteriorNonGarageMarks': sorted(plan_exterior),
-                         'modelExteriorNonGarageMarks': sorted(model_exterior),
-                         'modelExtraExteriorMarks': sorted(model_exterior - plan_exterior),
-                         'modelMissingExteriorMarks': sorted(plan_exterior - model_exterior),
-                         'modelSelectedExteriorFlashingFt': selected_flashing,
+                         'currentRecomputedExteriorMarks': sorted(model_exterior),
+                         'legacyHostOnlyExteriorMarks': sorted(legacy_host_only_exterior),
+                         'currentRecomputedExtraExteriorMarks': sorted(model_exterior - plan_exterior),
+                         'currentRecomputedMissingExteriorMarks': sorted(plan_exterior - model_exterior),
+                         'legacyHostOnlyExtraMarks': sorted(extra_marks),
+                         'liveLegacyFlashingFt': selected_flashing + extra_flashing,
+                         'currentRecomputedExteriorFlashingFt': selected_flashing,
                          'falsePositiveFlashingFt': extra_flashing,
-                         'candidateFourDoorFlashingFt': selected_flashing - extra_flashing},
+                         'candidateFourDoorFlashingFt': selected_flashing},
                'ledger': window_ledger + door_ledger}
     if (summary['windows']['total'], summary['windows']['planOperable'],
             summary['windows']['planFixed'], summary['windows']['oneSideNominalPerimeterFt'],
@@ -422,7 +444,11 @@ def explain_value(item, estimate, formula_item, audit, drivers):
                     named.append(f"{name}={driver['value']} {driver.get('unit') or ''}".strip())
             if named:
                 steps.append('Input drivers: ' + ', '.join(named) + '.')
-            steps.append(f"Catalog math: net {formula_item['quantity']}, spare "
+            if formula_item['quantity'] != planned:
+                steps.append(f"The rebuilt source calculation is {formula_item['quantity']} "
+                             f"{formula_item['unit']} and differs from live revision's {planned}; "
+                             'the live estimate has not been updated.')
+            steps.append(f"Current rebuilt catalog math: net {formula_item['quantity']}, spare "
                          f"{formula_item['spareQuantity']}, base kit {formula_item['baseKitQuantity']} "
                          f"{formula_item['unit']}; increment {formula_item['quantityIncrement']}, "
                          f"spare rate {formula_item['sparePercent']}, minimum kit {formula_item['minimumKitQty']}.")
@@ -468,7 +494,9 @@ def math_instruction(item, estimate, improved, formula_item):
                 + improved)
     source_formula = estimate.get('formula') or 'No formula recorded'
     if formula_item:
-        return (f"Recompute net demand from {source_formula}. Apply increment {formula_item['quantityIncrement']} "
+        correction = (f" Current rebuilt formula: {formula_item['formula']}."
+                      if formula_item['quantity'] != estimate.get('quantity') else '')
+        return (f"Live formula: {source_formula}.{correction} Apply increment {formula_item['quantityIncrement']} "
                 f"only after the raw driver-rate result. Compute spares as ceil(net × {formula_item['sparePercent']} "
                 f"to the increment), then base kit as ceil(max(net + spares, {formula_item['minimumKitQty']}) "
                 'to the increment). Keep all three numbers separate. Improved rule: ' + improved)
@@ -479,6 +507,7 @@ def math_instruction(item, estimate, improved, formula_item):
 def write_report(output_root, summary, results):
     status = summary['auditStatusCounts']
     priority = [row for row in results if row['priority'] == 'high']
+    by_id = {row['lineId']: row for row in results}
     lines = [
         '# Monroe SiteBOM quantity audit', '',
         f"Audited {summary['auditedAtUtc']}. Live Google Sheet revision **{summary['liveRevision']}**, "
@@ -488,16 +517,21 @@ def write_report(output_root, summary, results):
         f"- {summary['liveItems']} of {summary['liveItems']} live items have individual rows in `per-item-audit.csv` "
         '(listed and planning quantities, driver values, source references, explanation, AI instructions, math instructions and review status). '
         'The JSON includes every catalog source reference; the CSV includes a count and five-reference sample.',
-        f"- {summary['modelAuditRowsReconciled']} live items match the existing independent model-calculator audit. "
-        'This verifies the recorded arithmetic, not the design rate, installation scope or purchase amount.',
+        f"- {summary['modelAuditRowsMapped']} live items have a rebuilt catalog calculation; "
+        f"{summary['modelAuditRowsReconciled']} still match live and "
+        f"{len(summary['liveCalculationDifferences'])} differ. The rebuilt calculations pass an independent "
+        'arithmetic audit; this does not validate a design rate, installation scope or purchase amount.',
         f"- {summary['legacyEstimateRowsRecomputed']} additional legacy-sheet estimates were recomputed from their "
-        'project rate or model driver. Thus every current planning estimate has an arithmetic check.',
+        'project rate or model driver. The four live differences remain recorded separately.',
+        'The rebuilt calculation files in G: are newer than the unchanged live Google Sheet; '
+        'the report never silently replaces a live quantity with a recalculated one.',
         f"- {summary['listedCount']} lines have user-listed quantities; {summary['planningCount']} have planning estimates; "
         f"{summary['siteQuantityCount']} have entered site quantities.",
         f"- {summary['sourceEvidenceCoverage']['rowsWithElementOrScheduleReferences']} rows have traceable "
         f"model-element or pile-schedule references; {summary['sourceEvidenceCoverage']['rowsWithDirectDrawingEvidence']} "
         'have a directly reviewed drawing count or conflict. Text mentions and AI matches are only leads.',
-        f"- {status.get('priority_reconcile', 0)} priority conflicts or weak formulas; "
+        f"- {status.get('priority_reconcile', 0)} other priority conflicts or weak formulas; "
+        f"{status.get('live_calculation_outdated', 0)} live estimates differ from rebuilt source math; "
         f"{status.get('model_count_check_plan_scope', 0)} model-count items needing plan/scope review; "
         f"{status.get('undefined_or_conditional', 0)} conditional or placeholder quantities; "
         f"{status.get('listed_or_unknown_without_estimate', 0)} listed or unknown items without calculated estimates.",
@@ -508,7 +542,7 @@ def write_report(output_root, summary, results):
         'Resolve revisions with the design team before buying material.', '',
         '## How each value was obtained', '',
         'Read the `howValueWasObtained` column for the complete item-by-item explanation. '
-        'The `driverValues`, `formula`, `assumption`, `arithmeticCheck`, `sourceReferenceCount`, '
+        'The `driverValues`, `formula`, `currentRecomputedFormula`, `assumption`, `arithmeticCheck`, `sourceReferenceCount`, '
         '`sourceReferenceSample` and `drawingScheduleEvidence` columns show the trace. '
         'The JSON also contains `sourceReferences` for all catalog/model elements.', '',
         '| Value type | How it is obtained | What the number means |',
@@ -554,13 +588,16 @@ def write_report(output_root, summary, results):
         'Export model: 36 SHD15S, 21 SHDU9, 4 SHD10S, 4 SHD10B; '
         '31 + 4 + 2 short angles. At 21 in per confirmed location, 2,142 in = 178.5 ft. '
         'Anchor diameter parameters are blank, and ½-in for short angles is only a software default. |',
-        '| Window screens and handles (`FIN-159/160`) | 20 each planned | 19 operable | '
-        'A7.1 p27 has 19 TILT & TURN and five FIXED. Window mark 204 is FIXED in the plan '
-        'but its model family contains “Hung,” causing the model classifier to count it as operable. |',
-        '| Exterior sill pans (`FIN-082`) | 5 planned | 4 non-garage exterior doors | '
-        'A7.1 p27 calls door mark 110 INTERIOR HINGED; the model selector includes it because its host wall is exterior. |',
-        f"| Exterior door flashing (`FIN-083`) | {summary['openingSchedule']['doors']['modelSelectedExteriorFlashingFt']:.3f} FT planned | "
-        f"{summary['openingSchedule']['doors']['candidateFourDoorFlashingFt']:.3f} FT candidate | "
+        f"| Window screens and handles (`FIN-159/160`) | {by_id['FIN-159']['planningQuantity']} each live | "
+        f"{by_id['FIN-159']['currentRecomputedQuantity']} each rebuilt | "
+        'A7.1 p27 has 19 TILT & TURN and five FIXED. Old family-name logic counted fixed mark 204 as operable; '
+        'current rebuilt calculation follows the reviewed Mark schedule. Live remains unchanged. |',
+        f"| Exterior sill pans (`FIN-082`) | {by_id['FIN-082']['planningQuantity']} live | "
+        f"{by_id['FIN-082']['currentRecomputedQuantity']} rebuilt | "
+        'A7.1 p27 calls door mark 110 INTERIOR HINGED. The current rule excludes this explicitly interior door '
+        'from the exterior-hosted count; live remains unchanged. |',
+        f"| Exterior door flashing (`FIN-083`) | {by_id['FIN-083']['planningQuantity']:.3f} FT live | "
+        f"{by_id['FIN-083']['currentRecomputedQuantity']:.3f} FT rebuilt | "
         f"Removing mark 110's {summary['openingSchedule']['doors']['falsePositiveFlashingFt']:.3f}-FT "
         'rough-opening segment gives a four-door model calculation; verify head/jamb details and laps. |',
         '| Window trim (`FIN-087`) | 468.5 FT planned | 468.5 FT one-side frame perimeter | '
@@ -637,14 +674,15 @@ def write_report(output_root, summary, results):
                      'Confirm whether work areas share one site stock; keep distinct sizes and convert mixed units before any sum. |')
     lines.extend(['',
         '## Priority line review', '',
-        '| Live ID | Listed | Planning | Unit | Audit finding / better math |',
-        '| --- | ---: | ---: | --- | --- |',
+        '| Live ID | Listed | Live planning | Rebuilt | Unit | Audit finding / better math |',
+        '| --- | ---: | ---: | ---: | --- | --- |',
     ])
     for row in priority:
         note = row['betterMath'].replace('|', '/').replace('\n', ' ')
         lines.append(f"| `{row['lineId']}` {row['description'].replace('|', '/')} | "
                      f"{row['listedQuantity'] if row['listedQuantity'] is not None else '—'} | "
                      f"{row['planningQuantity'] if row['planningQuantity'] is not None else '—'} | "
+                     f"{row['currentRecomputedQuantity'] if row['currentRecomputedQuantity'] is not None else '—'} | "
                      f"{row['unit'] or '—'} | {note} |")
     lines.extend(['', '## Sources and reproducibility', '',
                   f"- State Set: `{summary['planSet']['path']}`; SHA-256 `{summary['planSet']['sha256']}`.",
@@ -678,7 +716,7 @@ def build(live_path, output_root, plan_pdf):
     formula_by_catalog = {item['catalogId']: item['lineId'] for item in formula_report['items']}
     drivers = formula_report['drivers']
     pages = plan_pages(plan_pdf)
-    openings = reconcile_opening_schedule(pages[26]['text'], elements, formula_rows)
+    openings = reconcile_opening_schedule(pages[26]['text'], elements, formula_rows, drivers)
     candidates = extraction_candidates((CORE_EXTRACTIONS, output_root / 'plan-set-review/extractions'))
     results = []
     for item in live['items']:
@@ -686,10 +724,9 @@ def build(live_path, output_root, plan_pdf):
         audit = model_rows.get(line_id)
         formula_item = formula_rows.get(line_id)
         estimate = item.get('monroeEstimate') or {}
-        if audit and estimate.get('quantity') != audit['quantity']:
-            raise ValueError(f'Live/model audit quantity mismatch: {line_id}')
-        if formula_item and estimate.get('quantity') != formula_item['quantity']:
-            raise ValueError(f'Live/formula report quantity mismatch: {line_id}')
+        if audit and formula_item and audit['quantity'] != formula_item['quantity']:
+            raise ValueError(f'Current model audit/formula report mismatch: {line_id}')
+        calculation_difference = bool(formula_item and estimate.get('quantity') != formula_item['quantity'])
         sheet_check = sheet_arithmetic_check(item, estimate, drivers)
         direct = DIRECT_PLAN.get(line_id)
         leads = page_leads(item['description'], pages)
@@ -717,13 +754,21 @@ def build(live_path, output_root, plan_pdf):
                'relatedCatalogLineId': formula_by_catalog.get(item.get('sourceCatalogId')),
                'specification': item.get('specification'), 'unit': item.get('unit'),
                'listedQuantity': listed, 'planningQuantity': planned,
+               'currentRecomputedQuantity': formula_item.get('quantity') if formula_item else None,
+               'currentRecomputedFormula': formula_item.get('formula') if formula_item else None,
+               'liveCalculationDiffers': calculation_difference,
+               'liveMinusRecomputed': planned - formula_item['quantity']
+                   if calculation_difference and isinstance(planned, (int, float)) else None,
                'siteQuantity': item.get('siteQuantity'),
                'listedMinusPlanning': listed - planned if isinstance(listed, (int, float)) and
                    isinstance(planned, (int, float)) and item.get('unit') == estimate.get('unit') else None,
                'estimateBasis': estimate.get('basis'), 'formula': estimate.get('formula'),
                'assumption': estimate.get('assumption'), 'modelAuditKind': audit.get('auditKind') if audit else None,
-               'arithmeticCheck': audit.get('arithmeticCheck') if audit else
-                   sheet_check if estimate else 'No calculation',
+               'arithmeticCheck': (f"Current model math passes, but live {planned} differs from rebuilt "
+                                   f"{formula_item['quantity']} {formula_item['unit']}"
+                                   if calculation_difference else
+                                   audit.get('arithmeticCheck') if audit else
+                                   sheet_check if estimate else 'No calculation'),
                'modelReferenceCount': audit.get('modelReferenceCount') if audit else None,
                'drawingScheduleEvidence': proven_drawing,
                'planPageLeads': leads, 'aiCandidateLeads': ai_leads,
@@ -745,8 +790,9 @@ def build(live_path, output_root, plan_pdf):
                'mathInstructions': math_instruction(item, estimate, improved, formula_item),
                'reviewNote': audit.get('reviewNote') if audit else item.get('estimateReview'),
                'betterMath': improved,
-               'auditStatus': classify(item, audit,
-                                       proven_drawing if line_id in ('FIN-087', 'FIN-154') else None),
+               'auditStatus': ('live_calculation_outdated' if calculation_difference else
+                               classify(item, audit,
+                                        proven_drawing if line_id in ('FIN-087', 'FIN-154') else None)),
                'priority': 'high' if line_id in HIGH_PRIORITY else 'medium' if estimate else 'low'}
         results.append(row)
     if len(results) != len(live['items']) or len({row['lineId'] for row in results}) != len(results):
@@ -764,14 +810,21 @@ def build(live_path, output_root, plan_pdf):
     replacement_map = {catalog_id: [row['lineId'] for row in results
                                     if row['relatedCatalogLineId'] == catalog_id]
                        for catalog_id in missing_catalog}
-    summary = {'schema': 'monroe-full-quantity-audit-2',
+    summary = {'schema': 'monroe-full-quantity-audit-3',
                'auditedAtUtc': datetime.now(timezone.utc).isoformat(),
                'liveRevision': live['revision'], 'liveSourceHash': live.get('sourceHash'),
                'liveUpdatedAt': live.get('updatedAt'), 'liveItems': len(results),
                'listedCount': sum(row['listedQuantity'] is not None for row in results),
                'planningCount': sum(row['planningQuantity'] is not None for row in results),
                'siteQuantityCount': sum(row['siteQuantity'] is not None for row in results),
-               'modelAuditRowsReconciled': sum(row['modelAuditKind'] is not None for row in results),
+               'modelAuditRowsMapped': sum(row['modelAuditKind'] is not None for row in results),
+               'modelAuditRowsReconciled': sum(row['modelAuditKind'] is not None and
+                                               not row['liveCalculationDiffers'] for row in results),
+               'liveCalculationDifferences': [{'lineId': row['lineId'],
+                                               'livePlanningQuantity': row['planningQuantity'],
+                                               'currentRecomputedQuantity': row['currentRecomputedQuantity'],
+                                               'unit': row['unit']}
+                                              for row in results if row['liveCalculationDiffers']],
                'legacyEstimateRowsRecomputed': sum(row['lineId'].startswith('SHEET') and
                    row['arithmeticCheck'] and row['arithmeticCheck'].startswith('Recomputed:') for row in results),
                'catalogLinesAbsentFromLive': len(missing_catalog),
@@ -818,7 +871,8 @@ def build(live_path, output_root, plan_pdf):
     (output_root / 'per-item-audit.json').write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding='utf-8')
     with (output_root / 'opening-schedule-ledger.csv').open('w', newline='', encoding='utf-8-sig') as stream:
         keys = ['source', 'kind', 'mark', 'typeMark', 'count', 'planOperation',
-                'modelOperation', 'modelFamily', 'modelElementKey', 'widthFt',
+                'legacyFamilyNameOperation', 'currentRecomputedOperation',
+                'modelFamily', 'modelElementKey', 'widthFt',
                 'heightFt', 'oneSidePerimeterFt']
         writer = csv.DictWriter(stream, fieldnames=keys)
         writer.writeheader()
@@ -835,7 +889,9 @@ def build(live_path, output_root, plan_pdf):
     with (output_root / 'per-item-audit.csv').open('w', newline='', encoding='utf-8-sig') as stream:
         keys = ['lineId', 'phase', 'workArea', 'description', 'sourceCatalogId',
                 'relatedCatalogLineId', 'specification', 'unit',
-                'listedQuantity', 'planningQuantity', 'siteQuantity', 'listedMinusPlanning',
+                'listedQuantity', 'planningQuantity', 'currentRecomputedQuantity',
+                'currentRecomputedFormula', 'liveCalculationDiffers', 'liveMinusRecomputed',
+                'siteQuantity', 'listedMinusPlanning',
                 'estimateBasis', 'modelAuditKind', 'arithmeticCheck', 'modelReferenceCount',
                 'drawingScheduleEvidence', 'planPageLeads', 'aiCandidateLeads',
                 'formula', 'assumption', 'driverValues', 'sourceReferenceCount',

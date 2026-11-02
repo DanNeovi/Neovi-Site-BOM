@@ -1,7 +1,7 @@
 /** @OnlyCurrentDoc */
 /*
  * Bound to the native "Monroe Site BOM Live" Google Sheet.
- * Deploy as a Web app: execute as owner, access anyone. Public reads are JSONP;
+ * Deploy as a Web app: execute as owner, access anyone. Public reads are JSON;
  * writes require a PIN whose salted hash stays in Script Properties.
  */
 const META_SHEET = 'Meta';
@@ -11,12 +11,12 @@ const LOCK_MINUTES = 15;
 
 function doGet(e) {
   const mode = String((e.parameter || {}).mode || 'read');
-  if (mode !== 'read' && mode !== 'history') return output_({error:'Unknown mode'}, e);
+  if (mode !== 'read' && mode !== 'history') return output_({error:'Unknown mode'});
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
     const state = mode === 'read' ? readState_() : readHistory_();
-    return output_(state, e);
+    return output_(state);
   } finally { lock.releaseLock(); }
 }
 
@@ -33,12 +33,9 @@ function doPost(e) {
   } finally { lock.releaseLock(); }
 }
 
-function output_(value, e) {
+function output_(value) {
   const json = JSON.stringify(value).replace(/</g, '\\u003c');
-  const callback = String((e.parameter || {}).callback || '');
-  if (!/^siteBomCallback_[A-Za-z0-9]{8,64}$/.test(callback))
-    return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
-  return ContentService.createTextOutput(callback + '(' + json + ');').setMimeType(ContentService.MimeType.JAVASCRIPT);
+  return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
 }
 
 function spreadsheet_() { return SpreadsheetApp.getActiveSpreadsheet(); }
@@ -144,18 +141,39 @@ function source_(p) {
   if (!Array.isArray(incoming.items)) throw new Error('Missing source items');
   const before=readStateSheet_(m.sourceSheet).items;
   const edited=readState_();
-  const merged=mergeSource_(before,edited.items,incoming.items);
+  const priorIds=new Set(before.map(item=>item.lineId));
+  const reappearingOrNew=new Set(incoming.items.map(item=>item.lineId).filter(id=>!priorIds.has(id)));
+  const historical=priorSourceItems_(reappearingOrNew,m.sourceSheet);
+  const merged=mergeSource_(before,edited.items,incoming.items,historical);
+  const categories=mergeCategories_(edited.categories,merged);
+  validateState_({items:merged,categories}); // Fail before creating either new tab.
   const sourceName='Source_v'+(m.revision+1);
   const sourceTab=spreadsheet_().insertSheet(sourceName);
   sourceTab.getRange(1,1,1,3).setValues([['Type','ID or path','JSON']]);
   if(incoming.items.length)sourceTab.getRange(2,1,incoming.items.length,3).setValues(incoming.items.map(i=>['item',i.lineId,JSON.stringify(i)]));
   sourceTab.hideSheet();
-  writeState_({items:merged,categories:edited.categories},m.revision+1,String(p.nonce || ''),'NeoviOne export',sourceName,hash);
+  writeState_({items:merged,categories},m.revision+1,String(p.nonce || ''),'NeoviOne export',sourceName,hash);
   return ContentService.createTextOutput('Imported source revision '+(m.revision+1));
 }
 
-function mergeSource_(before,edited,incoming) {
-  const oldById=new Map(before.map(i=>[i.lineId,i]));
+function priorSourceItems_(wanted,activeSourceSheet) {
+  if (!wanted.size) return [];
+  const found=new Map();
+  const names=spreadsheet_().getSheets().map(s=>s.getName())
+    .filter(name=>/^Source_v\d+$/.test(name)&&name!==activeSourceSheet)
+    .sort((a,b)=>Number(b.slice(8))-Number(a.slice(8)));
+  for(const name of names){
+    for(const item of readStateSheet_(name).items){
+      if(wanted.has(item.lineId)&&!found.has(item.lineId))found.set(item.lineId,item);
+    }
+    if(found.size===wanted.size)break;
+  }
+  return [...found.values()];
+}
+
+function mergeSource_(before,edited,incoming,historical=[]) {
+  const oldById=new Map(historical.map(i=>[i.lineId,i]));
+  for(const item of before)oldById.set(item.lineId,item);
   const editedById=new Map(edited.map(i=>[i.lineId,i]));
   const nextIds=new Set();
   const merged=incoming.map(fresh=>{
@@ -164,9 +182,10 @@ function mergeSource_(before,edited,incoming) {
     nextIds.add(id);
     const old=oldById.get(id),current=editedById.get(id);
     if (!current) return old ? null : fresh; // A site deletion remains deleted.
-    if (!old) return current;
+    if (!old) throw new Error('Source ID collides with a site-created item: '+id);
     const next={...fresh};
     for(const field of new Set([...Object.keys(old),...Object.keys(current)])){
+      if(field==='sourceMissing')continue; // Reappearing source items are current again.
       if(JSON.stringify(current[field])!==JSON.stringify(old[field])){
         if(Object.hasOwn(current,field))next[field]=current[field];else delete next[field];
       }
@@ -178,6 +197,22 @@ function mergeSource_(before,edited,incoming) {
     merged.push({...current,sourceMissing:true}); // Never silently erase an old source item.
   }
   return merged;
+}
+
+function mergeCategories_(edited,items) {
+  const categories=edited.map(category=>({...category,path:[...category.path]}));
+  const seen=new Set(categories.map(category=>JSON.stringify(category.path)));
+  let order=Math.max(0,...categories.map(category=>Number.isFinite(category.manualOrder)?category.manualOrder:0))+1;
+  for(const item of items){
+    if(!Array.isArray(item.categoryPath))continue;
+    for(let depth=1;depth<=item.categoryPath.length;depth++){
+      const path=item.categoryPath.slice(0,depth),key=JSON.stringify(path);
+      if(seen.has(key))continue;
+      categories.push({path,manualOrder:order++});
+      seen.add(key);
+    }
+  }
+  return categories;
 }
 
 function digest_(salt,pin) {
@@ -216,7 +251,8 @@ function configureEditorPin() {
 
 function testReadState() {
   const state=readState_();
-  if (state.revision!==1 || state.items.length<300 || state.categories.length<100)
-    throw new Error('Live Sheet does not contain the expected initial catalog');
+  if (!Number.isSafeInteger(state.revision) || state.revision < 1)
+    throw new Error('Live Sheet has no valid current revision');
+  validateState_(state);
   Logger.log('Revision '+state.revision+': '+state.items.length+' items, '+state.categories.length+' categories');
 }

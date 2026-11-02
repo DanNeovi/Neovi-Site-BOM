@@ -6,6 +6,7 @@ from pathlib import Path
 
 from model_takeoff_rules import parameter, select_unique
 from monroe_structural_schedule import load_pile_schedule
+from monroe_window_schedule import classify_window_operations, load_window_schedule
 from planning_estimates import planning_drivers
 from project_model_mapper import map_model
 
@@ -194,17 +195,18 @@ def monroe_drivers(rows, mapped, openings, story_areas, pile_schedule):
     windows = [e for e in host if e.get('category') == 'Windows' and
                not any(word in (e.get('family', '') + ' ' + e.get('type', '')).lower()
                        for word in ('skylight', 'suntunnel', 'sun_tunnel', 'sun tunnel'))]
-    fixed_windows = [e for e in windows if e.get('family') == 'Neovi_WD_Fixed']
-    operable_windows = [e for e in windows if e.get('family', '').startswith('Neovi_WD_Tilt&Turn') or
-                        'Hung' in e.get('family', '')]
-    if (len(windows) != result['windows']['value'] or
-            len(fixed_windows) + len(operable_windows) != len(windows)):
-        raise ValueError('Monroe window operation types need review')
+    window_schedule = load_window_schedule()
+    fixed_windows, operable_windows = classify_window_operations(windows, window_schedule)
+    if len(windows) != result['windows']['value']:
+        raise ValueError('Monroe window count changed from the model mapping')
+    window_source = (f"{window_schedule['sourceDocument']}#page={window_schedule['sourcePage']}"
+                     f"#sha256={window_schedule['sourceSha256']}")
     result['operableWindows'] = driver(len(operable_windows),
-        [e['key'] for e in operable_windows],
-        'COUNT(tilt-and-turn plus hung windows); fixed windows excluded from screen/handle allowance')
-    result['fixedWindows'] = driver(len(fixed_windows), [e['key'] for e in fixed_windows],
-        'COUNT(Neovi_WD_Fixed); no operable screen or handle assumed')
+        [e['key'] for e in operable_windows] + [window_source],
+        'COUNT(A7.1 TILT & TURN Marks matched to host model; fixed windows excluded from screen/handle allowance)')
+    result['fixedWindows'] = driver(len(fixed_windows),
+        [e['key'] for e in fixed_windows] + [window_source],
+        'COUNT(A7.1 FIXED Marks matched to host model; no operable screen or handle assumed)')
     smart_controls = [e for e in host if e.get('category') == 'Electrical Fixtures' and
                       e.get('family') == 'Neovi_EF_Smart Touch Panel']
     result['smartControls'] = driver(len(smart_controls), [e['key'] for e in smart_controls],

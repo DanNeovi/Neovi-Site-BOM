@@ -8,7 +8,6 @@ import {
 
 export const MASTER_SNAPSHOT_FORMAT = "neovi-site-bom-master-snapshot";
 export const MASTER_SNAPSHOT_VERSION = 2;
-const LEGACY_MASTER_SNAPSHOT_VERSION = 1;
 const canonicalContract = await loadSiteBomContract();
 
 export async function loadMasterSnapshot(filePath) {
@@ -29,8 +28,8 @@ export function masterSnapshotToConfig(snapshot) {
     throw new Error("Master snapshot must be an object.");
   }
   if (snapshot.format !== MASTER_SNAPSHOT_FORMAT
-    || ![LEGACY_MASTER_SNAPSHOT_VERSION, MASTER_SNAPSHOT_VERSION].includes(snapshot.formatVersion)) {
-    throw new Error(`Master snapshot must use ${MASTER_SNAPSHOT_FORMAT} version ${LEGACY_MASTER_SNAPSHOT_VERSION} or ${MASTER_SNAPSHOT_VERSION}.`);
+    || snapshot.formatVersion !== MASTER_SNAPSHOT_VERSION) {
+    throw new Error(`Master snapshot must use ${MASTER_SNAPSHOT_FORMAT} version ${MASTER_SNAPSHOT_VERSION}.`);
   }
   for (const field of ["items", "bomLines", "rules"]) {
     if (!Array.isArray(snapshot[field]) || snapshot[field].length === 0) throw new Error(`Master snapshot ${field} must be a non-empty array.`);
@@ -54,13 +53,11 @@ export function masterSnapshotToConfig(snapshot) {
     const phaseName = clean(bomLine.phase);
     const stageName = clean(bomLine.stage);
     const categoryName = clean(bomLine.category);
-    if (snapshot.formatVersion === MASTER_SNAPSHOT_VERSION
-      && (!clean(bomLine.system) || !clean(bomLine.deliveryStage))) {
+    if (!clean(bomLine.system) || !clean(bomLine.deliveryStage)) {
       throw new Error(`BOM Line ${lineId || "<blank>"} in snapshot version ${MASTER_SNAPSHOT_VERSION} requires System and Delivery Stage.`);
     }
-    const system = clean(bomLine.system) || "Legacy / Unclassified";
-    const deliveryStage = clean(bomLine.deliveryStage)
-      || legacyDeliveryStage(phaseName, stageName, lineId);
+    const system = clean(bomLine.system);
+    const deliveryStage = clean(bomLine.deliveryStage);
     if (!phaseName || !stageName || !categoryName) throw new Error(`BOM Line ${lineId} is missing phase, stage, or category.`);
     if (!phaseMap.has(phaseName)) phaseMap.set(phaseName, new Map());
     const stageMap = phaseMap.get(phaseName);
@@ -143,12 +140,6 @@ export function masterSnapshotToConfig(snapshot) {
     },
     phases,
   }, canonicalContract);
-}
-
-function legacyDeliveryStage(phase, workArea, lineId) {
-  if (phase === "Foundation" || ["PAN-001", "PAN-008"].includes(lineId)) return "1";
-  if (phase === "Panels" || workArea === "Rough MEP" || ["FIN-095", "FIN-096", "FIN-097"].includes(lineId)) return "2";
-  return "3";
 }
 
 function uniqueMap(rows, key, label) {

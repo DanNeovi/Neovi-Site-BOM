@@ -44,10 +44,17 @@ any visitor, so do not put secrets in item fields.
 
 The public web app is deployed at
 `https://script.google.com/macros/s/AKfycbwAFM2SkdjoHYeUa_cEXY9WplqhjNyk5qbE1AsjA-mKXjDF2j0IEOYgvTqFOvQxxCbB/exec`.
-The GitHub Pages site reads its revision 1 successfully. A disposable local
-server verified browser edits, adds, custom JSON fields, and the rendered
-public page. A real PIN-gated website save and the scheduled G: refresh still
-need end-to-end verification.
+On 2026-11-01, a direct public API read returned revision 6 with 301 items
+and 167 categories. The current Drive HTML and live Sheet have the same 301
+item IDs and planning estimates. The Drive HTML was generated after revision
+6, and two Sheet item descriptions/specifications contain editor changes.
+`Meta.sourceHash` still uses the prior whole-HTML method, so its difference
+from the current Drive file does not by itself prove a BOM item change. A real PIN-gated website save has not been
+verified in this audit. The current Windows user has no
+`Neovi-SiteBOM-Live-Sync` scheduled task or local encrypted PIN file, so the
+five-minute Drive refresh described below is **not running** on this computer.
+
+For an initial deployment or replacement PIN:
 
 1. In the bound Apps Script project, open **Project Settings → Script
    properties**. Add `SITE_BOM_SETUP_PIN` with a new six digit PIN chosen by the
@@ -55,7 +62,7 @@ need end-to-end verification.
    property and stores a salted hash. The owner must enter the PIN personally.
 2. Run `testReadState` from the editor. Grant access only to this bound Sheet
    if Google's authorization screen shows that scope. The test should report
-   revision 1, at least 300 items, and at least 100 categories.
+   the current revision, at least 300 items, and at least 100 categories.
 3. Deploy as a **Web app**: execute as the owner; access **Anyone**. This
    exposes only the scripted public read and PIN-gated write methods, not the
    private Sheet itself. Review Google's requested permissions before granting.
@@ -71,7 +78,11 @@ Properties, OAuth tokens, or the local encrypted PIN file.
 ## Automatic NeoviOne / Drive export refresh
 
 When NeoviOne produces a new `G:\My Drive\SiteBOM\NeoviBOM.html`, the local
-sync compares its SHA-256 with `Meta` in the live Sheet. It merges new source
+sync hashes the canonical `snapshot.items` payload and compares that SHA-256
+with `Meta` in the live Sheet. HTML timestamps and document-list changes alone
+do not create new Sheet revisions. The first run after this hash-method change
+will create one migration revision because older `Meta` values used the entire
+HTML file hash. The sync merges new source
 rows by permanent ID while preserving fields edited on the website. User-added
 items remain. If a source item disappears, the live version is retained and
 marked `sourceMissing` for review. A conflict or unreadable export stops the

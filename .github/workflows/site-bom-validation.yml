@@ -12,8 +12,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm.cmd ci
       - run: npm.cmd run check
+      - name: Test model and opening rules without private Drive files
+        run: |
+          python -m unittest discover -s test -p test_model_takeoff_rules.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s test -p test_monroe_window_schedule.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Publish current Site BOM exports
         uses: actions/upload-artifact@v4
         with:

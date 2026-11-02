@@ -62,7 +62,7 @@
     {"lines": ["FIN-155"], "driver": "toilets", "rate": 2, "basis": "Two mounting rods per modeled toilet; connection detail pending."},
     {"lines": ["FIN-156"], "driver": "toilets", "rate": 2, "basis": "Two connection fittings per modeled toilet; verify fixture package."},
     {"lines": ["FIN-158"], "driver": "fanCount", "rate": 1, "basis": "One cover per modeled AeroPure or exhaust-only fan; confirm whether the fan already includes its cover."},
-    {"lines": ["FIN-159", "FIN-160"], "driver": "operableWindows", "rate": 1, "basis": "One screen or operating-hardware set per modeled tilt-and-turn or hung window; four fixed windows excluded. Confirm screens and hardware supplied with units."},
+    {"lines": ["FIN-159", "FIN-160"], "driver": "operableWindows", "rate": 1, "basis": "One screen or operating-hardware set per A7.1 tilt-and-turn Mark matched to the model; A7.1 fixed windows excluded. Confirm the approved drawing revision and whether screens and hardware are supplied with units."},
     {"lines": ["FIN-162"], "driver": "shadeCount", "rate": 1, "basis": "One shade per modeled wall-based window-shade assembly; reconcile with electrical shade controls before ordering."},
     {"lines": ["FIN-161"], "driver": "windowTrimLength", "rate": 1, "basis": "One trim attachment per FT of model-derived installed window-trim run; clip or screw spacing pending."},
     {"lines": ["FIN-095", "FIN-096", "FIN-097"], "driver": "smartControls", "rate": 20, "replaceGeneral": true, "basis": "Assume 20 FT routed material per modeled smart button or touch-panel position. These three catalog rows may specify different materials on the same route; circuit schedule and product distinction pending."},
