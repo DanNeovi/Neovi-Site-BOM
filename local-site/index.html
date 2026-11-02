@@ -14,23 +14,15 @@
 
   <main class="shell workspace-main">
     <div class="breadcrumb">WORKSPACE <span>/</span> PROJECTS</div>
-    <div class="page-heading"><div><h1>Projects</h1><p>Models, drawings, takeoffs, and reports for every job.</p></div><div class="page-actions"><button id="check" type="button" class="button secondary">Check sources <span aria-hidden="true">↻</span></button><a class="button primary" href="#new-project">New project <span aria-hidden="true">＋</span></a></div></div>
-    <div class="system-status"><span class="status-indicator" aria-hidden="true"></span><span id="runtime" role="status">Checking the local processor…</span><span class="status-extra">SiteBOM processes new uploads when added</span></div>
-
-    <div class="overview" aria-label="Workspace at a glance">
-      <div class="overview-item"><div class="overview-label">Projects</div><div class="overview-value" id="projectCount">—</div><div class="overview-meta">Total workspaces</div></div>
-      <div class="overview-item"><div class="overview-label">Models</div><div class="overview-value" id="modelCount">—</div><div class="overview-meta">Connected exports</div></div>
-      <div class="overview-item"><div class="overview-label">Drawings</div><div class="overview-value" id="pdfCount">—</div><div class="overview-meta">Current PDFs</div></div>
-      <div class="overview-item"><div class="overview-label">AI review</div><div class="overview-value" id="reviewCount">—</div><div class="overview-meta">Pages read</div></div>
-    </div>
+    <div class="page-heading"><div><h1>Projects</h1><p>Open a project to review its sources, BOM, and reports.</p><div class="runtime-line"><span class="status-indicator" aria-hidden="true"></span><span id="runtime" role="status">Checking the local processor…</span></div></div><div class="page-actions"><button id="check" type="button" class="button secondary">Check sources <span aria-hidden="true">↻</span></button><button id="newProject" class="primary" type="button" aria-controls="new-project" aria-expanded="false">New project <span aria-hidden="true">＋</span></button></div></div>
 
     <section aria-labelledby="projects-title" class="project-section">
-      <div class="section-heading"><h2 id="projects-title">All projects</h2><span class="section-note">Select a project to open its workspace</span></div>
-      <div class="project-list"><div class="project-list-head" aria-hidden="true"><span>PROJECT</span><span>STATUS</span><span>SOURCES</span><span>OUTPUT</span><span></span></div><div id="projects" aria-live="polite"></div></div>
+      <div class="section-heading"><h2 id="projects-title">Your projects</h2><span class="section-note">Select a card to open its workspace</span></div>
+      <div class="project-grid" id="projects" aria-live="polite"></div>
     </section>
 
-    <section class="new-project" id="new-project" aria-labelledby="new-title">
-      <div class="new-project-intro"><div class="eyebrow">SETUP</div><h2 id="new-title">Create a project</h2><p>Creates private folders for the model, drawings, reports, and audits in Google Drive.</p></div>
+    <section class="new-project" id="new-project" aria-labelledby="new-title" hidden>
+      <div class="new-project-intro"><div class="eyebrow">SETUP</div><h2 id="new-title">Create a project</h2><p>Creates private folders for the model, drawings, reports, and audits in Google Drive.</p><button id="cancelNewProject" type="button" class="text-button">Cancel</button></div>
       <div class="new-project-entry"><form class="new-project-form" id="create"><label>Project name<input id="name" name="name" required minlength="2" maxlength="80" placeholder="e.g. New House Project"></label><label>Connect an existing export<select id="source"><option value="">No model yet</option></select></label><button class="primary" type="submit">Create project</button></form><p class="form-message" id="message" role="status"></p></div>
     </section>
   </main>
@@ -41,27 +33,26 @@ const $=id=>document.getElementById(id);
 const size=bytes=>bytes==null?'':bytes>=1073741824?(bytes/1073741824).toFixed(2)+' GB':(bytes/1048576).toFixed(1)+' MB';
 async function api(path,options){const r=await fetch(path,{cache:'no-store',...options});const data=await r.json();if(!r.ok)throw Error(data.error||`Request failed (${r.status})`);return data}
 function el(tag,className,text){const element=document.createElement(tag);if(className)element.className=className;if(text!=null)element.textContent=text;return element}
-function cell(primary,secondary){const box=el('div','project-cell');box.append(el('strong','',primary),el('small','',secondary));return box}
-function row(p){
-  const monroe=p.processor==='monroe',a=el('a','project-row'+(monroe?' current':''));a.href='/projects/'+encodeURIComponent(p.id);
-  const name=el('div','project-name');name.append(el('span','project-initial',p.name.slice(0,2).toUpperCase()));const text=el('span','project-identity');text.append(el('strong','',p.name),el('small','',p.modelProjectName?`${p.modelProjectName}${p.projectNumber?' · '+p.projectNumber:''}`:'New project'));name.append(text);
-  const status=el('div','project-cell');status.append(el('span','stage'+(monroe||p.summary?'':' pending'),monroe?'Takeoff ready':p.summary?'Model indexed':'Setup needed'),el('small','',monroe?'Monroe review pipeline':p.summary?'Raw model available':'Add model and drawings'));
-  const sources=cell(p.model?`${size(p.model.bytes)} model`:'No model',`${p.pdfs.length} current drawing${p.pdfs.length===1?'':'s'}`);
-  const output=cell(monroe?`${p.gemini?.pagesReadAtLeastOnce||0} AI pages reviewed`:`${p.reports.length} saved report${p.reports.length===1?'':'s'}`,monroe?`${p.reports.length} BOM exports`:'Ready for project rules');
-  a.append(name,status,sources,output,el('span','row-arrow','→'));return a;
+function fact(value,label){const box=el('div','card-fact');box.append(el('strong','',value),el('small','',label));return box}
+function card(p){
+  const monroe=p.processor==='monroe',a=el('a','project-card');a.href='/projects/'+encodeURIComponent(p.id);
+  const top=el('div','card-top');top.append(el('span','card-code',p.projectNumber?`PROJECT ${p.projectNumber}`:'NEW PROJECT'),el('span','card-arrow','↗'));
+  const identity=el('div','card-identity');identity.append(el('h3','',p.name),el('p','',p.modelProjectName||'No model connected'));
+  const stage=el('div','card-stage'+(monroe||p.summary?'':' pending'),monroe?'Takeoff ready':p.summary?'Model indexed':'Setup needed');
+  const facts=el('div','card-facts');facts.append(fact(p.model?size(p.model.bytes):'—','Model'),fact(String(p.pdfs.length),'Drawings'));
+  const output=el('div','card-output',monroe?`${p.gemini?.pagesReadAtLeastOnce||0} AI pages reviewed · ${p.reports.length} exports`:p.reports.length?`${p.reports.length} saved reports`:'Ready for sources');
+  a.append(top,identity,stage,facts,output);return a;
 }
 async function refresh(){try{
   const data=await api('/api/projects'),projects=data.projects;
-  $('projects').replaceChildren(...projects.map(row));
-  $('projectCount').textContent=projects.length;
-  $('modelCount').textContent=projects.filter(p=>p.model).length;
-  $('pdfCount').textContent=projects.reduce((sum,p)=>sum+p.pdfs.length,0);
-  $('reviewCount').textContent=projects.reduce((sum,p)=>sum+(p.gemini?.pagesReadAtLeastOnce||0),0);
+  $('projects').replaceChildren(...projects.map(card));
   const w=data.worker;$('runtime').textContent=w.running?'Processing project sources…':w.lastError?`Processor needs attention: ${w.lastError}`:'Local processor ready';
 }catch(e){$('runtime').textContent='Private Drive project registry unavailable';$('message').textContent=String(e)}}
 async function exports(){try{const data=await api('/api/model-exports');$('source').replaceChildren(new Option('No model yet',''),...data.exports.filter(x=>!x.assignedProjectId).map(x=>new Option(`${x.projectName} · ${x.projectNumber||'no number'} · ${x.fileName} (${size(x.bytes)})`,x.ref)))}catch(e){$('message').textContent='Could not list local model exports: '+e.message}}
 $('create').addEventListener('submit',async event=>{event.preventDefault();const button=event.submitter;button.disabled=true;$('message').textContent='Creating private folders…';try{const p=await api('/api/projects',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('name').value,sourceRef:$('source').value||null})});location.href='/projects/'+encodeURIComponent(p.id)}catch(e){$('message').textContent=e.message;button.disabled=false}});
-$('check').addEventListener('click',async()=>{const button=$('check');button.disabled=true;try{await api('/api/process',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await refresh()}catch(e){$('message').textContent=e.message}finally{button.disabled=false}});
+$('check').addEventListener('click',async()=>{const button=$('check');button.disabled=true;try{await api('/api/process',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await refresh()}catch(e){$('runtime').textContent=e.message}finally{button.disabled=false}});
+$('newProject').addEventListener('click',()=>{const panel=$('new-project');panel.hidden=!panel.hidden;$('newProject').setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden){panel.scrollIntoView({behavior:'smooth',block:'nearest'});$('name').focus()}});
+$('cancelNewProject').addEventListener('click',()=>{$('new-project').hidden=true;$('newProject').setAttribute('aria-expanded','false');$('newProject').focus()});
 refresh();exports();setInterval(refresh,15000);
 </script>
 </body>
