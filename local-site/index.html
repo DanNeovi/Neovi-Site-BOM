@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SiteBOM · local control</title>
+  <style>
+    :root{font:15px/1.5 Segoe UI,Arial,sans-serif;color:#14243b;background:#f3f6fc}
+    *{box-sizing:border-box}body{margin:0}header{background:#14243b;color:white;padding:24px max(24px,calc((100vw - 1160px)/2))}
+    header strong{font-size:24px}header p{margin:4px 0 0;color:#c6d6f1}main{max-width:1160px;margin:0 auto;padding:28px 24px 50px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}a,.button{display:inline-block;border:1px solid #b9c8de;border-radius:8px;background:white;color:#15479e;padding:10px 14px;text-decoration:none;font:inherit;cursor:pointer}
+    a:hover,.button:hover{border-color:#2b65ba;background:#edf4ff}.button.primary{background:#174ed1;color:white;border-color:#174ed1}
+    h1{font-size:32px;letter-spacing:-.5px;margin:0 0 6px}h2{font-size:17px;margin:0 0 12px}.intro{color:#53647b;margin:0 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid #cbd6e8;border-radius:12px;padding:20px;min-width:0}
+    .wide{grid-column:1/-1}.label{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:#62748e;font-weight:700}
+    .value{font-size:20px;font-weight:650;margin:4px 0}.sub{font-size:13px;color:#52637a;word-break:break-word}
+    .status{border-radius:7px;padding:8px 11px;font-size:13px;background:#e8f2ff;color:#174d8c;display:inline-block}
+    .status.bad{background:#fff0ed;color:#a33228}.status.good{background:#e9f7ec;color:#216333}
+    ul{margin:8px 0 0;padding-left:20px}li{margin:7px 0}code{font-size:12px;word-break:break-word}
+    @media(max-width:740px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}}
+  </style>
+</head>
+<body>
+<header><strong>SiteBOM</strong><p>Local raw-data and processing control</p></header>
+<main>
+  <h1>Monroe sources</h1>
+  <p class="intro">This computer checks published raw files every five minutes. Calculated values are review data; this local job does not write to the shared Google Sheet.</p>
+  <nav><a href="/preview/NeoviBOM.html">Open processed preview</a><a href="/bom/index.html">Open shared BOM</a><a href="/bom/editor.html">Open shared editor</a><button class="button primary" id="process">Check and process now</button></nav>
+  <div class="grid">
+    <section class="card"><div class="label">Processor</div><div class="value" id="processor">Checking…</div><div class="sub" id="processorDetail"></div></section>
+    <section class="card"><div class="label">Raw Revit model</div><div class="value" id="model">Checking…</div><div class="sub" id="modelDetail"></div></section>
+    <section class="card"><div class="label">Google Drive output</div><div class="value" id="drive">Checking…</div><div class="sub" id="driveDetail"></div></section>
+    <section class="card"><div class="label">Drawing index</div><div class="value" id="drawings">Checking…</div><div class="sub" id="drawingsDetail"></div></section>
+    <section class="card wide"><h2>Current AI Core PDFs</h2><ul id="pdfs"></ul></section>
+    <section class="card wide"><h2>How this runs</h2><p class="sub">Revit's published model JSON is the raw model input. The processor scans it, recalculates Monroe planning quantities, verifies exports, and writes results to <code>G:\My Drive\SiteBOM</code>. It indexes the four current PDFs and older Monroe files for revision checks. Gemini extraction remains a separate, capped review step.</p><div class="sub" id="log"></div></section>
+  </div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const stamp=value=>value?new Date(value).toLocaleString():'never';
+const size=value=>typeof value==='number'?(value/1024/1024/1024).toFixed(2)+' GB':'';
+async function refresh(){
+  try{
+    const response=await fetch('/api/status',{cache:'no-store'});if(!response.ok)throw Error('Status request failed');
+    const s=await response.json(),w=s.worker,a=s.automation||{},m=s.sourceModel,d=s.driveExport;
+    $('processor').textContent=w.running?'Processing raw files…':w.lastError?'Needs attention':a.modelProcessedAtUtc?'Current processing available':'Waiting for first run';
+    $('processorDetail').textContent=(w.lastError||'Last model run: '+stamp(a.modelProcessedAtUtc))+' · Last check: '+stamp(w.lastFinishedUtc);
+    $('model').textContent=m.exists?'Model export found':'Model export missing';
+    $('modelDetail').textContent=m.path+(m.exists?' · '+size(m.bytes)+' · '+stamp(m.modifiedUtc):'');
+    $('drive').textContent=s.driveAvailable?(d.exists?'Drive export available':'Drive mounted; export missing'):'G: drive unavailable';
+    $('driveDetail').textContent=d.path+(d.exists?' · updated '+stamp(d.modifiedUtc):'');
+    $('drawings').textContent=s.aiPlan.exists?'Drawing plan available':'Drawing plan pending';
+    $('drawingsDetail').textContent='Indexed: '+stamp(a.drawingsIndexedAtUtc)+' · older files are indexed for conflicts';
+    $('pdfs').replaceChildren(...s.corePdfs.map(p=>{const li=document.createElement('li');li.textContent=p.path.split(/[\\/]/).pop()+' — '+(p.exists?'available, '+stamp(p.modifiedUtc):'missing');return li}));
+    $('log').textContent='Processor log: '+s.log;
+    $('processor').style.color=w.lastError?'#a33228':'';
+  }catch(error){$('processor').textContent='Local server unavailable';$('processorDetail').textContent=String(error)}
+}
+$('process').addEventListener('click',async()=>{const button=$('process');button.disabled=true;try{await fetch('/api/process',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await refresh()}finally{button.disabled=false}});
+refresh();setInterval(refresh,15000);
+</script>
+</body>
+</html>

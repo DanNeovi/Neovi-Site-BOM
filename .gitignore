@@ -6,3 +6,4 @@ previews/
 output/
 tmp/
 __pycache__/
+.playwright-cli/

@@ -1,5 +1,7 @@
 """Retain physical Monroe elements needed for repeatable site BOM estimates."""
 import json
+import os
+import sys
 from pathlib import Path
 
 import ijson
@@ -9,7 +11,8 @@ from shapely.ops import unary_union
 from model_takeoff_rules import eligible, parameter
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = Path('C:/Users/danie/Downloads/Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json')
+SOURCE = Path(os.environ.get('SITE_BOM_MONROE_MODEL',
+    str(Path.home() / 'Downloads/Neovi_206 Monroe Dr_00004_ShopDrawing.neovi-model.json')))
 OUT = ROOT / 'outputs/NeoviBOM/_Internal/Model-Data'
 CATEGORIES = {
     'Structural Framing', 'Structural Connections', 'Bolts', 'Structural Columns',
@@ -85,7 +88,7 @@ def main():
     stat = SOURCE.stat()
     manifest_path = OUT / 'monroe-scan-manifest.json'
     cache_path = OUT / 'monroe-takeoff-elements.json'
-    if manifest_path.exists() and cache_path.exists():
+    if '--force' not in sys.argv and manifest_path.exists() and cache_path.exists():
         prior = json.loads(manifest_path.read_text())
         if (prior.get('schema') == 'monroe-scan-5' and
                 (prior.get('sourceBytes'), prior.get('sourceMtimeNs')) == (stat.st_size, stat.st_mtime_ns)):

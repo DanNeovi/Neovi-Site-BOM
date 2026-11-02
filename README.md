@@ -1,5 +1,10 @@
 # Neovi Site BOM
 
+## Local hosted trial
+
+Open [the local SiteBOM guide](docs/local-host.md) for the Windows-hosted
+dashboard, raw-file processor, sign-in task, and current integration limits.
+
 ## Canonical location
 
 The Git source checkout remains connected to `https://github.com/DanNeovi/Neovi-Site-BOM.git`. On this workstation, `outputs/NeoviBOM` is a directory junction to `G:\My Drive\SiteBOM`, so every normal build writes the current deliverables directly to My Drive. There is no separate active output copy in Documents. Run `npm.cmd run link:drive-output` after a fresh checkout to recreate the junction; the command stops if an existing output directory needs reconciliation. Google Drive must be mounted as `G:` before building.
