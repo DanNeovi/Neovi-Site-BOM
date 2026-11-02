@@ -154,7 +154,11 @@ class ProjectHttpTests(unittest.TestCase):
             try:
                 code, html = request('GET', '/dashboard')
                 self.assertEqual(code, 200)
-                self.assertIn(b'Your Site BOM projects', html)
+                self.assertIn(b'Every project.', html)
+                self.assertIn(b'/app.css', html)
+                code, css = request('GET', '/app.css')
+                self.assertEqual(code, 200)
+                self.assertIn(b'.project-card', css)
                 code, payload = request('GET', '/api/projects')
                 self.assertEqual(code, 200)
                 self.assertEqual(len(json.loads(payload)['projects']), 3)

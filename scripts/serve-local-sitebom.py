@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
 DASHBOARD = ROOT / 'local-site/index.html'
 PROJECT_PAGE = ROOT / 'local-site/project.html'
+APP_CSS = ROOT / 'local-site/app.css'
 LOG = STATE.parent / 'automation.log'
 worker_state_lock = threading.Lock()
 registry_lock = threading.Lock()
@@ -190,6 +191,15 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def send_stylesheet(self, path):
+        body = path.read_bytes()
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/css; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def same_origin(self):
         host = self.headers.get('Host')
         return self.headers.get('Origin') == f'http://{host}'
@@ -241,6 +251,9 @@ class Handler(SimpleHTTPRequestHandler):
             path = '/dashboard'
         if path == '/dashboard':
             self.send_page(DASHBOARD)
+            return
+        if path == '/app.css':
+            self.send_stylesheet(APP_CSS)
             return
         if re.fullmatch(r'/projects/[a-z0-9][a-z0-9-]{0,63}', path):
             if get(SITE_ROOT, path.rsplit('/', 1)[1]) is None:
