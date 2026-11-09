@@ -55,7 +55,7 @@ export async function buildViewer(snapshot) {
       system: row.group, checklistGroup: row.group, unit: row.unit,
       specification: row.specification || base.specification || 'N/A',
       listedQuantity: row.quantity, purchaseType: row.purchaseType,
-      checklistSource: checklist.source, quantityMeaning: checklist.quantityMeaning,
+      checklistSource: row.quantitySource || checklist.source, quantityMeaning: row.quantityMeaning || checklist.quantityMeaning,
       originalLineId: row.reference || null, kitId: 'N/A', sourceKitId: base.kitId || null,
       monroeEstimate: ambiguousEstimate ? null : sharedEstimate || null,
       estimateReview: reviewNote || null,

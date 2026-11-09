@@ -176,6 +176,8 @@
       "group": "Materials",
       "description": "Pile caps (sizes to confirm)",
       "quantity": 48,
+      "quantitySource": "Monroe SE sheets.pdf, S0.2 helical pile schedule (48 piles); corrected after user review",
+      "quantityMeaning": "One cap per scheduled pile for planning: 9 GTC03723, 22 GTC03796, and 17 GTC03795 by pile head code. Confirm cap variants and S0.3 details before purchase.",
       "unit": "EA",
       "reference": null,
       "purchaseType": null,
