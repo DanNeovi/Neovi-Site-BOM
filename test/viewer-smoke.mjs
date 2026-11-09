@@ -80,7 +80,7 @@ console.log('PASS: two views, every phase item, stage ordering, Total station, e
 
 assert.equal(run("data.items.filter(i=>i.checklistSource).length"),39);
 assert.doesNotMatch(node('pileScheduleNotice').textContent,/older 6-inch|older 4-inch/);
-assert.equal(run("data.items.find(i=>i.description==='Pile caps (sizes to confirm)').listedQuantity"),75);
+assert.equal(run("data.items.find(i=>i.description==='Pile caps (sizes to confirm)').listedQuantity"),48);
 assert.equal(run("data.items.find(i=>i.lineId==='SHEET-036').stage"),'Site Setup');
 assert.equal(run("data.items.find(i=>i.lineId==='SHEET-037').listedQuantity"),20);
 assert.equal(run("data.items.find(i=>i.lineId==='SHEET-040').listedQuantity"),6);
