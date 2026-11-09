@@ -10,7 +10,7 @@ The checked-in HTML is a fallback snapshot of the generated HTML in
 `G:\My Drive\SiteBOM`; the Drive folder remains the source for complete exports.
 Franklin and Santa Rita project exports are excluded from this Monroe page.
 Search, phase views, item details, printing, and the progress CSV work on the
-public page. Once the WorkNeovi writer credential is deployed and verified,
+public page. Once the WorkNeovi writer credential is configured and verified,
 shared edits will save to the Sheet and appear on the public page when reloaded.
 
 The local `scripts/sync-live-source.mjs` can refresh the Sheet from a changed
@@ -18,4 +18,6 @@ Drive HTML export while preserving website edits after its writer credential
 is configured. `scripts/setup-live-sync.ps1` stores that credential for the
 processor; it does not install a timed task. To update the checked-in fallback
 snapshot, run `node scripts/build-pages-snapshot.mjs`, review `site/`, and push
-to `main`. GitHub Actions publishes that fallback.
+to `main`. GitHub Actions publishes that fallback. The public `editor.html`
+is now a short handoff page; the editable form source stays in `web/` for the
+signed-in WorkNeovi application.

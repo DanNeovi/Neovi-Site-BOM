@@ -42,8 +42,10 @@ page = replaceOnce(page, '</script></body></html>', '</script><script src="live-
 await fs.mkdir(path.join(destination, '05-Monroe'), { recursive: true });
 await fs.writeFile(path.join(destination, 'index.html'), page);
 await fs.copyFile(path.join(source, report), path.join(destination, report));
-for (const file of ['live-site.js', 'editor.html', 'editor.js', 'editor-grid.js', 'editor-grid.css']) {
-  await fs.copyFile(path.join(root, 'web', file), path.join(destination, file));
+await fs.copyFile(path.join(root, 'web', 'live-site.js'), path.join(destination, 'live-site.js'));
+await fs.copyFile(path.join(root, 'web', 'editor-handoff.html'), path.join(destination, 'editor.html'));
+for (const file of ['editor.js', 'editor-grid.js', 'editor-grid.css']) {
+  await fs.rm(path.join(destination, file), { force: true });
 }
 const liveConfig = JSON.parse(await fs.readFile(path.join(root, 'config', 'live-site-endpoint.json'), 'utf8'));
 if (liveConfig.url && !/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(liveConfig.url))

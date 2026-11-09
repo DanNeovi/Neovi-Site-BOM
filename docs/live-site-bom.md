@@ -37,10 +37,10 @@ is versioned in `apps-script/LiveSiteBom.gs`.
   person's work.
 
 The website loads the latest Sheet revision on page open. The WorkNeovi editor
-uses the signed-in session; its backend derives the audit actor and is prepared
-to send a private 64-character writer token to Apps Script. No writer token
-belongs in browser code or the public GitHub repository. Once deployed, Apps
-Script will store only a salted hash of the token and reject anonymous writes.
+uses the signed-in session; its backend derives the audit actor and sends a
+private 64-character writer token to Apps Script after the writer is enabled.
+No writer token belongs in browser code or the public GitHub repository. Apps
+Script stores only a salted hash of the token and rejects anonymous writes.
 The public site still exposes BOM data to any visitor, so do not put secrets
 in item fields.
 
@@ -58,48 +58,46 @@ fallback (SHEET-001, SHEET-002, and SHEET-036).
 `Meta.sourceHash` still uses the prior whole-HTML method, so its difference
 from the current Drive file does not by itself prove a BOM item change. A
 live website save has not been verified in that historical audit. On
-2026-11-09, the WorkNeovi TEST viewer and editor loaded revision 11 with 300
-items, and the GitHub Pages update removed the public PIN form. Saving through
-WorkNeovi has not been verified. The Apps Script editor draft contains the
-writer-token change, but the deployed `/exec` version still uses the old PIN.
-Source rows reach the Sheet only after the writer token is configured on Apps
-Script and the processor host and the new version is deployed. These source
-changes alone do not complete that cutover.
+2026-11-09, the WorkNeovi TEST viewer loaded revision 11 with 300 items, and
+the GitHub Pages update removed the public PIN form. The Apps Script `/exec`
+deployment now runs version 2 with token-only write authorization; a read
+returned revision 11, 300 items, and 167 categories, and a legacy PIN-only
+request was rejected. The writer token hash is not configured yet, so writes
+remain disabled. Saving through WorkNeovi has not been verified. Source rows
+reach the Sheet only after the writer token is configured on Apps Script and
+the processor host and a reversible save and restore pass.
 
-For migration to WorkNeovi-authenticated editing:
+For migration to WorkNeovi-authenticated editing, the PIN-free public page and
+Apps Script version 2 deployment are complete. The following credential and
+write checks remain:
 
-The deployed `Code.gs` has a JSONP `doGet(e)`/`output_(value, e)` path used by
-the current viewer. Keep that path and its strict
-`siteBomCallback_[A-Za-z0-9]{8,64}` callback validation. Compare the live
-script with this repository and apply the writer migration as a narrow patch:
-the `doPost` authorization line, `validWriterToken_`,
-`configureWriterToken`, `retireLegacyPin`, and the editor actor defaults.
-Do not overwrite the entire live script merely to apply the credential change.
+The deployed `Code.gs` retains the JSONP `doGet(e)`/`output_(value, e)` path
+used by the current viewer and its strict
+`siteBomCallback_[A-Za-z0-9]{8,64}` callback validation. Its token migration
+was applied as a narrow patch to the live script.
 
-1. Generate a fresh 32-byte random value as 64 lowercase hex characters on a
-   trusted machine. Store it securely for the WorkNeovi server and export sync.
-   In the bound Apps Script project, open **Project Settings → Script
+1. A fresh 32-byte random writer token is already stored privately for the
+   WorkNeovi TEST server and export sync. In the bound Apps Script project,
+   open **Project Settings → Script
    properties**. Add `SITE_BOM_SETUP_WRITER_TOKEN` with this value, then run
    `configureWriterToken` once. It deletes the clear-text setup property and
-   stores a salted hash. The old PIN hash remains during redeployment so the
-   current live editor does not lose write access midway through migration.
+   stores a salted hash. Do not put the value in chat, browser code, or Git.
 2. Run `testReadState` from the editor. Grant access only to this bound Sheet
    if Google's authorization screen shows that scope. The test should report
    the current revision, at least 300 items, and at least 100 categories.
-3. Redeploy as a **Web app**: execute as the owner; access **Anyone**. The
-   `/exec` URL remains public for reads, but writes require the private token.
-   Review Google's requested permissions before granting. Confirm the old
-   six-digit PIN is rejected by the new deployment before enabling the editor.
-4. Keep the deployment's `/exec` URL in `config/live-site-endpoint.json`.
-   Rebuild with `node scripts/build-pages-snapshot.mjs`, review `site/`, then
-   push to `main`. The GitHub Pages workflow publishes the updated site.
-5. Set `SITE_BOM_LIVE_URL` and `SITE_BOM_WRITER_TOKEN` in the private WorkNeovi
-   backend configuration. Open the WorkNeovi editor as an authorized account,
+3. The existing **Web app** deployment runs version 2: execute as the owner;
+   access **Anyone** for public reads. The same `/exec` URL remains in
+   `config/live-site-endpoint.json`. The old six-digit PIN was rejected by the
+   deployed version. The GitHub Pages editor now redirects to WorkNeovi.
+4. Set `SITE_BOM_WRITER_READY=1` only after the Apps Script hash exists. Open
+   the WorkNeovi TEST editor as an authorized account,
    save one reversible test change, and verify the public page and the Sheet
    revision both update. Restore the test revision. Verify an anonymous user
    and a signed-in user without SiteBOM edit permission both receive a denial.
-6. In Apps Script run `retireLegacyPin` to delete old PIN properties. Check for
+5. In Apps Script run `retireLegacyPin` to delete old PIN properties. Check for
    and disable any older public web-app deployments that still accept a PIN.
+6. Release the WorkNeovi editor to production only after the TEST write and
+   restore checks and the separate production release checks pass.
 
 The Apps Script URL is public configuration. Never commit the writer token,
 Script Properties, OAuth tokens, or the local encrypted token file.
@@ -117,7 +115,7 @@ items remain. If a source item disappears, the live version is retained and
 marked `sourceMissing` for review. A conflict or unreadable export stops the
 sync; it never silently replaces editor changes.
 
-After deployment, run `scripts/setup-live-sync.ps1` interactively as the
+After the writer credential is configured, run `scripts/setup-live-sync.ps1` interactively as the
 Windows user who has G: mounted. It asks for the same private writer token and
 encrypts it with Windows DPAPI under
 `%LOCALAPPDATA%\Neovi\SiteBomLive\token.txt`. A changed
