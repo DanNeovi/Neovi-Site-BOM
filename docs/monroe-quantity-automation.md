@@ -24,13 +24,16 @@ conversion remains explicit instead of displaying 16 bottles as 16 gallons.
 
 ## Rod by diameter
 
-`rod_lengths_by_diameter` in `scripts/monroe_structural_schedule.py` calculates
-one 21-inch cut for each evidenced hold-down or L-angle connection, grouped by
-rod diameter. For each diameter, `totalIn = connections x 21` and
-`totalFt = totalIn / 12`. The current model count of 65 hold-downs has no
-verified diameter grouping, and the wall-angle estimate comes from wall length
-rather than counted connections. No diameter-specific rod purchase quantity is
-published until those identities and diameters are extracted and reviewed.
+`rod_lengths_by_diameter` in `scripts/monroe_structural_schedule.py` accepts
+only verified site-installed **physical rod paths**. Each path needs an
+interface, physical fastener ID, axis, source reference, endpoints and diameter. Repeated observations
+of one rod from the wall, cassette and HSS/RHS count once; separate rods above
+and below the cassette count separately. Hole symbols and modeled hold-downs
+or angles are not rod pieces. The helper rejects incomplete or conflicting
+paths. For each diameter, `totalIn = distinct confirmed rods x 21` and
+`totalFt = totalIn / 12`; a detail-specific bolt length is a separate class.
+The export does not yet supply a verified physical-fastener ledger, so no
+diameter-specific rod purchase total is published.
 
 ## Optional Gemini drawing pass
 
@@ -151,8 +154,9 @@ scope are confirmed.
 
 ## Publishing path
 
-The generated report and viewer live under `G:\My Drive\SiteBOM`. The GitHub
-site is built from the Drive HTML. The private live Google Sheet only updates
-from that export when the separate sync task runs with the owner's PIN. A
-successful local build is not proof that the live Sheet or GitHub Pages has
-received these changes.
+The generated report and viewer live under `G:\My Drive\SiteBOM`. The public
+GitHub site includes a fallback built from the Drive HTML and reads the live
+Google Sheet when available. The Sheet receives source changes only when the
+local export sync runs with its private writer token after the Apps Script
+writer migration is deployed. A successful local build is not proof that the
+live Sheet or GitHub Pages has received these changes.

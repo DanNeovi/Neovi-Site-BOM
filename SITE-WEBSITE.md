@@ -1,20 +1,21 @@
 # Site BOM website
 
-The public, interactive Monroe catalog is published from `site/` with GitHub Pages.
-The public page reads the latest revision from the private Monroe Google Sheet.
-Its editor supports shared item, category, quantity, and progress changes behind
-a six digit PIN. See `docs/live-site-bom.md` for the deployment and sync design.
+The public Monroe catalog is published from `site/` with GitHub Pages.
+It reads the latest revision from the Monroe Google Sheet and is read-only.
+Shared editing belongs in the signed-in WorkNeovi SiteBOM editor, with access
+for the owner and named editors. See `docs/live-site-bom.md` for the current
+deployment status and sync design.
 It starts with all items across Site Setup, Foundation, Panels, and Finishing.
 The checked-in HTML is a fallback snapshot of the generated HTML in
 `G:\My Drive\SiteBOM`; the Drive folder remains the source for complete exports.
-Franklin and Santa Rita project exports
-are excluded from this Monroe page. Search, phase views, item details, and
-printing work on the website. Shared edits save to the private Google Sheet and
-appear for other visitors when they load the page. The progress CSV remains an
-export option.
+Franklin and Santa Rita project exports are excluded from this Monroe page.
+Search, phase views, item details, printing, and the progress CSV work on the
+public page. Once the WorkNeovi writer credential is deployed and verified,
+shared edits will save to the Sheet and appear on the public page when reloaded.
 
-The local `scripts/sync-live-source.mjs` refreshes the Sheet from a new Drive
-HTML export while preserving website edits. Register its scheduled task with
-`scripts/setup-live-sync.ps1` on the machine where G: is mounted. To update the
-checked-in fallback snapshot, run `node scripts/build-pages-snapshot.mjs`,
-review `site/`, and push to `main`. GitHub Actions publishes that fallback.
+The local `scripts/sync-live-source.mjs` can refresh the Sheet from a changed
+Drive HTML export while preserving website edits after its writer credential
+is configured. `scripts/setup-live-sync.ps1` stores that credential for the
+processor; it does not install a timed task. To update the checked-in fallback
+snapshot, run `node scripts/build-pages-snapshot.mjs`, review `site/`, and push
+to `main`. GitHub Actions publishes that fallback.

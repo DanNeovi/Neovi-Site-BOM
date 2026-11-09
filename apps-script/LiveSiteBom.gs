@@ -1,31 +1,29 @@
 /** @OnlyCurrentDoc */
 /*
  * Bound to the native "Monroe Site BOM Live" Google Sheet.
- * Deploy as a Web app: execute as owner, access anyone. Public reads are JSON;
- * writes require a PIN whose salted hash stays in Script Properties.
+ * Deploy as a Web app: execute as owner, access anyone. Public reads are JSON or JSONP;
+ * writes require a private service token whose salted hash stays in Script Properties.
  */
 const META_SHEET = 'Meta';
 const STATE_PREFIX = 'State_v';
-const MAX_FAILURES = 5;
-const LOCK_MINUTES = 15;
 
 function doGet(e) {
   const mode = String((e.parameter || {}).mode || 'read');
-  if (mode !== 'read' && mode !== 'history') return output_({error:'Unknown mode'});
+  if (mode !== 'read' && mode !== 'history') return output_({error:'Unknown mode'}, e);
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
     const state = mode === 'read' ? readState_() : readHistory_();
-    return output_(state);
+    return output_(state, e);
   } finally { lock.releaseLock(); }
 }
 
 function doPost(e) {
   const p = e.parameter || {};
+  if (!validWriterToken_(String(p.writerToken || ''))) return ContentService.createTextOutput('Writer credential rejected');
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
-    if (!validPin_(String(p.pin || ''))) return ContentService.createTextOutput('PIN rejected or temporarily locked');
     if (p.action === 'save') return save_(p);
     if (p.action === 'restore') return restore_(p);
     if (p.action === 'source') return source_(p);
@@ -33,9 +31,12 @@ function doPost(e) {
   } finally { lock.releaseLock(); }
 }
 
-function output_(value) {
+function output_(value, e) {
   const json = JSON.stringify(value).replace(/</g, '\\u003c');
-  return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
+  const callback = String(((e || {}).parameter || {}).callback || '');
+  if (!/^siteBomCallback_[A-Za-z0-9]{8,64}$/.test(callback))
+    return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(callback + '(' + json + ');').setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
 
 function spreadsheet_() { return SpreadsheetApp.getActiveSpreadsheet(); }
@@ -71,6 +72,26 @@ function readHistory_() {
   return {revisions:spreadsheet_().getSheets().map(s=>s.getName()).filter(n=>/^State_v\d+$/.test(n)).map(n=>Number(n.slice(7))).sort((a,b)=>b-a)};
 }
 
+// A failed write may leave a new hidden tab behind. Remove only a tab created
+// by this locked operation while Meta still references the exact prior state.
+// Keep the tab when Meta is unreadable or has advanced, so a committed revision
+// can never be deleted by cleanup.
+function rollbackCreatedSheetIfUnreferenced_(created, prior) {
+  try {
+    const current=meta_();
+    if (current.sheet!==prior.sheet || current.revision!==prior.revision ||
+        current.nonce!==prior.nonce || current.updatedAt!==prior.updatedAt ||
+        current.actor!==prior.actor || current.sourceSheet!==prior.sourceSheet ||
+        current.sourceHash!==prior.sourceHash) return false;
+    const name=created.getName();
+    if (current.sheet===name || current.sourceSheet===name) return false;
+    const found=spreadsheet_().getSheetByName(name);
+    if (!found || found.getSheetId()!==created.getSheetId()) return false;
+    spreadsheet_().deleteSheet(found);
+    return true;
+  } catch (_) { return false; }
+}
+
 function validateState_(value) {
   if (!value || !Array.isArray(value.items) || !Array.isArray(value.categories) || value.items.length > 5000 || value.categories.length > 1000)
     throw new Error('Invalid state structure');
@@ -102,14 +123,19 @@ function writeState_(value, revision, nonce, actor, sourceSheet, sourceHash) {
   validateState_(value);
   const name = STATE_PREFIX + revision;
   if (spreadsheet_().getSheetByName(name)) throw new Error('Revision already exists');
-  const sheet = spreadsheet_().insertSheet(name);
-  sheet.getRange(1,1,1,3).setValues([['Type','ID or path','JSON']]);
-  const rows = value.items.map(item=>['item',item.lineId,JSON.stringify(item)]).concat(value.categories.map(category=>['category',category.path.join(' / '),JSON.stringify(category)]));
-  if (rows.length) sheet.getRange(2,1,rows.length,3).setValues(rows);
-  sheet.hideSheet();
   const previous=meta_();
-  spreadsheet_().getSheetByName(META_SHEET).getRange(2,1,1,7).setValues([[name,revision,nonce,new Date().toISOString(),actor,sourceSheet||previous.sourceSheet,sourceHash||previous.sourceHash]]);
-  SpreadsheetApp.flush();
+  const sheet = spreadsheet_().insertSheet(name);
+  try {
+    sheet.getRange(1,1,1,3).setValues([['Type','ID or path','JSON']]);
+    const rows = value.items.map(item=>['item',item.lineId,JSON.stringify(item)]).concat(value.categories.map(category=>['category',category.path.join(' / '),JSON.stringify(category)]));
+    if (rows.length) sheet.getRange(2,1,rows.length,3).setValues(rows);
+    sheet.hideSheet();
+    spreadsheet_().getSheetByName(META_SHEET).getRange(2,1,1,7).setValues([[name,revision,nonce,new Date().toISOString(),actor,sourceSheet||previous.sourceSheet,sourceHash||previous.sourceHash]]);
+    SpreadsheetApp.flush();
+  } catch (error) {
+    rollbackCreatedSheetIfUnreferenced_(sheet,previous);
+    throw error;
+  }
 }
 
 function save_(p) {
@@ -117,7 +143,7 @@ function save_(p) {
   if (Number(p.revision) !== m.revision) return ContentService.createTextOutput('Revision conflict');
   const nonce = String(p.nonce || '');
   if (!/^[A-Za-z0-9_-]{12,80}$/.test(nonce)) throw new Error('Invalid nonce');
-  const actor = String(p.actor || 'PIN editor').trim().slice(0,100);
+  const actor = String(p.actor || 'WorkNeovi editor').trim().slice(0,100);
   const value = JSON.parse(String(p.payload || ''));
   writeState_(value,m.revision+1,nonce,actor);
   return ContentService.createTextOutput('Saved revision ' + (m.revision+1));
@@ -128,7 +154,7 @@ function restore_(p) {
   if (Number(p.revision) !== m.revision) return ContentService.createTextOutput('Revision conflict');
   if (!Number.isSafeInteger(target) || target < 1 || target >= m.revision) throw new Error('Invalid restore revision');
   const value = readStateSheet_(STATE_PREFIX+target);
-  writeState_(value,m.revision+1,String(p.nonce || ''),String(p.actor || 'PIN editor')+' restored '+target);
+  writeState_(value,m.revision+1,String(p.nonce || ''),String(p.actor || 'WorkNeovi editor')+' restored '+target);
   return ContentService.createTextOutput('Restored revision ' + target);
 }
 
@@ -149,10 +175,15 @@ function source_(p) {
   validateState_({items:merged,categories}); // Fail before creating either new tab.
   const sourceName='Source_v'+(m.revision+1);
   const sourceTab=spreadsheet_().insertSheet(sourceName);
-  sourceTab.getRange(1,1,1,3).setValues([['Type','ID or path','JSON']]);
-  if(incoming.items.length)sourceTab.getRange(2,1,incoming.items.length,3).setValues(incoming.items.map(i=>['item',i.lineId,JSON.stringify(i)]));
-  sourceTab.hideSheet();
-  writeState_({items:merged,categories},m.revision+1,String(p.nonce || ''),'NeoviOne export',sourceName,hash);
+  try {
+    sourceTab.getRange(1,1,1,3).setValues([['Type','ID or path','JSON']]);
+    if(incoming.items.length)sourceTab.getRange(2,1,incoming.items.length,3).setValues(incoming.items.map(i=>['item',i.lineId,JSON.stringify(i)]));
+    sourceTab.hideSheet();
+    writeState_({items:merged,categories},m.revision+1,String(p.nonce || ''),'NeoviOne export',sourceName,hash);
+  } catch (error) {
+    rollbackCreatedSheetIfUnreferenced_(sourceTab,m);
+    throw error;
+  }
   return ContentService.createTextOutput('Imported source revision '+(m.revision+1));
 }
 
@@ -215,36 +246,41 @@ function mergeCategories_(edited,items) {
   return categories;
 }
 
-function digest_(salt,pin) {
-  return Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,salt+':'+pin)
+function digest_(salt,token) {
+  return Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,salt+':'+token)
     .map(b=>('0'+(b&255).toString(16)).slice(-2)).join('');
 }
 
-function validPin_(pin) {
+function validWriterToken_(token) {
   const props=PropertiesService.getScriptProperties();
-  const until=Number(props.getProperty('LOCK_UNTIL') || 0);
-  if (Date.now() < until) return false;
-  const salt=props.getProperty('PIN_SALT'), hash=props.getProperty('PIN_HASH');
-  if (!salt || !hash) throw new Error('Configure PIN before deploying');
-  const candidate=/^\d{6}$/.test(pin) ? digest_(salt,pin) : digest_(salt,'000000');
+  const salt=props.getProperty('WRITER_SALT'), hash=props.getProperty('WRITER_HASH');
+  if (!salt || !/^[a-f0-9]{64}$/.test(hash || '')) throw new Error('Configure the writer token before deploying');
+  const validFormat=/^[a-f0-9]{64}$/.test(token);
+  const candidate=digest_(salt,validFormat ? token : '0'.repeat(64));
   let difference=0; for (let i=0;i<hash.length;i++) difference |= hash.charCodeAt(i)^candidate.charCodeAt(i);
-  if (difference===0 && /^\d{6}$/.test(pin)) { props.deleteProperty('PIN_FAILURES'); return true; }
-  const failures=Number(props.getProperty('PIN_FAILURES') || 0)+1;
-  if (failures >= MAX_FAILURES) { props.setProperty('LOCK_UNTIL',String(Date.now()+LOCK_MINUTES*60*1000)); props.deleteProperty('PIN_FAILURES'); }
-  else props.setProperty('PIN_FAILURES',String(failures));
-  return false;
+  return validFormat && difference===0;
 }
 
-// In Script Properties, enter SITE_BOM_SETUP_PIN once, run this function in
-// the Apps Script editor, then deploy. The clear-text property is deleted.
-function configureEditorPin() {
+// Enter a fresh 64-character lowercase hex token as SITE_BOM_SETUP_WRITER_TOKEN
+// in Script Properties, run this once, then redeploy. Copy the token to the
+// WorkNeovi server secret and local export sync before deleting your setup copy.
+// Old PIN properties stay through redeployment so the previous deployment
+// keeps working; retire them only after the new version is verified.
+function configureWriterToken() {
   const props=PropertiesService.getScriptProperties();
-  const pin=String(props.getProperty('SITE_BOM_SETUP_PIN') || '');
-  if (!/^\d{6}$/.test(pin)) throw new Error('Set a six-digit SITE_BOM_SETUP_PIN Script Property first');
+  const token=String(props.getProperty('SITE_BOM_SETUP_WRITER_TOKEN') || '');
+  if (!/^[a-f0-9]{64}$/.test(token)) throw new Error('Set a 64-character lowercase hex SITE_BOM_SETUP_WRITER_TOKEN Script Property first');
   const salt=Utilities.getUuid()+Utilities.getUuid();
-  props.setProperty('PIN_SALT',salt);
-  props.setProperty('PIN_HASH',digest_(salt,pin));
+  props.setProperty('WRITER_SALT',salt);
+  props.setProperty('WRITER_HASH',digest_(salt,token));
+  props.deleteProperty('SITE_BOM_SETUP_WRITER_TOKEN');
+}
+
+function retireLegacyPin() {
+  const props=PropertiesService.getScriptProperties();
   props.deleteProperty('SITE_BOM_SETUP_PIN');
+  props.deleteProperty('PIN_SALT');
+  props.deleteProperty('PIN_HASH');
   props.deleteProperty('PIN_FAILURES');
   props.deleteProperty('LOCK_UNTIL');
 }

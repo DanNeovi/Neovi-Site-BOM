@@ -40,12 +40,13 @@ project does not create a Google Sheet or publish it on GitHub Pages.
 
 ## Monroe processing
 
-The standalone SiteBOM website is running on this computer at
+The standalone SiteBOM project and source workspace runs on this computer at
 http://127.0.0.1:8765/dashboard. The current processed G: preview is at
-http://127.0.0.1:8765/preview/NeoviBOM.html. The Google Sheet catalog is at
-http://127.0.0.1:8765/bom/index.html and the shared editor is at
-http://127.0.0.1:8765/bom/editor.html. The server binds to 127.0.0.1, so
-other computers cannot reach this trial instance.
+http://127.0.0.1:8765/preview/NeoviBOM.html, and the Google Sheet catalog can
+be viewed at http://127.0.0.1:8765/bom/index.html. Shared item editing is
+moving to the signed-in WorkNeovi SiteBOM editor; the old `/bom/editor.html`
+entry point does not provide a second editor. The local server binds to
+127.0.0.1, so other computers cannot reach this trial instance.
 
 The Windows task `Neovi-SiteBOM-Local` starts the server at sign-in.
 `scripts/setup-local-sitebom.ps1` installs that task and allows it to run while
@@ -97,13 +98,14 @@ cap applies to **all keys together**, and keys from the same Google project
 may share Google's project quota. The page displays only the number of keys;
 their values are never put in the site response, results, or request ledger.
 
-The processed preview reads the newly built G: HTML, while the shared catalog
-and editor still read the existing live Google Sheet. When Monroe processing
-produces a changed export, SiteBOM can sync the new source rows to that
-Sheet immediately if the local encrypted live-sync PIN has been configured.
-This computer does not currently have that PIN file, so its local exports do
-not yet change the shared Sheet. GitHub Pages receives no raw files. No local
-processing output is approved as a purchase order.
+The processed preview reads the newly built G: HTML, while the public catalog
+reads the existing live Google Sheet. The WorkNeovi editor is the intended
+shared edit path. When Monroe processing produces a changed export, SiteBOM
+can sync new source rows to the Sheet after the private writer token has been
+configured and the Apps Script deployment has been updated. Until that
+cutover is verified, local exports do not change the shared Sheet. GitHub
+Pages receives no raw files. No local processing output is approved as a
+purchase order.
 
 Revit's exporter still requires a manual **Export Model** in this trial stage,
 or **Refresh Neovi model** for an authorized NeoviOne cloud model. An automatic
