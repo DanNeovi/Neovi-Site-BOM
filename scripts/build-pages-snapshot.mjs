@@ -34,7 +34,7 @@ page = replaceOnce(page, "if(!state.phase&&state.presentation!=='ordering')retur
 page = replaceOnce(page, "state.phase||'Combined ordering list'", "state.phase||(state.presentation==='ordering'?'Combined ordering list':'Monroe · all items')");
 page = replaceOnce(page, "document.title='Site Bill of Material - '+(state.phase||'Combined ordering list');", "document.title='Monroe Site BOM - '+(state.phase||'All items');");
 page = replaceOnce(page, "state.path.at(-1)||state.phase||'Material catalog'", "state.path.at(-1)||state.phase||'Monroe · all items'");
-page = replaceOnce(page, "'Browse category folders or select a phase to see all its materials.'", "'All Monroe Site BOM items across Site Setup, Foundation, Panels, and Finishing. Quantities are labeled by source and are planning values until reviewed.'");
+page = replaceOnce(page, "'Browse items by category or phase.'", "'Monroe materials, tools, and consumables. Planning quantities need review.'");
 page = replaceOnce(page, "else if(state.query||state.phase){", "else if(state.query||state.phase||data.siteProject==='Monroe'){");
 page = replaceOnce(page, "else if(!state.phase)state.phase='Foundation';", "else if(data.siteProject!=='Monroe'&&!state.phase)state.phase='Foundation';");
 page = replaceOnce(page, '</script></body></html>', '</script><script src="live-config.js"></script><script src="live-site.js?v=4"></script></body></html>');
