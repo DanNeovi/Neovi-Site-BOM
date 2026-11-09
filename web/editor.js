@@ -1,8 +1,20 @@
 (function () {
   'use strict';
-  const endpoint=window.SITE_BOM_LIVE_URL;
+  const insideWorkNeovi = location.pathname.startsWith('/apps/site-bom/content/');
+  if (!insideWorkNeovi) {
+    document.body.innerHTML = '<main style="max-width:680px;margin:12vh auto;padding:24px"><h1>Site BOM editing has moved to WorkNeovi</h1><p>Sign in to WorkNeovi to edit the shared Site BOM.</p><a href="index.html">View Site BOM</a></main>';
+    return;
+  }
+  if (insideWorkNeovi) {
+    const catalogLink = document.querySelector('header a[href="index.html"]');
+    if (catalogLink) {
+      catalogLink.href = '/apps/site-bom/public/';
+      catalogLink.target = '_top';
+    }
+  }
+  const endpoint='/api/site-bom/state';
   const $=id=>document.getElementById(id);
-  let live=null,selected=null,category=null,dirty=false,saving=false,formDirty=false,jsonDirty=false;
+  let live=null,selected=null,category=null,dirty=false,saving=false,formDirty=false,jsonDirty=false,grid=null;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
   const key=path=>JSON.stringify(path);
   const pathOf=i=>Array.isArray(i.categoryPath)&&i.categoryPath.length?i.categoryPath:['Uncategorized'];
@@ -10,11 +22,11 @@
   function mark(){dirty=true;status('Unsaved changes. Save to update the shared website.');}
   async function readOnce(mode){
     if(!endpoint)throw new Error('The live Google Sheet is not connected yet.');
-    const url=new URL(endpoint);url.searchParams.set('mode',mode);url.searchParams.set('_',Date.now());
+    const url=new URL(endpoint,location.origin);url.searchParams.set('mode',mode);url.searchParams.set('_',Date.now());
     const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),25000);
     try{
-      const response=await fetch(url,{credentials:'omit',cache:'no-store',signal:controller.signal});
-      if(!response.ok)throw new Error('Google Sheet returned HTTP '+response.status);
+      const response=await fetch(url,{credentials:'same-origin',cache:'no-store',signal:controller.signal});
+      if(!response.ok)throw new Error(response.status===401?'Sign in to WorkNeovi to edit the Site BOM':response.status===403?'Your WorkNeovi account cannot edit this Site BOM':'Google Sheet returned HTTP '+response.status);
       return await response.json();
     }finally{clearTimeout(timeout)}
   }
@@ -26,9 +38,12 @@
     throw new Error(error.message+' Check your connection and click Reload to try again.');
   }
   async function post(form){
-    // Apps Script does not provide CORS headers. The write response is opaque;
-    // the revision and random nonce are verified by a fresh public read below.
-    await fetch(endpoint,{method:'POST',mode:'no-cors',credentials:'omit',body:new URLSearchParams(form)});
+    const response=await fetch(endpoint,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});
+    if(!response.ok){
+      const result=await response.json().catch(()=>null);
+      throw new Error(result?.error||'Save failed (HTTP '+response.status+')');
+    }
+    return response.json();
   }
   function checkedNumber(id){const text=$(id).value.trim();if(!text)return null;const n=Number(text);if(!Number.isFinite(n)||n<0)throw new Error(id+' must be a nonnegative number');return n}
   function categories(){const paths=new Map();for(const c of live.categories)paths.set(key(c.path),c.path);for(const i of live.items){const path=pathOf(i);for(let n=1;n<=path.length;n++)paths.set(key(path.slice(0,n)),path.slice(0,n))}return [...paths.values()].sort((a,b)=>a.join('/').localeCompare(b.join('/')))}
@@ -37,8 +52,8 @@
   function showItems(){const rows=filtered();$('itemCount').textContent='('+rows.length+')';$('items').innerHTML=rows.map(i=>'<button class="item'+(selected===i.lineId?' active':'')+'" data-id="'+esc(i.lineId)+'" draggable="true"><span>'+esc(i.description)+'<br><small>'+esc(i.lineId)+' · '+esc(i.unit||'EA')+'</small></span><small>'+esc(i.siteQuantity??i.listedQuantity??'—')+'</small></button>').join('')}
   function showItem(){const i=live.items.find(item=>item.lineId===selected);$('form').hidden=!i;$('editingTitle').textContent=i?i.description:'Select an item';if(!i){formDirty=false;jsonDirty=false;return}
     $('name').value=i.description||'';$('phase').value=i.phase||'';$('stage').value=i.stage||'';$('group').value=i.checklistGroup||i.system||'Materials';$('path').value=pathOf(i).join(' > ');$('quantity').value=i.siteQuantity??'';$('listed').value=i.listedQuantity??'';$('unit').value=i.unit||'';$('checked').checked=!!i.siteChecked;$('specification').value=i.specification||'';$('vendor').value=i.vendor||'';$('partNumber').value=i.partNumber||'';$('owner').value=i.owner||'';$('procurementMethod').value=i.procurementMethod||'';$('notes').value=i.itemNotes||'';$('lineNotes').value=i.lineNotes||'';$('rawJson').value=JSON.stringify(i,null,2);$('itemMeta').textContent='ID: '+i.lineId+' · original catalog: '+(i.sourceCatalogId||i.catalogId||'new site item');formDirty=false;jsonDirty=false}
-  function render(){showCategories();showItems();showItem();$('save').disabled=saving||!(dirty||formDirty||jsonDirty)}
-  async function reload(force=false){if((dirty||formDirty||jsonDirty)&&!force&&!confirm('Discard unsaved changes and reload the shared version?'))return;try{status('Loading latest shared Site BOM…');live=await getLive();if(!Array.isArray(live.items)||!Array.isArray(live.categories))throw new Error('Invalid sheet data');dirty=false;formDirty=false;jsonDirty=false;selected=location.hash?decodeURIComponent(location.hash.slice(1)):selected;if(!live.items.some(i=>i.lineId===selected))selected=null;category=null;render();status('Revision '+live.revision+' · '+live.items.length+' items · last saved '+new Date(live.updatedAt).toLocaleString(),'success');loadHistory()}catch(e){status(e.message,'error')}}
+  function render(){showCategories();showItems();showItem();$('save').disabled=saving||!(dirty||formDirty||jsonDirty);grid?.render()}
+  async function reload(force=false){if((dirty||formDirty||jsonDirty)&&!force&&!confirm('Discard unsaved changes and reload the shared version?'))return;try{status('Loading latest shared Site BOM…');live=await getLive();if(!Array.isArray(live.items)||!Array.isArray(live.categories))throw new Error('Invalid sheet data');dirty=false;formDirty=false;jsonDirty=false;selected=location.hash?decodeURIComponent(location.hash.slice(1)):selected;if(!live.items.some(i=>i.lineId===selected))selected=null;category=null;grid?.reset();render();status('Revision '+live.revision+' · '+live.items.length+' items · last saved '+new Date(live.updatedAt).toLocaleString(),'success');loadHistory()}catch(e){status(e.message,'error')}}
   async function loadHistory(){try{const h=await getLive('history');$('history').innerHTML=h.revisions.slice(0,20).map(n=>'<button data-restore="'+n+'"'+(n===live.revision?' disabled':'')+'>Revision '+n+(n===live.revision?' (current)':'')+'</button>').join(' ')}catch(e){$('history').textContent='History unavailable: '+e.message}}
   function apply(){const i=live.items.find(item=>item.lineId===selected);if(!i||!formDirty)return true;const name=$('name').value.trim(),phase=$('phase').value.trim(),stage=$('stage').value.trim();if(!name||!phase||!stage)throw new Error('Name, phase, and work area are required');const path=$('path').value.split('>').map(s=>s.trim()).filter(Boolean);if(!path.length)throw new Error('Category path is required');const unit=$('unit').value.trim()||'EA';const duplicate=live.items.find(other=>other.lineId!==i.lineId&&other.description.trim().toLowerCase()===name.toLowerCase()&&other.unit===unit&&key(pathOf(other))===key(path));if(duplicate&&!confirm('A similar item already exists ('+duplicate.lineId+'). Save this second item anyway?'))return false;const peer=live.items.find(other=>other.lineId!==i.lineId&&other.phase===phase&&other.stage===stage);const phasePeer=live.items.find(other=>other.lineId!==i.lineId&&other.phase===phase);Object.assign(i,{description:name,phase,stage,phaseOrder:peer?.phaseOrder??phasePeer?.phaseOrder??99,stageOrder:peer?.stageOrder??99,checklistGroup:$('group').value.trim()||'Materials',categoryPath:path,siteQuantity:checkedNumber('quantity'),listedQuantity:checkedNumber('listed'),unit,siteChecked:$('checked').checked,specification:$('specification').value,vendor:$('vendor').value,partNumber:$('partNumber').value,owner:$('owner').value,procurementMethod:$('procurementMethod').value,itemNotes:$('notes').value,lineNotes:$('lineNotes').value});i.manualOrder??=live.items.length;formDirty=false;mark();render();return true}
   function applyJson(){const next=JSON.parse($('rawJson').value),index=live.items.findIndex(i=>i.lineId===selected);if(index<0||!next||typeof next!=='object'||Array.isArray(next)||next.lineId!==selected||!String(next.description||'').trim())throw new Error('Keep the same item ID and provide a name');live.items[index]=next;jsonDirty=false;mark();render();return true}
@@ -48,12 +63,15 @@
   function addCategory(){const name=prompt('New category name');if(!name?.trim())return;const parent=category?JSON.parse(category):[];const path=[...parent,name.trim()];if(categories().some(c=>key(c)===key(path))){status('Category already exists','error');return}live.categories.push({path,manualOrder:live.categories.length});category=key(path);mark();render()}
   function renameCategory(){if(!category)return;const path=JSON.parse(category),name=prompt('New category name',path.at(-1));if(!name?.trim()||name.trim()===path.at(-1))return;const next=[...path.slice(0,-1),name.trim()];const moved=live.categories.filter(c=>key(c.path.slice(0,path.length))===category);const proposed=new Set(moved.map(c=>key([...next,...c.path.slice(path.length)])));if(categories().some(c=>key(c)===key(next))||proposed.size!==moved.length||live.categories.some(c=>key(c.path.slice(0,path.length))!==category&&proposed.has(key(c.path)))){status('Category already exists','error');return}for(const c of moved)c.path=[...next,...c.path.slice(path.length)];for(const i of live.items)if(key(pathOf(i).slice(0,path.length))===category)i.categoryPath=[...next,...pathOf(i).slice(path.length)];category=key(next);mark();render()}
   function removeCategory(){if(!category)return;const path=JSON.parse(category);if(!confirm('Remove '+path.join(' / ')+'? Items in it will move to the parent category.'))return;const parent=path.slice(0,-1);for(const i of live.items)if(key(pathOf(i).slice(0,path.length))===category)i.categoryPath=[...(parent.length?parent:['Uncategorized']),...pathOf(i).slice(path.length)];live.categories=live.categories.filter(c=>key(c.path.slice(0,path.length))!==category);category=parent.length?key(parent):null;mark();render()}
-  async function save(){if(saving)return;try{if(commitDraft()===false)return}catch(e){status(e.message,'error');return}if(!dirty)return;const pin=$('pin').value.trim(),actor=$('actor').value.trim();if(!/^\d{6}$/.test(pin)){status('Enter the six digit PIN before saving','error');$('pin').focus();return}if(!actor){status('Enter your name for the revision history','error');$('actor').focus();return}saving=true;render();status('Saving to Google Sheet…');const nonce=crypto.randomUUID().replaceAll('-','');const expected=live.revision+1;try{
-    await post({action:'save',pin,actor,revision:String(live.revision),nonce,payload:JSON.stringify({items:live.items,categories:live.categories})});
-    for(let attempt=0;attempt<12;attempt++){await new Promise(r=>setTimeout(r,1500));const latest=await getLive();if(latest.nonce===nonce&&latest.revision===expected){live=latest;dirty=false;$('pin').value='';status('Saved revision '+latest.revision+'. The public site now shows these changes.','success');loadHistory();return}if(latest.revision!==expected-1)throw new Error('Another editor saved first. Reload and review their changes before retrying.');}
-    throw new Error('Save was not confirmed. Check the PIN and Sheet deployment, then reload to check the live state.');
+  async function save(){if(saving)return;try{if(commitDraft()===false)return}catch(e){status(e.message,'error');return}if(!dirty)return;saving=true;render();status('Saving to Google Sheet…');const nonce=crypto.randomUUID().replaceAll('-','');const expected=live.revision+1;try{
+    await post({action:'save',revision:live.revision,nonce,payload:{items:live.items,categories:live.categories}});
+    const latest=await getLive();
+    if(latest.nonce===nonce&&latest.revision===expected){live=latest;dirty=false;grid?.reset();status('Saved revision '+latest.revision+' under your WorkNeovi account.','success');loadHistory();return}
+    throw new Error('Save was not confirmed. Reload to check the shared revision.');
   }catch(e){status(e.message,'error')}finally{saving=false;render()}}
-  async function restore(revision){if((dirty||formDirty||jsonDirty)&&!confirm('Discard your unsaved changes and restore an earlier revision?'))return;if(!confirm('Restore revision '+revision+' as a new shared version?'))return;const pin=$('pin').value.trim();if(!/^\d{6}$/.test(pin)){status('Enter the PIN first','error');return}const nonce=crypto.randomUUID().replaceAll('-','');try{await post({action:'restore',pin,actor:$('actor').value.trim()||'PIN editor',revision:String(live.revision),targetRevision:String(revision),nonce});for(let n=0;n<12;n++){await new Promise(r=>setTimeout(r,1500));const next=await getLive();if(next.nonce===nonce){dirty=false;$('pin').value='';await reload(true);return}}throw new Error('Restore not confirmed; check the PIN.')}catch(e){status(e.message,'error')}}
+  async function restore(revision){if((dirty||formDirty||jsonDirty)&&!confirm('Discard your unsaved changes and restore an earlier revision?'))return;if(!confirm('Restore revision '+revision+' as a new shared version?'))return;const nonce=crypto.randomUUID().replaceAll('-','');try{await post({action:'restore',revision:live.revision,targetRevision:revision,nonce});const next=await getLive();if(next.nonce===nonce){dirty=false;await reload(true);return}throw new Error('Restore not confirmed; reload to check the shared revision.')}catch(e){status(e.message,'error')}}
+  grid=window.createSiteBomGrid({getLive:()=>live,commitDraft,mark,renderAll:render,status});
+  $('gridReload').onclick=()=>reload();
   $('categories').onclick=e=>{const b=e.target.closest('[data-category]');if(b)safely(()=>{category=b.dataset.category||null;render()})};
   $('items').onclick=e=>{const b=e.target.closest('[data-id]');if(b)safely(()=>{selected=b.dataset.id;render()})};
   $('items').ondragstart=e=>{const b=e.target.closest('[data-id]');if(b){e.dataTransfer.setData('text/plain',b.dataset.id);b.classList.add('dragging')}};
@@ -68,6 +86,5 @@
   $('form').addEventListener('input',e=>{if(e.target.id==='rawJson')jsonDirty=true;else formDirty=true;$('save').disabled=false;status('Unsaved item changes. Save to update the shared website.');});
   $('search').oninput=showItems;$('categorySearch').oninput=showCategories;$('reload').onclick=()=>reload();$('save').onclick=save;
   $('history').onclick=e=>{const b=e.target.closest('[data-restore]');if(b)restore(Number(b.dataset.restore))};
-  $('actor').value=localStorage.getItem('siteBomActor')||'';$('actor').onchange=()=>localStorage.setItem('siteBomActor',$('actor').value.trim());
-  if(!endpoint)status('The Google Sheet web app has not been connected. Editing is unavailable.','error');else reload(true);
+  reload(true);
 })();

@@ -1,25 +1,61 @@
 (function () {
   'use strict';
-  const endpoint = window.SITE_BOM_LIVE_URL;
+  const insideWorkNeovi = location.pathname.startsWith('/apps/site-bom/content/');
+  const endpoint = insideWorkNeovi ? '/api/site-bom/state' : window.SITE_BOM_LIVE_URL;
   if (!endpoint) return;
   const banner = document.createElement('div');
   banner.setAttribute('role', 'status');
-  banner.style.cssText = 'position:sticky;top:0;z-index:10;padding:8px 16px;background:#fff3cd;color:#463b15;text-align:center;font:13px Segoe UI,Arial,sans-serif';
+  banner.style.cssText = 'padding:6px 16px;background:#fff3cd;color:#463b15;text-align:center;font:11px Segoe UI,Arial,sans-serif';
   banner.textContent = 'Loading shared Site BOM…';
   document.body.prepend(banner);
-  const editLink = document.createElement('a');
-  editLink.href = 'editor.html';
-  editLink.textContent = 'Edit shared BOM';
-  editLink.style.cssText = 'display:block;margin:12px 0;color:#fff;font-weight:600';
-  document.querySelector('aside nav')?.after(editLink);
+  let editLink = null;
+  if (insideWorkNeovi) {
+    editLink = document.createElement('a');
+    editLink.href = '/apps/site-bom/editor';
+    editLink.target = '_top';
+    editLink.textContent = 'Edit shared BOM';
+    editLink.className = 'header-link edit-link';
+  }
+  function readPublicJsonp() {
+    return new Promise((resolve, reject) => {
+      let url;
+      try {
+        url = new URL(endpoint);
+        if (url.protocol !== 'https:' || url.hostname !== 'script.google.com' ||
+            !/^\/macros\/s\/[^/]+\/exec$/.test(url.pathname)) {
+          throw new Error('Invalid shared BOM address');
+        }
+      } catch (error) { reject(error); return; }
+      const callback = 'siteBomCallback_' + crypto.randomUUID().replaceAll('-', '');
+      url.searchParams.set('mode', 'read');
+      url.searchParams.set('callback', callback);
+      url.searchParams.set('_', Date.now());
+      const script = document.createElement('script');
+      let finished = false;
+      const finish = (error, data) => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        script.remove();
+        delete window[callback];
+        if (error) reject(error); else resolve(data);
+      };
+      const timer = setTimeout(() => finish(new Error('Shared BOM request timed out')), 20000);
+      window[callback] = data => finish(null, data);
+      script.onerror = () => finish(new Error('Shared BOM could not be reached'));
+      script.src = url.toString();
+      document.head.append(script);
+    });
+  }
   async function readOnce() {
-    const url = new URL(endpoint);
+    if (!insideWorkNeovi) return readPublicJsonp();
+    const url = new URL(endpoint, location.origin);
     url.searchParams.set('mode','read');
     url.searchParams.set('_',Date.now());
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(),20000);
     try {
-      const response = await fetch(url,{credentials:'omit',cache:'no-store',signal:controller.signal});
+      const response = await fetch(url,{credentials:'same-origin',cache:'no-store',signal:controller.signal});
       if (!response.ok) throw new Error('Shared BOM returned HTTP '+response.status);
       return await response.json();
     } finally { clearTimeout(timer); }
@@ -45,7 +81,7 @@
   const originalSourceOrder = sourceOrder;
   sourceOrder = (a,b) => Number.isFinite(a.manualOrder) && Number.isFinite(b.manualOrder) && a.manualOrder!==b.manualOrder
     ? a.manualOrder-b.manualOrder : originalSourceOrder(a,b);
-  openProgress = id => { location.href='editor.html#'+encodeURIComponent(id); };
+  const originalOpenProgress = openProgress;
   let loading=false, loaded=false, retryTimer=null, retryDelay=30000;
   const retryButton=document.createElement('button');
   retryButton.type='button';
@@ -64,6 +100,13 @@
     try{
       const live=await readShared();
       if(!Array.isArray(live.items)||!Number.isSafeInteger(live.revision))throw new Error('Invalid shared BOM');
+      if (editLink) {
+        if (live.canEdit) document.querySelector('.header-actions')?.append(editLink);
+        else editLink.remove();
+      }
+      if (insideWorkNeovi) openProgress = live.canEdit ? id => {
+        window.top.location.href = '/apps/site-bom/editor#' + encodeURIComponent(id);
+      } : originalOpenProgress;
       data.items=live.items;
       topFolders.splice(0,topFolders.length,...[...new Set(live.items.map(i=>itemPath(i)[0]))].sort());
       sheetReferenceCounts.clear();
@@ -78,6 +121,8 @@
       loaded=true;retryDelay=30000;clearTimeout(retryTimer);retryTimer=null;
     }catch(error){
       loaded=false;
+      if (editLink) editLink.remove();
+      if (insideWorkNeovi) openProgress = originalOpenProgress;
       banner.style.background='#fff3cd';banner.style.color='#463b15';
       banner.textContent='Shared BOM unavailable. Showing the last published snapshot; editing is paused. '+error.message+' ';
       banner.append(retryButton);

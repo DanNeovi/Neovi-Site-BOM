@@ -1,0 +1,67 @@
+:root{font-family:Inter,Segoe UI,Arial,sans-serif;color:#18304b;background:#f3f6fa}
+body{background:#f3f6fa}
+header{position:sticky;top:0;z-index:20;gap:12px;background:#fff;color:#18304b;border-bottom:1px solid #d7e1ee;box-shadow:0 2px 12px #1734540d;padding:12px 20px}
+header a{color:#2458a4;text-decoration:none;font-weight:700}
+header h1{font-size:18px;letter-spacing:-.4px}
+.account-note{color:#405570;font-size:12px}
+header label{color:#405570}
+header input{max-width:150px}
+button.primary{background:#2859a0;border-color:#2859a0}
+button.primary:hover{background:#1e467f}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #6d9fe6;outline-offset:2px}
+.status{border-bottom:1px solid #e1e8f2;padding:8px 20px;font-size:12px}
+.grid-app{padding:18px 20px 24px;max-width:none}
+.grid-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:12px}
+.grid-heading h2{margin:0;font-size:27px;letter-spacing:-.8px;color:#142842}
+.grid-heading p{margin:5px 0 0;font-size:12px;color:#59708c}
+.grid-toolbar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:9px;margin:0 0 10px}
+.grid-toolbar label{margin:0;min-width:130px;font-size:11px;color:#536781}
+.grid-toolbar label.search-field{flex:1 1 260px;max-width:540px}
+.grid-toolbar input,.grid-toolbar select{margin-top:4px;min-height:36px;padding:7px 10px;border-radius:6px}
+.grid-toolbar button{min-height:36px;border-radius:6px;white-space:nowrap}
+.grid-help{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#60738d;font-size:11px;margin:4px 0 9px}
+.grid-mobile-nav{display:none}
+.grid-viewport{position:relative;overflow:auto;height:min(70vh,790px);min-height:360px;max-width:100%;background:white;border:1px solid #cad8e9;border-radius:8px;box-shadow:0 6px 24px #1c3b6410;outline:none;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain}
+.grid-viewport:focus-visible{outline:3px solid #6d9fe6;outline-offset:2px}
+.bom-grid{border-collapse:separate;border-spacing:0;table-layout:fixed;width:max-content;min-width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+.bom-grid th,.bom-grid td{box-sizing:border-box;height:35px;min-width:90px;padding:7px 9px;border-right:1px solid #e2e8f1;border-bottom:1px solid #e5ebf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.bom-grid th{position:sticky;top:0;z-index:5;height:39px;background:#e9f0f9;color:#2c4b73;font-size:10px;font-weight:750;letter-spacing:.35px;text-transform:uppercase;border-bottom:1px solid #cbd9e9}
+.bom-grid tbody tr:nth-child(even) td{background:#f9fbfe}
+.bom-grid tbody tr:hover td{background:#eef5ff}
+.bom-grid td{cursor:cell;user-select:none;color:#18304b}
+.bom-grid td.readonly{color:#60738d;background:#f7f9fc}
+.bom-grid tbody tr:nth-child(even) td.readonly{background:#f4f7fb}
+.bom-grid td.grid-selected,.bom-grid tbody tr:hover td.grid-selected{background:#dcecff}
+.bom-grid td.grid-active,.bom-grid tbody tr:hover td.grid-active{background:#fff;outline:2px solid #2463c5;outline-offset:-2px;z-index:4}
+.bom-grid td.grid-dirty{box-shadow:inset 3px 0 #e8a32e}
+.bom-grid td.grid-empty{color:#9aa9ba}
+.bom-grid td.grid-number{text-align:right}
+.bom-grid td.grid-check{text-align:center;font-size:16px;color:#2863b8}
+.bom-grid .row-index{min-width:48px;width:48px;max-width:48px;text-align:center;color:#71839a;background:#f1f5fa;position:sticky;left:0;z-index:3}
+.bom-grid th.row-index{z-index:8}
+.bom-grid .code-col{min-width:120px;width:120px;max-width:120px;position:sticky;left:48px;z-index:3;background:#f8faff;font-weight:700;color:#37577d}
+.bom-grid th.code-col{z-index:8;background:#e9f0f9}
+.bom-grid .item-col{min-width:260px;width:260px;max-width:260px;position:sticky;left:168px;z-index:3;background:#fff;font-weight:600;box-shadow:3px 0 6px #18365712}
+.bom-grid tbody tr:nth-child(even) .item-col{background:#f9fbfe}
+.bom-grid th.item-col{z-index:8;background:#e9f0f9}
+.bom-grid .w-check{min-width:78px;width:78px;max-width:78px}
+.bom-grid .w-phase{min-width:120px;width:120px;max-width:120px}
+.bom-grid .w-stage{min-width:175px;width:175px;max-width:175px}
+.bom-grid .w-group{min-width:118px;width:118px;max-width:118px}
+.bom-grid .w-category{min-width:240px;width:240px;max-width:240px}
+.bom-grid .w-unit{min-width:72px;width:72px;max-width:72px}
+.bom-grid .w-qty{min-width:105px;width:105px;max-width:105px}
+.bom-grid .w-spec{min-width:320px;width:320px;max-width:320px}
+.bom-grid .w-vendor{min-width:150px;width:150px;max-width:150px}
+.bom-grid .w-part{min-width:150px;width:150px;max-width:150px}
+.bom-grid .w-notes{min-width:300px;width:300px;max-width:300px}
+.grid-cell-editor{position:absolute;z-index:15;min-width:140px;border:2px solid #2463c5;border-radius:3px;padding:5px 7px;box-shadow:0 6px 18px #1b3e6a27;font:12px Inter,Segoe UI,Arial,sans-serif;color:#142842;background:#fff;resize:none}
+.grid-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:9px 1px 0;color:#62758c;font-size:11px}
+.grid-footer strong{color:#2d5487}
+#advancedEditor{margin:0 20px 22px;border:1px solid #d5e0ec;border-radius:8px;background:#fff;padding:0}
+#advancedEditor>summary{padding:12px 16px;color:#2859a0;font-size:12px}
+#advancedEditor .layout{height:min(67vh,650px)}
+#advancedEditor main{max-width:none}
+@media(max-width:850px){header{padding:10px 12px}header h1{width:100%;order:-1}header label{flex:1 1 120px}.grid-app{padding:12px}.grid-heading h2{font-size:23px}.grid-viewport{height:64vh}.bom-grid .item-col{min-width:210px;width:210px;max-width:210px}}
+@media(max-width:570px){header{gap:8px}header h1{font-size:16px}header input{max-width:none}#save{flex:1 1 100%}.grid-toolbar label{flex:1 1 130px}.grid-toolbar label.search-field{flex:1 1 100%}.grid-viewport{min-height:300px}.grid-help{line-height:1.4}.grid-help span:first-child{display:none}.grid-mobile-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 9px;color:#536781;font-size:11px}.grid-mobile-nav button{min-height:32px;padding:6px 8px;border-radius:5px;font-size:11px}.grid-mobile-nav span:last-child{flex-basis:100%}.bom-grid .row-index,.bom-grid .code-col{display:none}.bom-grid .item-col{left:0;min-width:138px;width:138px;max-width:138px}#advancedEditor{margin:0 12px 18px}}
+@media(max-width:570px){header a,header h1{flex:0 0 100%}header a{order:-2}.account-note{flex:0 0 100%}.grid-heading{display:block}#gridCount{display:block;margin-top:6px}}

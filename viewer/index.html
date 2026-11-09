@@ -44,14 +44,158 @@ main{padding:24px 32px}.topline{padding-bottom:12px;color:#536174}h1{font-size:3
  #printReport .print-legend{margin-top:12pt;font-size:8pt;border-top:1px solid #ccc;padding-top:6pt}
 }
 
-.view-modes{margin-bottom:12px}.type-heading{font-size:13px;margin:12px 0 6px}.type-heading small{font-weight:400;color:#536174;margin-left:8px}.compact-list{border:1px solid #d4dae2;background:#fff}.material-entry{margin:0;border:0;border-bottom:1px solid #e4e8ed;border-radius:0;background:white;padding:0}.material-entry:last-child{border-bottom:0}.material-entry summary{display:flex;justify-content:space-between;gap:16px;padding:9px 12px;color:#234e86;font-weight:600}.material-entry summary:before{content:'+';width:10px;flex-shrink:0}.material-entry[open] summary:before{content:'?'}.material-entry summary>span:first-of-type{flex:1}.material-entry summary small{display:block;font-size:11px;color:#627084;font-weight:400;margin-top:2px}.entry-unit{font-size:12px;font-weight:400}.inline-info{border-top:1px solid #e4e8ed;padding:8px 16px;background:#fafbfd}.inline-info h4{margin:8px 0}.inline-info dl{margin:0}@media print{#printReport .material-entry{break-inside:avoid}#printReport .material-entry summary{font-size:9pt}#printReport .type-heading{break-after:avoid}}
+.view-modes{margin-bottom:12px}.type-heading{font-size:13px;margin:12px 0 6px}.type-heading small{font-weight:400;color:#536174;margin-left:8px}.compact-list{border:1px solid #d4dae2;background:#fff}.material-entry{margin:0;border:0;border-bottom:1px solid #e4e8ed;border-radius:0;background:white;padding:0}.material-entry:last-child{border-bottom:0}.material-entry summary{display:flex;justify-content:space-between;gap:16px;padding:9px 12px;color:#234e86;font-weight:600}.material-entry summary:before{content:'+';width:10px;flex-shrink:0}.material-entry[open] > summary:before,.material-entry details[open] > summary:before{content:'-'}.material-entry summary>span:first-of-type{flex:1}.material-entry summary small{display:block;font-size:11px;color:#627084;font-weight:400;margin-top:2px}.entry-unit{font-size:12px;font-weight:400}.inline-info{border-top:1px solid #e4e8ed;padding:8px 16px;background:#fafbfd}.inline-info h4{margin:8px 0}.inline-info dl{margin:0}@media print{#printReport .material-entry{break-inside:avoid}#printReport .material-entry summary{font-size:9pt}#printReport .type-heading{break-after:avoid}}
 .source-item{font-size:12px;margin:6px 14px}.quantity-review{display:inline-block;margin-left:5px;color:#8a4b00;font-size:10px;font-weight:700}
 .calc-panel{border-left:3px solid #2359a8;background:#fff;padding:10px 12px;margin:4px 0 8px}.calc-panel h4{margin:0 0 7px;font-size:12px}.calc-equation{font-size:13px;font-weight:650;line-height:1.5;color:#153b72;overflow-wrap:anywhere}.calc-assumption{font-size:11px;line-height:1.45;color:#536174;margin:7px 0 0}.inline-info>details{background:#fff;margin:7px 0;padding:7px 9px}.inline-info>details summary{font-size:11px}.inline-info>details dl{margin:4px 0}.calc-kind{font-weight:400;color:#536174}
 
 .package-columns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}.package-stack{display:grid;gap:14px;min-width:0}.package-column{min-width:0}.package-column .type-heading{display:flex;gap:6px;margin:8px 0 5px}.package-column .type-heading>span{margin-left:auto;font-size:11px;font-weight:400}.package-column .material-entry summary{padding:8px;gap:7px;font-size:12px}.entry-unit{white-space:nowrap;text-align:right;min-width:40px;font-weight:600}.inline-info dl{grid-template-columns:1fr}.inline-info dt{padding-bottom:0;border:0}.inline-info dd{padding-top:2px}.extra-catalog{background:#fff}.extra-catalog>summary{padding:4px}.package-column .entry-unit small{font-size:10px}.package-column .inline-info{padding:8px}.package-column .compact-list{height:auto}@media(max-width:1050px){.package-columns{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.package-columns{grid-template-columns:1fr}}@media print{#printReport .package-columns{display:block;columns:4;column-gap:10pt}#printReport .package-stack,#printReport .package-column{break-inside:avoid;display:inline-block;width:100%;margin-bottom:8pt}#printReport .entry-unit{font-size:8pt}}
 .field-edit{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:12px 0;padding:12px;background:#edf3fa;border:1px solid var(--border)}.field-edit label{font-size:12px;font-weight:600}.field-edit input[type=number]{width:125px;display:block;margin-top:4px}.field-edit input[type=checkbox]{width:auto;margin-right:6px}.field-done{color:#227045}.schedule-notice{margin:0 0 16px;padding:12px 14px;border:1px solid #b7c9df;background:#edf3fa;color:#263c59;font-size:13px;line-height:1.5}@media print{.field-edit,[data-export-progress]{display:none!important}}
+
+/* Catalog application layout */
+:root{background:#f5f7fb;--border:#d8e0eb;--muted:#596b83;--green:#2053a4}
+.shell{display:block;min-height:100vh}
+.appbar{background:#fff;border-bottom:1px solid #d9e2ee;box-shadow:0 2px 10px #243d6310}
+.appbar-inner{max-width:1320px;margin:auto;padding:0 28px;min-height:56px;display:flex;align-items:center;justify-content:flex-start;gap:24px}
+.appbar .brand{border:0;background:none;padding:0;text-align:left;color:#12243e;font-size:23px;font-weight:750;letter-spacing:-.9px;line-height:1;white-space:nowrap}
+.appbar .brand span{color:#2863bf}
+.appbar .brand small{display:block;margin-top:7px;color:#64748b;font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase}
+.header-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.header-link,.nav-menu>summary{display:inline-flex;align-items:center;justify-content:center;min-height:37px;padding:8px 12px;border:1px solid transparent;border-radius:7px;background:transparent;color:#344760;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap}
+.header-link:hover,.nav-menu>summary:hover{background:#edf3fb;color:#174784}
+.header-link.active{background:#e8f0fc;color:#174784}
+.header-actions .edit-link{margin-left:8px;border-color:#2558a8;background:#2558a8;color:#fff}
+.header-actions .edit-link:hover{background:#174784;color:#fff}
+.nav-menu{position:relative;margin:0;padding:0;border:0}
+.nav-menu>summary{list-style:none;cursor:pointer;gap:7px}
+.nav-menu>summary::-webkit-details-marker{display:none}
+.nav-menu>summary:after{content:'⌄';font-size:17px;line-height:0;margin-top:-7px}
+.nav-menu[open]>summary{background:#e8f0fc;color:#174784}
+.nav-menu nav{position:absolute;right:0;top:calc(100% + 9px);z-index:30;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:5px;width:min(380px,calc(100vw - 32px));max-height:min(66vh,520px);overflow:auto;margin:0;padding:12px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 18px 48px #152e5350}
+.nav-menu nav button{border:0;border-radius:7px;background:#fff;color:#243a56;text-align:left;padding:10px 12px;font-size:12px;font-weight:600;line-height:1.3}
+.nav-menu nav .nav-folder{display:block}
+.nav-menu nav button:hover,.nav-menu nav button[aria-current=page]{background:#edf3fc;color:#174784}
+main{max-width:1320px;padding:28px 28px 70px}
+.topline{border:0;padding:0;color:#738197;font-size:10px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase}
+.topline-separator{margin:0 7px;color:#a8b6c8}
+.topline .tag{font-size:11px;font-weight:600;letter-spacing:0;text-transform:none}
+h1{margin:17px 0 7px;font-size:clamp(29px,3vw,39px);font-weight:700;letter-spacing:-1.2px;color:#132742}
+.intro{max-width:800px;margin:0 0 21px;line-height:1.55}
+.schedule-notice{border-left:4px solid #4776bc;border-radius:7px;padding:13px 16px;background:#eaf1fa;color:#27405f}
+#materialControls{padding:16px 18px 17px;margin-bottom:16px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 7px #18345409}
+.phases{gap:7px}
+.phases button,.quiet{border-radius:7px;font-size:12px;font-weight:600;padding:9px 12px}
+.phases button:hover,.quiet:hover{border-color:#84a8dc;background:#f1f6fd}
+.phases button.active,.phases button.active:hover{background:#2457a6;border-color:#2457a6;color:#fff}
+.view-modes{padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #e7edf5}
+.controls{margin:14px 0 0}
+.search input{border-radius:7px;background:#f9fbfe}
+.search input:focus{background:#fff}
+.listhead{gap:14px;align-items:flex-start;margin:15px 0 14px}
+.listhead [role=status]{padding-top:7px;font-weight:600;color:#49617e}
+.list-actions{justify-content:flex-end}
+.stage-links{top:0;padding:10px 0;background:#f5f7fb;border-color:#e2e8f1;gap:7px}
+.stage-links a{border-radius:6px;padding:7px 10px;background:#fff;border-color:#d9e2ee}
+.stage-links a:hover{border-color:#8cb0df;background:#f0f6ff}
+.group-title{font-size:17px;color:#1e3654;margin:26px 0 11px}
+.work-area{scroll-margin-top:64px}
+.tablewrap,.compact-list{border-radius:9px;overflow:hidden;box-shadow:0 1px 5px #1734570a}
+.material-entry summary:hover{background:#f4f8fe}
+.note{max-width:960px}
+@media(max-width:950px){.appbar-inner{padding:10px 20px;gap:12px}main{padding:24px 20px 60px}.header-actions{gap:2px}}
+@media(max-width:720px){.appbar-inner{display:block;position:relative;padding:14px 16px 8px}.appbar .brand{font-size:21px}.appbar .brand small{display:inline;margin-left:9px;font-size:9px}.header-actions{margin-top:10px;display:flex;flex-wrap:wrap;overflow:visible;padding-bottom:5px}.header-link,.nav-menu>summary{min-height:35px;padding:7px 9px;font-size:12px}.header-actions .edit-link{margin-left:0}.nav-menu{position:static}.nav-menu nav{left:16px;right:16px;top:100%;width:calc(100vw - 32px)}main{padding:21px 14px 48px}.topline{align-items:flex-start;gap:9px}.topline .tag{display:none}#materialControls{padding:13px}.phases button,.quiet{padding:8px 10px}.listhead{display:block}.list-actions{justify-content:flex-start;margin-top:9px}.stage-links{position:static}.group-title{font-size:15px}.docs{grid-template-columns:1fr}}
+@media(max-width:420px){.nav-menu nav{grid-template-columns:1fr}.code-link{display:none}.intro{font-size:13px}.schedule-notice{font-size:12px}.topline{font-size:9px}}
+@media print{.appbar{display:none!important}main{max-width:none;padding:0}#materialControls,.topline{display:none!important}}
+
+/* Light catalog rail and a dismissible mobile drawer. */
+.shell{display:grid;grid-template-columns:300px minmax(0,1fr);align-items:start}
+.shell.rail-hidden{grid-template-columns:minmax(0,1fr)}
+.rail-hidden .appbar{display:none}
+.rail-hidden main{padding-left:76px}
+.appbar{position:sticky;top:14px;display:block;width:auto;height:100dvh;min-height:0;margin:0;padding:0;overflow-y:auto;background:#fff;border:0;border-right:1px solid #d8e0eb;border-radius:0;box-shadow:3px 0 16px #2039590d}
+.appbar-inner{display:block;min-height:0;padding:16px 12px}
+.sidebar-heading{display:flex;align-items:center;justify-content:space-between;margin:0 6px 10px;padding:2px 2px 12px;border-bottom:1px solid #e8edf5;color:#64748b;font-size:11px;font-weight:750;letter-spacing:1.2px;text-transform:uppercase}
+.header-actions{display:grid;gap:3px;margin:0}
+.header-link,.nav-menu>summary{display:flex;justify-content:flex-start;width:100%;min-height:36px;padding:8px 11px;text-align:left}
+.nav-menu{display:block;width:100%}
+.nav-menu>summary{color:#456079}
+.nav-menu>summary:after{margin-left:auto}
+.nav-menu nav{position:static;display:grid;grid-template-columns:1fr;gap:1px;width:auto;max-height:none;overflow:visible;margin:0;padding:3px 0 4px 9px;border:0;border-left:1px solid #e0e8f2;border-radius:0;box-shadow:none}
+.nav-menu nav .nav-folder{display:block;padding:7px 10px;font-size:11px;font-weight:550}
+.header-actions .edit-link{margin:10px 0 0;justify-content:center;text-align:center}
+.nav-toggle,.nav-close,.nav-scrim{display:none}
+.rail-control{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid #d8e0eb;border-radius:5px;background:#fff;color:#2457a6;cursor:pointer}
+.rail-control:hover{background:#edf3fc;border-color:#99b6dc}
+.rail-control:focus-visible{outline:3px solid #79a7e8;outline-offset:2px}
+.rail-restore{display:none;position:fixed;top:18px;left:18px;z-index:35;box-shadow:0 3px 12px #2039591e}
+.rail-hidden .rail-restore{display:inline-flex}
+main{max-width:1320px;width:100%;min-width:0;padding:27px 28px 70px}
+.sheet-wrap{overflow:auto;max-width:100%;max-height:75vh;border:1px solid #d0dceb;border-radius:9px;background:#fff;box-shadow:0 8px 25px #1734540d}
+.sheet-table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+.sheet-table th,.sheet-table td{padding:9px 11px;min-width:90px;max-width:310px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-right:1px solid #e2e9f2;border-bottom:1px solid #e5eaf1;text-align:left}
+.sheet-table thead th{position:sticky;top:0;z-index:3;background:#eaf1fa;color:#2d4c72;font-size:10px;text-transform:uppercase;letter-spacing:.4px}
+.sheet-table tbody tr:nth-child(even){background:#f8fbff}
+.sheet-table tbody tr:hover{background:#eaf3ff}
+.sheet-table .sheet-index{position:sticky;left:0;z-index:2;min-width:47px;width:47px;text-align:center;background:#f0f5fb;color:#6c8099}
+.sheet-table thead .sheet-index{z-index:5}
+.sheet-table .sheet-item{position:sticky;left:47px;z-index:2;min-width:270px;max-width:270px;background:#fff;font-weight:600;box-shadow:3px 0 6px #15325012}
+.sheet-table tbody tr:nth-child(even) .sheet-item{background:#f8fbff}
+.sheet-table thead .sheet-item{z-index:5;background:#eaf1fa}
+.sheet-table .sheet-item button{border:0;background:none;padding:0;color:#214d90;font:inherit;text-align:left;cursor:pointer}
+.sheet-table .sheet-item button:hover{text-decoration:underline}
+.sheet-table .sheet-num{text-align:right}
+.sheet-table .sheet-notes{min-width:280px;max-width:280px}
+.sheet-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 0;color:#61748e;font-size:11px}
+.sheet-legend strong{color:#244a82}
+.sheet-table td{user-select:text}
+main:has(.sheet-wrap){max-width:none}
+.table-mode main{padding-top:14px}
+.table-mode h1{margin:8px 0 3px;font-size:29px}
+.table-mode .intro{margin-bottom:8px}
+.table-mode .schedule-notice{margin-bottom:8px;padding:6px 10px;font-size:11px}
+.table-mode .schedule-notice summary{font-size:11px;color:#27405f}
+.table-mode .schedule-notice p{margin:6px 0 0}
+.table-mode #materialControls{padding:9px 12px;margin-bottom:7px}
+.table-mode .view-modes{padding-bottom:7px;margin-bottom:7px}
+.table-mode .phases button{padding:6px 9px}
+.table-mode .controls{margin:7px 0 0}
+.table-mode .search input{padding:7px 10px}
+.table-mode .breadcrumbs{margin:6px 0}
+.table-mode .listhead{margin:4px 0 6px}
+.table-mode .note{margin:5px 0;font-size:11px}
+@media(max-width:800px){
+ .shell,.shell.rail-hidden{display:block}
+ .rail-control,.rail-hidden .rail-restore{display:none}
+ .rail-hidden .appbar{display:block}
+ .rail-hidden main{padding-left:14px}
+ .nav-toggle{position:sticky;top:8px;z-index:40;display:inline-flex;align-items:center;gap:7px;margin:12px 0 0 14px;padding:9px 14px;border:1px solid #b9cbe3;border-radius:9px;background:#fff;color:#2053a4;font-size:13px;font-weight:700;box-shadow:0 3px 12px #2039591e}
+ .nav-scrim{position:fixed;inset:0;z-index:48;width:100%;height:100%;border:0;background:#10233e88}
+ .nav-open .nav-scrim{display:block}
+ .appbar{position:fixed;top:0;left:0;z-index:50;width:min(340px,90vw);height:100dvh;margin:0;border-radius:0;transform:translateX(-110%);transition:transform .2s ease;box-shadow:18px 0 48px #10233e55}
+ .nav-open .appbar{transform:translateX(0)}
+ .nav-close{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;border:1px solid #d8e0eb;border-radius:7px;background:#fff;color:#344760;font-size:14px}
+ .appbar-inner{padding:18px 14px 28px}
+ main{padding:16px 14px 48px}
+ .header-actions{display:grid;overflow:visible;padding:0}
+ .header-link,.nav-menu>summary{min-height:38px;font-size:13px}
+ .nav-menu{position:static}
+ .nav-menu nav{position:static;display:grid;width:auto;max-height:none;margin:0;padding:3px 0 4px 9px}
+ .nav-menu nav .nav-folder{display:block}
+}
+.sheet-nav{display:none}
+@media(max-width:800px){
+ .sheet-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:8px 0;color:#536781;font-size:12px}
+ .sheet-nav span{flex:1 1 100%}
+ .sheet-nav button{min-height:38px}
+ .sheet-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+ .sheet-table .sheet-index,.sheet-table .sheet-item{position:static;box-shadow:none}
+ .sheet-table thead .sheet-index,.sheet-table thead .sheet-item{position:sticky;left:auto;top:0;z-index:3}
+ .sheet-table .sheet-index{min-width:40px;width:40px}
+ .sheet-table .sheet-item{min-width:180px;max-width:180px}
+}
+@media(prefers-reduced-motion:reduce){.appbar{transition:none}}
+@media print{.appbar,.nav-toggle,.nav-scrim{display:none!important}.shell{display:block}}
 </style></head><body>
-<div class="shell"><aside><div class="brand">Site Bill<br>of Material</div><nav aria-label="Main navigation" id="navigation"></nav><footer><span id="version"></span><br>Offline catalog</footer></aside><main><div class="topline"><span>SITE BILL OF MATERIAL</span><span class="tag">Local snapshot</span></div><h1 id="heading">Material catalog</h1><p class="intro" id="intro">Browse folders to find related materials.</p><p class="schedule-notice" id="pileScheduleNotice" hidden></p><section id="materialControls"><div class="phases view-modes" id="viewModes" aria-label="List version"></div><div class="phases" id="phases" aria-label="Filter by phase"></div><div class="controls"><label class="search"><input id="search" type="search" placeholder="Search materials in this folder..." aria-label="Search materials in this folder"></label></div></section><section id="content"></section><p class="note" id="footnote"></p></main></div>
+<div class="shell"><button class="rail-control rail-restore" id="railOpen" type="button" aria-label="Show sidebar" aria-controls="sidebar" aria-expanded="true" title="Show sidebar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M9 4v16m5-11 3 3-3 3"/></svg></button><button class="nav-toggle" id="navToggle" type="button" aria-controls="sidebar" aria-expanded="false">☰ <span>Browse</span></button><button class="nav-scrim" id="navScrim" type="button" aria-label="Close navigation" tabindex="-1"></button><aside class="appbar" id="sidebar" aria-label="Catalog navigation"><div class="appbar-inner"><div class="sidebar-heading"><span>Explore</span><button class="rail-control rail-collapse" id="railClose" type="button" aria-label="Hide sidebar" aria-controls="sidebar" aria-expanded="true" title="Hide sidebar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M9 4v16m8-11-3 3 3 3"/></svg></button><button class="nav-close" id="navClose" type="button" aria-label="Close navigation">✕</button></div><div class="header-actions"><button class="header-link" type="button" data-view="catalog">Catalog</button><details class="nav-menu" open><summary>Categories</summary><nav aria-label="Material categories" id="navigation"></nav></details><button class="header-link" type="button" data-view="documents">Documents</button><button class="header-link" type="button" data-view="reference">How to use</button><button class="header-link code-link" type="button" data-code-index>Code index</button></div></div></aside><main><div class="topline"><span>PROJECT MATERIALS <span class="topline-separator">/</span> <span id="version"></span></span><span class="tag">Local snapshot</span></div><h1 id="heading">Material catalog</h1><p class="intro" id="intro">Browse folders to find related materials.</p><details class="schedule-notice" id="pileScheduleNotice" hidden><summary id="pileScheduleSummary"></summary><p id="pileScheduleText"></p></details><section id="materialControls"><div class="phases view-modes" id="viewModes" aria-label="List version"></div><div class="phases" id="phases" aria-label="Filter by phase"></div><div class="controls"><label class="search"><input id="search" type="search" placeholder="Search materials in this folder..." aria-label="Search materials in this folder"></label></div></section><section id="content"></section><p class="note" id="footnote"></p></main></div>
 <section id="printReport" aria-hidden="true"></section>
 <dialog id="detail" aria-labelledby="detailTitle"><button class="quiet close" id="close">Close</button><div id="detailContent"></div></dialog>
 <script id="snapshot" type="application/json">/*__SNAPSHOT__*/</script>
@@ -67,7 +211,7 @@ let progress={};try{progress=JSON.parse(localStorage.getItem(progressKey)||'{}')
 function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(progress))}catch{}}
 function progressFor(i){return progress[i.lineId]||{}}
 function csvCell(value){return '"'+String(value??'').replaceAll('"','""')+'"'}
-function exportProgress(){const rows=[['Line ID','Item','Phase','Work area','Listed quantity','Site quantity','Unit','Checked']];for(const i of data.items){const p=progressFor(i);rows.push([i.lineId,i.description,i.phase,i.stage,i.listedQuantity??'',p.quantity??'',i.unit,p.done?'Yes':'No'])}const blob=new Blob([rows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Neovi-Site-BOM-Progress.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportProgress(){const rows=[['Line ID','Item','Phase','Work area','Listed quantity','Site quantity','Unit','Checked']];for(const i of data.items){const p=progressFor(i);rows.push([i.lineId,i.description,i.phase,i.stage,i.listedQuantity??'',p.quantity??'',i.unit,p.done?'Yes':'No'])}const csv=rows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n';if(window.parent!==window&&location.pathname.startsWith('/apps/site-bom/content/')){window.parent.postMessage({type:'site-bom:download-progress-csv',csv},location.origin);return}const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Neovi-Site-BOM-Progress.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 const itemPath=i=>i.categoryPath?.length?i.categoryPath:['Uncategorized'];
 const startsWith=(path,prefix)=>prefix.every((part,n)=>path[n]===part);
 const topFolders=[...new Set(data.items.map(i=>itemPath(i)[0]))].sort();
@@ -103,6 +247,7 @@ function purchaseKey(i){const unit=normalized(i.unit),prefix=i.inventoryPrefix||
 function purchaseGroups(items){const groups=new Map();items.forEach(i=>{const key=purchaseKey(i);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i)});return [...groups.values()]}
 function purchaseFamily(i){const name=i.description.toLowerCase();if(/screw(?!driver)/.test(name))return 'Screws';if(/washers.*nuts|nuts.*washers/.test(name))return 'Washer and nut sets';if(/\bwashers?\b/.test(name))return 'Washers';if(/\bnuts?\b/.test(name))return 'Nuts';if(/\bbolts?\b/.test(name))return 'Bolts';if(/froth.?pak|foam/.test(name))return 'Foam and applicator supplies';return codeIndex[i.inventoryPrefix]?.[0]||'Other parts'}
 function orderingList(items){const placeholders=items.filter(i=>/^Define\b/i.test(i.description));items=items.filter(i=>!/^Define\b/i.test(i.description));const families=new Map();purchaseGroups(items).forEach(rows=>{const family=purchaseFamily(rows[0]);if(!families.has(family))families.set(family,[]);families.get(family).push(rows)});return '<p class="note">All phases combined by part type. Quantities labeled Monroe estimate are project planning values, not approved order quantities. User-provided quantities retain their listed values. N/A remains where no defensible value exists; repeated sheet uses of one catalog item share a single Monroe total.</p>'+[...families].sort(([a],[b])=>a.localeCompare(b)).map(([name,entries])=>'<h2 class="group-title">'+esc(name)+' <span class="group-count">'+entries.length+' ordering entries</span></h2><div class="compact-list">'+entries.sort((a,b)=>a[0].description.localeCompare(b[0].description)).map(rows=>{const i=rows[0],title=rows.length>1&&specified(i.partNumber)?i.partNumber:rows.length>1&&specified(i.specification)?i.specification:i.description,qty=shownQuantity(rows);return '<details class="material-entry"><summary><span>'+esc(title)+'<small>'+esc([...new Set(rows.map(r=>r.phase+' / '+r.stage))].join(' ; '))+' / '+rows.length+' use'+(rows.length===1?'':'s')+(!specified(i.specification)&&!specified(i.partNumber)?' / Specification needed':'')+'</small></span><span class="entry-unit">'+esc(qty.text)+'<small>'+esc(i.unit+' · '+qty.source)+'</small></span></summary>'+rows.map(row=>'<p class="source-item">'+esc(row.catalogId)+' / '+esc(row.description)+'</p>').join('')+inlineDetails(rows)+'</details>'}).join('')+'</div>').join('')+(placeholders.length?'<details class="extra-catalog"><summary>Items still to define ('+placeholders.length+')</summary>'+compactList(placeholders)+'</details>':'')}
+function spreadsheet(items){const ordered=[...items].sort((a,b)=>(a.phaseOrder??999)-(b.phaseOrder??999)||(a.stageOrder??999)-(b.stageOrder??999)||sourceOrder(a,b));const headers=['#','Item','Code','Phase','Work area','Group','Plan qty','Qty source','Listed qty','Site qty','Unit','Checked','Specification','Vendor','Part number','Notes'];return '<div class="sheet-wrap" role="region" tabindex="0" aria-label="Site BOM table"><table class="sheet-table"><thead><tr>'+headers.map((h,n)=>'<th class="'+(n===0?'sheet-index':n===1?'sheet-item':'')+'">'+h+'</th>').join('')+'</tr></thead><tbody>'+ordered.map((i,n)=>{const qty=shownQuantity([i]),p=progressFor(i);const cells=[n+1,i.description,i.lineId,i.phase,i.stage,checklistGroup(i),qty.text,qty.source,i.listedQuantity??'',p.quantity??i.siteQuantity??'',i.unit,p.done?'Yes':'',i.specification||'',i.vendor||'',i.partNumber||'',i.itemNotes||''];return '<tr>'+cells.map((value,index)=>'<td class="'+(index===0?'sheet-index':index===1?'sheet-item':index===6||index===8||index===9?'sheet-num':index===15?'sheet-notes':'')+'" title="'+esc(value)+'">'+(index===1?'<button data-detail="'+esc(i.lineId)+'">'+esc(value)+'</button>':esc(value))+'</td>').join('')+'</tr>'}).join('')+'</tbody></table></div><p class="sheet-legend"><span><strong>'+ordered.length+' rows</strong> · drag to select and copy cells</span><span>Plan quantities are labeled by source and are not approved order quantities.</span><span>Blank means unknown.</span></p>'}
 function printPhase(){
  if(!state.phase&&state.presentation!=='ordering')return;
  const saved={...state,path:[...state.path]},title=document.title;
@@ -115,28 +260,41 @@ function printPhase(){
  try{window.print()}finally{document.title=title;$('printReport').innerHTML=''}
 }
 function render(){
+ document.body.classList.toggle('table-mode',state.view==='catalog'&&state.presentation==='grid');
  const pileSchedule=data.pileSchedule;
  $('pileScheduleNotice').hidden=state.view!=='catalog'||!pileSchedule;
- if(pileSchedule)$('pileScheduleNotice').textContent=`Structural pile schedule: ${pileSchedule.totalPiles} piles (${pileSchedule.byDiameter.map(row=>`${row.count} at ${row.diameterIn} diameter`).join(', ')}). Source: ${pileSchedule.sourceDocument}, page ${pileSchedule.sourcePage}. Confirm pile specifications and approved drawing revision before purchase.`;
- $('navigation').innerHTML='<button data-view="catalog" class="'+(state.view==='catalog'?'active':'')+'">Catalog</button>'+topFolders.map(f=>'<button class="nav-folder" data-root="'+esc(f)+'"'+(state.view==='catalog'&&state.path[0]===f?' aria-current="page"':'')+'>'+esc(f)+'</button>').join('')+'<div class="eyebrow nav-label">Resources</div><button data-code-index>Code index</button><button data-view="documents" class="'+(state.view==='documents'?'active':'')+'">Documents</button><button data-view="reference" class="'+(state.view==='reference'?'active':'')+'">How to use</button>';
+ if(pileSchedule){$('pileScheduleSummary').textContent=`Structural pile schedule: ${pileSchedule.totalPiles} piles by diameter · confirm before purchase`;$('pileScheduleText').textContent=`${pileSchedule.byDiameter.map(row=>`${row.count} at ${row.diameterIn} diameter`).join(', ')}. Source: ${pileSchedule.sourceDocument}, page ${pileSchedule.sourcePage}. Confirm pile specifications and approved drawing revision before purchase.`;}
+ $('navigation').innerHTML=topFolders.map(f=>'<button class="nav-folder" data-root="'+esc(f)+'"'+(state.view==='catalog'&&state.path[0]===f?' aria-current="page"':'')+'>'+esc(f)+'</button>').join('');
+ document.querySelectorAll('.header-link[data-view]').forEach(button=>button.classList.toggle('active',button.dataset.view===state.view));
  $('materialControls').hidden=state.view!=='catalog';
- $('viewModes').innerHTML=[['ordering','Combined ordering list'],['phase','By phase: tools & materials']].map(([value,name])=>'<button data-presentation="'+value+'" class="'+(state.presentation===value?'active':'')+'" aria-pressed="'+(state.presentation===value)+'">'+name+'</button>').join('');
+ $('viewModes').innerHTML=[['grid','Table'],['ordering','Combined ordering list'],['phase','By phase: tools & materials']].map(([value,name])=>'<button data-presentation="'+value+'" class="'+(state.presentation===value?'active':'')+'" aria-pressed="'+(state.presentation===value)+'">'+name+'</button>').join('');
  $('phases').hidden=state.presentation==='ordering';
- $('heading').textContent=state.view==='catalog'?(state.presentation==='ordering'?'Combined ordering list':state.path.at(-1)||state.phase||'Material catalog'):state.view==='documents'?'Documents':'How to use';
- $('intro').textContent=state.view==='catalog'?(state.phase?'Full phase inventory, organized using the BOM Skeleton layout. Work packages show all materials, tools, and consumables; click an item for details.':(state.presentation==='ordering'?'Matching parts combined across work areas, with quantities from your checklist and later directions.':'Browse category folders or select a phase to see all its materials.')):state.view==='documents'?'Browse supporting files by folder. Older catalog and project exports do not include the BOM Skeleton checklist additions.':'Find materials, specifications, and catalog information.';
+ $('heading').textContent=state.view==='catalog'?(state.presentation==='grid'?'Materials table':state.presentation==='ordering'?'Combined ordering list':state.path.at(-1)||state.phase||'Material catalog'):state.view==='documents'?'Documents':'How to use';
+ $('intro').textContent=state.view==='catalog'?(state.presentation==='grid'?'Browse and copy the full materials table. Open an item for its source details; use the shared editor to change rows.':state.phase?'Full phase inventory, organized using the BOM Skeleton layout. Work packages show all materials, tools, and consumables; click an item for details.':(state.presentation==='ordering'?'Matching parts combined across work areas, with quantities from your checklist and later directions.':'Browse category folders or select a phase to see all its materials.')):state.view==='documents'?'Browse supporting files by folder. Older catalog and project exports do not include the BOM Skeleton checklist additions.':'Find materials, specifications, and catalog information.';
  $('footnote').textContent='Catalog snapshot: '+new Date(data.viewerGeneratedAt||data.generatedAt).toLocaleDateString()+'.';
  if(state.view==='documents'){$('content').innerHTML='<div class="controls"><input id="docSearch" type="search" aria-label="Search documents" placeholder="Search files in this folder..." value="'+esc(state.docQuery)+'"></div><div id="docList"></div>';renderDocs();$('docSearch').oninput=e=>{state.docQuery=e.target.value;renderDocs()};return}
- if(state.view==='reference'){$('content').innerHTML='<div class="reference"><h2>Everything in its folder</h2><p>Start with a catalog folder, then open its subfolders to find related materials. The folder path above the contents takes you back to any parent folder.</p><p>Select Foundation, Panels, or Finishing to see every material in that phase immediately, grouped by work area in installation order. Search looks through the current folder and all its subfolders.</p><p>Open Edit site progress beneath an item to enter a site quantity or check it off. Progress is saved in this browser; export the CSV to share it. Catalog estimates stay unchanged.</p><p>Select a material for its specification, vendor, part number, and catalog rules. Documents are also organized into folders.</p></div>';return}
+ if(state.view==='reference'){$('content').innerHTML='<div class="reference"><h2>Everything in its folder</h2><p>Start with a catalog folder, then open its subfolders to find related materials. The folder path above the contents takes you back to any parent folder.</p><p>Select Foundation, Panels, or Finishing to see every material in that phase immediately, grouped by work area in installation order. Search looks through the current folder and all its subfolders.</p><p>On WorkNeovi, Edit site progress opens the shared editor for signed-in users with SiteBOM edit access. In an offline copy, progress is saved in this browser and can be exported as CSV. Catalog estimates stay unchanged.</p><p>Select a material for its specification, vendor, part number, and catalog rules. Documents are also organized into folders.</p></div>';return}
  $('phases').innerHTML=['',...new Set(data.items.map(i=>i.phase))].map(p=>'<button data-phase="'+esc(p)+'" aria-pressed="'+(p===state.phase)+'" class="'+(p===state.phase?'active':'')+'">'+esc(p||'All phases')+'</button>').join('');
  const items=selectedItems(),depth=state.path.length,children=[...new Set(items.map(i=>itemPath(i)[depth]).filter(Boolean))].sort();
  let body=crumbs(state.path,'data-depth','Catalog')+'<div class="listhead"><span role="status">'+items.length+' entries'+(state.phase?' / '+esc(state.phase):'')+' · '+items.filter(i=>progressFor(i).done).length+' checked</span><div class="list-actions">'+(state.phase||state.presentation==='ordering'?'<button class="quiet" data-print>Print / Save PDF - '+esc(state.phase||'All items')+'</button>':'')+'<button class="quiet" data-export-progress>Export progress CSV</button><button class="quiet" data-code-index>Code index</button><button class="quiet" data-reset>Reset filters</button></div></div>';
- if(items.some(i=>i.checklistSource))body+='<p class="note">Quantity source appears below each number. User-provided values are preserved; Monroe estimates fill uniquely mapped blanks. Unlinked or ambiguous entries remain N/A.</p>';
+ if(items.some(i=>i.checklistSource))body+='<p class="note">'+(state.presentation==='grid'?'Quantity source has its own column. User-provided values are preserved; unlinked or ambiguous entries remain N/A.':'Quantity source appears below each number. User-provided values are preserved; Monroe estimates fill uniquely mapped blanks. Unlinked or ambiguous entries remain N/A.')+'</p>';
  if(!items.length)body+='<div class="empty">No matching materials. Try another search or reset the filters.</div>';
+ else if(state.presentation==='grid'){body+=spreadsheet(items)}
  else if(state.presentation==='ordering'){body+=orderingList(items)}
  else if(state.query||state.phase){const groups=new Map();const ordered=[...items].sort((a,b)=>(a.phaseOrder??999)-(b.phaseOrder??999)||(a.stageOrder??999)-(b.stageOrder??999)||sourceOrder(a,b));ordered.forEach(i=>{const key=i.phase+' / '+(i.stage||'Unassigned work area');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i)});body+='<div class="stage-links" aria-label="Jump to work area">'+[...groups].map(([name,rows],n)=>'<a href="#work-area-'+n+'">'+esc(state.phase?rows[0].stage:name)+' <small>'+rows.length+'</small></a>').join('')+'</div>';body+=[...groups].map(([name,rows],n)=>'<section id="work-area-'+n+'" class="work-area"><h2 class="group-title">'+esc(name)+' <span class="group-count">'+rows.length+' entries</span></h2>'+table(rows,name==='Foundation / Shared Foundation Support')+'</section>').join('')}
 
  else{body+='<div class="folder-grid">'+children.map(name=>folder(name,items.filter(i=>itemPath(i)[depth]===name).length+' materials','data-folder',name)).join('')+'</div>';const direct=items.filter(i=>itemPath(i).length===depth);if(direct.length)body+='<h2 class="group-title">Materials in this folder</h2>'+table(direct)}
- $('content').innerHTML=body;
+  $('content').innerHTML=body;
+  attachSheetNavigation();
+}
+function attachSheetNavigation(){
+ const wrap=$('content').querySelector('.sheet-wrap');
+ if(!wrap)return;
+ const nav=document.createElement('div');
+ nav.className='sheet-nav';
+ nav.innerHTML='<span>Swipe sideways in the table to see more columns, or use these buttons.</span><button class="quiet" type="button" data-sheet-scroll="-1" aria-label="Previous table columns">← Previous</button><button class="quiet" type="button" data-sheet-scroll="1" aria-label="Next table columns">Next →</button>';
+ wrap.before(nav);
+ nav.addEventListener('click',e=>{const button=e.target.closest('[data-sheet-scroll]');if(button)wrap.scrollBy({left:Number(button.dataset.sheetScroll)*Math.max(180,wrap.clientWidth*.8),behavior:'smooth'})});
 }
 // Project reports remain in the delivery package; this catalog only lists shared resources.
 const documents=data.documents.filter(d=>!d.path.startsWith('02-Projects/'));
@@ -144,10 +302,21 @@ function renderDocs(){const depth=state.docPath.length,docs=documents.filter(d=>
  $('docList').innerHTML=crumbs(state.docPath,'data-doc-depth','Documents')+'<div class="listhead" role="status">'+docs.length+' files</div>'+(!state.docQuery?'<div class="folder-grid">'+folders.map(f=>folder(f.replace(/^\d+-/,''),docs.filter(d=>d.path.split('/')[depth]===f).length+' files','data-doc-folder',f)).join('')+'</div>':'')+'<div class="docs">'+files.map(d=>'<a class="doc" href="'+d.path.split('/').map(encodeURIComponent).join('/')+'" target="_blank" rel="noopener"><small>'+esc(d.path.split('/').slice(0,-1).join(' / '))+'</small>'+esc(d.name)+'</a>').join('')+'</div>'+(!docs.length?'<div class="empty">No matching documents.</div>':'')}
 function openItem(id){const i=data.items.find(i=>i.lineId===id);$('detailContent').innerHTML='<div class="eyebrow">'+esc(i.catalogId)+' / '+esc(i.phase)+'</div><h2 id="detailTitle">'+esc(i.description)+'</h2><p class="intro">'+esc(itemPath(i).join(' / '))+'</p><h3>Used for / notes</h3><p class="usage-description">'+esc(usedFor(i))+'</p><h3>Belongs to</h3>'+fields({phase:i.phase,workArea:i.stage,system:i.system,kit:i.kitId,siteTeam:i.siteTeam,deliveryStage:i.deliveryStage})+'<h3>Specification</h3>'+fields({specification:i.specification,approved:i.specificationApproved,unit:i.unit,vendor:i.vendor,partNumber:i.partNumber})+'<details><summary>Catalog information</summary>'+fields({system:i.system,owner:i.owner,procurementMethod:i.procurementMethod,itemNotes:i.itemNotes,lineNotes:i.lineNotes})+'</details><details><summary>Quantity rules</summary>'+fields({quantityBasis:i.quantityBasis,takeoffFormula:i.takeoffFormula,packSize:i.packSize,ruleStatus:i.ruleStatus})+'</details><details><summary>Advanced catalog data</summary>'+fields(i)+'</details>';$('detail').showModal()}
 function openProgress(id){const i=data.items.find(row=>row.lineId===id),p=progressFor(i);$('detailContent').innerHTML='<h2 id="detailTitle">'+esc(i.description)+'</h2><p class="intro">'+esc(i.phase+' / '+i.stage)+' · '+esc(i.catalogId)+'</p><p>Catalog quantity: '+esc(shownQuantity([i]).text)+' '+esc(i.unit)+'</p><form id="progressForm" class="field-edit"><label>Site quantity<input name="quantity" type="number" min="0" step="any" value="'+esc(p.quantity??'')+'" placeholder="Unknown"></label><label><input name="done" type="checkbox"'+(p.done?' checked':'')+'>Checked</label><button type="submit" class="quiet">Save</button></form><p class="note">Changes are saved in this browser. Export a CSV to share them.</p>';$('detail').showModal();$('progressForm').onsubmit=e=>{e.preventDefault();const form=e.currentTarget,q=form.elements.quantity.value.trim();if(q!==''&&(!Number.isFinite(Number(q))||Number(q)<0))return;progress[id]={quantity:q===''?null:Number(q),done:form.elements.done.checked};saveProgress();$('detail').close();render()}}
-$('navigation').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-code-index'))openCodeIndex();else if(b.hasAttribute('data-root'))openFolder([b.dataset.root]);else if(b.dataset.view){state.view=b.dataset.view;if(state.view==='catalog')openFolder([]);else render()}});
-$('viewModes').addEventListener('click',e=>{const b=e.target.closest('[data-presentation]');if(!b)return;state.presentation=b.dataset.presentation;state.path=[];state.query='';$('search').value='';if(state.presentation==='ordering')state.phase='';else if(!state.phase)state.phase='Foundation';render()});
+const mobileNavigation=matchMedia('(max-width:800px)');
+function setNavigationOpen(open){document.querySelector('.shell').classList.toggle('nav-open',open);$('navToggle').setAttribute('aria-expanded',String(open));$('sidebar').inert=mobileNavigation.matches?!open:document.querySelector('.shell').classList.contains('rail-hidden');if(open)$('navClose').focus();else $('navToggle').focus()}
+function setRailCollapsed(collapsed,focus){const shell=document.querySelector('.shell');shell.classList.toggle('rail-hidden',collapsed);$('railOpen').setAttribute('aria-expanded',String(!collapsed));$('railClose').setAttribute('aria-expanded',String(!collapsed));$('sidebar').inert=mobileNavigation.matches?!shell.classList.contains('nav-open'):collapsed;try{localStorage.setItem('sitebom.sidebar.collapsed',String(collapsed))}catch{}if(focus)(collapsed?$('railOpen'):$('railClose')).focus()}
+$('railOpen').onclick=()=>setRailCollapsed(false,true);$('railClose').onclick=()=>setRailCollapsed(true,true);
+try{setRailCollapsed(localStorage.getItem('sitebom.sidebar.collapsed')==='true',false)}catch{setRailCollapsed(false,false)}
+mobileNavigation.addEventListener('change',()=>{document.querySelector('.shell').classList.remove('nav-open');$('navToggle').setAttribute('aria-expanded','false');$('sidebar').inert=mobileNavigation.matches||document.querySelector('.shell').classList.contains('rail-hidden')});
+$('sidebar').inert=mobileNavigation.matches||document.querySelector('.shell').classList.contains('rail-hidden');
+$('navToggle').onclick=()=>setNavigationOpen(true);
+$('navClose').onclick=()=>setNavigationOpen(false);
+$('navScrim').onclick=()=>setNavigationOpen(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('.shell').classList.contains('nav-open'))setNavigationOpen(false)});
+document.querySelector('.appbar').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.id==='navClose')return;if(b.hasAttribute('data-code-index'))openCodeIndex();else if(b.hasAttribute('data-root'))openFolder([b.dataset.root]);else if(b.dataset.view){state.view=b.dataset.view;if(state.view==='catalog')openFolder([]);else render()}if(matchMedia('(max-width:800px)').matches)setNavigationOpen(false);});
+$('viewModes').addEventListener('click',e=>{const b=e.target.closest('[data-presentation]');if(!b)return;state.presentation=b.dataset.presentation;state.path=[];state.query='';$('search').value='';if(state.presentation==='ordering'||state.presentation==='grid')state.phase='';else if(!state.phase)state.phase='Foundation';render()});
 $('phases').addEventListener('click',e=>{const b=e.target.closest('[data-phase]');if(b){state.phase=b.dataset.phase;state.path=[];state.query='';$('search').value='';render()}});
-$('content').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-print'))printPhase();else if(b.hasAttribute('data-export-progress'))exportProgress();else if(b.hasAttribute('data-code-index'))openCodeIndex();else if(b.dataset.item)openProgress(b.dataset.item);else if(b.hasAttribute('data-folder'))openFolder([...state.path,b.dataset.folder]);else if(b.hasAttribute('data-depth'))openFolder(state.path.slice(0,Number(b.dataset.depth)));else if(b.hasAttribute('data-reset')){state.phase='';state.query='';$('search').value='';render()}else if(b.hasAttribute('data-doc-folder')){state.docPath.push(b.dataset.docFolder);state.docQuery='';render()}else if(b.hasAttribute('data-doc-depth')){state.docPath=state.docPath.slice(0,Number(b.dataset.docDepth));state.docQuery='';render()}});
+$('content').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-print'))printPhase();else if(b.hasAttribute('data-export-progress'))exportProgress();else if(b.hasAttribute('data-code-index'))openCodeIndex();else if(b.hasAttribute('data-detail'))openItem(b.dataset.detail);else if(b.dataset.item)openProgress(b.dataset.item);else if(b.hasAttribute('data-folder'))openFolder([...state.path,b.dataset.folder]);else if(b.hasAttribute('data-depth'))openFolder(state.path.slice(0,Number(b.dataset.depth)));else if(b.hasAttribute('data-reset')){state.phase='';state.query='';$('search').value='';render()}else if(b.hasAttribute('data-doc-folder')){state.docPath.push(b.dataset.docFolder);state.docQuery='';render()}else if(b.hasAttribute('data-doc-depth')){state.docPath=state.docPath.slice(0,Number(b.dataset.docDepth));state.docQuery='';render()}});
 $('search').oninput=e=>{state.query=e.target.value;render()};$('close').onclick=()=>$('detail').close();
 $('detail').addEventListener('click',e=>{if(e.target!==$('detail'))return;const r=$('detail').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('detail').close()});
 $('version').textContent='Catalog v'+data.catalogVersion;render();
