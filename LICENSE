@@ -1,0 +1,79 @@
+NEOVI HOLDINGS PROPRIETARY SOFTWARE LICENSE
+Effective date: November 21, 2026
+
+Copyright (c) the respective copyright owners. All rights reserved except
+as expressly granted below or under an applicable separate license.
+
+1. Scope and ownership
+"Company" means the business identified as Neovi Holdings. "Software"
+means the original company software in this repository, including source
+code, executables, scripts and accompanying software documentation, to
+the extent controlled by the Company or licensed by its rights holders
+under these terms. Copyright remains with its lawful owner; this notice
+does not assign ownership, claim third-party rights or establish a legal
+entity's corporate suffix. This is a proprietary license, not an
+open-source license.
+
+2. Authorized company use
+Current Company employees may access, run, copy and modify the Software
+only as necessary for their authorized Company duties, using approved
+systems and access controls. Contractors, customers and other recipients
+require express written authorization from an Authorized Distributor,
+acting within the relevant rights holder's authority. No permission is
+granted for independent commercial exploitation or personal redistribution.
+
+3. Distribution authority
+Only Company personnel expressly designated in writing by the
+Company are "Authorized Distributors." Each must act on behalf of the
+Company and within authority granted by the relevant rights holder.
+Employment, possession of a copy, repository access or contribution to
+the Software alone does not authorize external distribution.
+
+Except as permitted by section 5, no other person may publish, upload,
+release, sell, sublicense, transfer or otherwise distribute the Software
+or modified versions, in source or executable form, outside the Company
+without prior express written authorization from an Authorized
+Distributor. Authorization must identify the permitted recipients and
+scope; it does not permit onward redistribution unless expressly stated.
+Internal sharing must remain within authorized Company duties and access
+controls. Authorization requests must be submitted through the Company's
+designated internal approval process.
+
+4. Unauthorized distribution and enforcement
+Unauthorized distribution is prohibited and may constitute copyright
+infringement or breach of applicable contractual obligations. The relevant
+rights holder reserves the right to bring civil proceedings and seek
+injunctive relief, damages, recoverable profits and, where legally
+available, statutory damages, costs and attorneys' fees. All relief is
+subject to applicable law, eligibility requirements and the court's
+determination. This notice does not impose automatic fines, establish
+criminal liability or guarantee that a lawsuit will be filed.
+
+5. Existing permissions and excluded materials
+These terms do not revoke or restrict rights already granted under a
+prior license, a separate written agreement, a third-party or open-source
+license, applicable law or the hosting platform's terms. Retain and comply
+with all applicable third-party notices and licenses; they control their
+respective components, including vendored code and bundled runtimes.
+Where a component is separately licensed, these restrictions apply only
+to other material for which the rights holder can impose them. Public
+GitHub hosting retains the viewing and forking rights required by GitHub's
+terms; public visibility does not otherwise grant redistribution rights.
+
+Ordinary drawings, models, bills of materials, reports and customer data
+created or processed with the Software are not the Software merely
+because it produced or processed them. Their ownership, confidentiality
+and authorized business sharing are governed separately. This exclusion
+does not permit distributing embedded Software code or executables.
+Nonpublic Software must be handled under applicable Company security
+policies and confidentiality agreements; public material is not made
+confidential solely by this notice.
+
+6. Warranty and liability
+Unless a separate binding agreement provides otherwise, the Software is
+provided "AS IS," without warranties of any kind, express or implied,
+including merchantability, fitness for a particular purpose and
+noninfringement, to the extent permitted by law. To that extent, the
+rights holders and authorized contributors disclaim liability for damages
+arising from use of the Software. Nothing excludes liability or rights
+that applicable law does not permit to be excluded.
